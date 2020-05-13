@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>510898385549-smbnegm0c5kvq8vkbq94753lslnbck9o.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.510898385549-smbnegm0c5kvq8vkbq94753lslnbck9o</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCj8YPfzww6fTnKV9g0Clk8A62NwCCNw2c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>510898385549</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Mobilabs.HellsKitchen</string>
+	<key>PROJECT_ID</key>
+	<string>hellskitchen-96782</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hellskitchen-96782.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:510898385549:ios:2bfac9714713bcd30a28c4</string>
+	<key>DATABASE_URL</key>
+	<string>https://hellskitchen-96782.firebaseio.com</string>
+</dict>
+</plist>

@@ -3,10 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */; };
+		18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18364E72246BE72D00F8DEBE /* SnapKit */; };
+		18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E78246BF2B600F8DEBE /* ChatViewController.swift */; };
+		18364E7B246BF52300F8DEBE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E7A246BF52300F8DEBE /* Message.swift */; };
+		18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E7C246C04B900F8DEBE /* MessageCell.swift */; };
+		18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */; };
+		187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C4246C70060008B307 /* RegisterViewModel.swift */; };
+		187121C7246C7A7C0008B307 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C6246C7A7C0008B307 /* LoginViewModel.swift */; };
+		187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C8246C802B0008B307 /* ChatUsersViewModel.swift */; };
+		187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121CA246C84C20008B307 /* ChatViewModel.swift */; };
 		18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910805246B2BEA00F88489 /* RegisterViewController.swift */; };
 		18910808246B325900F88489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910807246B325900F88489 /* LoginViewController.swift */; };
 		1891080A246B36B400F88489 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910809246B36B400F88489 /* Constants.swift */; };
@@ -23,6 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewController.swift; sourceTree = "<group>"; };
+		18364E78246BF2B600F8DEBE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		18364E7A246BF52300F8DEBE /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		18364E7C246C04B900F8DEBE /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		187121C4246C70060008B307 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		187121C6246C7A7C0008B307 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		187121C8246C802B0008B307 /* ChatUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewModel.swift; sourceTree = "<group>"; };
+		187121CA246C84C20008B307 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		18910805246B2BEA00F88489 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		18910807246B325900F88489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18910809246B36B400F88489 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -48,12 +66,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */,
+				18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */,
+				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18364E81246C085100F8DEBE /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				18BE2844246B15D500869B6C /* AppDelegate.swift */,
+				18BE2846246B15D500869B6C /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		187121C3246C6FCA0008B307 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				187121C4246C70060008B307 /* RegisterViewModel.swift */,
+				187121C6246C7A7C0008B307 /* LoginViewModel.swift */,
+				187121C8246C802B0008B307 /* ChatUsersViewModel.swift */,
+				187121CA246C84C20008B307 /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		18910802246B28EA00F88489 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +101,8 @@
 				18910805246B2BEA00F88489 /* RegisterViewController.swift */,
 				18910807246B325900F88489 /* LoginViewController.swift */,
 				1891080B246B386100F88489 /* MainMenuViewController.swift */,
+				18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */,
+				18364E78246BF2B600F8DEBE /* ChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -69,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				18BE284A246B15D500869B6C /* Main.storyboard */,
+				18364E7C246C04B900F8DEBE /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -77,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				18910809246B36B400F88489 /* Constants.swift */,
+				18364E7A246BF52300F8DEBE /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,10 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				18910803246B28F000F88489 /* View */,
+				187121C3246C6FCA0008B307 /* ViewModel */,
 				18910802246B28EA00F88489 /* Controller */,
 				18910804246B28F400F88489 /* Model */,
-				18BE2844246B15D500869B6C /* AppDelegate.swift */,
-				18BE2846246B15D500869B6C /* SceneDelegate.swift */,
+				18364E81246C085100F8DEBE /* Delegates */,
 				18BE2850246B15E000869B6C /* Assets.xcassets */,
 				18BE2852246B15E000869B6C /* LaunchScreen.storyboard */,
 				18BE2855246B15E000869B6C /* Info.plist */,
@@ -151,6 +195,10 @@
 			dependencies = (
 			);
 			name = HellsKitchen;
+			packageProductDependencies = (
+				18364E72246BE72D00F8DEBE /* SnapKit */,
+				18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */,
+			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
 			productType = "com.apple.product-type.application";
@@ -179,6 +227,10 @@
 				Base,
 			);
 			mainGroup = 18BE2838246B15D500869B6C;
+			packageReferences = (
+				18364E71246BE72D00F8DEBE /* XCRemoteSwiftPackageReference "SnapKit" */,
+				18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,8 +306,16 @@
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
 				18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */,
 				18BE2845246B15D500869B6C /* AppDelegate.swift in Sources */,
+				18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */,
+				187121C7246C7A7C0008B307 /* LoginViewModel.swift in Sources */,
+				18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */,
+				18364E7B246BF52300F8DEBE /* Message.swift in Sources */,
+				187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */,
+				187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */,
 				1891080A246B36B400F88489 /* Constants.swift in Sources */,
+				187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */,
 				18BE2847246B15D500869B6C /* SceneDelegate.swift in Sources */,
+				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +514,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18364E71246BE72D00F8DEBE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18364E72246BE72D00F8DEBE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18364E71246BE72D00F8DEBE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */ = {

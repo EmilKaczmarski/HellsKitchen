@@ -16,6 +16,7 @@ class MessageCell: UITableViewCell {
         return label
     }()
     
+    
     //here we can add some photo of user
     
 }

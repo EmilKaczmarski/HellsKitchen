@@ -22,6 +22,7 @@ class ChatViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         viewModel.delegate = self
     }
     
@@ -62,8 +63,7 @@ extension ChatViewController: UITableViewDataSource {
         } else {
             cell.textLabel?.textAlignment = .left
         }
+        cell.textLabel?.numberOfLines = 0
         return cell
-    }
-    
-    
+    } 
 }

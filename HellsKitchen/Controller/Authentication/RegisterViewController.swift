@@ -23,8 +23,6 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         guard let nickname = usernameTextField.text else { return }
-        
-
         viewModel.registerUser(nickname, emailTextField: emailTextField.text, passwordTextField: passwordTextField.text)
     }
     

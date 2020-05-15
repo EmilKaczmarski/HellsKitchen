@@ -16,54 +16,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="PtP-Pf-UOJ" kind="relationship" relationship="rootViewController" id="PvT-c3-Hi5"/>
+                        <segue destination="2N2-8b-T3G" kind="relationship" relationship="rootViewController" id="tbY-kt-TZR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ty5-Bt-cHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="117"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MjR-UG-ABN">
-            <objects>
-                <viewController id="PtP-Pf-UOJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dws-if-owB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="cqo-1E-Eca">
-                                <rect key="frame" x="5" y="739" width="404" height="128"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAO-75-rHX">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="30"/>
-                                        <state key="normal" title="register"/>
-                                        <connections>
-                                            <segue destination="SRA-h6-wsq" kind="show" id="vY5-SX-7ng"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Am-kT-QsT">
-                                        <rect key="frame" x="0.0" y="98" width="404" height="30"/>
-                                        <state key="normal" title="login"/>
-                                        <connections>
-                                            <segue destination="seA-o0-cbA" kind="show" id="jGe-j9-jbD"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="cqo-1E-Eca" firstAttribute="leading" secondItem="BLU-rV-5Mu" secondAttribute="leading" constant="5" id="0XK-Bn-X3E"/>
-                            <constraint firstItem="BLU-rV-5Mu" firstAttribute="trailing" secondItem="cqo-1E-Eca" secondAttribute="trailing" constant="5" id="ZkL-Ix-4Yc"/>
-                            <constraint firstItem="cqo-1E-Eca" firstAttribute="bottom" secondItem="BLU-rV-5Mu" secondAttribute="bottom" constant="5" id="nRq-bN-IlF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="BLU-rV-5Mu"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="SOf-KB-92P"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ywW-yK-F6F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1282" y="116"/>
+            <point key="canvasLocation" x="2330" y="-62"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="XRz-0O-dlF">
@@ -114,12 +72,11 @@
                     <connections>
                         <outlet property="emailTextField" destination="xks-Lg-dT8" id="Rlm-Gb-Mai"/>
                         <outlet property="passwordTextField" destination="O9Y-as-AlX" id="bLR-F2-T41"/>
-                        <segue destination="DwX-Bz-11R" kind="show" identifier="loginSegue" id="PCs-1E-5cf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU3-2N-MnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2216" y="579"/>
+            <point key="canvasLocation" x="4093" y="-768"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oR6-DJ-Xrp">
@@ -130,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Oin-h6-vhz">
-                                <rect key="frame" x="40" y="118" width="334" height="225"/>
+                                <rect key="frame" x="40" y="74" width="334" height="225"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shu-Rn-gV3">
                                         <rect key="frame" x="20" y="0.0" width="294" height="34"/>
@@ -178,61 +135,13 @@
                         <outlet property="emailTextField" destination="iKq-aK-Juk" id="f0X-lS-lDw"/>
                         <outlet property="passwordTextField" destination="2Q0-32-LfK" id="Abi-gW-ICI"/>
                         <outlet property="usernameTextField" destination="shu-Rn-gV3" id="8pa-cu-GaU"/>
-                        <segue destination="DwX-Bz-11R" kind="show" identifier="registerSegue" id="uVE-Qr-hwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llA-bi-ZtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2217" y="-161"/>
+            <point key="canvasLocation" x="2964" y="-781"/>
         </scene>
-        <!--Main Menu View Controller-->
-        <scene sceneID="vQT-bB-4mG">
-            <objects>
-                <viewController id="DwX-Bz-11R" customClass="MainMenuViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kHg-dX-G9v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="NI2-QM-zWW">
-                                <rect key="frame" x="186.66666666666666" y="381" width="41" height="134"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZZ-qe-Nn1">
-                                        <rect key="frame" x="0.0" y="0.0" width="41" height="30"/>
-                                        <state key="normal" title="Chat"/>
-                                        <connections>
-                                            <segue destination="Erf-I1-9yP" kind="show" id="8fa-oY-1QN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSe-fg-mlz">
-                                        <rect key="frame" x="0.0" y="104" width="41" height="30"/>
-                                        <state key="normal" title="Board"/>
-                                        <connections>
-                                            <segue destination="2N2-8b-T3G" kind="show" id="kb8-cc-Wqy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="NI2-QM-zWW" firstAttribute="centerX" secondItem="kHg-dX-G9v" secondAttribute="centerX" id="VVg-TL-bGB"/>
-                            <constraint firstItem="NI2-QM-zWW" firstAttribute="centerY" secondItem="kHg-dX-G9v" secondAttribute="centerY" id="hjP-3k-ujB"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="2AX-qo-d42"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="wCv-Tf-djY">
-                        <barButtonItem key="rightBarButtonItem" title="logout" id="Bcl-V8-3VM">
-                            <connections>
-                                <action selector="logoutButtonPressed:" destination="DwX-Bz-11R" id="dNo-ye-ucp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KcY-Er-omc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3344.9275362318845" y="196.875"/>
-        </scene>
-        <!--Wall View Controller-->
+        <!--Guest-->
         <scene sceneID="AKW-CP-I8J">
             <objects>
                 <viewController id="2N2-8b-T3G" customClass="WallViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
@@ -267,20 +176,33 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6It-Aw-zpb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="obb-bN-c1T">
-                        <barButtonItem key="rightBarButtonItem" title="add post" id="Ha1-rv-HBB">
+                    <navigationItem key="navigationItem" title="Guest" id="obb-bN-c1T">
+                        <barButtonItem key="leftBarButtonItem" title="Login" id="3nh-8K-sqy">
                             <connections>
-                                <segue destination="F5M-sh-rs9" kind="show" id="hik-a6-8nL"/>
+                                <segue destination="seA-o0-cbA" kind="show" id="rx4-TI-Zqg"/>
                             </connections>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="add post" id="Ha1-rv-HBB">
+                                <connections>
+                                    <segue destination="F5M-sh-rs9" kind="show" id="hik-a6-8nL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Chat" id="Ae9-UB-07d">
+                                <connections>
+                                    <segue destination="Erf-I1-9yP" kind="show" id="6Mt-1a-Ef6"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="loginButton" destination="3nh-8K-sqy" id="ECJ-Lx-luM"/>
                         <outlet property="tableView" destination="fH7-bJ-MnI" id="gVU-oC-0be"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ht-Dh-d23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4377" y="630"/>
+            <point key="canvasLocation" x="3357" y="-60"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="zEB-lM-g1G">
@@ -334,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qU8-6B-GVr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5286" y="629"/>
+            <point key="canvasLocation" x="3357" y="729"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="6i8-sc-k4m">
@@ -400,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8t-XE-kCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5285.507246376812" y="1356.6964285714284"/>
+            <point key="canvasLocation" x="4414" y="664"/>
         </scene>
         <!--Chat Users View Controller-->
         <scene sceneID="dRh-Xk-jTJ">
@@ -440,7 +362,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEI-cx-uLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4390" y="-61"/>
+            <point key="canvasLocation" x="4093" y="-62"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="0dj-YL-dUZ">
@@ -516,7 +438,4 @@
             <point key="canvasLocation" x="5286" y="-59"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="PCs-1E-5cf"/>
-    </inferredMetricsTieBreakers>
 </document>

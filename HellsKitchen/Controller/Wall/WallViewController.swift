@@ -11,6 +11,8 @@ import SnapKit
 
 class WallViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIBarButtonItem!
+    
     let viewModel: WallViewModel = WallViewModel()
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +26,18 @@ class WallViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         viewModel.delegate = self
         viewModel.loadPosts()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print(Constants.currentUserName)
+        if Constants.currentUserName != "" {
+            loginButton.title = "Logout"
+            navigationItem.title = Constants.currentUserName
+        } else {
+            loginButton.title = "Login"
+        }
+        
     }
 }
 

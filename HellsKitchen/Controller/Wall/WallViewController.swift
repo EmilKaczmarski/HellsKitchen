@@ -43,14 +43,30 @@ class WallViewController: UIViewController {
 
 extension WallViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
+        if Constants.currentUserName == "" {
+            let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
+                self.performSegue(withIdentifier: Constants.Segues.loginSegue, sender: self)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
+                self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
+            }))
+            present(alert, animated: true)
+        } else {
+            performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.Segues.wallDetailSegue {
-            let vc = segue.destination as! PostDetailViewController
-            if let indexPath = tableView.indexPathForSelectedRow {
-                vc.postId = viewModel.posts[indexPath.row].id
+        if Constants.currentUserName != "" {
+            if segue.identifier == Constants.Segues.wallDetailSegue {
+                let vc = segue.destination as! PostDetailViewController
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    vc.postId = viewModel.posts[indexPath.row].id
+                }
             }
         }
     }

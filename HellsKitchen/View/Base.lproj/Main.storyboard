@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU3-2N-MnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4093" y="-768"/>
+            <point key="canvasLocation" x="4480" y="-768"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oR6-DJ-Xrp">
@@ -87,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Oin-h6-vhz">
-                                <rect key="frame" x="40" y="74" width="334" height="225"/>
+                                <rect key="frame" x="40" y="118" width="334" height="225"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shu-Rn-gV3">
                                         <rect key="frame" x="20" y="0.0" width="294" height="34"/>
@@ -139,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llA-bi-ZtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="-781"/>
+            <point key="canvasLocation" x="4480" y="-1499"/>
         </scene>
         <!--Guest-->
         <scene sceneID="AKW-CP-I8J">
@@ -179,7 +179,7 @@
                     <navigationItem key="navigationItem" title="Guest" id="obb-bN-c1T">
                         <barButtonItem key="leftBarButtonItem" title="Login" id="3nh-8K-sqy">
                             <connections>
-                                <segue destination="seA-o0-cbA" kind="show" id="rx4-TI-Zqg"/>
+                                <segue destination="seA-o0-cbA" kind="show" identifier="loginSegue" id="rx4-TI-Zqg"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -198,11 +198,12 @@
                     <connections>
                         <outlet property="loginButton" destination="3nh-8K-sqy" id="ECJ-Lx-luM"/>
                         <outlet property="tableView" destination="fH7-bJ-MnI" id="gVU-oC-0be"/>
+                        <segue destination="SRA-h6-wsq" kind="show" identifier="registerSegue" id="ac1-FX-1ed"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ht-Dh-d23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357" y="-60"/>
+            <point key="canvasLocation" x="3297" y="-60"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="zEB-lM-g1G">
@@ -362,7 +363,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEI-cx-uLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4093" y="-62"/>
+            <point key="canvasLocation" x="4481" y="-62"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="0dj-YL-dUZ">

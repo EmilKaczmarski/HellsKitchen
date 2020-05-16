@@ -36,6 +36,7 @@
 		18ED1413246D67DA0093398A /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1412246D67DA0093398A /* CreatePostViewController.swift */; };
 		18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1414246D70C40093398A /* PostDetailViewController.swift */; };
 		18ED1417246D8F9E0093398A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */; };
+		473936252470281700DF6252 /* ShowSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473936242470281700DF6252 /* ShowSplashScreen.swift */; };
 		BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		18ED1412246D67DA0093398A /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		18ED1414246D70C40093398A /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		473936242470281700DF6252 /* ShowSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSplashScreen.swift; sourceTree = "<group>"; };
 		4C92F4CC632D1789AF317B22 /* Pods-HellsKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.debug.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 		87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HellsKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C04FFEFDCC1AB01549E211 /* Pods-HellsKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.release.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
+				473936242470281700DF6252 /* ShowSplashScreen.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 		18910803246B28F000F88489 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18BE2852246B15E000869B6C /* LaunchScreen.storyboard */,
 				18BE284A246B15D500869B6C /* Main.storyboard */,
 				18364E7C246C04B900F8DEBE /* MessageCell.swift */,
 				18ED1410246D34280093398A /* PostCell.swift */,
@@ -212,7 +216,6 @@
 				18910804246B28F400F88489 /* Model */,
 				18364E81246C085100F8DEBE /* Delegates */,
 				18BE2850246B15E000869B6C /* Assets.xcassets */,
-				18BE2852246B15E000869B6C /* LaunchScreen.storyboard */,
 				18BE2855246B15E000869B6C /* Info.plist */,
 				18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */,
 				18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */,
@@ -375,6 +378,7 @@
 				18910808246B325900F88489 /* LoginViewController.swift in Sources */,
 				18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */,
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
+				473936252470281700DF6252 /* ShowSplashScreen.swift in Sources */,
 				18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */,
 				18BE2845246B15D500869B6C /* AppDelegate.swift in Sources */,
 				18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */,

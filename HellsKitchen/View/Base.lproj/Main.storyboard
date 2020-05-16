@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Zf-jU-wTu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ts-bq-lef">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,8 +11,9 @@
         <scene sceneID="If6-Oz-YSv">
             <objects>
                 <navigationController id="8Zf-jU-wTu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="VR5-R1-wWL"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="urb-sy-sHu">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -28,11 +29,11 @@
             <objects>
                 <viewController id="seA-o0-cbA" customClass="LoginViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7SV-O7-ql6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="8bW-eZ-rO1">
-                                <rect key="frame" x="10" y="118" width="394" height="160"/>
+                                <rect key="frame" x="10" y="86" width="394" height="160"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@test.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xks-Lg-dT8">
                                         <rect key="frame" x="20" y="0.0" width="354" height="34"/>
@@ -83,11 +84,11 @@
             <objects>
                 <viewController id="SRA-h6-wsq" customClass="RegisterViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9eM-62-4A0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Oin-h6-vhz">
-                                <rect key="frame" x="40" y="118" width="334" height="225"/>
+                                <rect key="frame" x="40" y="86" width="334" height="225"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shu-Rn-gV3">
                                         <rect key="frame" x="20" y="0.0" width="294" height="34"/>
@@ -146,11 +147,11 @@
             <objects>
                 <viewController id="2N2-8b-T3G" customClass="WallViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LKo-pH-mGp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fH7-bJ-MnI">
-                                <rect key="frame" x="10" y="98" width="394" height="754"/>
+                                <rect key="frame" x="10" y="66" width="394" height="732"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="q3Q-B4-8iI">
@@ -210,11 +211,11 @@
             <objects>
                 <viewController id="F5M-sh-rs9" customClass="CreatePostViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ya2-S8-qjB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="RNR-gn-32z">
-                                <rect key="frame" x="30" y="118" width="354" height="156"/>
+                                <rect key="frame" x="30" y="86" width="354" height="156"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KYK-Nb-6Wd">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="34"/>
@@ -264,11 +265,11 @@
             <objects>
                 <viewController id="u2c-2a-dMk" customClass="PostDetailViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZDe-cf-1cq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="one-8w-HQ5">
-                                <rect key="frame" x="15" y="103" width="384" height="165"/>
+                                <rect key="frame" x="15" y="71" width="384" height="165"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="99" translatesAutoresizingMaskIntoConstraints="NO" id="FOy-VH-nfy">
                                         <rect key="frame" x="0.0" y="0.0" width="180.66666666666666" height="20.333333333333332"/>
@@ -330,7 +331,7 @@
             <objects>
                 <tableViewController id="Erf-I1-9yP" customClass="ChatUsersViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rlz-74-gSj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="hWk-Bu-g97">
@@ -370,11 +371,11 @@
             <objects>
                 <viewController id="hou-Sb-UY9" customClass="ChatViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lAC-iW-Mz1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-SD-GYG">
-                                <rect key="frame" x="20" y="108" width="374" height="709"/>
+                                <rect key="frame" x="20" y="76" width="374" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="H6R-id-8Gy">
@@ -388,7 +389,7 @@
                                 </prototypes>
                             </tableView>
                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ra7-zy-9tp">
-                                <rect key="frame" x="40" y="832" width="334" height="34"/>
+                                <rect key="frame" x="40" y="778" width="334" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuC-TH-jPt">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
@@ -437,6 +438,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6q-lX-Dsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5286" y="-59"/>
+        </scene>
+        <!--Show Splash Screen-->
+        <scene sceneID="xNH-Mi-vWa">
+            <objects>
+                <viewController id="8Ts-bq-lef" customClass="ShowSplashScreen" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M6b-wB-B8E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hell's Kitchen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbg-6x-mEF">
+                                <rect key="frame" x="62.333333333333343" y="217" width="289.33333333333326" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.76544224955261164" blue="0.35129965022093346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lbg-6x-mEF" firstAttribute="centerX" secondItem="M6b-wB-B8E" secondAttribute="centerX" id="Uuk-zd-hBq"/>
+                            <constraint firstItem="Uai-Dn-hwN" firstAttribute="bottom" secondItem="lbg-6x-mEF" secondAttribute="bottom" constant="573" id="WH3-wu-JWk"/>
+                            <constraint firstItem="lbg-6x-mEF" firstAttribute="top" secondItem="Uai-Dn-hwN" secondAttribute="top" constant="173" id="rpj-G8-hIo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uai-Dn-hwN"/>
+                    </view>
+                    <connections>
+                        <segue destination="8Zf-jU-wTu" kind="show" identifier="showSplashScreen" id="iMp-gY-muM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZpB-lJ-r0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="-60"/>
         </scene>
     </scenes>
 </document>

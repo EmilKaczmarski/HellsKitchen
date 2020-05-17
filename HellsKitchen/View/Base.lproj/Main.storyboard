@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Zf-jU-wTu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Zf-jU-wTu">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,8 +64,8 @@
                                             <action selector="loginButtonPressed:" destination="seA-o0-cbA" eventType="touchUpInside" id="7In-JY-XpF"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZd-Dl-6gc">
-                                        <rect key="frame" x="119" y="242.33333333333331" width="156" height="20.333333333333314"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZd-Dl-6gc">
+                                        <rect key="frame" x="107.66666666666669" y="242.33333333333331" width="179" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -205,11 +205,14 @@
                         <viewLayoutGuide key="safeArea" id="6It-Aw-zpb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Guest" id="obb-bN-c1T">
-                        <barButtonItem key="leftBarButtonItem" title="Login" id="3nh-8K-sqy">
-                            <connections>
-                                <segue destination="seA-o0-cbA" kind="show" identifier="loginSegue" id="rx4-TI-Zqg"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Login" id="3nh-8K-sqy">
+                                <connections>
+                                    <segue destination="seA-o0-cbA" kind="show" identifier="loginSegue" id="rx4-TI-Zqg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Search" id="ohZ-RQ-3Hd"/>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="add post" id="Ha1-rv-HBB">
                                 <connections>
@@ -469,36 +472,8 @@
             </objects>
             <point key="canvasLocation" x="5286" y="-59"/>
         </scene>
-        <!--Show Splash Screen-->
-        <scene sceneID="xNH-Mi-vWa">
-            <objects>
-                <viewController id="8Ts-bq-lef" customClass="ShowSplashScreen" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="M6b-wB-B8E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hell's Kitchen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbg-6x-mEF">
-                                <rect key="frame" x="62.333333333333343" y="217" width="289.33333333333326" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.76544224955261164" blue="0.35129965022093346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="lbg-6x-mEF" firstAttribute="centerX" secondItem="M6b-wB-B8E" secondAttribute="centerX" id="Uuk-zd-hBq"/>
-                            <constraint firstItem="Uai-Dn-hwN" firstAttribute="bottom" secondItem="lbg-6x-mEF" secondAttribute="bottom" constant="573" id="WH3-wu-JWk"/>
-                            <constraint firstItem="lbg-6x-mEF" firstAttribute="top" secondItem="Uai-Dn-hwN" secondAttribute="top" constant="173" id="rpj-G8-hIo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Uai-Dn-hwN"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZpB-lJ-r0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1409" y="-60"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qtj-p3-N8k"/>
+        <segue reference="ac1-FX-1ed"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
     //checking if email contains @
     //is loop necessary?
     @IBAction func emailTextChanged(_ sender: Any) {
-        if emailTextField.text!.contains("@") {
+        if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty {
             loginButton.isEnabled = true
         }
         else {
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     //checking if password has at least 1 char
     @IBAction func passwordTextChanged(_ sender: Any) {
         
-        if passwordTextField.text!.isEmpty {
+        if !passwordTextField.text!.isEmpty && emailTextField.text!.contains("@"){
             loginButton.isEnabled = false
         }
         else {

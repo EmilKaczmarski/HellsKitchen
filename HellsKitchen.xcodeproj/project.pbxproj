@@ -160,10 +160,10 @@
 			children = (
 				18BE2848246B15D500869B6C /* WelcomeViewController.swift */,
 				1891080B246B386100F88489 /* MainMenuViewController.swift */,
+				473936242470281700DF6252 /* ShowSplashScreen.swift */,
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
-				473936242470281700DF6252 /* ShowSplashScreen.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -16,6 +16,5 @@ class ShowSplashScreen: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)) {
             self.performSegue(withIdentifier: "showSplashScreen", sender: self)
             }
-            
     }
 }

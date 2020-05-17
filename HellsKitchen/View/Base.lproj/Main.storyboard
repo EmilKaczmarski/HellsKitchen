@@ -218,12 +218,15 @@
                             </barButtonItem>
                             <barButtonItem title="Chat" id="Ae9-UB-07d">
                                 <connections>
+                                    <action selector="chatButtonPressed:" destination="2N2-8b-T3G" id="8dc-al-VZJ"/>
                                     <segue destination="Erf-I1-9yP" kind="show" id="6Mt-1a-Ef6"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPostButton" destination="Ha1-rv-HBB" id="4p8-61-gEx"/>
+                        <outlet property="chatButton" destination="Ae9-UB-07d" id="hF3-z2-Tgm"/>
                         <outlet property="loginButton" destination="3nh-8K-sqy" id="ECJ-Lx-luM"/>
                         <outlet property="tableView" destination="fH7-bJ-MnI" id="gVU-oC-0be"/>
                         <segue destination="SRA-h6-wsq" kind="show" identifier="registerSegue" id="ac1-FX-1ed"/>

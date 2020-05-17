@@ -44,10 +44,10 @@ class LoginViewController: UIViewController {
     @IBAction func passwordTextChanged(_ sender: Any) {
         
         if !passwordTextField.text!.isEmpty && emailTextField.text!.contains("@"){
-            loginButton.isEnabled = false
+            loginButton.isEnabled = true
         }
         else {
-            loginButton.isEnabled = true
+            loginButton.isEnabled = false
         }
     }
     

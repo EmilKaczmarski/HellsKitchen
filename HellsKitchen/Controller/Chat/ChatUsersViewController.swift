@@ -15,12 +15,12 @@ class ChatUsersViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        viewModel.setupView()
         tableView.rowHeight = 70.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        viewModel.setupView()
     }
 }
 

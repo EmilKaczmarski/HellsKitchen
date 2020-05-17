@@ -12,7 +12,8 @@ import SnapKit
 class WallViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIBarButtonItem!
-    
+    @IBOutlet weak var chatButton: UIBarButtonItem!
+    @IBOutlet weak var addPostButton: UIBarButtonItem!
     let viewModel: WallViewModel = WallViewModel()
     
     @IBOutlet weak var tableView: UITableView!
@@ -30,12 +31,15 @@ class WallViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        print(Constants.currentUserName)
         if Constants.currentUserName != "" {
             loginButton.title = "Logout"
+            chatButton.isEnabled = true
+            addPostButton.isEnabled = true
             navigationItem.title = Constants.currentUserName
         } else {
             loginButton.title = "Login"
+            chatButton.isEnabled = false
+            addPostButton.isEnabled = false
         }
         
     }
@@ -44,20 +48,25 @@ class WallViewController: UIViewController {
 extension WallViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if Constants.currentUserName == "" {
-            let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
-                self.performSegue(withIdentifier: Constants.Segues.loginSegue, sender: self)
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
-                self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
-            }))
-            present(alert, animated: true)
+            requiedAuthorisationAlert()
         } else {
             performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
         }
         
+    }
+
+    
+    private func requiedAuthorisationAlert() {
+        let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
+            self.performSegue(withIdentifier: Constants.Segues.loginSegue, sender: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
+            self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
+        }))
+        present(alert, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -23,14 +23,14 @@ class ChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        //if sth wont work
-        //tableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
         viewModel.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.loadMessages()
+        viewModel.loadSavedMessages()
+        viewModel.loadMessagesFromCloud()
+        
     }
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {

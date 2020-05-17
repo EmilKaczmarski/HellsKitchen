@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Message {
+struct MessageModel {
     let message: String
     let sender: String
-    let timestamp: Double
+    let timestamp: String
 }

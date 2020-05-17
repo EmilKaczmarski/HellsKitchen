@@ -11,11 +11,15 @@ import Firebase
 
 class ChatUsersViewModel {
     let db = Firestore.firestore()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var delegate: ChatUsersViewController?
     var users = [String]()
     
     func setupView() {
+        
         db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
+            
             if let err = error {
                 print(err.localizedDescription)
             } else {
@@ -23,14 +27,14 @@ class ChatUsersViewModel {
                     self.users = []
                     for i in snapshotDocuments {
                         let element = i.data()
-                        if Constants.currentUserName != element[element.startIndex].key {
-                        self.users.append(element[element.startIndex].key)
+                        if element[element.startIndex].key != Constants.currentUserName {
+                            self.users.append(element[element.startIndex].key)
                         }
                     }
                 }
-                self.delegate!.tableView.reloadData()
             }
+            self.delegate!.tableView.reloadData()
         }
     }
-    
 }
+

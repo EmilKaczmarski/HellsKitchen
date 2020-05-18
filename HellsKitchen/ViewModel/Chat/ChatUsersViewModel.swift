@@ -14,7 +14,16 @@ class ChatUsersViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var delegate: ChatUsersViewController?
     var users = [String]()
-    func setupView() {
+    var allUsers = [String]()
+    
+    func loadFilteredData(by name: String) {
+        users = allUsers.filter {
+            $0.range(of: name, options: [.diacriticInsensitive, .caseInsensitive]) != nil
+        }.sorted { $0 < $1 }
+        delegate?.tableView.reloadData()
+    }
+    
+    func setupData() {
         let group = DispatchGroup()
         group.enter()
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
@@ -37,7 +46,7 @@ class ChatUsersViewModel {
             })
         }
         //loader presented
-        self.users = []
+        self.allUsers = []
         db.collection(Constants.FStore.allUsers).getDocuments {
             (querySnapshot, error) in
             if let err = error {
@@ -48,11 +57,9 @@ class ChatUsersViewModel {
                     for i in snapshotDocuments {
                         let element = i.data()
                         if element[element.startIndex].key != Constants.currentUserName {
-                            self.users.append(element[element.startIndex].key)
+                            self.allUsers.append(element[element.startIndex].key)
                         }
                     }
-                } else {
-            
                 }
             }
             
@@ -61,6 +68,7 @@ class ChatUsersViewModel {
                     self.delegate!.dismiss(animated: true, completion: nil)
                 }
             }
+            self.users = self.allUsers
             self.delegate!.tableView.reloadData()
         }
     }

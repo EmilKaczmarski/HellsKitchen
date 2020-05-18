@@ -10,6 +10,10 @@ import UIKit
 
 class ChatUsersViewController: UITableViewController {
     
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     let viewModel: ChatUsersViewModel = ChatUsersViewModel()
     
     override func viewDidLoad() {
@@ -20,10 +24,40 @@ class ChatUsersViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.setupView()
+        viewModel.setupData()
+        hideLoup()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        hideLoup()
+    }
+    
+    @IBAction func loupePressed(_ sender: UIBarButtonItem) {
+        if tableView.tableHeaderView!.frame.size.height == 0 {
+            showLoup()
+        } else {
+            hideLoup()
+        }
+        tableView.reloadData()
     }
 }
 
+//MARK: - loup methods
+extension ChatUsersViewController {
+    func hideLoup() {
+        tableView.tableHeaderView!.frame.size.height = 0
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+    }
+    
+    func showLoup() {
+        tableView.tableHeaderView!.frame.size.height = 40
+        searchBar.becomeFirstResponder()
+    }
+}
+
+//MARK: - tableview delegate, datasource methods
 extension ChatUsersViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
@@ -46,6 +80,26 @@ extension ChatUsersViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             vc.receiver = viewModel.users[indexPath.row]
             vc.title = vc.receiver
+        }
+        hideLoup()
+    }
+    
+    func loadAllUsers() {
+        viewModel.users = viewModel.allUsers
+        tableView.reloadData()
+    }
+}
+
+//MARK: -searchbar delegate
+extension ChatUsersViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.loadFilteredData(by: searchBar.text!)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadAllUsers()
         }
     }
 }

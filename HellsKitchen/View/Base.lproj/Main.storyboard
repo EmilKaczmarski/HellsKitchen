@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Zf-jU-wTu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Zf-jU-wTu">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -104,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU3-2N-MnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4480" y="-768"/>
+            <point key="canvasLocation" x="4480" y="-1437"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oR6-DJ-Xrp">
@@ -167,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llA-bi-ZtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4480" y="-1628"/>
+            <point key="canvasLocation" x="4480" y="-735"/>
         </scene>
         <!--Guest-->
         <scene sceneID="AKW-CP-I8J">
@@ -291,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qU8-6B-GVr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357" y="729"/>
+            <point key="canvasLocation" x="3259" y="726"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="6i8-sc-k4m">
@@ -390,8 +390,16 @@
                             <outlet property="delegate" destination="Erf-I1-9yP" id="bcN-jJ-VJk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="wcU-qQ-nU1"/>
+                    <navigationItem key="navigationItem" id="wcU-qQ-nU1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="6cf-rs-9bI">
+                            <connections>
+                                <action selector="loupePressed:" destination="Erf-I1-9yP" id="8XR-sf-5jo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="hWk-Bu-g97" id="jEO-NJ-le3"/>
+                        <outlet property="searchButton" destination="6cf-rs-9bI" id="1FN-zf-sjF"/>
                         <segue destination="hou-Sb-UY9" kind="show" identifier="chatUsersSegue" id="3mD-5b-UH4"/>
                     </connections>
                 </tableViewController>
@@ -474,6 +482,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ac1-FX-1ed"/>
+        <segue reference="Qtj-p3-N8k"/>
     </inferredMetricsTieBreakers>
 </document>

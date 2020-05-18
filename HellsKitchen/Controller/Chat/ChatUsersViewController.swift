@@ -19,7 +19,8 @@ class ChatUsersViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        tableView.rowHeight = 70.0
+        tableView.register(ChatUserCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = CGFloat(Constants.Sizes.chatViewCellHeight)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,9 +61,8 @@ extension ChatUsersViewController {
 //MARK: - tableview delegate, datasource methods
 extension ChatUsersViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel!.text = viewModel.users[indexPath.row]
-        cell.textLabel?.textAlignment = .center
+        ChatUserCell.username = viewModel.users[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChatUserCell
         return cell
     }
     

@@ -30,6 +30,8 @@
 		18BE2851246B15E000869B6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BE2850246B15E000869B6C /* Assets.xcassets */; };
 		18BE2854246B15E000869B6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE2852246B15E000869B6C /* LaunchScreen.storyboard */; };
 		18BE2860246B1B7C00869B6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */; };
+		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
+		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
 		18ED140D246D312E0093398A /* WallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED140C246D312E0093398A /* WallViewModel.swift */; };
 		18ED140F246D32810093398A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED140E246D32810093398A /* Post.swift */; };
 		18ED1411246D34280093398A /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1410246D34280093398A /* PostCell.swift */; };
@@ -63,6 +65,7 @@
 		18BE2853246B15E000869B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18BE2855246B15E000869B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18D802C724731C20007F0E03 /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		18ED140C246D312E0093398A /* WallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModel.swift; sourceTree = "<group>"; };
 		18ED140E246D32810093398A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		18ED1410246D34280093398A /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			files = (
 				BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */,
 				18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */,
+				18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */,
 				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +176,7 @@
 				18BE284A246B15D500869B6C /* Main.storyboard */,
 				18364E7C246C04B900F8DEBE /* MessageCell.swift */,
 				18ED1410246D34280093398A /* PostCell.swift */,
+				18D802C724731C20007F0E03 /* ChatUserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			packageProductDependencies = (
 				18364E72246BE72D00F8DEBE /* SnapKit */,
 				18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */,
+				18D802CA24732775007F0E03 /* LetterAvatarKit */,
 			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
@@ -299,6 +305,7 @@
 			packageReferences = (
 				18364E71246BE72D00F8DEBE /* XCRemoteSwiftPackageReference "SnapKit" */,
 				18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
 			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
@@ -390,6 +397,7 @@
 				18ED1417246D8F9E0093398A /* PostDetailViewModel.swift in Sources */,
 				187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */,
 				18BE2847246B15D500869B6C /* SceneDelegate.swift in Sources */,
+				18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */,
 				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
 				18ED1411246D34280093398A /* PostCell.swift in Sources */,
@@ -608,6 +616,14 @@
 				minimumVersion = 6.5.5;
 			};
 		};
+		18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vpeschenkov/LetterAvatarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -620,6 +636,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		18D802CA24732775007F0E03 /* LetterAvatarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */;
+			productName = LetterAvatarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

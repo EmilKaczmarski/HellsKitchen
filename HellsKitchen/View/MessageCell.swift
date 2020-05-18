@@ -10,13 +10,8 @@ import UIKit
 import SnapKit
 
 class MessageCell: UITableViewCell {
-    
     lazy var data: UILabel = {
         let label = UILabel()
         return label
     }()
-    
-    
-    //here we can add some photo of user
-    
 }

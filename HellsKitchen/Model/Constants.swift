@@ -47,7 +47,11 @@ struct Constants {
             static let lastCommentTimestamp = "lastCommentTimestamp"
             static let comments = "comments"
         }
-        
+    }
+    
+    struct Sizes {
+        static let chatViewCellHeight = 70.0
+        static let avatarSize = 50.0
     }
     
     

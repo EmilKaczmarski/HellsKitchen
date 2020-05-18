@@ -92,6 +92,11 @@ extension ChatUsersViewController {
 
 //MARK: -searchbar delegate
 extension ChatUsersViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             loadAllUsers()

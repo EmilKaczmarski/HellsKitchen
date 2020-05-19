@@ -61,6 +61,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func registerNowButtonPressed(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
+        self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
     }
 }

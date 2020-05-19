@@ -99,7 +99,7 @@
                         <outlet property="emailTextField" destination="xks-Lg-dT8" id="Rlm-Gb-Mai"/>
                         <outlet property="loginButton" destination="D8N-l7-xll" id="2gG-pO-OSC"/>
                         <outlet property="passwordTextField" destination="O9Y-as-AlX" id="bLR-F2-T41"/>
-                        <segue destination="SRA-h6-wsq" kind="show" identifier="registerViewSegue" id="Qtj-p3-N8k"/>
+                        <segue destination="SRA-h6-wsq" kind="show" identifier="registerSegue" id="Qtj-p3-N8k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU3-2N-MnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -482,6 +482,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ac1-FX-1ed"/>
+        <segue reference="Qtj-p3-N8k"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,7 +31,7 @@ class WallViewModel {
                                             content: data["content"] as! String,
                                             createTimestamp: "\(data["createTimestamp"] ?? "")",
                                 lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
-                                            comments: [])
+                                comments: [])
                             self.posts.append(post)
                         }
                         

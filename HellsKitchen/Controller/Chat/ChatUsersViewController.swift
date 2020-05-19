@@ -60,9 +60,9 @@ extension ChatUsersViewController {
 //MARK: - tableview delegate, datasource methods
 extension ChatUsersViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel!.text = viewModel.users[indexPath.row]
-        cell.textLabel?.textAlignment = .center
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChatUserCell
+        cell.avatarImageView.image = cell.createAvatar(userName: viewModel.users[indexPath.row])
+        cell.name.text = viewModel.users[indexPath.row]
         return cell
     }
     

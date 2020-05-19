@@ -52,9 +52,7 @@ extension WallViewController {
         } else {
             performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
         }
-        
     }
-
     
     private func requiedAuthorisationAlert() {
         let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
@@ -82,11 +80,13 @@ extension WallViewController {
     
     
 }
-
+//MARK: - Delegate methods
 extension WallViewController: UITableViewDelegate {
     
 }
 
+
+//MARK: - Datasource methods
 extension WallViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.posts.count
@@ -97,6 +97,13 @@ extension WallViewController: UITableViewDataSource {
         cell.content.text = viewModel.posts[indexPath.row].content
         cell.owner.text = viewModel.posts[indexPath.row].owner
         cell.title.text = viewModel.posts[indexPath.row].title
+        let date = Date(timeIntervalSince1970: Double(viewModel.posts[indexPath.row].createTimestamp)!)
+        cell.date.text = "\(date)"[0..<10]
+        //temp section to show ui
+        cell.postImage.image = UIImage(named: "pasta")
+        cell.firstComment.text = "some first comment"
+        cell.secondComment.text = "some second comment blabla"
+        //end of temp section
         cell.selectionStyle = .none
         return cell
     }

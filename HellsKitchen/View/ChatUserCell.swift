@@ -12,8 +12,6 @@ import LetterAvatarKit
 
 class ChatUserCell: UITableViewCell {
     
-    static var username = ""
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
@@ -24,14 +22,17 @@ class ChatUserCell: UITableViewCell {
         setupView()
     }
     
-    lazy var avatarImageView: UIImageView = {
-        let view = UIImageView()
+    func createAvatar(for username: String)-> UIImage {
         let configuration = LetterAvatarBuilderConfiguration()
         configuration.size = CGSize(width: Constants.Sizes.avatarSize, height: Constants.Sizes.avatarSize)
-        configuration.username = ChatUserCell.username
+        configuration.username = username
         configuration.circle = true
         configuration.backgroundColors = [ .red ]
-        view.image = UIImage.makeLetterAvatar(withConfiguration: configuration)
+        return UIImage.makeLetterAvatar(withConfiguration: configuration)!
+    }
+    
+    lazy var avatarImageView: UIImageView = {
+        let view = UIImageView()
         view.snp.makeConstraints { (maker) in
             maker.width.height.equalTo(Constants.Sizes.avatarSize + 5)
         }
@@ -53,7 +54,6 @@ class ChatUserCell: UITableViewCell {
     
     lazy var name: UILabel = {
         let name = UILabel()
-        name.text = ChatUserCell.username
         name.textAlignment = .center
         return name
     }()

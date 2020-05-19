@@ -30,7 +30,13 @@ class ChatViewController: UIViewController {
         super.viewWillAppear(true)
         viewModel.loadSavedMessages()
         viewModel.loadMessagesFromCloud()
-        
+        setupBackButtonTitle()
+    }
+    
+    func setupBackButtonTitle() {
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
@@ -62,7 +68,7 @@ extension ChatViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! //as! MessageCell
         cell.textLabel!.text = viewModel.messages[indexPath.row].message
         if viewModel.messages[indexPath.row].sender == sender {
-            //out message
+            //our message
             cell.textLabel?.textAlignment = .right
         } else {
             //messege of other user

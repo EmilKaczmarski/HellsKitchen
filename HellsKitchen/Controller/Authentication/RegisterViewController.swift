@@ -20,6 +20,16 @@ class RegisterViewController: UIViewController {
         viewModel.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupBackButtonTitle()
+    }
+    
+    func setupBackButtonTitle() {
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         guard let nickname = usernameTextField.text else { return }

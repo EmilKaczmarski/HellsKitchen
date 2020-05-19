@@ -50,6 +50,7 @@ class LoginViewModel {
                                     let element = i.data()
                                     if element[element.startIndex].value as! String == Constants.currentUserEmail {
                                         Constants.currentUserName = element[element.startIndex].key
+                                        UserDefaults.standard.set(element[element.startIndex].key, forKey: Constants.usernameKey)
                                     }
                                 }
                             }

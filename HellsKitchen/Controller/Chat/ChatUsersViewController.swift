@@ -13,7 +13,6 @@ class ChatUsersViewController: UITableViewController {
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     let viewModel: ChatUsersViewModel = ChatUsersViewModel()
     
     override func viewDidLoad() {
@@ -26,7 +25,14 @@ class ChatUsersViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         viewModel.setupData()
+        setupBackButtonTitle()
         hideLoup()
+    }
+    
+    func setupBackButtonTitle() {
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {

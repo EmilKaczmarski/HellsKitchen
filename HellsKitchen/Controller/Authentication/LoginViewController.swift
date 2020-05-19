@@ -21,15 +21,24 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupBackButtonTitle()
+    }
+    
+    func setupBackButtonTitle() {
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
         if let email = emailTextField.text, let password = passwordTextField.text {
             viewModel.signIn(email: email, password: password)
         }
     }
     
     //checking if email contains @
-    //is loop necessary?
     @IBAction func emailTextChanged(_ sender: Any) {
         if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty {
             loginButton.isEnabled = true
@@ -52,8 +61,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func registerNowButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "registerViewSegue", sender: self)
+        navigationController?.popToRootViewController(animated: true)
     }
-    
-    
 }

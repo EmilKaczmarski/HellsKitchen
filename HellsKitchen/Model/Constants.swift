@@ -13,6 +13,8 @@ struct Constants {
     static var currentUserName = ""
     static var currentUserEmail = ""
     
+    static let usernameKey = "username"
+    
     struct Segues {
         static let registerSegue = "registerSegue"
         static let loginSegue = "loginSegue"

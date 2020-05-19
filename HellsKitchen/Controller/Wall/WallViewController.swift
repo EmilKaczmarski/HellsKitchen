@@ -32,7 +32,7 @@ class WallViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if Constants.currentUserName != "" {
-            loginButton.title = "Logout"
+            loginButton.title = "Account"
             chatButton.isEnabled = true
             addPostButton.isEnabled = true
             navigationItem.title = Constants.currentUserName

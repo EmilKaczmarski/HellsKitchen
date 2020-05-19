@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreData
 
 class ChatUsersViewModel {
     let db = Firestore.firestore()
@@ -24,6 +25,8 @@ class ChatUsersViewModel {
     }
     
     func setupData() {
+        loadUsersFromCoreData()
+        
         let group = DispatchGroup()
         group.enter()
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
@@ -40,7 +43,7 @@ class ChatUsersViewModel {
                 if self.delegate?.presentedViewController == alert {
                     self.delegate!.dismiss(animated: true, completion: nil)
                     result = false
-                    self.finishedWithError()
+                    self.processFinishedWithError()
                 }
                 return
             })
@@ -50,7 +53,7 @@ class ChatUsersViewModel {
         db.collection(Constants.FStore.allUsers).getDocuments {
             (querySnapshot, error) in
             if let err = error {
-                self.finishedWithError()
+                self.processFinishedWithError()
                 print(err.localizedDescription)
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
@@ -58,6 +61,7 @@ class ChatUsersViewModel {
                         let element = i.data()
                         if element[element.startIndex].key != Constants.currentUserName {
                             self.allUsers.append(element[element.startIndex].key)
+                            self.saveUserToCoreData(givenUserName: element[element.startIndex].key)
                         }
                     }
                 }
@@ -73,11 +77,35 @@ class ChatUsersViewModel {
         }
     }
     
-    private func finishedWithError() {
+    private func processFinishedWithError() {
         let alert = UIAlertController(title: nil, message: "whoops something went wrong", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "get back", style: .cancel, handler: { (action) in
             self.delegate?.navigationController?.popToRootViewController(animated: false)
         }))
         self.delegate?.present(alert, animated: true)
+    }
+}
+
+//MARK: - core data
+extension ChatUsersViewModel {
+    
+    func saveUserToCoreData(givenUserName name: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)!
+        let user = NSManagedObject(entity: entity, insertInto: context)
+        user.setValue(name, forKey: "name")
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func loadUsersFromCoreData() {
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        do {
+            users = try context.fetch(request).map { $0.name! }
+        } catch {
+            print("error while fetching users: \(error.localizedDescription)")
+        }
     }
 }

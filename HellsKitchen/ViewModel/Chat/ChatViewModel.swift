@@ -34,7 +34,6 @@ class ChatViewModel {
 extension ChatViewModel {
     
     func loadSavedMessages() {
-        
         let request: NSFetchRequest<Message> = Message.fetchRequest()
         request.predicate = NSPredicate(format: "conversationId = '\(messagesId)' ")
         request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]

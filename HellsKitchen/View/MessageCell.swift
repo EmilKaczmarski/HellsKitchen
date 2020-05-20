@@ -11,6 +11,23 @@ import SnapKit
 
 class MessageCell: UITableViewCell {
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+    func setupView() {
+           addSubview(view)
+           view.snp.makeConstraints { (maker) in
+               maker.centerX.centerY.trailing.leading.top.bottom.equalToSuperview()
+           }
+    }
+
     lazy var data: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -27,4 +44,5 @@ class MessageCell: UITableViewCell {
         }
         return view
     }()
+    
 }

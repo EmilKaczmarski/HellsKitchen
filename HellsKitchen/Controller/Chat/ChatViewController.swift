@@ -80,11 +80,11 @@ extension ChatViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
         cell.textLabel!.text = viewModel.messages[indexPath.row].message
         if viewModel.messages[indexPath.row].sender == sender {
-            cell.textLabel?.textAlignment = .right
+            cell.data.textAlignment = .right
             cell.view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
             
         } else {
-            cell.textLabel?.textAlignment = .left
+            cell.data.textAlignment = .left
             cell.view.backgroundColor = UIColor(red: 1.0, green: 0.82, blue: 0.5, alpha: 1.0)
         }
         cell.selectionStyle = .none

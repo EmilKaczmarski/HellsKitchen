@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     
     let viewModel: RegisterViewModel = RegisterViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self

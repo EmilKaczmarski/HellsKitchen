@@ -10,8 +10,6 @@ import Foundation
 import Firebase
 
 class ChatUsersViewModel {
-    let db = Firestore.firestore()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var delegate: ChatUsersViewController?
     var users = [String]()
     var allUsers = [String]()
@@ -47,7 +45,7 @@ class ChatUsersViewModel {
         }
         //loader presented
         self.allUsers = []
-        db.collection(Constants.FStore.allUsers).getDocuments {
+        delegate!.db.collection(Constants.FStore.allUsers).getDocuments {
             (querySnapshot, error) in
             if let err = error {
                 self.finishedWithError()

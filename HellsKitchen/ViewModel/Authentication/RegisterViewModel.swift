@@ -9,9 +9,9 @@ import Foundation
 import Firebase
 
 class RegisterViewModel {
-    let db = Firestore.firestore()
     var delegate: RegisterViewController?
-
+    let db = Firestore.firestore()
+    
     func registerUser(_ nickname: String, emailTextField: String?, passwordTextField: String?) {
         
         if nickname.contains("@") {
@@ -54,15 +54,14 @@ class RegisterViewModel {
                             }
                             
                             //adding user to list of users
-                        self.db.collection(Constants.FStore.allUsers).addDocument(data: [nickname: email]) { (error) in
+                            self.db.collection(Constants.FStore.allUsers).addDocument(data: [nickname: email]) { (error) in
                                 if let err = error {
                                     print(err.localizedDescription)
                                 } else {
                                     //success
                                 }
                             }
-                            
-                            self.delegate?.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self.delegate)
+                            self.delegate!.navigationController?.popToRootViewController(animated: true)
                         }
                     }
                 }

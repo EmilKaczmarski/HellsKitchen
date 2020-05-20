@@ -214,7 +214,7 @@
                             <barButtonItem title="Search" id="ohZ-RQ-3Hd"/>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
-                            <barButtonItem title="add post" id="Ha1-rv-HBB">
+                            <barButtonItem systemItem="add" id="Ha1-rv-HBB">
                                 <connections>
                                     <segue destination="F5M-sh-rs9" kind="show" id="hik-a6-8nL"/>
                                 </connections>
@@ -482,6 +482,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qtj-p3-N8k"/>
+        <segue reference="ac1-FX-1ed"/>
     </inferredMetricsTieBreakers>
 </document>

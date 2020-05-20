@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatUsersViewController: UITableViewController {
     
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    let db = Firestore.firestore()
     let viewModel: ChatUsersViewModel = ChatUsersViewModel()
     
     override func viewDidLoad() {
@@ -24,9 +25,19 @@ class ChatUsersViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        enableFirebaseToOfflineMode()
         viewModel.setupData()
         setupBackButtonTitle()
         hideLoup()
+    }
+    
+    func enableFirebaseToOfflineMode() {
+        // [START enable_offline]
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        // Enable offline data persistence
+        db.settings = settings
+        // [END enable_offline]
     }
     
     func setupBackButtonTitle() {

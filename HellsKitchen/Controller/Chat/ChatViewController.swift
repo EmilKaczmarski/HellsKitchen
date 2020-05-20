@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
+
 class ChatViewController: UIViewController {
-    
+    let db = Firestore.firestore()
     var sender: String?
     var receiver: String?
     
@@ -28,9 +30,18 @@ class ChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.loadSavedMessages()
+        enableFirebaseToOfflineMode()
         viewModel.loadMessagesFromCloud()
         setupBackButtonTitle()
+    }
+    
+    func enableFirebaseToOfflineMode() {
+        // [START enable_offline]
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        // Enable offline data persistence
+        db.settings = settings
+        // [END enable_offline]
     }
     
     func setupBackButtonTitle() {

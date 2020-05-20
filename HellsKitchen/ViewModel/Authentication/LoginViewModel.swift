@@ -12,12 +12,9 @@ import Firebase
 class LoginViewModel {
     
     let db = Firestore.firestore()
-    
     var delegate: LoginViewController?
-    
-    
-    func signIn(email: String, password: String) {
-        
+
+    func signIn(email: String, password: String) {        
         let group = DispatchGroup()
         var didFinishWithError = false
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in

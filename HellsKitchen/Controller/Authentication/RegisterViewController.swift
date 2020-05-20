@@ -13,12 +13,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var registerView: UIView!
+    @IBOutlet weak var registerButton: UIButton!
     
     let viewModel: RegisterViewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        registerView.layer.cornerRadius = 10
+        navigationController?.navigationBar.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
+        registerButton.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {

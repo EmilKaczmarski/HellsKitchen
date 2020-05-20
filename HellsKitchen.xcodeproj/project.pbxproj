@@ -32,6 +32,7 @@
 		18BE2851246B15E000869B6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BE2850246B15E000869B6C /* Assets.xcassets */; };
 		18BE2854246B15E000869B6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE2852246B15E000869B6C /* LaunchScreen.storyboard */; };
 		18BE2860246B1B7C00869B6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */; };
+		18CB97CC2475AF120054123A /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 18CB97CB2475AF120054123A /* DynamicColor */; };
 		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
 		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
 		18ED140D246D312E0093398A /* WallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED140C246D312E0093398A /* WallViewModel.swift */; };
@@ -87,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */,
+				18CB97CC2475AF120054123A /* DynamicColor in Frameworks */,
 				18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */,
 				18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */,
 				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
@@ -101,6 +103,7 @@
 			children = (
 				18BE2844246B15D500869B6C /* AppDelegate.swift */,
 				18BE2846246B15D500869B6C /* SceneDelegate.swift */,
+				189C038624740E7800F9B412 /* Extensions.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -191,7 +194,6 @@
 				18910809246B36B400F88489 /* Constants.swift */,
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
-				189C038624740E7800F9B412 /* Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +281,7 @@
 				18364E72246BE72D00F8DEBE /* SnapKit */,
 				18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */,
 				18D802CA24732775007F0E03 /* LetterAvatarKit */,
+				18CB97CB2475AF120054123A /* DynamicColor */,
 			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
@@ -312,6 +315,7 @@
 				18364E71246BE72D00F8DEBE /* XCRemoteSwiftPackageReference "SnapKit" */,
 				18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
+				18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
@@ -624,6 +628,14 @@
 				minimumVersion = 6.5.5;
 			};
 		};
+		18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vpeschenkov/LetterAvatarKit.git";
@@ -644,6 +656,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		18CB97CB2475AF120054123A /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 		18D802CA24732775007F0E03 /* LetterAvatarKit */ = {
 			isa = XCSwiftPackageProductDependency;

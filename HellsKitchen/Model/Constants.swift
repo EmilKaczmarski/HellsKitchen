@@ -7,21 +7,36 @@
 //
 
 import Foundation
-
+//MARK: - User Variables
 struct Constants {
-    
     static var currentUserName = ""
     static var currentUserEmail = ""
-    
     static let usernameKey = "username"
-    
+}
+
+//MARK: - Colors
+extension Constants {
+    struct Colors {
+        static let green = "#A8E6CF"
+        static let lightGreen = "#DCEDC1"
+        static let orange = "#FFD3B6"
+        static let red = "#FFAAA5"
+        static let deepRed = "#C4352B"
+    }
+}
+
+//MARK: - Segues
+extension Constants {
     struct Segues {
         static let registerSegue = "registerSegue"
         static let loginSegue = "loginSegue"
         static let chatUsersSegue = "chatUsersSegue"
         static let wallDetailSegue = "wallDetailSegue"
     }
-    
+}
+
+//MARK: - Firebase
+extension Constants {
     struct FStore {
         static let allUsers = "allUsers"
         static let allMessages = "messages"
@@ -50,11 +65,14 @@ struct Constants {
             static let comments = "comments"
         }
     }
-    
+}
+
+//MARK: - Sizes
+extension Constants {
     struct Sizes {
         static let chatViewCellHeight = 70.0
         static let avatarSize = 50.0
     }
-    
-    
 }
+
+

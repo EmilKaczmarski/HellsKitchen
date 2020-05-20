@@ -24,7 +24,6 @@ class WallViewModel {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for i in snapshotDocuments {
                             let data = i.data()
-                            
                             let post = Post(id: data["id"] as! String,
                                             title: data["title"] as! String,
                                             owner: data["owner"] as! String,
@@ -32,7 +31,7 @@ class WallViewModel {
                                             createTimestamp: "\(data["createTimestamp"] ?? "")",
                                 lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
                                             comments: [])
-                            self.posts.append(post)
+                            self.posts.insert(post, at: 0)
                         }
                         
                     }

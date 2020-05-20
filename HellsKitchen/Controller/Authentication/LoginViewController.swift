@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         loginButton.isEnabled = false
+        navigationController?.navigationBar.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
+        loginButton.isEnabled = false
+        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,22 +44,31 @@ class LoginViewController: UIViewController {
     //checking if email contains @
     @IBAction func emailTextChanged(_ sender: Any) {
         if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty {
-            loginButton.isEnabled = true
+            enableLoginButton()
         }
         else {
-            loginButton.isEnabled = false
+            disableLoginButton()
         }
         
     }
     
+    func enableLoginButton() {
+        loginButton.isEnabled = true
+        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.deepRed), for: .normal)
+    }
+    
+    func disableLoginButton() {
+        loginButton.isEnabled = false
+        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
+    }
     //checking if password has at least 1 char
     @IBAction func passwordTextChanged(_ sender: Any) {
         
         if !passwordTextField.text!.isEmpty && emailTextField.text!.contains("@"){
-            loginButton.isEnabled = true
+            enableLoginButton()
         }
         else {
-            loginButton.isEnabled = false
+            disableLoginButton()
         }
     }
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NpG-0q-3DZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NpG-0q-3DZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,13 +14,78 @@
                     <view key="view" contentMode="scaleToFill" id="y7W-ty-aU3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hell's Kitchen" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hST-1n-W5m">
+                                <rect key="frame" x="10" y="94" width="394" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="aOg-hb-d1o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="80"/>
+                                <color key="textColor" red="0.76862745098039209" green="0.20784313725490194" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Cu1-aH-eeU">
+                                <rect key="frame" x="10" y="354" width="394" height="498"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5Y-lM-9Bs">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="249"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pepperLeft" translatesAutoresizingMaskIntoConstraints="NO" id="cly-QX-X5Q">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="249"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pepperRight" translatesAutoresizingMaskIntoConstraints="NO" id="76E-kL-ap7">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="249"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="76E-kL-ap7" firstAttribute="leading" secondItem="b5Y-lM-9Bs" secondAttribute="leading" id="9Tr-Ou-eZc"/>
+                                            <constraint firstAttribute="bottom" secondItem="76E-kL-ap7" secondAttribute="bottom" id="DQ3-Ab-b5r"/>
+                                            <constraint firstItem="76E-kL-ap7" firstAttribute="top" secondItem="b5Y-lM-9Bs" secondAttribute="top" id="JTj-CQ-8pu"/>
+                                            <constraint firstItem="cly-QX-X5Q" firstAttribute="leading" secondItem="b5Y-lM-9Bs" secondAttribute="leading" id="L18-EC-Tsv"/>
+                                            <constraint firstAttribute="trailing" secondItem="76E-kL-ap7" secondAttribute="trailing" id="XUb-Mp-M5R"/>
+                                            <constraint firstItem="cly-QX-X5Q" firstAttribute="top" secondItem="b5Y-lM-9Bs" secondAttribute="top" id="f6t-Sw-YbP"/>
+                                            <constraint firstAttribute="trailing" secondItem="cly-QX-X5Q" secondAttribute="trailing" id="osS-TJ-f7k"/>
+                                            <constraint firstAttribute="bottom" secondItem="cly-QX-X5Q" secondAttribute="bottom" id="rnO-cW-4Xz"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ey-fB-ux1">
+                                        <rect key="frame" x="0.0" y="249" width="394" height="249"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fire" translatesAutoresizingMaskIntoConstraints="NO" id="aP6-w8-Vhe">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="249"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="aP6-w8-Vhe" firstAttribute="top" secondItem="6Ey-fB-ux1" secondAttribute="top" id="UFT-Jd-pdd"/>
+                                            <constraint firstAttribute="bottom" secondItem="aP6-w8-Vhe" secondAttribute="bottom" id="Y2u-R8-fBP"/>
+                                            <constraint firstAttribute="trailing" secondItem="aP6-w8-Vhe" secondAttribute="trailing" id="iGe-kt-df3"/>
+                                            <constraint firstItem="aP6-w8-Vhe" firstAttribute="leading" secondItem="6Ey-fB-ux1" secondAttribute="leading" id="mvJ-L4-gUJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86274509803921573" green="0.92941176470588238" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zZr-w0-Bjk" firstAttribute="trailing" secondItem="Cu1-aH-eeU" secondAttribute="trailing" constant="10" id="7Xk-g0-PA6"/>
+                            <constraint firstItem="Cu1-aH-eeU" firstAttribute="top" secondItem="hST-1n-W5m" secondAttribute="bottom" constant="10" id="8p7-t1-mFr"/>
+                            <constraint firstItem="hST-1n-W5m" firstAttribute="top" secondItem="zZr-w0-Bjk" secondAttribute="top" constant="50" id="aq7-H3-SIY"/>
+                            <constraint firstItem="zZr-w0-Bjk" firstAttribute="trailing" secondItem="hST-1n-W5m" secondAttribute="trailing" constant="10" id="bDN-1b-zEV"/>
+                            <constraint firstItem="hST-1n-W5m" firstAttribute="leading" secondItem="zZr-w0-Bjk" secondAttribute="leading" constant="10" id="g3I-T6-yCv"/>
+                            <constraint firstItem="Cu1-aH-eeU" firstAttribute="leading" secondItem="zZr-w0-Bjk" secondAttribute="leading" constant="10" id="hOY-X7-v3o"/>
+                            <constraint firstItem="zZr-w0-Bjk" firstAttribute="bottom" secondItem="Cu1-aH-eeU" secondAttribute="bottom" constant="10" id="oNq-aJ-vKd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zZr-w0-Bjk"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIT-8H-LhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="344"/>
+            <point key="canvasLocation" x="363.768115942029" y="343.52678571428572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fire" width="512" height="512"/>
+        <image name="pepperLeft" width="512" height="512"/>
+        <image name="pepperRight" width="512" height="512"/>
+    </resources>
 </document>

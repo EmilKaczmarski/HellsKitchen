@@ -21,6 +21,7 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(MessageCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -76,14 +77,15 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! //as! MessageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
         cell.textLabel!.text = viewModel.messages[indexPath.row].message
         if viewModel.messages[indexPath.row].sender == sender {
-            //our message
             cell.textLabel?.textAlignment = .right
+            cell.view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
+            
         } else {
-            //messege of other user
             cell.textLabel?.textAlignment = .left
+            cell.view.backgroundColor = UIColor(red: 1.0, green: 0.82, blue: 0.5, alpha: 1.0)
         }
         cell.selectionStyle = .none
         cell.textLabel?.numberOfLines = 0

@@ -22,25 +22,48 @@ class MessageCell: UITableViewCell {
     }
     
     func setupView() {
-           addSubview(view)
-           view.snp.makeConstraints { (maker) in
-               maker.centerX.centerY.trailing.leading.top.bottom.equalToSuperview()
-           }
+        addSubview(stackView)
+        stackView.snp.makeConstraints { (maker) in
+            maker.centerX.centerY.trailing.top.bottom.equalToSuperview()
+        }
     }
-
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.addArrangedSubview(leftView)
+        stackView.addArrangedSubview(view)
+        stackView.addArrangedSubview(rightView)
+        return stackView
+    }()
+    
+    lazy var leftView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    lazy var rightView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     lazy var data: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        return label
+        let data = UILabel()
+        data.textAlignment = .center
+        data.numberOfLines = 0
+        data.lineBreakMode = .byWordWrapping
+        return data
     }()
     
     lazy var view: UIView = {
-        let view = UIView()
+       let view = UIView()
         view.addSubview(data)
-        view.layer.cornerRadius = 20.0
+        view.layer.cornerRadius = 7.0
         data.snp.makeConstraints { (maker) in
-            maker.centerX.trailing.equalToSuperview()
+            maker.centerY.centerX.leading.trailing.equalToSuperview()
         }
         return view
     }()

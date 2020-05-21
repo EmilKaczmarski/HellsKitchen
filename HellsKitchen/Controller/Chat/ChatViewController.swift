@@ -78,14 +78,16 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
-        cell.textLabel!.text = viewModel.messages[indexPath.row].message
+        cell.data.text = viewModel.messages[indexPath.row].message
         if viewModel.messages[indexPath.row].sender == sender {
-            cell.data.textAlignment = .right
             cell.view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
+            cell.rightView.isHidden = true
+            cell.leftView.isHidden = false
             
         } else {
-            cell.data.textAlignment = .left
             cell.view.backgroundColor = UIColor(red: 1.0, green: 0.82, blue: 0.5, alpha: 1.0)
+            cell.rightView.isHidden = false
+            cell.leftView.isHidden = true
         }
         cell.selectionStyle = .none
         cell.textLabel?.numberOfLines = 0

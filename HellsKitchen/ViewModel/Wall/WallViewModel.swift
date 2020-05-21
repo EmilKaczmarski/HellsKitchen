@@ -36,10 +36,6 @@ class WallViewModel {
                         
                     }
                     self.delegate!.tableView.reloadData()
-                    if self.posts.count > 0 {
-                        let indexPath = IndexPath(row: self.posts.count - 1, section: 0)
-                        self.delegate!.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-                    }
                 }
         }
     }

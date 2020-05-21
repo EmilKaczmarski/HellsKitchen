@@ -17,9 +17,8 @@ class LoginViewController: UIViewController {
     let viewModel: LoginViewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
+        viewModel.delegate = self 
         loginButton.isEnabled = false
-        navigationController?.navigationBar.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
         loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
     }

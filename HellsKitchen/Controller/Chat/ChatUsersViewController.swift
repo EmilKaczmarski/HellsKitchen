@@ -80,7 +80,8 @@ extension ChatUsersViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChatUserCell
         cell.name.text = viewModel.users[indexPath.row]
-        cell.avatarImageView.image = cell.createAvatar(for: viewModel.users[indexPath.row])
+        cell.avatarImageView.image = cell.createAvatar(for: viewModel.users[indexPath.row].uppercased())
+        cell.backgroundColor = UIColor(hexaString: Constants.Colors.lightGreen)
         return cell
     }
     

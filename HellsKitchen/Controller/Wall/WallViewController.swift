@@ -12,7 +12,7 @@ import DynamicColor
 
 class WallViewController: UIViewController {
     
-    
+ 
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var chatButton: UIBarButtonItem!
@@ -45,17 +45,22 @@ extension WallViewController {
         loginButton.title = "Account"
         chatButton.isEnabled = true
         addPostButton.isEnabled = true
+        searchButton.isEnabled = true
         chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
         addPostButton.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
+        searchButton.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
         navigationItem.title = Constants.currentUserName
     }
     
     private func userIsLoggedOut() {
         loginButton.title = "Login"
         chatButton.isEnabled = false
+        chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
         addPostButton.isEnabled = false
         addPostButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
-        chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
+        searchButton.isEnabled = false
+        searchButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
+        
     }
 }
 
@@ -132,7 +137,6 @@ extension WallViewController {
             }
         }
     }
-    
     
 }
 //MARK: - Delegate methods

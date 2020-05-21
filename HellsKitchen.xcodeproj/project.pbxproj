@@ -43,7 +43,7 @@
 		18ED1417246D8F9E0093398A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */; };
 		4739B64E2476EE9900B57239 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64D2476EE9900B57239 /* Recipe.swift */; };
 		4739B6502476EEB900B57239 /* RecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64F2476EEB800B57239 /* RecipeRequest.swift */; };
-		4739B6522476F1EB00B57239 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */; };
+		4739B6522476F1EB00B57239 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B6512476F1EB00B57239 /* RecipesViewController.swift */; };
 		BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +82,7 @@
 		18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		4739B64D2476EE9900B57239 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		4739B64F2476EEB800B57239 /* RecipeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRequest.swift; sourceTree = "<group>"; };
-		4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
+		4739B6512476F1EB00B57239 /* RecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		4C92F4CC632D1789AF317B22 /* Pods-HellsKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.debug.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 		87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HellsKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C04FFEFDCC1AB01549E211 /* Pods-HellsKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.release.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,10 +175,10 @@
 			children = (
 				18BE2848246B15D500869B6C /* WelcomeViewController.swift */,
 				1891080B246B386100F88489 /* MainMenuViewController.swift */,
-				4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */,
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
+				478338F424774950004C0C6E /* Recipes */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -249,6 +249,14 @@
 				18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */,
 			);
 			path = Wall;
+			sourceTree = "<group>";
+		};
+		478338F424774950004C0C6E /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				4739B6512476F1EB00B57239 /* RecipesViewController.swift */,
+			);
+			path = Recipes;
 			sourceTree = "<group>";
 		};
 		74F5F7B28D12EC0B15C31E69 /* Frameworks */ = {
@@ -419,7 +427,7 @@
 				18BE2847246B15D500869B6C /* SceneDelegate.swift in Sources */,
 				4739B6502476EEB900B57239 /* RecipeRequest.swift in Sources */,
 				189C038724740E7800F9B412 /* Extensions.swift in Sources */,
-				4739B6522476F1EB00B57239 /* RecipesTableViewController.swift in Sources */,
+				4739B6522476F1EB00B57239 /* RecipesViewController.swift in Sources */,
 				18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */,
 				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
 				4739B64E2476EE9900B57239 /* Recipe.swift in Sources */,

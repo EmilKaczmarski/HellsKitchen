@@ -8,10 +8,15 @@
 
 import UIKit
 
-class RecipesTableViewController: UITableViewController {
+class RecipesViewController: UITableViewController {
     
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           performSegue(withIdentifier: Constants.Segues.recipesSegue, sender: self)
+       }
     
     //how to get only one value from struct?
     var listOfRecipes = [RecipeClass]() {
@@ -56,7 +61,7 @@ class RecipesTableViewController: UITableViewController {
 
 }
 
-extension RecipesTableViewController : UISearchBarDelegate {
+extension RecipesViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else {return}
         /*

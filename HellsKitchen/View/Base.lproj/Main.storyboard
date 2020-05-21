@@ -383,7 +383,11 @@
                                     <segue destination="F5M-sh-rs9" kind="show" id="hik-a6-8nL"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Search" id="ohZ-RQ-3Hd"/>
+                            <barButtonItem title="Search" id="ohZ-RQ-3Hd">
+                                <connections>
+                                    <action selector="Tapped:" destination="2N2-8b-T3G" id="7dF-sp-AiT"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -393,6 +397,7 @@
                         <outlet property="searchButton" destination="ohZ-RQ-3Hd" id="6qI-Ou-O9v"/>
                         <outlet property="tableView" destination="fH7-bJ-MnI" id="gVU-oC-0be"/>
                         <segue destination="SRA-h6-wsq" kind="show" identifier="registerSegue" id="ac1-FX-1ed"/>
+                        <segue destination="hpK-w6-Kcu" kind="show" identifier="recipesSegue" id="nHe-8x-lOe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ht-Dh-d23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -682,6 +687,7 @@
                             <outlet property="delegate" destination="hpK-w6-Kcu" id="Evj-7I-PO6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Qbw-v8-lXe"/>
                     <connections>
                         <outlet property="searchBar" destination="Cal-F4-B6J" id="QR3-Hx-6NZ"/>
                     </connections>
@@ -692,7 +698,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qtj-p3-N8k"/>
+        <segue reference="ac1-FX-1ed"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="email" width="512" height="512"/>

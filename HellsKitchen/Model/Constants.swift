@@ -14,14 +14,22 @@ struct Constants {
     static let usernameKey = "username"
 }
 
+//MARK: -Fonts
+extension Constants {
+    struct Fonts {
+        static let arialRounded = "Arial Rounded MT Bold"
+    }
+}
 //MARK: - Colors
 extension Constants {
     struct Colors {
         static let green = "#A8E6CF"
         static let lightGreen = "#DCEDC1"
+        static let deepGreen = "#8FAE5C"
         static let orange = "#FFD3B6"
         static let red = "#FFAAA5"
         static let deepRed = "#C4352B"
+        static let lightYellow = "#EDEBC1"
     }
 }
 

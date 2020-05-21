@@ -27,7 +27,7 @@ class PostCell: UITableViewCell {
             maker.centerX.trailing.bottom.equalToSuperview()
             maker.top.equalToSuperview().offset(20.0)
         }
-        backgroundColor = .clear
+        backgroundColor = UIColor(hexaString: Constants.Colors.lightGreen)
     }
     
     lazy var postImage: UIImageView = {
@@ -132,7 +132,7 @@ class PostCell: UITableViewCell {
             maker.bottom.equalToSuperview().offset(-firstCommentView.frame.height - secondCommentView.frame.height - 30)
         }
         view.layer.cornerRadius = 10.0
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(hexaString: Constants.Colors.deepGreen)
         return view
     }()
 }

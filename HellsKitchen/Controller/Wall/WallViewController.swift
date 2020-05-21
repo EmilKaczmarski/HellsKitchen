@@ -8,9 +8,12 @@
 
 import UIKit
 import SnapKit
+import DynamicColor
 
 class WallViewController: UIViewController {
     
+    
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var chatButton: UIBarButtonItem!
     @IBOutlet weak var addPostButton: UIBarButtonItem!
@@ -19,29 +22,81 @@ class WallViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(PostCell.self, forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.estimatedRowHeight = 85.0
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        setupTableViewParameters()
         viewModel.delegate = self
+        setupNavigationBar()
         viewModel.loadPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if Constants.currentUserName != "" {
-            loginButton.title = "Account"
-            chatButton.isEnabled = true
-            addPostButton.isEnabled = true
-            navigationItem.title = Constants.currentUserName
+            userIsLoggedIn()
         } else {
-            loginButton.title = "Login"
-            chatButton.isEnabled = false
-            addPostButton.isEnabled = false
+            userIsLoggedOut()
         }
+    }
+}
+
+//MARK: -Enablers
+
+extension WallViewController {
+    private func userIsLoggedIn() {
+        loginButton.title = "Account"
+        chatButton.isEnabled = true
+        addPostButton.isEnabled = true
+        chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
+        addPostButton.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
+        navigationItem.title = Constants.currentUserName
+    }
+    
+    private func userIsLoggedOut() {
+        loginButton.title = "Login"
+        chatButton.isEnabled = false
+        addPostButton.isEnabled = false
+        addPostButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
+        chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
+    }
+}
+
+//MARK: - setup view
+extension WallViewController {
+    private func setupTableViewParameters() {
+        tableView.register(PostCell.self, forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 85.0
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+    }
+}
+
+//MARK: - setup navigation controller
+extension WallViewController {
+    private func setupNavigationBar(){
+        navigationController?.navigationBar.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
+        navigationController?.navigationBar.barTintColor = UIColor(hexaString: Constants.Colors.deepGreen).lighter()
+        let attributes = [NSAttributedString.Key.font : UIFont(name: Constants.Fonts.arialRounded, size: 18.0)!] as [NSAttributedString.Key : Any]
         
+        loginButton.setTitleTextAttributes(attributes, for: .normal)
+        loginButton.setTitleTextAttributes(attributes, for: .focused)
+        loginButton.setTitleTextAttributes(attributes, for: .highlighted)
+        loginButton.setTitleTextAttributes(attributes, for: .disabled)
+        
+        searchButton.setTitleTextAttributes(attributes, for: .normal)
+        searchButton.setTitleTextAttributes(attributes, for: .focused)
+        searchButton.setTitleTextAttributes(attributes, for: .highlighted)
+        searchButton.setTitleTextAttributes(attributes, for: .disabled)
+
+        chatButton.setTitleTextAttributes(attributes, for: .normal)
+        chatButton.setTitleTextAttributes(attributes, for: .focused)
+        chatButton.setTitleTextAttributes(attributes, for: .highlighted)
+        chatButton.setTitleTextAttributes(attributes, for: .disabled)
+        
+        addPostButton.setTitleTextAttributes(attributes, for: .normal)
+        addPostButton.setTitleTextAttributes(attributes, for: .focused)
+        addPostButton.setTitleTextAttributes(attributes, for: .highlighted)
+        addPostButton.setTitleTextAttributes(attributes, for: .disabled)
     }
 }
 

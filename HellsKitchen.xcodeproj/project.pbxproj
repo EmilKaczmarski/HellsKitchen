@@ -194,6 +194,7 @@
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
+				478338F424774950004C0C6E /* Recipes */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +282,7 @@
 				18FB2A6E24787CD800DDCAB0 /* RecipesViewModel.swift */,
 			);
 			path = Recipe;
+
 			sourceTree = "<group>";
 		};
 		74F5F7B28D12EC0B15C31E69 /* Frameworks */ = {

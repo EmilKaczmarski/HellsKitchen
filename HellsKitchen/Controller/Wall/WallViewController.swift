@@ -52,10 +52,10 @@ extension WallViewController {
     
     private func userIsLoggedOut() {
         loginButton.title = "Login"
-        chatButton.isEnabled = false
+        //chatButton.isEnabled = false
         addPostButton.isEnabled = false
         addPostButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
-        chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
+        //chatButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
     }
 }
 

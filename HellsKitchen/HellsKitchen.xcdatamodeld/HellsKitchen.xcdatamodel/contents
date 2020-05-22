@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
-        <attribute name="content" attributeType="String"/>
-        <attribute name="conversationId" attributeType="String"/>
-        <attribute name="firstUser" attributeType="String"/>
-        <attribute name="secondUser" attributeType="String"/>
-        <attribute name="timestamp" attributeType="String"/>
+    <entity name="IngredientModel" representedClassName="IngredientModel" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeModel" inverseName="ingrendients" inverseEntity="RecipeModel"/>
+    </entity>
+    <entity name="RecipeCategory" representedClassName="RecipeCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeModel" inverseName="recipeCategory" inverseEntity="RecipeModel"/>
+    </entity>
+    <entity name="RecipeModel" representedClassName="RecipeModel" syncable="YES" codeGenerationType="class">
+        <attribute name="calories" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="label" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="ingrendients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientModel" inverseName="newRelationship" inverseEntity="IngredientModel"/>
+        <relationship name="recipeCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeCategory" inverseName="recipes" inverseEntity="RecipeCategory"/>
     </entity>
     <elements>
-        <element name="Message" positionX="-4342.50390625" positionY="2058.33203125" width="128" height="118"/>
+        <element name="RecipeCategory" positionX="-85.67578125" positionY="-34.21484375" width="128" height="73"/>
+        <element name="RecipeModel" positionX="124.671875" positionY="-64.79296875" width="128" height="148"/>
+        <element name="IngredientModel" positionX="127.7421875" positionY="151.71875" width="128" height="88"/>
     </elements>
 </model>

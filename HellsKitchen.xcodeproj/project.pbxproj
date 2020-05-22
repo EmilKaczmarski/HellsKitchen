@@ -13,6 +13,7 @@
 		18364E7B246BF52300F8DEBE /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E7A246BF52300F8DEBE /* MessageModel.swift */; };
 		18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E7C246C04B900F8DEBE /* MessageCell.swift */; };
 		18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */; };
+		1848A89F2477191F00A6DD99 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1848A89E2477191F00A6DD99 /* Alamofire */; };
 		187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C4246C70060008B307 /* RegisterViewModel.swift */; };
 		187121C7246C7A7C0008B307 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C6246C7A7C0008B307 /* LoginViewModel.swift */; };
 		187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C8246C802B0008B307 /* ChatUsersViewModel.swift */; };
@@ -23,7 +24,6 @@
 		1891080A246B36B400F88489 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910809246B36B400F88489 /* Constants.swift */; };
 		1891080C246B386100F88489 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891080B246B386100F88489 /* MainMenuViewController.swift */; };
 		189C038724740E7800F9B412 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C038624740E7800F9B412 /* Extensions.swift */; };
-		189C03892474372F00F9B412 /* pasta.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C03882474372E00F9B412 /* pasta.png */; };
 		18BE2845246B15D500869B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2844246B15D500869B6C /* AppDelegate.swift */; };
 		18BE2847246B15D500869B6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2846246B15D500869B6C /* SceneDelegate.swift */; };
 		18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2848246B15D500869B6C /* WelcomeViewController.swift */; };
@@ -41,7 +41,8 @@
 		18ED1413246D67DA0093398A /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1412246D67DA0093398A /* CreatePostViewController.swift */; };
 		18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1414246D70C40093398A /* PostDetailViewController.swift */; };
 		18ED1417246D8F9E0093398A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */; };
-		4739B64E2476EE9900B57239 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64D2476EE9900B57239 /* Recipe.swift */; };
+		18FB2A6B247820D200DDCAB0 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6A247820D200DDCAB0 /* RecipeViewModel.swift */; };
+		4739B64E2476EE9900B57239 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64D2476EE9900B57239 /* Recipes.swift */; };
 		4739B6502476EEB900B57239 /* RecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64F2476EEB800B57239 /* RecipeRequest.swift */; };
 		4739B6522476F1EB00B57239 /* RecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */; };
 		BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */; };
@@ -62,7 +63,6 @@
 		18910809246B36B400F88489 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1891080B246B386100F88489 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		189C038624740E7800F9B412 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		189C03882474372E00F9B412 /* pasta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasta.png; sourceTree = "<group>"; };
 		18BE2841246B15D500869B6C /* HellsKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HellsKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BE2844246B15D500869B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BE2846246B15D500869B6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +80,8 @@
 		18ED1412246D67DA0093398A /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		18ED1414246D70C40093398A /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
-		4739B64D2476EE9900B57239 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		18FB2A6A247820D200DDCAB0 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		4739B64D2476EE9900B57239 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		4739B64F2476EEB800B57239 /* RecipeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRequest.swift; sourceTree = "<group>"; };
 		4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesTableViewController.swift; sourceTree = "<group>"; };
 		4C92F4CC632D1789AF317B22 /* Pods-HellsKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.debug.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 				BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */,
 				18CB97CC2475AF120054123A /* DynamicColor in Frameworks */,
 				18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */,
+				1848A89F2477191F00A6DD99 /* Alamofire in Frameworks */,
 				18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */,
 				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -114,9 +116,18 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		1848A89C2477185900A6DD99 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4739B64F2476EEB800B57239 /* RecipeRequest.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		187121C3246C6FCA0008B307 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				18FB2A6924781EFF00DDCAB0 /* Recipe */,
 				187121D1246D2F8F0008B307 /* Authentication */,
 				187121D2246D2FA10008B307 /* Chat */,
 				18ED140B246D31120093398A /* Wall */,
@@ -173,9 +184,9 @@
 		18910802246B28EA00F88489 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18FB2A6824781CD900DDCAB0 /* Recipe */,
 				18BE2848246B15D500869B6C /* WelcomeViewController.swift */,
 				1891080B246B386100F88489 /* MainMenuViewController.swift */,
-				4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */,
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
@@ -201,7 +212,7 @@
 				18910809246B36B400F88489 /* Constants.swift */,
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
-				4739B64D2476EE9900B57239 /* Recipe.swift */,
+				4739B64D2476EE9900B57239 /* Recipes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,13 +242,12 @@
 				187121C3246C6FCA0008B307 /* ViewModel */,
 				18910802246B28EA00F88489 /* Controller */,
 				18910804246B28F400F88489 /* Model */,
+				1848A89C2477185900A6DD99 /* Networking */,
 				18364E81246C085100F8DEBE /* Delegates */,
 				18BE2850246B15E000869B6C /* Assets.xcassets */,
-				189C03882474372E00F9B412 /* pasta.png */,
 				18BE2855246B15E000869B6C /* Info.plist */,
 				18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */,
 				18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */,
-				4739B64F2476EEB800B57239 /* RecipeRequest.swift */,
 			);
 			path = HellsKitchen;
 			sourceTree = "<group>";
@@ -249,6 +259,22 @@
 				18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */,
 			);
 			path = Wall;
+			sourceTree = "<group>";
+		};
+		18FB2A6824781CD900DDCAB0 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				4739B6512476F1EB00B57239 /* RecipesTableViewController.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		18FB2A6924781EFF00DDCAB0 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				18FB2A6A247820D200DDCAB0 /* RecipeViewModel.swift */,
+			);
+			path = Recipe;
 			sourceTree = "<group>";
 		};
 		74F5F7B28D12EC0B15C31E69 /* Frameworks */ = {
@@ -291,6 +317,7 @@
 				18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */,
 				18D802CA24732775007F0E03 /* LetterAvatarKit */,
 				18CB97CB2475AF120054123A /* DynamicColor */,
+				1848A89E2477191F00A6DD99 /* Alamofire */,
 			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
@@ -325,6 +352,7 @@
 				18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
 				18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
@@ -340,7 +368,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189C03892474372F00F9B412 /* pasta.png in Resources */,
 				18BE2854246B15E000869B6C /* LaunchScreen.storyboard in Resources */,
 				18BE2860246B1B7C00869B6C /* GoogleService-Info.plist in Resources */,
 				18BE2851246B15E000869B6C /* Assets.xcassets in Resources */,
@@ -421,8 +448,9 @@
 				189C038724740E7800F9B412 /* Extensions.swift in Sources */,
 				4739B6522476F1EB00B57239 /* RecipesTableViewController.swift in Sources */,
 				18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */,
+				18FB2A6B247820D200DDCAB0 /* RecipeViewModel.swift in Sources */,
 				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
-				4739B64E2476EE9900B57239 /* Recipe.swift in Sources */,
+				4739B64E2476EE9900B57239 /* Recipes.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
 				18ED1411246D34280093398A /* PostCell.swift in Sources */,
 			);
@@ -640,6 +668,14 @@
 				minimumVersion = 6.5.5;
 			};
 		};
+		1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
@@ -668,6 +704,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18364E7E246C07BB00F8DEBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		1848A89E2477191F00A6DD99 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		18CB97CB2475AF120054123A /* DynamicColor */ = {
 			isa = XCSwiftPackageProductDependency;

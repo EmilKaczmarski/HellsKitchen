@@ -60,7 +60,6 @@ extension WallViewController {
         addPostButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
         searchButton.isEnabled = false
         searchButton.tintColor = UIColor(hexaString: Constants.Colors.deepGreen)
-        
     }
 }
 

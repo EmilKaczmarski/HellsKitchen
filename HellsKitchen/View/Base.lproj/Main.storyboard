@@ -649,11 +649,10 @@
             </objects>
             <point key="canvasLocation" x="2071" y="1499"/>
         </scene>
-        <!--Recipes Table View Controller-->
+        <!--Recipe Category View Controller-->
         <scene sceneID="BGQ-6a-xya">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FXJ-Qx-h01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tableViewController id="hpK-w6-Kcu" customClass="RecipesTableViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hpK-w6-Kcu" customClass="RecipeCategoryViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8EG-y7-o0d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -683,6 +682,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="zJG-Fd-RPo" kind="show" id="mrY-JB-Rx7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -695,8 +697,46 @@
                         <outlet property="searchBar" destination="Cal-F4-B6J" id="QR3-Hx-6NZ"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXJ-Qx-h01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4091" y="-979"/>
+            <point key="canvasLocation" x="4033" y="-1154"/>
+        </scene>
+        <!--Recipes View Controller-->
+        <scene sceneID="jwT-ma-TeY">
+            <objects>
+                <tableViewController id="zJG-Fd-RPo" customClass="RecipesViewController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V9w-1j-rRS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="i3e-aV-gb7">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="zJG-Fd-RPo" id="1kL-Uh-krE"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="t2t-lH-628">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t2t-lH-628" id="9HD-O8-Nsq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zJG-Fd-RPo" id="XK8-bb-QcS"/>
+                            <outlet property="delegate" destination="zJG-Fd-RPo" id="TBd-ZG-dh3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="408-6A-Qts"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHW-2J-YF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4813" y="-1154"/>
         </scene>
     </scenes>
     <resources>

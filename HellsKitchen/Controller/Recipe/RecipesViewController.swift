@@ -1,19 +1,15 @@
 //
-//  RecipesTableViewController.swift
+//  Recipes.swift
 //  HellsKitchen
 //
-//  Created by Aleksandra Brzostek on 5/16/20.
+//  Created by Apple on 22/05/2020.
 //  Copyright © 2020 Emil. All rights reserved.
 //
 
 import UIKit
 
-class RecipesTableViewController: UITableViewController {
+class RecipesViewController: UITableViewController {
     
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    //how to get only one value from struct?
     let viewModel: RecipesViewModel = RecipesViewModel()
         
     override func viewDidLoad() {
@@ -28,7 +24,7 @@ class RecipesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let recipe = viewModel.recipes[indexPath.row]
+        cell.textLabel?.text = viewModel.recipes[indexPath.row].label
        // cell.textLabel?.text = recipe.label
         return cell
     }
@@ -36,10 +32,10 @@ class RecipesTableViewController: UITableViewController {
 
 }
 
-extension RecipesTableViewController : UISearchBarDelegate {
+extension RecipesViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
-        viewModel.loadSavedData()
-        viewModel.performRequest(for: searchBarText)
+        //viewModel.loadSavedData()
+        //viewModel.performRequest(for: searchBarText)
     }
 }

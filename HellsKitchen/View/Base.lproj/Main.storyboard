@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="8bW-eZ-rO1">
-                                <rect key="frame" x="10" y="117.99999999999997" width="394" height="403.33333333333326"/>
+                                <rect key="frame" x="10" y="117.99999999999997" width="394" height="464.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck2-SP-a6d">
                                         <rect key="frame" x="150" y="0.0" width="94.333333333333314" height="47.666666666666664"/>
@@ -120,8 +120,12 @@
                                             <action selector="loginButtonPressed:" destination="seA-o0-cbA" eventType="touchUpInside" id="7In-JY-XpF"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dD-LL-W8d" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="149" y="286.66666666666669" width="96" height="30"/>
+                                        <state key="normal" title="Login With FB"/>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDb-7g-Ew2">
-                                        <rect key="frame" x="92.666666666666671" y="286.66666666666669" width="208.66666666666663" height="47.666666666666686"/>
+                                        <rect key="frame" x="92.666666666666671" y="347.66666666666669" width="208.66666666666663" height="47.666666666666686"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47.670000000000002" id="uXn-ze-Z3a"/>
                                         </constraints>
@@ -130,7 +134,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZQ-QF-KZx">
-                                        <rect key="frame" x="140.66666666666666" y="365.33333333333331" width="113" height="38"/>
+                                        <rect key="frame" x="140.66666666666666" y="426.33333333333337" width="113" height="38"/>
                                         <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="20"/>
                                         <state key="normal" title="register now!">
                                             <color key="titleColor" red="0.76862745099999996" green="0.20784313730000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,6 +161,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="EAu-Wh-5Tu"/>
                     <connections>
+                        <outlet property="FBLoginButton" destination="9dD-LL-W8d" id="4kT-WR-pJT"/>
                         <outlet property="emailTextField" destination="xks-Lg-dT8" id="Rlm-Gb-Mai"/>
                         <outlet property="loginButton" destination="D8N-l7-xll" id="2gG-pO-OSC"/>
                         <outlet property="passwordTextField" destination="O9Y-as-AlX" id="bLR-F2-T41"/>
@@ -386,7 +391,6 @@
                             <barButtonItem title="Search" id="ohZ-RQ-3Hd">
                                 <connections>
                                     <segue destination="hpK-w6-Kcu" kind="show" id="0h5-hv-zqb"/>
-
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -747,6 +751,7 @@
         <image name="name" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="nHe-8x-lOe"/>
         <segue reference="Qtj-p3-N8k"/>
     </inferredMetricsTieBreakers>
 </document>

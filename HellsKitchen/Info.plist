@@ -60,5 +60,18 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb934480500306805</string>
+      </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>934480500306805</string>
+    <key>FacebookDisplayName</key>
+    <string>Hell's Kitchen</string>
 </dict>
 </plist>

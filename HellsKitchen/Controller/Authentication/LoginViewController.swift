@@ -28,13 +28,16 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    
+    @IBOutlet weak var loginLoader: UIActivityIndicatorView!
     @IBOutlet weak var FBLoginButton: FBLoginButton!
     let viewModel: LoginViewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
+        loginButton.isEnabled = false
+        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
+        loginLoader.hidesWhenStopped = true
         FBLoginButton.delegate = self
         FBLoginButton.permissions = ["public_profile", "email"]
     }
@@ -53,6 +56,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             FirebaseManager.shared.signIn(email: email, password: password, in: self) {
+              loginLoader.startAnimating()
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }

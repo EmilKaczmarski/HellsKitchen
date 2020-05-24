@@ -14,6 +14,9 @@
 		18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E7C246C04B900F8DEBE /* MessageCell.swift */; };
 		18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18364E7F246C07BB00F8DEBE /* IQKeyboardManagerSwift */; };
 		1848A89F2477191F00A6DD99 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1848A89E2477191F00A6DD99 /* Alamofire */; };
+		185440AA24797731005B9711 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 185440A924797731005B9711 /* FacebookShare */; };
+		185440AC24797731005B9711 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 185440AB24797731005B9711 /* FacebookCore */; };
+		185440AE24797731005B9711 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 185440AD24797731005B9711 /* FacebookLogin */; };
 		187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C4246C70060008B307 /* RegisterViewModel.swift */; };
 		187121C7246C7A7C0008B307 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C6246C7A7C0008B307 /* LoginViewModel.swift */; };
 		187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C8246C802B0008B307 /* ChatUsersViewModel.swift */; };
@@ -24,6 +27,8 @@
 		1891080A246B36B400F88489 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910809246B36B400F88489 /* Constants.swift */; };
 		1891080C246B386100F88489 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891080B246B386100F88489 /* MainMenuViewController.swift */; };
 		189C038724740E7800F9B412 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C038624740E7800F9B412 /* Extensions.swift */; };
+		18A075542479D26400517BED /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A075532479D26400517BED /* FirebaseManager.swift */; };
+		18A075572479E97F00517BED /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A075562479E97F00517BED /* AlertManager.swift */; };
 		18BE2845246B15D500869B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2844246B15D500869B6C /* AppDelegate.swift */; };
 		18BE2847246B15D500869B6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2846246B15D500869B6C /* SceneDelegate.swift */; };
 		18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2848246B15D500869B6C /* WelcomeViewController.swift */; };
@@ -65,6 +70,8 @@
 		18910809246B36B400F88489 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1891080B246B386100F88489 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		189C038624740E7800F9B412 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		18A075532479D26400517BED /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		18A075562479E97F00517BED /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		18BE2841246B15D500869B6C /* HellsKitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HellsKitchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BE2844246B15D500869B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BE2846246B15D500869B6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +110,10 @@
 				18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */,
 				1848A89F2477191F00A6DD99 /* Alamofire in Frameworks */,
 				18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */,
+				185440AE24797731005B9711 /* FacebookLogin in Frameworks */,
 				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
+				185440AA24797731005B9711 /* FacebookShare in Frameworks */,
+				185440AC24797731005B9711 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4739B64F2476EEB800B57239 /* RecipeRequest.swift */,
+				18A075532479D26400517BED /* FirebaseManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -194,7 +205,6 @@
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
-				478338F424774950004C0C6E /* Recipes */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -218,8 +228,18 @@
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
 				4739B64D2476EE9900B57239 /* Recipes.swift */,
+				18A075552479E96A00517BED /* AlertManager */,
+				1848A89C2477185900A6DD99 /* Networking */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		18A075552479E96A00517BED /* AlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				18A075562479E97F00517BED /* AlertManager.swift */,
+			);
+			path = AlertManager;
 			sourceTree = "<group>";
 		};
 		18BE2838246B15D500869B6C = {
@@ -247,7 +267,6 @@
 				187121C3246C6FCA0008B307 /* ViewModel */,
 				18910802246B28EA00F88489 /* Controller */,
 				18910804246B28F400F88489 /* Model */,
-				1848A89C2477185900A6DD99 /* Networking */,
 				18364E81246C085100F8DEBE /* Delegates */,
 				18BE2850246B15E000869B6C /* Assets.xcassets */,
 				18BE2855246B15E000869B6C /* Info.plist */,
@@ -282,7 +301,6 @@
 				18FB2A6E24787CD800DDCAB0 /* RecipesViewModel.swift */,
 			);
 			path = Recipe;
-
 			sourceTree = "<group>";
 		};
 		74F5F7B28D12EC0B15C31E69 /* Frameworks */ = {
@@ -326,6 +344,9 @@
 				18D802CA24732775007F0E03 /* LetterAvatarKit */,
 				18CB97CB2475AF120054123A /* DynamicColor */,
 				1848A89E2477191F00A6DD99 /* Alamofire */,
+				185440A924797731005B9711 /* FacebookShare */,
+				185440AB24797731005B9711 /* FacebookCore */,
+				185440AD24797731005B9711 /* FacebookLogin */,
 			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
@@ -361,6 +382,7 @@
 				18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
 				18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
@@ -444,6 +466,7 @@
 				187121C7246C7A7C0008B307 /* LoginViewModel.swift in Sources */,
 				18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */,
 				18364E7B246BF52300F8DEBE /* MessageModel.swift in Sources */,
+				18A075542479D26400517BED /* FirebaseManager.swift in Sources */,
 				187121CD246D2EF50008B307 /* WallViewController.swift in Sources */,
 				187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */,
 				187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */,
@@ -454,6 +477,7 @@
 				18BE2847246B15D500869B6C /* SceneDelegate.swift in Sources */,
 				4739B6502476EEB900B57239 /* RecipeRequest.swift in Sources */,
 				189C038724740E7800F9B412 /* Extensions.swift in Sources */,
+				18A075572479E97F00517BED /* AlertManager.swift in Sources */,
 				4739B6522476F1EB00B57239 /* RecipeCategoryViewController.swift in Sources */,
 				18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */,
 				18FB2A6B247820D200DDCAB0 /* RecipeCategoryViewModel.swift in Sources */,
@@ -686,6 +710,14 @@
 				minimumVersion = 5.2.0;
 			};
 		};
+		185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
@@ -719,6 +751,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		185440A924797731005B9711 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		185440AB24797731005B9711 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		185440AD24797731005B9711 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 		18CB97CB2475AF120054123A /* DynamicColor */ = {
 			isa = XCSwiftPackageProductDependency;

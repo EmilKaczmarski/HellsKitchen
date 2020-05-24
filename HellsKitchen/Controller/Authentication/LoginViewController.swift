@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginButtonDelegate {
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("did logout from facebook")
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        FirebaseManager.shared.signInWithFacebook(with: credential, controller: self)
+    }
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var loginLoader: UIActivityIndicatorView!
-    
+    @IBOutlet weak var FBLoginButton: FBLoginButton!
     let viewModel: LoginViewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self 
-        loginButton.isEnabled = false
+        setupLoginButton()
+        viewModel.delegate = self
         loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
         loginLoader.hidesWhenStopped = true
+        FBLoginButton.delegate = self
+        FBLoginButton.permissions = ["public_profile", "email"]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +55,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            viewModel.signIn(email: email, password: password)
-            
-            loginLoader.startAnimating()
+            FirebaseManager.shared.signIn(email: email, password: password, in: self) {
+              loginLoader.startAnimating()
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
     
@@ -54,6 +71,11 @@ class LoginViewController: UIViewController {
             disableLoginButton()
         }
         
+    }
+    
+    func setupLoginButton() {
+        loginButton.isEnabled = false
+        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
     }
     
     func enableLoginButton() {

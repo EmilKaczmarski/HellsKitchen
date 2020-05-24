@@ -103,10 +103,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             print(error.localizedDescription)
             return
         }
-        loginLoader.startAnimating()
+        
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
-            self.loginLoader.stopAnimating()
+        
         }
     }
 }

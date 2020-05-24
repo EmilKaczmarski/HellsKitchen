@@ -21,12 +21,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             return
         }
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        
-        viewModel.signInWithFacebook(with: credential)
-        
-        
-        // User is signed in
-        // ...
+        FirebaseManager.shared.signInWithFacebook(with: credential, controller: self)
     }
     
     
@@ -57,7 +52,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            viewModel.signIn(email: email, password: password)
+            FirebaseManager.shared.signIn(email: email, password: password, in: self)
         }
     }
     

@@ -13,8 +13,8 @@ class FirebaseManager {
     
     static let shared = FirebaseManager()
     let db = Firestore.firestore()
-    var loginViewController: UIViewController?
-    var registerViewController: UIViewController?
+    var loginViewController: LoginViewController?
+    var registerViewController: RegisterViewController?
     func getCurrentUser()-> String {
         return Auth.auth().currentUser?.email ?? ""
     }
@@ -127,6 +127,9 @@ extension FirebaseManager {
 extension FirebaseManager {
     func signInWithExternalApplication(with credential: AuthCredential, type: ControllerType,completion: @escaping ()-> Void) {
         let controller = type.controller
+        if type == .login {
+            loginViewController!.loginLoader.startAnimating()
+        }
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)

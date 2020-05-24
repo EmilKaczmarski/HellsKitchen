@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var loginLoader: UIActivityIndicatorView!
+    
     let viewModel: LoginViewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = false
         loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
+        loginLoader.hidesWhenStopped = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +40,8 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             viewModel.signIn(email: email, password: password)
+            
+            loginLoader.startAnimating()
         }
     }
     

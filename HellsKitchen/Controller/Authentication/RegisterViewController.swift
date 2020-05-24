@@ -24,6 +24,7 @@ class RegisterViewController: UIViewController {
         registerView.layer.cornerRadius = 10
         navigationController?.navigationBar.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
         registerButton.layer.cornerRadius = 10
+        FirebaseManager.shared.registerViewController = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

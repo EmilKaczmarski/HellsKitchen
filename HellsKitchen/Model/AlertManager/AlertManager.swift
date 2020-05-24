@@ -36,10 +36,12 @@ class AlertManager {
                     AlertManager.shared.askNewUserToProvideName(with: "whoops username is not unique, please provide new one", in: controller)
                 } else {
                     let userEmail = FirebaseManager.shared.getCurrentUser()
+
                     Constants.currentUserEmail = userEmail
+                    Constants.currentUserName = username
+                    FirebaseManager.shared.addUserToList(email: userEmail, username: username)
                     FirebaseManager.shared.setCurrentUsername {
                         controller.navigationController?.popToRootViewController(animated: true)
-                        FirebaseManager.shared.addUserToList(email: userEmail, username: username)
                     }
                 }
             }

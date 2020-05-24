@@ -22,7 +22,6 @@ class FirebaseManager {
         var doesExist = false
         db.collection(Constants.FStore.allUsers).getDocuments {
             (querySnapshot, error) in
-            
             if let err = error {
                 print(err.localizedDescription)
             } else {
@@ -54,6 +53,7 @@ class FirebaseManager {
                             return key == userName
                         }) {
                             doesExist = true
+                            completion(true)
                         }
                     }
                 }
@@ -67,20 +67,21 @@ class FirebaseManager {
 }
 //MARK: - method useful for sign in user
 extension FirebaseManager {
-    func signIn(email: String, password: String, in controller: UIViewController) {
+    func signIn(email: String, password: String, in controller: UIViewController, completion: @escaping ()-> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in
             if let err = error {
                 let alertInfo = "whoops something went wrong"
                 AlertManager.shared.textInputAlert(with: alertInfo, buttonTitle: "try again", for: controller)
                 print(err.localizedDescription)
+                completion()
             } else {
                 guard let user = Auth.auth().currentUser else { return }
                 Constants.currentUserEmail = user.email!
                 self.setCurrentUsername() {
                     controller.navigationController?.popViewController(animated: true)
+                    completion()
                 }
             }
-            
         }
     }
     
@@ -96,10 +97,12 @@ extension FirebaseManager {
                         if element[element.startIndex].value as! String == Constants.currentUserEmail {
                             Constants.currentUserName = element[element.startIndex].key
                             UserDefaults.standard.set(element[element.startIndex].key, forKey: Constants.usernameKey)
+                            completion()
                         }
                     }
                 }
             }
+            completion()
         }
     }
 }

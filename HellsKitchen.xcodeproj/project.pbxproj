@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181594C1247B1B780014FDFE /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */; };
+		181594C4247B242F0014FDFE /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C3247B242F0014FDFE /* IngredientCell.swift */; };
+		181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */; };
 		18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */; };
 		18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18364E72246BE72D00F8DEBE /* SnapKit */; };
 		18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E78246BF2B600F8DEBE /* ChatViewController.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		181594C3247B242F0014FDFE /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
+		181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewController.swift; sourceTree = "<group>"; };
 		18364E78246BF2B600F8DEBE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		18364E7A246BF52300F8DEBE /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -120,6 +126,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181594C2247B241A0014FDFE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18364E7C246C04B900F8DEBE /* MessageCell.swift */,
+				18ED1410246D34280093398A /* PostCell.swift */,
+				18D802C724731C20007F0E03 /* ChatUserCell.swift */,
+				181594C3247B242F0014FDFE /* IngredientCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		181594C7247B3AB20014FDFE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				181594C8247B3AC20014FDFE /* AlamofireManager */,
+				1848A89C2477185900A6DD99 /* Networking */,
+				18A075552479E96A00517BED /* AlertManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		181594C8247B3AC20014FDFE /* AlamofireManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AlamofireManager;
+			sourceTree = "<group>";
+		};
 		18364E81246C085100F8DEBE /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,11 +246,9 @@
 		18910803246B28F000F88489 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				181594C2247B241A0014FDFE /* Cells */,
 				18BE2852246B15E000869B6C /* LaunchScreen.storyboard */,
 				18BE284A246B15D500869B6C /* Main.storyboard */,
-				18364E7C246C04B900F8DEBE /* MessageCell.swift */,
-				18ED1410246D34280093398A /* PostCell.swift */,
-				18D802C724731C20007F0E03 /* ChatUserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,8 +260,7 @@
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
 				4739B64D2476EE9900B57239 /* Recipes.swift */,
-				18A075552479E96A00517BED /* AlertManager */,
-				1848A89C2477185900A6DD99 /* Networking */,
+				181594C7247B3AB20014FDFE /* Managers */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +321,7 @@
 			children = (
 				4739B6512476F1EB00B57239 /* RecipeCategoryViewController.swift */,
 				18FB2A6C24787B1C00DDCAB0 /* RecipesViewController.swift */,
+				181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -299,6 +331,7 @@
 			children = (
 				18FB2A6A247820D200DDCAB0 /* RecipeCategoryViewModel.swift */,
 				18FB2A6E24787CD800DDCAB0 /* RecipesViewModel.swift */,
+				181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -477,7 +510,9 @@
 				18910808246B325900F88489 /* LoginViewController.swift in Sources */,
 				18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */,
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
+				181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */,
 				18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */,
+				181594C4247B242F0014FDFE /* IngredientCell.swift in Sources */,
 				18BE2845246B15D500869B6C /* AppDelegate.swift in Sources */,
 				18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */,
 				18ED140D246D312E0093398A /* WallViewModel.swift in Sources */,
@@ -486,6 +521,7 @@
 				18364E7B246BF52300F8DEBE /* MessageModel.swift in Sources */,
 				18A075542479D26400517BED /* FirebaseManager.swift in Sources */,
 				187121CD246D2EF50008B307 /* WallViewController.swift in Sources */,
+				181594C1247B1B780014FDFE /* RecipeDetailViewController.swift in Sources */,
 				187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */,
 				187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */,
 				1891080A246B36B400F88489 /* Constants.swift in Sources */,

@@ -28,8 +28,16 @@ class RecipesViewController: UITableViewController {
        // cell.textLabel?.text = recipe.label
         return cell
     }
-
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! RecipeDetailViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            vc.viewModel.recipe = viewModel.recipes[indexPath.row]
+            for i in viewModel.recipes[indexPath.row].ingrendients! {
+                vc.viewModel.ingredients.append(i as! IngredientModel)
+            }
+        }
+    }
 }
 
 extension RecipesViewController : UISearchBarDelegate {

@@ -24,7 +24,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
-        loginLoader.hidesWhenStopped = true
         //Facebook
         FBLoginButton.delegate = self
         FBLoginButton.permissions = ["public_profile", "email"]

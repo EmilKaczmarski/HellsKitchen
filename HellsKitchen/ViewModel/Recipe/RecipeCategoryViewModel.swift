@@ -49,7 +49,7 @@ extension RecipeCategoryViewModel {
             category.name == categoryName
         }
     }
-    
+        
     private func doesRecipeExist(for category: RecipeCategory, recipeName: String)-> Bool {
         return (category.recipes?.contains {
             return ($0 as! RecipeModel).label == recipeName })!
@@ -66,8 +66,19 @@ extension RecipeCategoryViewModel {
                 recipe.label = i.recipe.label
                 recipe.time = "\(i.recipe.totalTime)"
                 recipe.url = i.recipe.url
-                recipe.calories = "\(i.recipe.calories)"
+                recipe.calories = "\(Int(i.recipe.calories))"
                 recipe.recipeCategory = newCategory
+                //Assign ingredient
+                var ingredientsArray = [NSManagedObject]()
+                for j in i.recipe.ingredients {
+                    let ingredient = IngredientModel(context: context)
+                    ingredient.name = j.text
+                    ingredient.weight = j.weight
+                    ingredient.recipe = recipe
+                    ingredientsArray.append(ingredient)
+                }
+                recipe.ingrendients = NSSet(array: ingredientsArray)
+                //Ingredient assigned
                 recipeArray.append(recipe)
             }
             newCategory.name = givenRecipes.q
@@ -79,13 +90,23 @@ extension RecipeCategoryViewModel {
             for i in givenRecipes.hits {
                 if !doesRecipeExist(for: category, recipeName: i.recipe.label) {
                     let recipe = RecipeModel(context: context)
-                    recipe.calories = "\(i.recipe.calories)"
+                    recipe.calories = "\(Int(i.recipe.calories))"
                     recipe.image = i.recipe.image
                     recipe.label = i.recipe.label
                     recipe.time = "\(i.recipe.totalTime)"
                     recipe.url = i.recipe.url
-                    recipe.calories = "\(i.recipe.calories)"
                     recipe.recipeCategory = category
+                    //Assign ingredient
+                    var ingredientsArray = [NSManagedObject]()
+                    for j in i.recipe.ingredients {
+                        let ingredient = IngredientModel(context: context)
+                        ingredient.name = j.text
+                        ingredient.weight = j.weight
+                        ingredient.recipe = recipe
+                        ingredientsArray.append(ingredient)
+                    }
+                    recipe.ingrendients = NSSet(array: ingredientsArray)
+                    //Ingredient assigned
                     category.addToRecipes(recipe)
                 }
             }

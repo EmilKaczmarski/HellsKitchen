@@ -13,9 +13,23 @@ class FirebaseManager {
     
     static let shared = FirebaseManager()
     let db = Firestore.firestore()
-    
+    var loginViewController: UIViewController?
+    var registerViewController: UIViewController?
     func getCurrentUser()-> String {
         return Auth.auth().currentUser?.email ?? ""
+    }
+    
+    enum ControllerType: String {
+        case register, login
+        var controller: UIViewController {
+            switch self {
+            case .login:
+                return FirebaseManager.shared.loginViewController!
+            case .register:
+                return FirebaseManager.shared.registerViewController!
+            }
+        }
+        
     }
     
     func checkWhetherEmailExists(with email: String, completion: @escaping (Bool) -> Void ) {
@@ -111,8 +125,8 @@ extension FirebaseManager {
 //MARK: - method useful for sign in user by facebook
 
 extension FirebaseManager {
-    func signInWithFacebook(with credential: AuthCredential, controller: UIViewController, completion: @escaping ()-> Void) {
-        
+    func signInWithExternalApplication(with credential: AuthCredential, type: ControllerType,completion: @escaping ()-> Void) {
+        let controller = type.controller
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)

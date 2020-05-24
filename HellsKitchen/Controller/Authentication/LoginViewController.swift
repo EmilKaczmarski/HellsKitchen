@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
+import GoogleSignIn
 
 class LoginViewController: UIViewController, LoginButtonDelegate {
 
@@ -17,14 +18,20 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginLoader: UIActivityIndicatorView!
     @IBOutlet weak var FBLoginButton: FBLoginButton!
+    @IBOutlet weak var googleLoginButton: GIDSignInButton!
     let viewModel: LoginViewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
         loginLoader.hidesWhenStopped = true
+        //Facebook
         FBLoginButton.delegate = self
         FBLoginButton.permissions = ["public_profile", "email"]
+        //Google
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        FirebaseManager.shared.loginViewController = self
+        //GIDSignIn.sharedInstance().signIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +105,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         }
         loginLoader.startAnimating()
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        FirebaseManager.shared.signInWithFacebook(with: credential, controller: self) {
+        FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
             self.loginLoader.stopAnimating()
         }
     }

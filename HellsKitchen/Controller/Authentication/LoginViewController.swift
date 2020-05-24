@@ -11,20 +11,7 @@ import FBSDKLoginKit
 import Firebase
 
 class LoginViewController: UIViewController, LoginButtonDelegate {
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("did logout from facebook")
-    }
-    
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        FirebaseManager.shared.signInWithFacebook(with: credential, controller: self)
-    }
-    
-    
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -35,8 +22,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
-        loginButton.isEnabled = false
-        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
         loginLoader.hidesWhenStopped = true
         FBLoginButton.delegate = self
         FBLoginButton.permissions = ["public_profile", "email"]
@@ -55,14 +40,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
+            loginLoader.startAnimating()
             FirebaseManager.shared.signIn(email: email, password: password, in: self) {
-              loginLoader.startAnimating()
                 self.navigationController?.popToRootViewController(animated: true)
+                self.loginLoader.stopAnimating()
             }
         }
     }
     
-    //checking if email contains @
     @IBAction func emailTextChanged(_ sender: Any) {
         if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty {
             enableLoginButton()
@@ -70,7 +55,15 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         else {
             disableLoginButton()
         }
-        
+    }
+
+    @IBAction func passwordTextChanged(_ sender: Any) {
+        if !passwordTextField.text!.isEmpty && emailTextField.text!.contains("@"){
+            enableLoginButton()
+        }
+        else {
+            disableLoginButton()
+        }
     }
     
     func setupLoginButton() {
@@ -87,18 +80,26 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         loginButton.isEnabled = false
         loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
     }
-    //checking if password has at least 1 char
-    @IBAction func passwordTextChanged(_ sender: Any) {
-        
-        if !passwordTextField.text!.isEmpty && emailTextField.text!.contains("@"){
-            enableLoginButton()
-        }
-        else {
-            disableLoginButton()
-        }
-    }
     
     @IBAction func registerNowButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
+    }
+    
+    
+//MARK: - facebook extension
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("did logout from facebook")
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        loginLoader.startAnimating()
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        FirebaseManager.shared.signInWithFacebook(with: credential, controller: self) {
+            self.loginLoader.stopAnimating()
+        }
     }
 }

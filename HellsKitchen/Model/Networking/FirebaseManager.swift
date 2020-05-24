@@ -111,12 +111,12 @@ extension FirebaseManager {
 //MARK: - method useful for sign in user by facebook
 
 extension FirebaseManager {
-    func signInWithFacebook(with credential: AuthCredential, controller: UIViewController) {
+    func signInWithFacebook(with credential: AuthCredential, controller: UIViewController, completion: @escaping ()-> Void) {
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)
-                return
+                completion()
             }
             guard let userEmail = Auth.auth().currentUser?.email else { return }
     
@@ -130,7 +130,7 @@ extension FirebaseManager {
                     AlertManager.shared.askNewUserToProvideName(with: "please provide new username", in: controller)
                 }
             }
-            return
+            completion()
         }
     }
 }

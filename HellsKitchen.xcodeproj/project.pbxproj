@@ -49,6 +49,7 @@
 		18ED1413246D67DA0093398A /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1412246D67DA0093398A /* CreatePostViewController.swift */; };
 		18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1414246D70C40093398A /* PostDetailViewController.swift */; };
 		18ED1417246D8F9E0093398A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */; };
+		18F1C379247BF7EE003B39E7 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18F1C378247BF7EE003B39E7 /* SwipeCellKit */; };
 		18FB2A6B247820D200DDCAB0 /* RecipeCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6A247820D200DDCAB0 /* RecipeCategoryViewModel.swift */; };
 		18FB2A6D24787B1C00DDCAB0 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6C24787B1C00DDCAB0 /* RecipesViewController.swift */; };
 		18FB2A6F24787CD800DDCAB0 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6E24787CD800DDCAB0 /* RecipesViewModel.swift */; };
@@ -119,6 +120,7 @@
 				185440AE24797731005B9711 /* FacebookLogin in Frameworks */,
 				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
 				185440AA24797731005B9711 /* FacebookShare in Frameworks */,
+				18F1C379247BF7EE003B39E7 /* SwipeCellKit in Frameworks */,
 				185440AC24797731005B9711 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +383,7 @@
 				185440A924797731005B9711 /* FacebookShare */,
 				185440AB24797731005B9711 /* FacebookCore */,
 				185440AD24797731005B9711 /* FacebookLogin */,
+				18F1C378247BF7EE003B39E7 /* SwipeCellKit */,
 			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
@@ -417,6 +420,7 @@
 				18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				18F1C377247BF7EE003B39E7 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
@@ -788,6 +792,14 @@
 				minimumVersion = 1.2.3;
 			};
 		};
+		18F1C377247BF7EE003B39E7 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -830,6 +842,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */;
 			productName = LetterAvatarKit;
+		};
+		18F1C378247BF7EE003B39E7 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18F1C377247BF7EE003B39E7 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

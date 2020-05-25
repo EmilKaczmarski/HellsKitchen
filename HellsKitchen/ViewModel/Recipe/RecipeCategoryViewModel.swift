@@ -26,8 +26,24 @@ extension RecipeCategoryViewModel {
         }
     }
 }
+//MARK: - remove from core data
+extension RecipeCategoryViewModel {
+    func remove(at index: IndexPath) {
+        context.delete(recipeCategories[index.row])
+        recipeCategories.remove(at: index.row)
+    }
+}
 
-
+//MARK: - save to core data
+extension RecipeCategoryViewModel {
+    func saveChangesInCoreData() {
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+}
 //MARK: - performing request
 extension RecipeCategoryViewModel {
     func performRequest(for dishName: String) {

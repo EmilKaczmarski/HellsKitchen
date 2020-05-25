@@ -42,6 +42,7 @@ extension Constants {
         static let wallDetailSegue = "wallDetailSegue"
         static let recipesSegue = "recipesSegue"
         static let provideSegue = "recipesSegue"
+        static let recipeCetegorySegue = "recipeCetegorySegue"
     }
 }
 

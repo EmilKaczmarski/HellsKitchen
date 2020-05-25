@@ -779,12 +779,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="g77-sF-JoB">
                                         <rect key="frame" x="8" y="8" width="398" height="758"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-lH-Mw1">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRG-lH-Mw1">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="217"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="ASE-61-pdC"/>
                                                     <constraint firstAttribute="height" constant="217" id="g9G-Ba-sJT"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="4XG-iy-E9L" appends="YES" id="TbM-3r-qhQ"/>
+                                                    <outletCollection property="gestureRecognizers" destination="2tO-b6-MTV" appends="YES" id="nIE-2G-Mbq"/>
+                                                </connections>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgX-t8-ikG">
                                                 <rect key="frame" x="0.0" y="247" width="398" height="60"/>
@@ -965,6 +970,8 @@
                     <connections>
                         <outlet property="calories" destination="c0M-gD-fXV" id="bcK-jW-kAx"/>
                         <outlet property="imageView" destination="lRG-lH-Mw1" id="80T-EP-z4p"/>
+                        <outlet property="infoStackView" destination="6U3-N9-YQn" id="Ioh-5c-Pei"/>
+                        <outlet property="ingredientsStackView" destination="3dc-SQ-DDA" id="Q68-Pe-kFa"/>
                         <outlet property="loaderView" destination="GgX-t8-ikG" id="IAl-fW-7D5"/>
                         <outlet property="loadingIndicator" destination="z7K-Wv-dXm" id="FTP-gi-06R"/>
                         <outlet property="name" destination="3Ra-jB-Gdt" id="onW-if-FcU"/>
@@ -974,6 +981,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Um-Wx-9w8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="4XG-iy-E9L">
+                    <connections>
+                        <action selector="handlePinch:" destination="OaQ-O1-GjG" id="agN-dj-9Wn"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <tapGestureRecognizer id="2tO-b6-MTV">
+                    <connections>
+                        <action selector="handleTap:" destination="OaQ-O1-GjG" id="1eX-DW-W7y"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5675.36231884058" y="-1155.1339285714284"/>
         </scene>

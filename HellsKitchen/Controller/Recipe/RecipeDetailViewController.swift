@@ -17,10 +17,13 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var calories: UILabel!
     @IBOutlet weak var url: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
+    @IBOutlet weak var infoStackView: UIStackView!
+    @IBOutlet weak var ingredientsStackView: UIStackView!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     let viewModel: RecipeDetailViewModel = RecipeDetailViewModel()
+    var isImageViewFocused = false
+    var imageScale = 1.0
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -29,7 +32,7 @@ class RecipeDetailViewController: UIViewController {
         viewModel.delegate = self
         viewModel.setupData()
         startAnimatingView()
-        downloadImage()
+        uploadImage()
     }
     
     func startAnimatingView() {
@@ -47,9 +50,17 @@ class RecipeDetailViewController: UIViewController {
         imageView.isHidden = false
     }
     
+    func uploadImage() {
+        if let imageData = viewModel.recipe!.image {
+            imageView.image = UIImage(data: imageData)
+        } else {
+            downloadImage()
+        }
+    }
+    
     func downloadImage() {
         AF
-            .request(viewModel.recipe!.image ?? "", method:  .get)
+            .request(viewModel.recipe!.imageUrl ?? "", method:  .get)
             .response {
                 response in
                 switch response.result {
@@ -57,12 +68,45 @@ class RecipeDetailViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.stopAnimatingView()
                         self.imageView.image = UIImage(data: data!)
+                        self.viewModel.saveImage(data: data!)
+                        
                     }
                 case .failure(let error):
                     print(error)
+                    self.stopAnimatingView()
                 }
         }
     }
+    
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        isImageViewFocused = !isImageViewFocused
+        if isImageViewFocused {
+            infoStackView.isHidden = true
+            ingredientsStackView.isHidden = true
+        } else {
+            infoStackView.isHidden = false
+            ingredientsStackView.isHidden = false
+        }
+    }
+    
+    @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
+        guard let gestureView = sender.view else { return }
+        guard isImageViewFocused == true else { return }
+
+        gestureView.transform = gestureView.transform.scaledBy(
+            x: sender.scale,
+            y: sender.scale
+        )
+        imageScale *= Double(sender.scale)
+        guard sender.state == .ended else { return }
+        gestureView.transform = gestureView.transform.scaledBy(
+            x: CGFloat(1/imageScale),
+            y: CGFloat(1/imageScale)
+               )
+        imageScale = 1
+    }
+
+    
 }
 
 extension RecipeDetailViewController: UITableViewDelegate {

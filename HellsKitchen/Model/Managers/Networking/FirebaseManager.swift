@@ -76,6 +76,7 @@ class FirebaseManager {
         }
     }
     
+    
     private func intit() {
     }
 }

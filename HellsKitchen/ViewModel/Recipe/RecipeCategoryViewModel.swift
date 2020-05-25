@@ -62,7 +62,7 @@ extension RecipeCategoryViewModel {
             for i in givenRecipes.hits {
                 let recipe = RecipeModel(context: context)
                 recipe.calories = "\(i.recipe.calories)"
-                recipe.image = i.recipe.image
+                recipe.imageUrl = i.recipe.image
                 recipe.label = i.recipe.label
                 recipe.time = "\(i.recipe.totalTime)"
                 recipe.url = i.recipe.url
@@ -91,7 +91,7 @@ extension RecipeCategoryViewModel {
                 if !doesRecipeExist(for: category, recipeName: i.recipe.label) {
                     let recipe = RecipeModel(context: context)
                     recipe.calories = "\(Int(i.recipe.calories))"
-                    recipe.image = i.recipe.image
+                    recipe.imageUrl = i.recipe.image
                     recipe.label = i.recipe.label
                     recipe.time = "\(i.recipe.totalTime)"
                     recipe.url = i.recipe.url

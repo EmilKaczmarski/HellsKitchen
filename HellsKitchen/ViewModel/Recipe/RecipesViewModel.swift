@@ -20,6 +20,7 @@ extension RecipesViewModel {
     
     func loadSavedData() {
         let request: NSFetchRequest<RecipeModel> = RecipeModel.fetchRequest()
+        request.predicate = NSPredicate(format: "(recipeCategory.name MATCHES %@)", selectedCategory!.name!)
         do {
             recipes = try context.fetch(request)
         } catch {

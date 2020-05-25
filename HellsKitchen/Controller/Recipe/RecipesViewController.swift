@@ -43,7 +43,21 @@ class RecipesViewController: UITableViewController {
 extension RecipesViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
-        //viewModel.loadSavedData()
-        //viewModel.performRequest(for: searchBarText)
+        
+        if searchBarText.count != 0 {
+            viewModel.loadDataThatContains(text: searchBarText)
+        } else {
+            viewModel.loadSavedData()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchBarText = searchBar.text else { return }
+
+        if searchBarText.count != 0 {
+            viewModel.loadDataThatContains(text: searchBarText)
+        } else {
+            viewModel.loadSavedData()
+        }
     }
 }

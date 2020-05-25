@@ -420,7 +420,6 @@
                         <outlet property="searchButton" destination="ohZ-RQ-3Hd" id="6qI-Ou-O9v"/>
                         <outlet property="tableView" destination="fH7-bJ-MnI" id="gVU-oC-0be"/>
                         <segue destination="SRA-h6-wsq" kind="show" identifier="registerSegue" id="ac1-FX-1ed"/>
-                        <segue destination="hpK-w6-Kcu" kind="show" identifier="recipesSegue" id="nHe-8x-lOe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ht-Dh-d23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1001,7 +1000,6 @@
         <image name="name" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nHe-8x-lOe"/>
-        <segue reference="Qtj-p3-N8k"/>
+        <segue reference="ac1-FX-1ed"/>
     </inferredMetricsTieBreakers>
 </document>

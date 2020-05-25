@@ -70,6 +70,7 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
             for i in viewModel.recipeCategories[indexPath.row].recipes! {
                 vc.viewModel.recipes.append(i as! RecipeModel)
             }
+            vc.viewModel.selectedCategory = viewModel.recipeCategories[indexPath.row]
         }
     }
     
@@ -80,7 +81,19 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
     
 }
 
+//MARK: - search bar methods
 extension RecipeCategoryViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchBarText = searchBar.text else { return }
+
+        if searchBarText.count != 0 {
+            viewModel.loadDataThatContains(text: searchBarText)
+        } else {
+            viewModel.loadSavedData()
+        }
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
         if searchBarText.count != 0 {

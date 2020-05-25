@@ -17,6 +17,7 @@ class RecipeCategoryViewModel {
 
 //MARK: - loading core data
 extension RecipeCategoryViewModel {
+    
     func loadSavedData() {
         let request: NSFetchRequest<RecipeCategory> = RecipeCategory.fetchRequest()
         do {
@@ -24,6 +25,18 @@ extension RecipeCategoryViewModel {
         } catch {
             print(error.localizedDescription)
         }
+        delegate?.tableView.reloadData()
+    }
+    
+    func loadDataThatContains(text: String) {
+        let request: NSFetchRequest<RecipeCategory> = RecipeCategory.fetchRequest()
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", text)
+        do {
+            recipeCategories = try context.fetch(request)
+        } catch {
+            print(error.localizedDescription)
+        }
+        delegate?.tableView.reloadData()
     }
 }
 //MARK: - remove from core data

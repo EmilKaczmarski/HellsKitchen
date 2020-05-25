@@ -688,6 +688,11 @@
                                 <outlet property="delegate" destination="hpK-w6-Kcu" id="v74-aI-z8j"/>
                             </connections>
                         </searchBar>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="zR0-ur-nLL">
+                            <rect key="frame" x="0.0" y="773.66666793823242" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="QeH-DB-kht" style="IBUITableViewCellStyleDefault" id="v3q-hU-8eN" customClass="SwipeTableViewCell">
                                 <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
@@ -740,6 +745,11 @@
                                 <outlet property="delegate" destination="zJG-Fd-RPo" id="1kL-Uh-krE"/>
                             </connections>
                         </searchBar>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="HvL-Pm-xdN">
+                            <rect key="frame" x="0.0" y="773.66666793823242" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="t2t-lH-628">
                                 <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>

@@ -18,14 +18,15 @@ class RecipeCategoryViewModel {
 //MARK: - loading core data
 extension RecipeCategoryViewModel {
     
-    func loadSavedData() {
+    func loadSavedData(completion: @escaping ()-> Void) {
         let request: NSFetchRequest<RecipeCategory> = RecipeCategory.fetchRequest()
         do {
             recipeCategories = try context.fetch(request)
+            completion()
         } catch {
             print(error.localizedDescription)
+            completion()
         }
-        delegate?.tableView.reloadData()
     }
     
     func loadDataThatContains(text: String) {
@@ -39,6 +40,16 @@ extension RecipeCategoryViewModel {
         delegate?.tableView.reloadData()
     }
 }
+
+//MARK: - existence core data
+extension RecipeCategoryViewModel {
+    func doesCategoryExist(for name: String)-> Bool {
+        return recipeCategories.contains { (category) -> Bool in
+            category.name == name
+        }
+    }
+}
+
 //MARK: - remove from core data
 extension RecipeCategoryViewModel {
     func remove(at index: IndexPath) {
@@ -59,13 +70,16 @@ extension RecipeCategoryViewModel {
 }
 //MARK: - performing request
 extension RecipeCategoryViewModel {
-    func performRequest(for dishName: String) {
+    func performRequest(for dishName: String, completion: @escaping (Bool)-> Void) {
         RecipeRepository.getRecipes(for: dishName) { [weak self] (recipes, error) in
             guard let recipes = recipes else {
                 print(error?.localizedDescription as Any)
+                completion(false)
                 return
             }
-            self!.assignData(for: recipes)
+            self!.assignData(for: recipes) {
+                completion(true)
+            }
         }
     }
     
@@ -84,7 +98,7 @@ extension RecipeCategoryViewModel {
             return ($0 as! RecipeModel).label == recipeName })!
     }
     
-    private func assignData(for givenRecipes: Recipes) {
+    private func assignData(for givenRecipes: Recipes, completion: @escaping ()-> Void) {
         if !categoryExists(with: givenRecipes.q) {
             let newCategory = RecipeCategory(context: context)
             var recipeArray = [NSManagedObject]()
@@ -143,8 +157,10 @@ extension RecipeCategoryViewModel {
         
         do {
             try context.save()
+            completion()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+            completion()
         }
     }
 }

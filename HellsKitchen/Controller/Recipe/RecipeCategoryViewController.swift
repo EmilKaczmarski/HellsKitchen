@@ -13,7 +13,7 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
     
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    var newCategoryName = ""
     //how to get only one value from struct?
     let viewModel: RecipeCategoryViewModel = RecipeCategoryViewModel()
     
@@ -23,10 +23,12 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
         tableView.delegate = self
         tableView.rowHeight = 70.0
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
-        viewModel.loadSavedData()
+        viewModel.loadSavedData() {
+            self.tableView.reloadData()
+        }
     }
     
-//MARK: - tableView methods
+    //MARK: - tableView methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.recipeCategories.count
     }
@@ -37,16 +39,14 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
         cell.textLabel?.text = viewModel.recipeCategories[indexPath.row].name
         return cell
     }
- //MARK: - swipe cell methods
+    //MARK: - swipe cell methods
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
-
+        
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-              self.updateModel(at: indexPath)
-              
-          }
-
-        // customize the action appearance
+            self.updateModel(at: indexPath)
+        }
+        //customize the action appearance
         deleteAction.image = UIImage(named: "delete")
         
         return [deleteAction]
@@ -62,8 +62,24 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
     func updateModel(at index: IndexPath) {
         viewModel.remove(at: index)
     }
-
-//MARK: - segue methods
+    
+    //MARK: - core data methods
+    func performReqest(for name: String) {
+        viewModel.performRequest(for: name) { success in
+            if success {
+                self.viewModel.loadSavedData {
+                    self.tableView.reloadData()
+                    self.newCategoryName = name
+                    self.performSegue(withIdentifier: Constants.Segues.recipeCetegorySegue, sender: self)
+                }
+            } else {
+                //error
+            }
+        }
+    }
+    
+    
+    //MARK: - segue methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! RecipesViewController
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -71,6 +87,17 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
                 vc.viewModel.recipes.append(i as! RecipeModel)
             }
             vc.viewModel.selectedCategory = viewModel.recipeCategories[indexPath.row]
+        } else {
+            let selectedCategory = viewModel.recipeCategories.first { (category) -> Bool in
+                category.name == newCategoryName
+            }
+            
+            guard let category = selectedCategory else { return }
+            
+            for i in category.recipes! {
+                vc.viewModel.recipes.append(i as! RecipeModel)
+            }
+            vc.viewModel.selectedCategory = category
         }
     }
     
@@ -86,19 +113,28 @@ extension RecipeCategoryViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchBarText = searchBar.text else { return }
-
+        
         if searchBarText.count != 0 {
             viewModel.loadDataThatContains(text: searchBarText)
         } else {
-            viewModel.loadSavedData()
+            viewModel.loadSavedData() {
+                self.tableView.reloadData()
+            }
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
         if searchBarText.count != 0 {
-            viewModel.loadSavedData()
-            viewModel.performRequest(for: searchBarText)
-        }   
+            viewModel.loadSavedData() {
+                self.tableView.reloadData()
+                if !self.viewModel.doesCategoryExist(for: searchBarText) {
+                    self.performReqest(for: searchBarText)
+                } else {
+                    
+                }
+            }
+        }
     }
 }
+

@@ -55,6 +55,7 @@ extension RecipeCategoryViewModel {
     func remove(at index: IndexPath) {
         context.delete(recipeCategories[index.row])
         recipeCategories.remove(at: index.row)
+        saveChangesInCoreData()
     }
 }
 

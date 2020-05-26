@@ -65,12 +65,26 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
     
     //MARK: - core data methods
     func performReqest(for name: String) {
+        let group = DispatchGroup()
+        group.enter()
+        let alert = AlertManager.shared.loadingAlert(in: self) {
+            group.leave()
+        }
+        var result = true
+        AlertManager.shared.sheduleTimerFor(alert: alert, in: self) { (success) in
+            result = success
+        }
         viewModel.performRequest(for: name) { success in
             if success {
                 self.viewModel.loadSavedData {
                     self.tableView.reloadData()
                     self.newCategoryName = name
-                    self.performSegue(withIdentifier: Constants.Segues.recipeCetegorySegue, sender: self)
+                    group.notify(queue: DispatchQueue.main) {
+                        if result {
+                            self.dismiss(animated: true, completion: nil)
+                            self.performSegue(withIdentifier: Constants.Segues.recipeCetegorySegue, sender: self)
+                        }
+                    }
                 }
             } else {
                 //error

@@ -107,23 +107,10 @@ extension WallViewController {
 extension WallViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if Constants.currentUserName == "" {
-            requiedAuthorisationAlert()
+            AlertManager.shared.requiedAuthorisationAlert(in: self)
         } else {
             performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
         }
-    }
-    
-    private func requiedAuthorisationAlert() {
-        let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
-            self.performSegue(withIdentifier: Constants.Segues.loginSegue, sender: self)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
-            self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
-        }))
-        present(alert, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -47,4 +47,50 @@ class AlertManager {
         }))
         controller.present(alert, animated: false)
     }
+    
+    func requiedAuthorisationAlert(in controller: WallViewController) {
+        let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
+            controller.performSegue(withIdentifier: Constants.Segues.loginSegue, sender: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
+            controller.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
+        }))
+        controller.present(alert, animated: true)
+    }
+    
+    func sheduleTimerFor(alert: UIAlertController, in controller: UIViewController, completion: @escaping (Bool)-> Void) {
+        Timer.scheduledTimer(withTimeInterval: 7, repeats:false, block: {_ in
+            if controller.presentedViewController == alert {
+                controller.dismiss(animated: true, completion: nil)
+                AlertManager.shared.errorAlert(in: controller)
+                completion(false)
+            } else {
+                completion(false)
+            }
+        })
+    }
+    
+    func loadingAlert(in controller: UIViewController, completion: @escaping ()-> Void)-> UIAlertController {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+        controller.present(alert, animated: true) {
+            completion() 
+        }
+        return alert
+    }
+    
+    func errorAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: nil, message: "whoops something went wrong", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "get back", style: .cancel, handler: { (action) in
+            controller.navigationController?.popToRootViewController(animated: false)
+        }))
+        controller.present(alert, animated: true)
+    }
 }

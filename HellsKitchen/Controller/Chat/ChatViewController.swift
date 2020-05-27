@@ -52,6 +52,7 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
+        AlertManager.shared.sendMessageAlert(in: self)
         if message.text! != "" {
             viewModel.sendMessage(message: message.text!, sender: self.sender!, receiver: receiver!)
                 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 class AlertManager {
     static let shared = AlertManager()
@@ -92,5 +93,36 @@ class AlertManager {
             controller.navigationController?.popToRootViewController(animated: false)
         }))
         controller.present(alert, animated: true)
+    }
+    
+  
+    func isInternetAvailable() -> Bool {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachibility = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachibility!, &flags) {
+            return false
+        }
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        return (isReachable && !needsConnection)
+    }
+    
+    func sendMessageAlert(in controller: UIViewController) {
+        if !isInternetAvailable() {
+            let alert = UIAlertController(title: "Alert", message: "No internet connection", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(action)
+            controller.present(alert, animated: true)
+        }
     }
 }

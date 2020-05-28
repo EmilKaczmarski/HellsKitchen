@@ -25,6 +25,7 @@
 		187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C8246C802B0008B307 /* ChatUsersViewModel.swift */; };
 		187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121CA246C84C20008B307 /* ChatViewModel.swift */; };
 		187121CD246D2EF50008B307 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121CC246D2EF50008B307 /* WallViewController.swift */; };
+		187C2EEF24804F74002694C3 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 187C2EEE24804F74002694C3 /* PlayfairDisplay-Bold.ttf */; };
 		18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910805246B2BEA00F88489 /* RegisterViewController.swift */; };
 		18910808246B325900F88489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910807246B325900F88489 /* LoginViewController.swift */; };
 		1891080A246B36B400F88489 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910809246B36B400F88489 /* Constants.swift */; };
@@ -72,6 +73,9 @@
 		187121C8246C802B0008B307 /* ChatUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewModel.swift; sourceTree = "<group>"; };
 		187121CA246C84C20008B307 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		187121CC246D2EF50008B307 /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
+		187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		187C2EEE24804F74002694C3 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		187C2EF024805072002694C3 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		18910805246B2BEA00F88489 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		18910807246B325900F88489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18910809246B36B400F88489 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -154,6 +158,15 @@
 			children = (
 			);
 			path = AlamofireManager;
+			sourceTree = "<group>";
+		};
+		182A4E522480406200092DAE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */,
+				187C2EEE24804F74002694C3 /* PlayfairDisplay-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		18364E81246C085100F8DEBE /* Delegates */ = {
@@ -258,6 +271,7 @@
 		18910804246B28F400F88489 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				182A4E522480406200092DAE /* Fonts */,
 				18910809246B36B400F88489 /* Constants.swift */,
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
@@ -302,6 +316,7 @@
 				18910804246B28F400F88489 /* Model */,
 				18364E81246C085100F8DEBE /* Delegates */,
 				18BE2850246B15E000869B6C /* Assets.xcassets */,
+				187C2EF024805072002694C3 /* PlayfairDisplay-Bold.ttf */,
 				18BE2855246B15E000869B6C /* Info.plist */,
 				18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */,
 				18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */,
@@ -439,6 +454,7 @@
 				18BE2854246B15E000869B6C /* LaunchScreen.storyboard in Resources */,
 				18BE2860246B1B7C00869B6C /* GoogleService-Info.plist in Resources */,
 				18BE2851246B15E000869B6C /* Assets.xcassets in Resources */,
+				187C2EEF24804F74002694C3 /* PlayfairDisplay-Bold.ttf in Resources */,
 				18BE284C246B15D500869B6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,7 +711,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Mobilabs.HellsKitchen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.accenture.hellskitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -713,7 +729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Mobilabs.HellsKitchen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.accenture.hellskitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

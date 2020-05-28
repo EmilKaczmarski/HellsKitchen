@@ -6,7 +6,7 @@
 //  Copyright © 2020 Emil. All rights reserved.
 //
 
-import Foundation
+import UIKit
 //MARK: - User Variables
 struct Constants {
     static var currentUserName = ""
@@ -30,6 +30,7 @@ extension Constants {
         static let red = "#FFAAA5"
         static let deepRed = "#C4352B"
         static let lightYellow = "#EDEBC1"
+        static let lightBlue = UIColor(displayP3Red: 250.0/255.0, green: 252.0/255.0, blue: 251.0/255.0, alpha: 1.0)
     }
 }
 

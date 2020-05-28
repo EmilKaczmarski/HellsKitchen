@@ -56,9 +56,9 @@ class ChatViewController: UIViewController {
             if success {
                 if self.message.text! != "" {
                     self.viewModel.sendMessage(message: self.message.text!, sender: self.sender!, receiver: self.receiver!)
-                
-        }
-        message.text! = ""
+                    
+                }
+                self.message.text! = ""
             } else {
                 AlertManager.shared.sendMessageAlert(in: self)
             }

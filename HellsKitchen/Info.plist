@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PlayfairDisplay-VariableFont_wght.ttf</string>
+		<string>PlayfairDisplay-Bold.ttf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -37,7 +42,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>Mobilabs.HellsKitchen</string>
+				<string>com.accenture.hellskitchen</string>
 			</array>
 		</dict>
 	</array>
@@ -46,7 +51,7 @@
 	<key>FacebookAppID</key>
 	<string>934480500306805</string>
 	<key>FacebookDisplayName</key>
-	<string>Hell's Kitchen</string>
+	<string>Hell&apos;s Kitchen</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

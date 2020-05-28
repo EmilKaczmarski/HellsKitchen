@@ -52,12 +52,17 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-        AlertManager.shared.sendMessageAlert(in: self)
-        if message.text! != "" {
-            viewModel.sendMessage(message: message.text!, sender: self.sender!, receiver: receiver!)
+        AlertManager.shared.isInternetAvailable { (success) in
+            if success {
+                if self.message.text! != "" {
+                    self.viewModel.sendMessage(message: self.message.text!, sender: self.sender!, receiver: self.receiver!)
                 
         }
         message.text! = ""
+            } else {
+                AlertManager.shared.sendMessageAlert(in: self)
+            }
+        }
     }
     
 }

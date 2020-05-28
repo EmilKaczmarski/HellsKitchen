@@ -96,7 +96,7 @@ class AlertManager {
     }
     
   
-    func isInternetAvailable() -> Bool {
+    func isInternetAvailable(completion: @escaping (Bool) -> ()){
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
@@ -110,19 +110,17 @@ class AlertManager {
         
         var flags = SCNetworkReachabilityFlags()
         if !SCNetworkReachabilityGetFlags(defaultRouteReachibility!, &flags) {
-            return false
+            completion(false)
         }
         let isReachable = flags.contains(.reachable)
         let needsConnection = flags.contains(.connectionRequired)
-        return (isReachable && !needsConnection)
+        completion(isReachable && !needsConnection)
     }
     
     func sendMessageAlert(in controller: UIViewController) {
-        if !isInternetAvailable() {
             let alert = UIAlertController(title: "Alert", message: "No internet connection", preferredStyle: .alert)
             let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(action)
             controller.present(alert, animated: true)
-        }
     }
 }

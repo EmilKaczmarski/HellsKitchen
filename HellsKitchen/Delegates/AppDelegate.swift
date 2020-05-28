@@ -12,9 +12,10 @@ import Firebase
 import IQKeyboardManagerSwift
 import FBSDKCoreKit
 import GoogleSignIn
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, /*MessagingDelegate*/ GIDSignInDelegate {
 
     func application(
         _ app: UIApplication,
@@ -125,4 +126,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
     }
     
+    //MARK: - Notifications
+    /*
+    var window: UIWindow?
+    let gcmMessageIDKey = "gcm.message_id"
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
+        
+        //Messaging.messaging().delegate = self
+        
+        if #available(iOS 10.0, *) {
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { (_, error) in
+            guard error == nil else{
+                print(error!.localizedDescription)
+                return
+            }
+        }
+        //get app instance ID
+        /*InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching instance ID: \(error)")
+            } else if result = result {
+                print("Remote instance ID token: \(result.token)")
+            }
+            
+        }
+        */
+        
+        application.registerForRemoteNotifications()
+        return true
+    }
+    
+     }
+ */
 }

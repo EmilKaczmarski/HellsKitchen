@@ -20,8 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LhV-2l-u0m">
-                                <rect key="frame" x="56" y="372.66666666666669" width="302" height="99"/>
+                            <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="LhV-2l-u0m">
+                                <rect key="frame" x="56" y="340.66666666666669" width="302" height="131"/>
                                 <subviews>
                                     <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRx-QF-tzH">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="46"/>
@@ -41,13 +41,13 @@
                                         </constraints>
                                     </view>
                                     <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-HW-pee">
-                                        <rect key="frame" x="0.0" y="46" width="302" height="53"/>
+                                        <rect key="frame" x="0.0" y="78" width="302" height="53"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hell’s kitchen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfc-74-inQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="302" height="40"/>
                                                 <fontDescription key="fontDescription" name="PlayfairDisplay-Bold" family="Playfair Display" pointSize="40"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="highlightedColor" red="0.0039215686274509803" green="0.31372549019607843" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -64,7 +64,7 @@
                         <color key="backgroundColor" red="0.98039215686274506" green="0.9882352941176471" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LhV-2l-u0m" firstAttribute="leading" secondItem="zZr-w0-Bjk" secondAttribute="leading" constant="56" id="Sk4-jp-ptd"/>
-                            <constraint firstItem="LhV-2l-u0m" firstAttribute="centerY" secondItem="y7W-ty-aU3" secondAttribute="centerY" constant="-26" id="k7W-Oc-gI7"/>
+                            <constraint firstItem="LhV-2l-u0m" firstAttribute="centerY" secondItem="y7W-ty-aU3" secondAttribute="centerY" constant="-42" id="k7W-Oc-gI7"/>
                             <constraint firstItem="zZr-w0-Bjk" firstAttribute="trailing" secondItem="LhV-2l-u0m" secondAttribute="trailing" constant="56" id="lP3-Yg-0eh"/>
                             <constraint firstItem="LhV-2l-u0m" firstAttribute="centerX" secondItem="y7W-ty-aU3" secondAttribute="centerX" id="mdJ-c3-Dc5"/>
                         </constraints>

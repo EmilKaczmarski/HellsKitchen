@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SnapKit
 //MARK: - String
 extension String {
     subscript(_ range: CountableRange<Int>) -> String {
@@ -33,3 +33,26 @@ extension UIColor {
                   blue:  .init(strtoul(String(chars[4...5]),nil,16))/255,
             alpha: alpha)}
 }
+
+//MARK: -UIViewController
+extension UIViewController {
+    func setTitle(_ title: String, andImage image: UIImage) {
+        let titleLbl = UILabel()
+        titleLbl.text = title
+        titleLbl.textColor = Constants.Colors.deepGreen
+        titleLbl.font = UIFont(name: "PlayfairDisplay-Bold", size: 14.0)
+        let imageView = UIImageView(image: image)
+        imageView.snp.makeConstraints { (maker) in
+            maker.width.equalTo(15.0)
+            maker.height.equalTo(23.0)
+        }
+        let titleView = UIStackView(arrangedSubviews: [titleLbl, imageView])
+        titleView.axis = .horizontal
+        titleView.spacing = 10.0
+        navigationItem.titleView = titleView
+    }
+}
+
+//MARK: -UIImage
+
+

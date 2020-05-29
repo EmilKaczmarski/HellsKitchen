@@ -132,7 +132,7 @@ class PostCell: UITableViewCell {
             maker.bottom.equalToSuperview().offset(-firstCommentView.frame.height - secondCommentView.frame.height - 30)
         }
         view.layer.cornerRadius = 10.0
-        view.backgroundColor = UIColor(hexaString: Constants.Colors.deepGreen)
+        view.backgroundColor = Constants.Colors.deepGreen
         return view
     }()
 }

@@ -25,11 +25,13 @@ extension Constants {
     struct Colors {
         static let green = "#A8E6CF"
         static let lightGreen = "#DCEDC1"
-        static let deepGreen = "#8FAE5C"
+        
         static let orange = "#FFD3B6"
         static let red = "#FFAAA5"
         static let deepRed = "#C4352B"
         static let lightYellow = "#EDEBC1"
+        
+        static let deepGreen = UIColor(displayP3Red: 1.0/255.0, green: 80.0/255.0, blue: 103.0/255.0, alpha: 1.0)
         static let lightBlue = UIColor(displayP3Red: 250.0/255.0, green: 252.0/255.0, blue: 251.0/255.0, alpha: 1.0)
     }
 }
@@ -88,3 +90,19 @@ extension Constants {
 }
 
 
+extension Constants {
+    struct Functions {
+        static func getImageWithColorPosition(color: UIColor, size: CGSize, lineSize: CGSize) -> UIImage {
+            let rect = CGRect(x:0, y: 0, width: size.width, height: size.height)
+            let rectLine = CGRect(x:0, y:size.height-lineSize.height,width: lineSize.width,height: lineSize.height)
+            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+            UIColor.clear.setFill()
+            UIRectFill(rect)
+            color.setFill()
+            UIRectFill(rectLine)
+            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            return image
+        }
+    }
+}

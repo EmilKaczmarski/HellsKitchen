@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
+        
+        UITabBar.appearance().selectionIndicatorImage = Constants.Functions.getImageWithColorPosition(color: Constants.Colors.deepGreen , size: CGSize(width:(UIScreen.main.bounds.width)/6.7,height: 56), lineSize: CGSize(width:(UIScreen.main.bounds.width)/6.7, height:2))
+        
         return true
     }
     

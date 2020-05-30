@@ -9,9 +9,11 @@
 import UIKit
 import SwipeCellKit
 
-class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDelegate {
+class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    
+    @IBOutlet weak var searchBarView: UIView!
+    @IBOutlet weak var noPostsView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var newCategoryName = ""
     //how to get only one value from struct?
@@ -20,20 +22,34 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        tableView.delegate = self
-        tableView.rowHeight = 70.0
-        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
+        setupTableView()
         viewModel.loadSavedData() {
             self.tableView.reloadData()
         }
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setupSearchBar()
+    }
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = 70.0
+        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    func setupSearchBar() {
+        searchBarView.layer.cornerRadius = 30
+        searchBarView.layer.borderWidth = 1
+        searchBarView.layer.borderColor = UIColor.lightGray.cgColor
+        searchBar.searchTextField.backgroundColor = .white
     }
     
     //MARK: - tableView methods
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.recipeCategories.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
         cell.delegate = self
         cell.textLabel?.text = viewModel.recipeCategories[indexPath.row].name
@@ -116,7 +132,7 @@ class RecipeCategoryViewController: UITableViewController, SwipeTableViewCellDel
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constants.Segues.recipeCetegorySegue, sender: self)
     }
     

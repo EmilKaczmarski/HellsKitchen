@@ -105,5 +105,6 @@ extension Constants {
             UIGraphicsEndImageContext()
             return image
         }
+        
     }
 }

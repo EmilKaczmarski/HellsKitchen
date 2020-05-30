@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icPerson.png",
+      "filename" : "icNotifications.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icPerson@2x.png",
+      "filename" : "icNotifications@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icPerson@3x.png",
+      "filename" : "icNotifications@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

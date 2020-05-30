@@ -12,25 +12,26 @@ import Firebase
 import GoogleSignIn
 
 class LoginViewController: UIViewController, LoginButtonDelegate {
-
+    @IBOutlet weak var loginButtonView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginLoader: UIActivityIndicatorView!
-    @IBOutlet weak var FBLoginButton: FBLoginButton!
-    @IBOutlet weak var googleLoginButton: GIDSignInButton!
     let viewModel: LoginViewModel = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
         //Facebook
-        FBLoginButton.delegate = self
-        FBLoginButton.permissions = ["public_profile", "email"]
+//        FBLoginButton.delegate = self
+//        FBLoginButton.permissions = ["public_profile", "email"]
         //Google
-        GIDSignIn.sharedInstance()?.presentingViewController = self
+//        GIDSignIn.sharedInstance()?.presentingViewController = self
         FirebaseManager.shared.loginViewController = self
         //GIDSignIn.sharedInstance().signIn()
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        tabBarController?.tabBar.isHidden = true
+        loginButtonView.layer.cornerRadius = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,18 +74,17 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     }
     
     func setupLoginButton() {
-        loginButton.isEnabled = false
-        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
+        disableLoginButton()
     }
     
     func enableLoginButton() {
         loginButton.isEnabled = true
-        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.deepRed), for: .normal)
+        loginButtonView.backgroundColor = Constants.Colors.deepGreen
     }
     
     func disableLoginButton() {
         loginButton.isEnabled = false
-        loginButton.setTitleColor(UIColor(hexaString: Constants.Colors.lightGreen), for: .normal)
+        loginButtonView.backgroundColor = Constants.Colors.deepGreenDisabled
     }
     
     @IBAction func registerNowButtonPressed(_ sender: Any) {

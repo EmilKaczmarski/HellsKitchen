@@ -18,10 +18,6 @@ class WallViewController: UIViewController {
     @IBOutlet weak var chatButton: UITabBarItem!
     @IBOutlet weak var addPostButton: UITabBarItem!
     @IBOutlet weak var profileButton: UITabBarItem!
-    
-    //    @IBOutlet weak var loginButton: UIBarButtonItem!
-    //    @IBOutlet weak var chatButton: UIBarButtonItem!
-    //    @IBOutlet weak var addPostButton: UIBarButtonItem!
     let viewModel: WallViewModel = WallViewModel()
     
     @IBOutlet weak var tableView: UITableView!
@@ -105,8 +101,8 @@ extension WallViewController {
             }
         }
     }
-    
 }
+
 //MARK: - Delegate methods
 extension WallViewController: UITableViewDelegate {
     

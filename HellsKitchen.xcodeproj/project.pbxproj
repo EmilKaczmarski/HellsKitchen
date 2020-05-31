@@ -57,6 +57,7 @@
 		4739B64E2476EE9900B57239 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64D2476EE9900B57239 /* Recipes.swift */; };
 		4739B6502476EEB900B57239 /* RecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64F2476EEB800B57239 /* RecipeRequest.swift */; };
 		4739B6522476F1EB00B57239 /* RecipeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B6512476F1EB00B57239 /* RecipeCategoryViewController.swift */; };
+		47712B372482E91A007E70D3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47712B362482E91A007E70D3 /* ProfileViewController.swift */; };
 		BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		4739B64D2476EE9900B57239 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		4739B64F2476EEB800B57239 /* RecipeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeRequest.swift; sourceTree = "<group>"; };
 		4739B6512476F1EB00B57239 /* RecipeCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCategoryViewController.swift; sourceTree = "<group>"; };
+		47712B332482E32A007E70D3 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		47712B362482E91A007E70D3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4C92F4CC632D1789AF317B22 /* Pods-HellsKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.debug.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 		87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HellsKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C04FFEFDCC1AB01549E211 /* Pods-HellsKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.release.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
+				47712B362482E91A007E70D3 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -318,6 +322,7 @@
 				187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */,
 				181CBE2C24817CC1000DA125 /* PlayfairDisplay-Bold.ttf */,
 				187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */,
+				47712B332482E32A007E70D3 /* Poppins-Bold.ttf */,
 				18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */,
 				18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */,
 			);
@@ -559,6 +564,7 @@
 				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
 				4739B64E2476EE9900B57239 /* Recipes.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
+				47712B372482E91A007E70D3 /* ProfileViewController.swift in Sources */,
 				18ED1411246D34280093398A /* PostCell.swift in Sources */,
 				18FB2A6F24787CD800DDCAB0 /* RecipesViewModel.swift in Sources */,
 			);

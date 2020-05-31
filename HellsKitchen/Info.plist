@@ -7,7 +7,8 @@
 		<string>PlayfairDisplay-VariableFont_wght.ttf</string>
 		<string>PlayfairDisplay-Bold.ttf</string>
 		<string>Poppins-Regular.ttf</string>
-		<string>Poppins-Bold.tff</string>
+		<string>Poppins-Bold.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

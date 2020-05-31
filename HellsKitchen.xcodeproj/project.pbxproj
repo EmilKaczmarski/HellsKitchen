@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		181594C1247B1B780014FDFE /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */; };
 		181594C4247B242F0014FDFE /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C3247B242F0014FDFE /* IngredientCell.swift */; };
 		181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */; };
 		18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */; };
@@ -58,13 +57,13 @@
 		4739B6502476EEB900B57239 /* RecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B64F2476EEB800B57239 /* RecipeRequest.swift */; };
 		4739B6522476F1EB00B57239 /* RecipeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4739B6512476F1EB00B57239 /* RecipeCategoryViewController.swift */; };
 		47712B372482E91A007E70D3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47712B362482E91A007E70D3 /* ProfileViewController.swift */; };
+		47B823A02484784100EAD12C /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B8239F2484784100EAD12C /* RecipeDetailViewController.swift */; };
 		BEFDE793160C3D12147A72D6 /* Pods_HellsKitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1805D7CD2483DF8A0014317E /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		1805D7CE2483DF960014317E /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
-		181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		181594C3247B242F0014FDFE /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +110,8 @@
 		4739B6512476F1EB00B57239 /* RecipeCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCategoryViewController.swift; sourceTree = "<group>"; };
 		47712B332482E32A007E70D3 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		47712B362482E91A007E70D3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		47B82398248472C700EAD12C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		47B8239F2484784100EAD12C /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeDetailViewController.swift; path = ../../../../../../.Trash/RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		4C92F4CC632D1789AF317B22 /* Pods-HellsKitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.debug.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.debug.xcconfig"; sourceTree = "<group>"; };
 		87BFEA792866D36FFAFD4A83 /* Pods_HellsKitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HellsKitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C04FFEFDCC1AB01549E211 /* Pods-HellsKitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellsKitchen.release.xcconfig"; path = "Target Support Files/Pods-HellsKitchen/Pods-HellsKitchen.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +173,7 @@
 				187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */,
 				1805D7CD2483DF8A0014317E /* PlayfairDisplay-Bold.ttf */,
 				187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */,
+				47B82398248472C700EAD12C /* Poppins-SemiBold.ttf */,
 				47712B332482E32A007E70D3 /* Poppins-Bold.ttf */,
 			);
 			path = Fonts;
@@ -346,7 +348,7 @@
 			children = (
 				4739B6512476F1EB00B57239 /* RecipeCategoryViewController.swift */,
 				18FB2A6C24787B1C00DDCAB0 /* RecipesViewController.swift */,
-				181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */,
+				47B8239F2484784100EAD12C /* RecipeDetailViewController.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -538,6 +540,7 @@
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
 				181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */,
 				18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */,
+				47B823A02484784100EAD12C /* RecipeDetailViewController.swift in Sources */,
 				181594C4247B242F0014FDFE /* IngredientCell.swift in Sources */,
 				18BE2845246B15D500869B6C /* AppDelegate.swift in Sources */,
 				18364E7D246C04B900F8DEBE /* MessageCell.swift in Sources */,
@@ -547,7 +550,6 @@
 				18364E7B246BF52300F8DEBE /* MessageModel.swift in Sources */,
 				18A075542479D26400517BED /* FirebaseManager.swift in Sources */,
 				187121CD246D2EF50008B307 /* WallViewController.swift in Sources */,
-				181594C1247B1B780014FDFE /* RecipeDetailViewController.swift in Sources */,
 				187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */,
 				187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */,
 				1891080A246B36B400F88489 /* Constants.swift in Sources */,

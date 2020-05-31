@@ -28,17 +28,18 @@ class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate
         }
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         setupSearchBar()
+        showNoPostViewIfNeeded()
     }
     
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 70.0
+        tableView.rowHeight = 50.0
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func setupSearchBar() {
-        searchBarView.layer.cornerRadius = 30
+        searchBarView.layer.cornerRadius = 25
         searchBarView.layer.borderWidth = 1
         searchBarView.layer.borderColor = UIColor.lightGray.cgColor
         searchBar.searchTextField.backgroundColor = .white
@@ -52,6 +53,7 @@ class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
         cell.delegate = self
+        cell.selectionStyle = .none
         cell.textLabel?.text = viewModel.recipeCategories[indexPath.row].name
         return cell
     }
@@ -77,6 +79,7 @@ class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate
     
     func updateModel(at index: IndexPath) {
         viewModel.remove(at: index)
+        showNoPostViewIfNeeded()
     }
     
     //MARK: - core data methods
@@ -143,12 +146,12 @@ extension RecipeCategoryViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchBarText = searchBar.text else { return }
-        
         if searchBarText.count != 0 {
             viewModel.loadDataThatContains(text: searchBarText)
         } else {
             viewModel.loadSavedData() {
                 self.tableView.reloadData()
+                self.showNoPostViewIfNeeded()
             }
         }
     }
@@ -158,6 +161,7 @@ extension RecipeCategoryViewController : UISearchBarDelegate {
         if searchBarText.count != 0 {
             viewModel.loadSavedData() {
                 self.tableView.reloadData()
+                self.showNoPostViewIfNeeded()
                 if !self.viewModel.doesCategoryExist(for: searchBarText) {
                     self.performReqest(for: searchBarText)
                 } else {
@@ -168,3 +172,13 @@ extension RecipeCategoryViewController : UISearchBarDelegate {
     }
 }
 
+//MARK: - search bar methods
+extension RecipeCategoryViewController {
+    func showNoPostViewIfNeeded() {
+        if viewModel.recipeCategories.count == 0 {
+            noPostsView.isHidden = false
+        } else {
+            noPostsView.isHidden = true
+        }
+    }
+}

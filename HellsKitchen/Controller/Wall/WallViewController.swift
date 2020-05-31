@@ -32,6 +32,7 @@ class WallViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
         if Constants.currentUserName != "" {
             userIsLoggedIn()
         } else {

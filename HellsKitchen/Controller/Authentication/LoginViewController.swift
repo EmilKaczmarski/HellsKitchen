@@ -30,12 +30,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         FirebaseManager.shared.loginViewController = self
         //GIDSignIn.sharedInstance().signIn()
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
-        tabBarController?.tabBar.isHidden = true
         loginButtonView.layer.cornerRadius = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = true
         setupBackButtonTitle()
     }
     
@@ -44,6 +44,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
+    
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        tabBarController?.selectedIndex = 0
+    }
+    
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {

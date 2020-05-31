@@ -11,6 +11,7 @@ import SnapKit
 
 class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var noPostsView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -28,7 +29,17 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
         }
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         setupSearchBar()
-        showNoPostViewIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        viewModel.loadSavedData() {
+            self.tableView.reloadData()
+            self.showNoPostViewIfNeeded()
+        }
+        
     }
     
     func setupTableView() {
@@ -54,6 +65,7 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecipeCategoryCell
         cell.selectionStyle = .none
         cell.name.text = viewModel.recipeCategories[indexPath.row].name
+        showNoPostViewIfNeeded()
         return cell
     }
     
@@ -61,25 +73,37 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete])
+        let placeholder = placeholderAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete, placeholder])
     }
     
     func deleteAction(at indexPath: IndexPath)-> UIContextualAction {
         let title = NSLocalizedString("Delete", comment: "delete")
+        
         let action = UIContextualAction(style: .destructive, title: title) { (action, view, completion) in
             self.viewModel.remove(at: indexPath)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.showNoPostViewIfNeeded()
             completion(true)
         }
-        
-        action.image = UIGraphicsImageRenderer(size: CGSize(width: 125, height: 39)).image { _ in
-            UIImage(named: "delete")!.draw(in: CGRect(x: 58, y: 0, width: 34, height: 39))
+        action.image = UIGraphicsImageRenderer(size: CGSize(width: 34, height: 39)).image { _ in
+            UIImage(named: "delete")!.draw(in: CGRect(x: 1, y: 0, width: 34, height: 39))
         }
-        
         action.backgroundColor = Constants.Colors.deepGreen
         return action
     }
 
+    func placeholderAction(at indexPath: IndexPath)-> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "") { (action, view, completion) in
+            self.viewModel.remove(at: indexPath)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.showNoPostViewIfNeeded()
+            completion(true)
+        }
+        action.backgroundColor = Constants.Colors.deepGreen
+        return action
+    }
+    
     //MARK: - updating model
     func updateModel(at index: IndexPath) {
         viewModel.remove(at: index)
@@ -166,6 +190,7 @@ extension RecipeCategoryViewController : UISearchBarDelegate {
             viewModel.loadSavedData() {
                 self.tableView.reloadData()
                 self.showNoPostViewIfNeeded()
+                self.searchBar.resignFirstResponder()
                 if !self.viewModel.doesCategoryExist(for: searchBarText) {
                     self.performReqest(for: searchBarText)
                 } else {
@@ -181,8 +206,9 @@ extension RecipeCategoryViewController {
     func showNoPostViewIfNeeded() {
         if viewModel.recipeCategories.count == 0 {
             noPostsView.isHidden = false
-            //tableView.isHidden = true
+            separatorView.isHidden = true
         } else {
+            separatorView.isHidden = false
             noPostsView.isHidden = true
             tableView.isHidden = false
         }

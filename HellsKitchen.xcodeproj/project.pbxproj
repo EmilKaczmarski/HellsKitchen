@@ -26,6 +26,7 @@
 		187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121CA246C84C20008B307 /* ChatViewModel.swift */; };
 		187121CD246D2EF50008B307 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121CC246D2EF50008B307 /* WallViewController.swift */; };
 		187C2EF324816FA5002694C3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */; };
+		18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18867D2924840C5700824345 /* RecipeCategoryCell.swift */; };
 		18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910805246B2BEA00F88489 /* RegisterViewController.swift */; };
 		18910808246B325900F88489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910807246B325900F88489 /* LoginViewController.swift */; };
 		1891080A246B36B400F88489 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910809246B36B400F88489 /* Constants.swift */; };
@@ -50,7 +51,6 @@
 		18ED1413246D67DA0093398A /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1412246D67DA0093398A /* CreatePostViewController.swift */; };
 		18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1414246D70C40093398A /* PostDetailViewController.swift */; };
 		18ED1417246D8F9E0093398A /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */; };
-		18F1C379247BF7EE003B39E7 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18F1C378247BF7EE003B39E7 /* SwipeCellKit */; };
 		18FB2A6B247820D200DDCAB0 /* RecipeCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6A247820D200DDCAB0 /* RecipeCategoryViewModel.swift */; };
 		18FB2A6D24787B1C00DDCAB0 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6C24787B1C00DDCAB0 /* RecipesViewController.swift */; };
 		18FB2A6F24787CD800DDCAB0 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB2A6E24787CD800DDCAB0 /* RecipesViewModel.swift */; };
@@ -62,10 +62,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1805D7CD2483DF8A0014317E /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		1805D7CE2483DF960014317E /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		181594C0247B1B780014FDFE /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		181594C3247B242F0014FDFE /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
-		181CBE2C24817CC1000DA125 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewController.swift; sourceTree = "<group>"; };
 		18364E78246BF2B600F8DEBE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		18364E7A246BF52300F8DEBE /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		187121CC246D2EF50008B307 /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
 		187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		18867D2924840C5700824345 /* RecipeCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryCell.swift; sourceTree = "<group>"; };
 		18910805246B2BEA00F88489 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		18910807246B325900F88489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18910809246B36B400F88489 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 				185440AE24797731005B9711 /* FacebookLogin in Frameworks */,
 				18364E80246C07BB00F8DEBE /* IQKeyboardManagerSwift in Frameworks */,
 				185440AA24797731005B9711 /* FacebookShare in Frameworks */,
-				18F1C379247BF7EE003B39E7 /* SwipeCellKit in Frameworks */,
 				185440AC24797731005B9711 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +143,7 @@
 				18ED1410246D34280093398A /* PostCell.swift */,
 				18D802C724731C20007F0E03 /* ChatUserCell.swift */,
 				181594C3247B242F0014FDFE /* IngredientCell.swift */,
+				18867D2924840C5700824345 /* RecipeCategoryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -166,6 +168,11 @@
 		182A4E522480406200092DAE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1805D7CE2483DF960014317E /* PlayfairDisplay-Bold.ttf */,
+				187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */,
+				1805D7CD2483DF8A0014317E /* PlayfairDisplay-Bold.ttf */,
+				187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */,
+				47712B332482E32A007E70D3 /* Poppins-Bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -273,7 +280,6 @@
 		18910804246B28F400F88489 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				182A4E522480406200092DAE /* Fonts */,
 				18910809246B36B400F88489 /* Constants.swift */,
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
@@ -319,10 +325,7 @@
 				18364E81246C085100F8DEBE /* Delegates */,
 				18BE2850246B15E000869B6C /* Assets.xcassets */,
 				18BE2855246B15E000869B6C /* Info.plist */,
-				187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */,
-				181CBE2C24817CC1000DA125 /* PlayfairDisplay-Bold.ttf */,
-				187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */,
-				47712B332482E32A007E70D3 /* Poppins-Bold.ttf */,
+				182A4E522480406200092DAE /* Fonts */,
 				18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */,
 				18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */,
 			);
@@ -403,7 +406,6 @@
 				185440A924797731005B9711 /* FacebookShare */,
 				185440AB24797731005B9711 /* FacebookCore */,
 				185440AD24797731005B9711 /* FacebookLogin */,
-				18F1C378247BF7EE003B39E7 /* SwipeCellKit */,
 			);
 			productName = HellsKitchen;
 			productReference = 18BE2841246B15D500869B6C /* HellsKitchen.app */;
@@ -440,7 +442,6 @@
 				18CB97CA2475AF120054123A /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				1848A89D2477191F00A6DD99 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				185440A824797731005B9711 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-				18F1C377247BF7EE003B39E7 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = 18BE2842246B15D500869B6C /* Products */;
 			projectDirPath = "";
@@ -563,6 +564,7 @@
 				18FB2A6D24787B1C00DDCAB0 /* RecipesViewController.swift in Sources */,
 				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
 				4739B64E2476EE9900B57239 /* Recipes.swift in Sources */,
+				18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
 				47712B372482E91A007E70D3 /* ProfileViewController.swift in Sources */,
 				18ED1411246D34280093398A /* PostCell.swift in Sources */,
@@ -814,14 +816,6 @@
 				minimumVersion = 1.2.3;
 			};
 		};
-		18F1C377247BF7EE003B39E7 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.7.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -864,11 +858,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18D802C924732775007F0E03 /* XCRemoteSwiftPackageReference "LetterAvatarKit" */;
 			productName = LetterAvatarKit;
-		};
-		18F1C378247BF7EE003B39E7 /* SwipeCellKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 18F1C377247BF7EE003B39E7 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
-			productName = SwipeCellKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

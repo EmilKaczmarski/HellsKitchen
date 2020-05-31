@@ -1107,12 +1107,17 @@
                                 <rect key="frame" x="0.0" y="263" width="414" height="550"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="6u6-bh-HMz">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-uV-HSE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="550"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="tol-1b-qdd">
-                                        <rect key="frame" x="0.0" y="253.5" width="414" height="194"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="194"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUP-zR-lCR">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
@@ -1154,8 +1159,8 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="tol-1b-qdd" firstAttribute="centerY" secondItem="YMT-uV-HSE" secondAttribute="centerY" constant="-12" id="9Ay-C2-8lF"/>
                                     <constraint firstItem="tol-1b-qdd" firstAttribute="leading" secondItem="YMT-uV-HSE" secondAttribute="leading" id="N8Y-Fn-LV2"/>
+                                    <constraint firstItem="tol-1b-qdd" firstAttribute="top" secondItem="YMT-uV-HSE" secondAttribute="top" constant="72" id="QCv-dn-Kzg"/>
                                     <constraint firstAttribute="trailing" secondItem="tol-1b-qdd" secondAttribute="trailing" id="ilC-NU-ywU"/>
                                 </constraints>
                             </view>
@@ -1214,12 +1219,12 @@
                             <constraint firstItem="wdx-lW-3pg" firstAttribute="trailing" secondItem="Gs8-ZG-ol1" secondAttribute="trailing" id="FC0-MR-vEp"/>
                             <constraint firstItem="wdx-lW-3pg" firstAttribute="leading" secondItem="Gs8-ZG-ol1" secondAttribute="leading" id="GoW-tS-qrI"/>
                             <constraint firstItem="Gs8-ZG-ol1" firstAttribute="bottom" secondItem="YMT-uV-HSE" secondAttribute="bottom" id="J4V-Eh-12g"/>
-                            <constraint firstItem="kUK-cs-XDY" firstAttribute="top" secondItem="wdx-lW-3pg" secondAttribute="bottom" constant="25" id="bV3-iL-2fI"/>
+                            <constraint firstItem="kUK-cs-XDY" firstAttribute="top" secondItem="wdx-lW-3pg" secondAttribute="bottom" constant="25" id="WPa-Em-dXp"/>
                             <constraint firstItem="wdx-lW-3pg" firstAttribute="top" secondItem="Gs8-ZG-ol1" secondAttribute="top" id="gi3-3H-jKD"/>
                             <constraint firstItem="kUK-cs-XDY" firstAttribute="leading" secondItem="Gs8-ZG-ol1" secondAttribute="leading" id="mhm-yQ-V17"/>
+                            <constraint firstItem="YMT-uV-HSE" firstAttribute="top" secondItem="wdx-lW-3pg" secondAttribute="bottom" constant="25" id="oSX-OK-oYx"/>
                             <constraint firstItem="Gs8-ZG-ol1" firstAttribute="trailing" secondItem="kUK-cs-XDY" secondAttribute="trailing" id="ocp-y1-azD"/>
                             <constraint firstItem="YMT-uV-HSE" firstAttribute="leading" secondItem="Gs8-ZG-ol1" secondAttribute="leading" symbolic="YES" id="y1X-t5-xU2"/>
-                            <constraint firstItem="YMT-uV-HSE" firstAttribute="top" secondItem="Gs8-ZG-ol1" secondAttribute="top" id="zHG-jF-CKn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gs8-ZG-ol1"/>
                     </view>
@@ -1234,7 +1239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lnA-ei-IEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4261" y="-1025"/>
+            <point key="canvasLocation" x="4260.8695652173919" y="-1025.2232142857142"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="xbl-iY-mFC">

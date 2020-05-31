@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SwipeCellKit
+import SnapKit
 
-class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate {
+class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var noPostsView: UIView!
@@ -34,8 +34,8 @@ class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 50.0
-        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = 54.0
+        tableView.register(RecipeCategoryCell.self, forCellReuseIdentifier: "cell")
     }
     
     func setupSearchBar() {
@@ -51,32 +51,36 @@ class RecipeCategoryViewController: UIViewController, SwipeTableViewCellDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
-        cell.delegate = self
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecipeCategoryCell
         cell.selectionStyle = .none
-        cell.textLabel?.text = viewModel.recipeCategories[indexPath.row].name
+        cell.name.text = viewModel.recipeCategories[indexPath.row].name
         return cell
     }
+    
     //MARK: - swipe cell methods
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            self.updateModel(at: indexPath)
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func deleteAction(at indexPath: IndexPath)-> UIContextualAction {
+        let title = NSLocalizedString("Delete", comment: "delete")
+        let action = UIContextualAction(style: .destructive, title: title) { (action, view, completion) in
+            self.viewModel.remove(at: indexPath)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion(true)
         }
-        //customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
         
-        return [deleteAction]
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeOptions()
-        options.expansionStyle = .destructive
+        action.image = UIGraphicsImageRenderer(size: CGSize(width: 125, height: 39)).image { _ in
+            UIImage(named: "delete")!.draw(in: CGRect(x: 58, y: 0, width: 34, height: 39))
+        }
         
-        return options
+        action.backgroundColor = Constants.Colors.deepGreen
+        return action
     }
-    
+
+    //MARK: - updating model
     func updateModel(at index: IndexPath) {
         viewModel.remove(at: index)
         showNoPostViewIfNeeded()
@@ -177,8 +181,10 @@ extension RecipeCategoryViewController {
     func showNoPostViewIfNeeded() {
         if viewModel.recipeCategories.count == 0 {
             noPostsView.isHidden = false
+            //tableView.isHidden = true
         } else {
             noPostsView.isHidden = true
+            tableView.isHidden = false
         }
     }
 }

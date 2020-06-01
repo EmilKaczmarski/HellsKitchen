@@ -21,17 +21,22 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var ingredientsStackView: UIStackView!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var radiusView: UIView!
     let viewModel: RecipeDetailViewModel = RecipeDetailViewModel()
     var isImageViewFocused = false
     var imageScale = 1.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        radiusView.layer.cornerRadius = 26
+        radiusView.layer.masksToBounds = true
+        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(IngredientCell.self, forCellReuseIdentifier: "cell")
         viewModel.delegate = self
         viewModel.setupData()
         startAnimatingView()
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         uploadImage()
     }
     

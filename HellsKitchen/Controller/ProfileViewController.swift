@@ -20,5 +20,7 @@ class ProfileViewController: UIViewController {
         
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        logOutIcon.transform.rotated(by: (CGFloat(Double.pi / 2)))
     }
 }

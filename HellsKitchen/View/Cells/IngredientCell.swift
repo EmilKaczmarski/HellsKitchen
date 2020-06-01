@@ -27,25 +27,54 @@ class IngredientCell: UITableViewCell {
         }
     }
     
-    lazy var name: UILabel = {
-        let name = UILabel()
-        name.numberOfLines = 0
-        return name
-    }()
-    
-    lazy var weight: UILabel = {
-        let weight = UILabel()
-        weight.numberOfLines = 0
-        return weight
-    }()
-    
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.addArrangedSubview(name)
-        stackView.addArrangedSubview(weight)
+        stackView.addArrangedSubview(leftView)
+        stackView.addArrangedSubview(rightView)
+        stackView.spacing = 4
         return stackView
+    }()
+    
+    lazy var rightView: UIView = {
+          let view = UIView()
+          view.addSubview(name)
+          name.snp.makeConstraints { (maker) in
+              maker.centerX.centerY.leading.trailing.bottom.top.equalToSuperview()
+          }
+          return view
+      }()
+    
+    lazy var name: UILabel = {
+        let name = UILabel()
+        name.numberOfLines = 0
+        name.lineBreakMode = .byWordWrapping
+        name.font = UIFont.systemFont(ofSize: 14.0)
+        name.textColor = Constants.Colors.deepGreen
+        name.textAlignment = .left
+        return name
+    }()
+    
+    lazy var leftView: UIView = {
+          let view = UIView()
+          view.addSubview(weight)
+          weight.snp.makeConstraints { (maker) in
+              maker.centerX.centerY.leading.trailing.bottom.top.equalToSuperview()
+          }
+        view.snp.makeConstraints { (maker) in
+            maker.width.equalTo(96)
+        }
+          return view
+      }()
+    
+    lazy var weight: UILabel = {
+        let weight = UILabel()
+        weight.numberOfLines = 0
+        weight.font = UIFont.systemFont(ofSize: 14.0)
+        weight.textColor = Constants.Colors.deepGreen
+        weight.textAlignment = .left
+        return weight
     }()
     
 }

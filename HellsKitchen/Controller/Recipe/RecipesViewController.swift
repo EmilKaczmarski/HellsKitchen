@@ -25,6 +25,7 @@ class RecipesViewController: UIViewController {
         viewModel.delegate = self
         setupSearchBar()
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        loadImages()
     }
     
     
@@ -39,18 +40,31 @@ extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
         return viewModel.recipes.count
     }
 
-       // cell.textLabel?.text = recipe.label
+       
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecipeTableViewCell
         cell.name.text = viewModel.recipes[indexPath.row].label
-        cell.imageBox.image = UIImage(named: "delete")
+        if let data = viewModel.recipes[indexPath.row].image {
+            cell.imageBox.image = UIImage(data: data)
+        }
         cell.selectionStyle = .none
         return cell
     }
     
 }
 
-
+//MARK: - loading images
+extension RecipesViewController {
+    func loadImages() {
+        for recipe in viewModel.recipes {
+            if recipe.image == nil {
+                viewModel.downloadImage(for: recipe) {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+}
 //MARK: - search bar
 extension RecipesViewController {
     func setupSearchBar() {

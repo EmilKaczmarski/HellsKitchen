@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 class RecipeCategoryViewModel {
     var delegate: RecipeCategoryViewController?
@@ -155,13 +156,33 @@ extension RecipeCategoryViewModel {
                 }
             }
         }
-        
         do {
-            try context.save()
+            try self.context.save()
             completion()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
             completion()
+        }
+    }
+}
+
+//MARK: - performing request-> downloading image
+extension RecipeCategoryViewModel {
+    func downloadImage(with url: String, for recipe: RecipeModel, completion: @escaping ()-> ()) {
+        AF
+            .request(url, method:  .get)
+            .response {
+                response in
+                switch response.result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        recipe.image = data!
+                        completion()
+                    }
+                case .failure(let error):
+                    print(error)
+                    completion()
+                }
         }
     }
 }

@@ -39,6 +39,7 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
             self.tableView.reloadData()
             self.showNoPostViewIfNeeded()
         }
+        
     }
     
     func setupTableView() {

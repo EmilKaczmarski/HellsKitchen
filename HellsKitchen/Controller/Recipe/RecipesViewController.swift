@@ -9,45 +9,47 @@
 import UIKit
 
 class RecipesViewController: UIViewController {
-    
-    let viewModel: RecipesViewModel = RecipesViewModel()
-    
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var separatorView: UIView!
+    let viewModel: RecipesViewModel = RecipesViewModel()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 54
+
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: "cell")
         viewModel.delegate = self
         setupSearchBar()
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
     }
     
-    //MARK: - back button
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popToRootViewController(animated: true)
     }
+
 }
 
-//MARK: - tableView methods
 extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.recipes.count
     }
 
+       // cell.textLabel?.text = recipe.label
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecipeTableViewCell
         cell.name.text = viewModel.recipes[indexPath.row].label
         cell.imageBox.image = UIImage(named: "delete")
+        cell.selectionStyle = .none
         return cell
     }
+    
 }
+
 
 //MARK: - search bar
 extension RecipesViewController {
@@ -62,15 +64,15 @@ extension RecipesViewController {
 
 //MARK: - segue methods
 extension RecipesViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! RecipeDetailViewController
-        if let indexPath = tableView.indexPathForSelectedRow {
-            vc.viewModel.recipe = viewModel.recipes[indexPath.row]
-            for i in viewModel.recipes[indexPath.row].ingrendients! {
-                vc.viewModel.ingredients.append(i as! IngredientModel)
-            }
-        }
-    }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      let vc = segue.destination as! RecipeDetailViewController
+      if let indexPath = tableView.indexPathForSelectedRow {
+          vc.viewModel.recipe = viewModel.recipes[indexPath.row]
+          for i in viewModel.recipes[indexPath.row].ingrendients! {
+              vc.viewModel.ingredients.append(i as! IngredientModel)
+          }
+      }
+  }
 }
 
 //MARK: - searchBar methods

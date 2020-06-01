@@ -39,7 +39,6 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
             self.tableView.reloadData()
             self.showNoPostViewIfNeeded()
         }
-        
     }
     
     func setupTableView() {
@@ -129,7 +128,7 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
                     group.notify(queue: DispatchQueue.main) {
                         if result {
                             self.dismiss(animated: true, completion: nil)
-                            self.performSegue(withIdentifier: Constants.Segues.recipeCetegorySegue, sender: self)
+                            self.performSegue(withIdentifier: Constants.Segues.recipeCategorySegue, sender: self)
                         }
                     }
                 }
@@ -164,7 +163,7 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.Segues.recipeCetegorySegue, sender: self)
+        performSegue(withIdentifier: Constants.Segues.recipeCategorySegue, sender: self)
     }
     
 }

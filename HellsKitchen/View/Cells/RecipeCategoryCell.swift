@@ -58,7 +58,7 @@ class RecipeCategoryCell: UITableViewCell {
     lazy var name: UILabel = {
        let textLabel = UILabel()
         textLabel.textAlignment = .left
-        textLabel.font = UIFont.systemFont(ofSize: 14.0)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
         textLabel.textColor = Constants.Colors.deepGreen
         return textLabel
     }()

@@ -86,8 +86,8 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
             self.showNoPostViewIfNeeded()
             completion(true)
         }
-        action.image = UIGraphicsImageRenderer(size: CGSize(width: 34, height: 39)).image { _ in
-            UIImage(named: "delete")!.draw(in: CGRect(x: 1, y: 0, width: 34, height: 39))
+        action.image = UIGraphicsImageRenderer(size: CGSize(width: 34, height: 38)).image { _ in
+            UIImage(named: "delete")!.draw(in: CGRect(x: 1, y: 2, width: 34, height: 39))
         }
         action.backgroundColor = Constants.Colors.deepGreen
         return action

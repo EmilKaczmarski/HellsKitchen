@@ -26,6 +26,7 @@
 		187121CD246D2EF50008B307 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121CC246D2EF50008B307 /* WallViewController.swift */; };
 		187C2EF324816FA5002694C3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */; };
 		18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18867D2924840C5700824345 /* RecipeCategoryCell.swift */; };
+		1890714724852FF9008CB184 /* SignInMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890714624852FF9008CB184 /* SignInMenuViewController.swift */; };
 		18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910805246B2BEA00F88489 /* RegisterViewController.swift */; };
 		18910808246B325900F88489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910807246B325900F88489 /* LoginViewController.swift */; };
 		1891080A246B36B400F88489 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910809246B36B400F88489 /* Constants.swift */; };
@@ -79,6 +80,7 @@
 		187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		18867D2924840C5700824345 /* RecipeCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryCell.swift; sourceTree = "<group>"; };
+		1890714624852FF9008CB184 /* SignInMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMenuViewController.swift; sourceTree = "<group>"; };
 		18910805246B2BEA00F88489 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		18910807246B325900F88489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18910809246B36B400F88489 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				18910805246B2BEA00F88489 /* RegisterViewController.swift */,
 				18910807246B325900F88489 /* LoginViewController.swift */,
+				1890714624852FF9008CB184 /* SignInMenuViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				18910808246B325900F88489 /* LoginViewController.swift in Sources */,
 				18E2CDBE2484E6C6000B1D42 /* RecipeTableViewCell.swift in Sources */,
 				18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */,
+				1890714724852FF9008CB184 /* SignInMenuViewController.swift in Sources */,
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
 				181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */,
 				18E2CDC02484EA35000B1D42 /* RecipeDetailViewController.swift in Sources */,

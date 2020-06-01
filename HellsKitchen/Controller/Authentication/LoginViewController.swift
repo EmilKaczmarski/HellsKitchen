@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
 //        FBLoginButton.permissions = ["public_profile", "email"]
         //Google
 //        GIDSignIn.sharedInstance()?.presentingViewController = self
-        FirebaseManager.shared.loginViewController = self
+        //FirebaseManager.shared.loginViewController = self
         //GIDSignIn.sharedInstance().signIn()
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         loginButtonView.layer.cornerRadius = 20
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        tabBarController?.selectedIndex = 0
+        navigationController?.popViewController(animated: true)
     }
     
     

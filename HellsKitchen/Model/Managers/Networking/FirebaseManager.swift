@@ -14,6 +14,7 @@ class FirebaseManager {
     static let shared = FirebaseManager()
     let db = Firestore.firestore()
     var loginViewController: LoginViewController?
+    var signInViewController: SignInMenuViewController?
     var registerViewController: RegisterViewController?
     func getCurrentUser()-> String {
         return Auth.auth().currentUser?.email ?? ""
@@ -24,7 +25,7 @@ class FirebaseManager {
         var controller: UIViewController {
             switch self {
             case .login:
-                return FirebaseManager.shared.loginViewController!
+                return FirebaseManager.shared.signInViewController!
             case .register:
                 return FirebaseManager.shared.registerViewController!
             }
@@ -129,7 +130,7 @@ extension FirebaseManager {
     func signInWithExternalApplication(with credential: AuthCredential, type: ControllerType,completion: @escaping ()-> Void) {
         let controller = type.controller
         if type == .login {
-            loginViewController!.loginLoader.startAnimating()
+            signInViewController!.loginLoader.startAnimating()
         }
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
@@ -142,7 +143,7 @@ extension FirebaseManager {
                 if doesExist {
                     Constants.currentUserEmail = userEmail
                     FirebaseManager.shared.setCurrentUsername {
-                        controller.navigationController?.popToRootViewController(animated: true)
+                        controller.tabBarController?.selectedIndex = 0
                     }
                 } else {
                     AlertManager.shared.askNewUserToProvideName(with: "please provide new username", in: controller)

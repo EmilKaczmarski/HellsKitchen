@@ -45,10 +45,7 @@ class WallViewController: UIViewController {
 
 extension WallViewController {
     private func userIsLoggedIn() {
-        chatButton.isEnabled = true
-        addPostButton.isEnabled = true
-        searchButton.isEnabled = true
-        navigationItem.title = Constants.currentUserName
+        
     }
     
     private func userIsLoggedOut() {

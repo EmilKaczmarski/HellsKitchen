@@ -34,6 +34,7 @@ class ChatViewController: UIViewController {
         enableFirebaseToOfflineMode()
         viewModel.loadMessagesFromCloud()
         setupBackButtonTitle()
+        tabBarController?.tabBar.isHidden = true
     }
     
     func enableFirebaseToOfflineMode() {
@@ -63,6 +64,10 @@ class ChatViewController: UIViewController {
                 AlertManager.shared.sendMessageAlert(in: self)
             }
         }
+    }
+    
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
 }

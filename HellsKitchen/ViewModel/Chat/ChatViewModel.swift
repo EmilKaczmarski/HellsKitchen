@@ -45,10 +45,10 @@ extension ChatViewModel {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for i in snapshotDocuments {
                             let data = i.data()
-                            let message = MessageModel(
-                                message: data["message"] as! String,
-                                sender: data["sender"] as! String,
-                                timestamp: "\(data["timestamp"]!)")
+                            var message = MessageModel()
+                            message.message = data["message"] as? String
+                            message.sender = data["sender"] as? String
+                            message.timestamp = "\(data["timestamp"]!)"
                             self.messages.append(message)
                         }
                     }
@@ -67,9 +67,10 @@ extension ChatViewModel {
         delegate!.db.collection(Constants.FStore.messages)
             .document(self.messagesId).setData(
                 [
-                    Constants.FStore.MessageDocumentComponents.firstUser  : mess.sender,
+                    Constants.FStore.MessageDocumentComponents.firstUser  : mess.sender!,
                     Constants.FStore.MessageDocumentComponents.secondUser : receiver,
-                    Constants.FStore.MessageDocumentComponents.timestamp : mess.timestamp
+                    Constants.FStore.MessageDocumentComponents.timestamp : mess.timestamp!,
+                    Constants.FStore.MessageDocumentComponents.lastMessage : message
             ])
         
         delegate!.db.collection(Constants.FStore.messages)
@@ -77,9 +78,9 @@ extension ChatViewModel {
             .collection(Constants.FStore.messages)
             .addDocument(data:
                 [
-                    Constants.FStore.MessageComponents.sender : mess.sender,
-                    Constants.FStore.MessageComponents.message   : mess.message,
-                    Constants.FStore.MessageComponents.timestamp : mess.timestamp
+                    Constants.FStore.MessageComponents.sender : mess.sender!,
+                    Constants.FStore.MessageComponents.message   : mess.message!,
+                    Constants.FStore.MessageComponents.timestamp : mess.timestamp!
             ] )
         
         self.messages.append(mess)

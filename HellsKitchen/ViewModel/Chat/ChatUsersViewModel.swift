@@ -20,7 +20,6 @@ class ChatUsersViewModel {
         filteredUsers = users.filter {
             $0.name!.range(of: name, options: [.diacriticInsensitive, .caseInsensitive]) != nil
         }.sorted { $0.name! < $1.name! }
-        cells = []
         cells = filteredUsers
         delegate?.tableView.reloadData()
     }
@@ -55,6 +54,7 @@ class ChatUsersViewModel {
                 AlertManager.shared.errorAlert(in: self.delegate!)
                 print(err.localizedDescription)
             } else {
+                self.users = []
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
                         let element = i.data()
@@ -71,16 +71,17 @@ class ChatUsersViewModel {
     }
     
     func loadMessages(completion: @escaping ()-> ()) {
-        self.allMessages = []
-        self.delegate!.db.collection(Constants.FStore.allMessages).getDocuments {
+        
+        self.delegate!.db.collection(Constants.FStore.allMessages).addSnapshotListener {
             (querySnapshot, error) in
-            
             if let err = error {
                 AlertManager.shared.errorAlert(in: self.delegate!)
                 print(err.localizedDescription)
                 completion()
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
+                    self.cells = []
+                    self.allMessages = []
                     for i in snapshotDocuments {
                         var isFound = false
                         let element = i.data()
@@ -92,17 +93,10 @@ class ChatUsersViewModel {
                         
                         if isFound {
                             var messageBundle = MessageBundle()
-                            for (key, value) in element {
-                                if key == "firstUser" {
-                                    messageBundle.firstUser = (value as! String)
-                                }
-                                if key == "secondUser" {
-                                    messageBundle.secondUser = (value as! String)
-                                }
-                                if key == "timestamp" {
-                                    messageBundle.timestamp = (value as! String)
-                                }
-                            }
+                            messageBundle.firstUser = element["firstUser"] as? String
+                            messageBundle.secondUser = element["secondUser"] as? String
+                            messageBundle.timestamp = element["timestamp"] as? String
+                            messageBundle.lastMessage = element["lastMessage"] as? String
                             self.allMessages.append(messageBundle)
                         }
                     }

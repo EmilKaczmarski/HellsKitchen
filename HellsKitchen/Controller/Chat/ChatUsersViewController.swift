@@ -29,6 +29,7 @@ class ChatUsersViewController: UIViewController {
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = CGFloat(Constants.Sizes.chatViewCellHeight)
         setupSearchBar()
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,6 +123,16 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = segue.destination as! ChatViewController
         vc.sender = Constants.currentUserName
         if let indexPath = tableView.indexPathForSelectedRow {
+            var receiver = ""
+            if viewModel.cells[indexPath.row] is MessageBundle {
+                let message = viewModel.cells[indexPath.row] as! MessageBundle
+                if message.firstUser == Constants.currentUserName {
+                    receiver = message.secondUser!
+                } else {
+                    receiver = message.firstUser!
+                }
+            }
+            vc.receiver = receiver
             vc.title = vc.receiver
         }
     }

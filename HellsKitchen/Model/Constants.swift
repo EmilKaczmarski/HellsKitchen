@@ -68,6 +68,7 @@ extension Constants {
             static let firstUser =  "firstUser"
             static let secondUser = "secondUser"
             static let timestamp = "timestamp"
+            static let lastMessage = "lastMessage"
         }
         
         struct PostComponents {

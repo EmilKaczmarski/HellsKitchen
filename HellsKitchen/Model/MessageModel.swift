@@ -8,8 +8,16 @@
 
 import Foundation
 
+struct MessageBundle {
+    var firstUser: String?
+    var secondUser: String?
+    var messageges: [MessageModel]?
+    var lastMessage: String?
+    var timestamp: String?
+}
+
 struct MessageModel {
-    let message: String
-    let sender: String
-    let timestamp: String
+    var message: String?
+    var sender: String?
+    var timestamp: String?
 }

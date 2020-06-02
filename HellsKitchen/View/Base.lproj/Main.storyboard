@@ -2014,6 +2014,7 @@
                     <connections>
                         <outlet property="carrotView" destination="6MN-4O-OTN" id="0xs-Qz-Elm"/>
                         <outlet property="searchBar" destination="L1W-6d-CqP" id="XSa-T9-hX8"/>
+                        <outlet property="searchBarView" destination="aOm-YT-5dt" id="qSa-4m-kDQ"/>
                         <outlet property="tableView" destination="vwF-fs-ADB" id="X6F-NR-HDU"/>
                     </connections>
                 </viewController>

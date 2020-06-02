@@ -45,6 +45,7 @@
 		18CB97CC2475AF120054123A /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 18CB97CB2475AF120054123A /* DynamicColor */; };
 		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
 		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
+		18E2C96824866397007BEB56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2C96724866397007BEB56 /* User.swift */; };
 		18E2CDBE2484E6C6000B1D42 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2CDBD2484E6C6000B1D42 /* RecipeTableViewCell.swift */; };
 		18E2CDC02484EA35000B1D42 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2CDBF2484EA35000B1D42 /* RecipeDetailViewController.swift */; };
 		18ED140D246D312E0093398A /* WallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED140C246D312E0093398A /* WallViewModel.swift */; };
@@ -99,6 +100,7 @@
 		18BE2855246B15E000869B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D802C724731C20007F0E03 /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
+		18E2C96724866397007BEB56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18E2CDBD2484E6C6000B1D42 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		18E2CDBF2484EA35000B1D42 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		18ED140C246D312E0093398A /* WallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModel.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				18ED140E246D32810093398A /* Post.swift */,
 				18364E7A246BF52300F8DEBE /* MessageModel.swift */,
 				4739B64D2476EE9900B57239 /* Recipes.swift */,
+				18E2C96724866397007BEB56 /* User.swift */,
 				181594C7247B3AB20014FDFE /* Managers */,
 			);
 			path = Model;
@@ -557,6 +560,7 @@
 				18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */,
 				18364E7B246BF52300F8DEBE /* MessageModel.swift in Sources */,
 				18A075542479D26400517BED /* FirebaseManager.swift in Sources */,
+				18E2C96824866397007BEB56 /* User.swift in Sources */,
 				187121CD246D2EF50008B307 /* WallViewController.swift in Sources */,
 				187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */,
 				187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */,

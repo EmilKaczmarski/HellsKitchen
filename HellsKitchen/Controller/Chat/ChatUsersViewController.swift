@@ -11,6 +11,7 @@ import Firebase
 
 class ChatUsersViewController: UIViewController {
     
+    @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var carrotView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,8 +25,10 @@ class ChatUsersViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 71
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = CGFloat(Constants.Sizes.chatViewCellHeight)
+        setupSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +37,8 @@ class ChatUsersViewController: UIViewController {
         viewModel.setupData()
         setupBackButtonTitle()
         hidecarrotViewIfNeeded()
-        print(viewModel.allUsers.count)
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
     
     func enableFirebaseToOfflineMode() {
@@ -44,6 +48,13 @@ class ChatUsersViewController: UIViewController {
         // Enable offline data persistence
         db.settings = settings
         // [END enable_offline]
+    }
+    
+    func setupSearchBar() {
+        searchBarView.layer.cornerRadius = 25
+        searchBarView.layer.borderWidth = 1
+        searchBarView.layer.borderColor = UIColor.lightGray.cgColor
+        searchBar.searchTextField.backgroundColor = .white
     }
     
     func setupBackButtonTitle() {
@@ -60,7 +71,7 @@ class ChatUsersViewController: UIViewController {
 //MARK: - noUsersView methods
 extension ChatUsersViewController {
     func hidecarrotViewIfNeeded() {
-        if viewModel.allUsers.count == 0 {
+        if viewModel.cells.count == 0 {
             carrotView.isHidden = false
         } else {
             carrotView.isHidden = true
@@ -73,16 +84,34 @@ extension ChatUsersViewController {
 extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChatUserCell
-        cell.name.text = viewModel.users[indexPath.row]
+        
+        if viewModel.cells[indexPath.row] is MessageBundle {
+            let message = viewModel.cells[indexPath.row] as! MessageBundle
+            var name = Constants.currentUserName
+            if message.firstUser == name {
+                name = message.secondUser!
+            }
+            let date = Date(timeIntervalSince1970: Double(message.timestamp!)!)
+            cell.name.text = name
+            cell.lastMessage.isHidden = false
+            cell.date.isHidden = false
+            cell.lastMessage.isHidden = false
+            cell.date.text = "\(date)"[0..<10].replacingOccurrences(of: "-", with: ".")
+            cell.lastMessage.text = message.lastMessage
+        } else if viewModel.cells[indexPath.row] is User{
+            let user = viewModel.cells[indexPath.row] as! User
+            cell.name.text = user.name
+            cell.lastMessage.isHidden = true
+            cell.date.isHidden = true
+            cell.lastMessage.isHidden = true
+        }
         cell.imageBox.image = UIImage(named: "test")
-        cell.date.text = "yesterday"
-        cell.lastMessage.text = "blabla"
         hidecarrotViewIfNeeded()
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.users.count
+        return viewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -93,14 +122,17 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = segue.destination as! ChatViewController
         vc.sender = Constants.currentUserName
         if let indexPath = tableView.indexPathForSelectedRow {
-            vc.receiver = viewModel.users[indexPath.row]
             vc.title = vc.receiver
         }
     }
     
-    func loadAllUsers() {
-        viewModel.users = viewModel.allUsers
+    func loadUsers() {
+        viewModel.cells = viewModel.allMessages
         tableView.reloadData()
+    }
+    
+    func loadFromAllUsers() {
+        
     }
 }
 
@@ -113,7 +145,7 @@ extension ChatUsersViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
-            loadAllUsers()
+            loadUsers()
         } else {
             viewModel.loadFilteredData(by: searchBar.text!)
         }

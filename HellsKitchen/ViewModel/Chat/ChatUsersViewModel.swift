@@ -11,13 +11,17 @@ import Firebase
 
 class ChatUsersViewModel {
     var delegate: ChatUsersViewController?
-    var users = [String]()
-    var allUsers = [String]()
+    var allMessages: [MessageBundle] = [MessageBundle]()
+    var users: [User] = [User]()
+    var filteredUsers: [User] = [User]()
+    var cells: [Any] = [Any]()
     
     func loadFilteredData(by name: String) {
-        users = allUsers.filter {
-            $0.range(of: name, options: [.diacriticInsensitive, .caseInsensitive]) != nil
-        }.sorted { $0 < $1 }
+        filteredUsers = users.filter {
+            $0.name!.range(of: name, options: [.diacriticInsensitive, .caseInsensitive]) != nil
+        }.sorted { $0.name! < $1.name! }
+        cells = []
+        cells = filteredUsers
         delegate?.tableView.reloadData()
     }
     
@@ -32,10 +36,21 @@ class ChatUsersViewModel {
         AlertManager.shared.sheduleTimerFor(alert: alert, in: self.delegate!) { (success) in
             result = success
         }
-        self.allUsers = []
+        
+        loadAllUsers()
+        
+        loadMessages() {
+            group.notify(queue: DispatchQueue.main) {
+                if result {
+                    self.delegate!.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    func loadAllUsers() {
         self.delegate!.db.collection(Constants.FStore.allUsers).getDocuments {
             (querySnapshot, error) in
-            
             if let err = error {
                 AlertManager.shared.errorAlert(in: self.delegate!)
                 print(err.localizedDescription)
@@ -44,21 +59,59 @@ class ChatUsersViewModel {
                     for i in snapshotDocuments {
                         let element = i.data()
                         if element[element.startIndex].key != Constants.currentUserName {
-                            self.allUsers.append(element[element.startIndex].key)
+                            var user = User()
+                            user.name = element[element.startIndex].key
+                            self.users.append(user)
+                        }
+                    }
+                    self.filteredUsers = self.users
+                }
+            }
+        }
+    }
+    
+    func loadMessages(completion: @escaping ()-> ()) {
+        self.allMessages = []
+        self.delegate!.db.collection(Constants.FStore.allMessages).getDocuments {
+            (querySnapshot, error) in
+            
+            if let err = error {
+                AlertManager.shared.errorAlert(in: self.delegate!)
+                print(err.localizedDescription)
+                completion()
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for i in snapshotDocuments {
+                        var isFound = false
+                        let element = i.data()
+                        for (value) in element.values {
+                            if (value as! String) == Constants.currentUserName {
+                                isFound = true
+                            }
+                        }
+                        
+                        if isFound {
+                            var messageBundle = MessageBundle()
+                            for (key, value) in element {
+                                if key == "firstUser" {
+                                    messageBundle.firstUser = (value as! String)
+                                }
+                                if key == "secondUser" {
+                                    messageBundle.secondUser = (value as! String)
+                                }
+                                if key == "timestamp" {
+                                    messageBundle.timestamp = (value as! String)
+                                }
+                            }
+                            self.allMessages.append(messageBundle)
                         }
                     }
                 }
             }
-            
-            group.notify(queue: DispatchQueue.main) {
-                if result {
-                    self.delegate!.dismiss(animated: true, completion: nil)
-                }
-            }
-            self.users = self.allUsers
+            self.cells = self.allMessages
             self.delegate!.tableView.reloadData()
+            completion()
         }
     }
-    
 }
 

@@ -25,11 +25,11 @@ class ChatUserCell: UITableViewCell {
     private func setupView() {
         addSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
-            maker.top.bottom.equalToSuperview()
+            maker.top.equalToSuperview().offset(16)
+            maker.bottom.equalToSuperview().offset(-14)
             maker.trailing.equalToSuperview().offset(-20)
             maker.leading.equalToSuperview().offset(20)
         }
-        
     }
     
     //MARK: - stackView
@@ -109,8 +109,6 @@ class ChatUserCell: UITableViewCell {
         view.addSubview(middleStackView)
         middleStackView.snp.makeConstraints { (maker) in
             maker.leading.trailing.equalToSuperview()
-            maker.top.equalToSuperview().offset(16)
-            maker.bottom.equalToSuperview().offset(-14)
         }
         return view
     }()
@@ -132,7 +130,7 @@ class ChatUserCell: UITableViewCell {
         view.addSubview(date)
         date.snp.makeConstraints { (maker) in
             maker.centerX.trailing.leading.equalToSuperview()
-            maker.centerY.equalToSuperview().offset(17)
+            maker.bottom.equalToSuperview().offset(-5)
         }
         return view
     }()

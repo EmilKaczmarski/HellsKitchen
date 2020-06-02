@@ -73,27 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
              return true
     }
     
-//    //MARK: - google signin functions
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-//      // ...
-//      if let error = error {
-//        print(error.localizedDescription)
-//        return
-//      }
-//      guard let authentication = user.authentication else { return }
-//      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                        accessToken: authentication.accessToken)
-//      
-//        FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
-//            
-//        }
-//    }
-
-//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-//        // Perform any operations when the user disconnects from app here.
-//        // ...
-//    }
-    
     // MARK: - UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

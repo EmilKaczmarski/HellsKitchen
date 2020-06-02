@@ -9,9 +9,11 @@
 import UIKit
 import Firebase
 
-class ChatUsersViewController: UITableViewController {
+class ChatUsersViewController: UIViewController {
     
-    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var carrotView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     let db = Firestore.firestore()
     let viewModel: ChatUsersViewModel = ChatUsersViewModel()
@@ -19,6 +21,9 @@ class ChatUsersViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 71
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = CGFloat(Constants.Sizes.chatViewCellHeight)
     }
@@ -28,7 +33,8 @@ class ChatUsersViewController: UITableViewController {
         enableFirebaseToOfflineMode()
         viewModel.setupData()
         setupBackButtonTitle()
-        hideLoup()
+        hidecarrotViewIfNeeded()
+        print(viewModel.allUsers.count)
     }
     
     func enableFirebaseToOfflineMode() {
@@ -48,48 +54,38 @@ class ChatUsersViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        hideLoup()
-    }
-    
-    @IBAction func loupePressed(_ sender: UIBarButtonItem) {
-        if tableView.tableHeaderView!.frame.size.height == 0 {
-            showLoup()
-        } else {
-            hideLoup()
-        }
-        tableView.reloadData()
     }
 }
 
-//MARK: - loup methods
+//MARK: - noUsersView methods
 extension ChatUsersViewController {
-    func hideLoup() {
-        tableView.tableHeaderView!.frame.size.height = 0
-        searchBar.resignFirstResponder()
-        searchBar.text = ""
-    }
-    
-    func showLoup() {
-        tableView.tableHeaderView!.frame.size.height = 40
-        searchBar.becomeFirstResponder()
+    func hidecarrotViewIfNeeded() {
+        if viewModel.allUsers.count == 0 {
+            carrotView.isHidden = false
+        } else {
+            carrotView.isHidden = true
+        }
     }
 }
+
 
 //MARK: - tableview delegate, datasource methods
-extension ChatUsersViewController {
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ChatUserCell
         cell.name.text = viewModel.users[indexPath.row]
-        cell.avatarImageView.image = cell.createAvatar(for: viewModel.users[indexPath.row].uppercased())
-        cell.backgroundColor = UIColor(hexaString: Constants.Colors.lightGreen)
+        cell.imageBox.image = UIImage(named: "test")
+        cell.date.text = "yesterday"
+        cell.lastMessage.text = "blabla"
+        hidecarrotViewIfNeeded()
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.users.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constants.Segues.chatUsersSegue, sender: self)
     }
     
@@ -100,7 +96,6 @@ extension ChatUsersViewController {
             vc.receiver = viewModel.users[indexPath.row]
             vc.title = vc.receiver
         }
-        hideLoup()
     }
     
     func loadAllUsers() {

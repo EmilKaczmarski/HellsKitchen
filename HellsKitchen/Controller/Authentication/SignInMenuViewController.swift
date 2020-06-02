@@ -44,9 +44,9 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
         signWithFacebookView.layer.borderColor = Constants.Colors.deepGreen.cgColor
         signWithEmailView.layer.borderColor = Constants.Colors.deepGreen.cgColor
         
-        signWithGoogleView.layer.cornerRadius = 30
-        signWithFacebookView.layer.cornerRadius = 30
-        signWithEmailView.layer.cornerRadius = 30
+        signWithGoogleView.layer.cornerRadius = 25
+        signWithFacebookView.layer.cornerRadius = 25
+        signWithEmailView.layer.cornerRadius = 25
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {

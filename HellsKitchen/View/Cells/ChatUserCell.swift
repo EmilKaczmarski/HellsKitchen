@@ -16,71 +16,125 @@ class ChatUserCell: UITableViewCell {
         super.init(coder: coder)
         setupView()
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
     
-    func createAvatar(for username: String)-> UIImage {
-        let configuration = LetterAvatarBuilderConfiguration()
-        configuration.size = CGSize(width: Constants.Sizes.avatarSize, height: Constants.Sizes.avatarSize)
-        configuration.username = username
-        configuration.circle = true
-        configuration.backgroundColors = [ .red ]
-        return UIImage.makeLetterAvatar(withConfiguration: configuration)!
-    }
-    
-    lazy var avatarImageView: UIImageView = {
-        let view = UIImageView()
-        view.snp.makeConstraints { (maker) in
-            maker.width.height.equalTo(Constants.Sizes.avatarSize + 5)
-        }
-        return view
-    }()
-    
-    lazy var avatar: UIView = {
-       let view = UIView()
-        view.addSubview(avatarImageView)
-        avatarImageView.snp.makeConstraints { (maker) in
-            maker.trailing.centerY.equalToSuperview()
+    private func setupView() {
+        addSubview(stackView)
+        stackView.snp.makeConstraints { (maker) in
+            maker.top.bottom.equalToSuperview()
+            maker.trailing.equalToSuperview().offset(-20)
+            maker.leading.equalToSuperview().offset(20)
         }
         
+    }
+    
+    //MARK: - stackView
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 24
+        stackView.addArrangedSubview(leftView)
+        stackView.addArrangedSubview(middleStackView)
+        stackView.addArrangedSubview(rightView)
+        return stackView
+    }()
+    
+    //MARK: - image
+    lazy var imageBox: UIImageView = {
+        let imageBox = UIImageView()
+        imageBox.layer.masksToBounds = true
+        imageBox.layer.borderColor = UIColor.white.cgColor
+        imageBox.snp.makeConstraints { (maker) in
+            maker.width.height.equalTo(40)
+        }
+        imageBox.layer.cornerRadius = 20
+        return imageBox
+    }()
+    
+    lazy var leftView: UIView = {
+        let view = UIView()
+        view.addSubview(imageBox)
         view.snp.makeConstraints { (maker) in
-            maker.width.equalTo(Constants.Sizes.avatarSize + 50)
+            maker.width.equalTo(40)
+        }
+        imageBox.snp.makeConstraints { (maker) in
+            maker.centerX.centerY.equalToSuperview()
         }
         return view
     }()
     
+    //MARK: - middle label
+    
     lazy var name: UILabel = {
-        let name = UILabel()
-        name.textAlignment = .center
-        return name
+        let label = UILabel()
+        label.textColor = Constants.Colors.deepGreen
+        label.font = .systemFont(ofSize: 14)
+        label.textAlignment = .left
+        label.snp.makeConstraints { (maker) in
+            maker.height.equalTo(20)
+        }
+        return label
     }()
     
-    lazy var stack: UIStackView = {
-       let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.addArrangedSubview(avatar)
+    lazy var lastMessage: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 12)
+        label.snp.makeConstraints { (maker) in
+            maker.height.equalTo(17)
+        }
+        return label
+    }()
+    
+    lazy var middleStackView: UIStackView = {
+        let stack = UIStackView()
         stack.addArrangedSubview(name)
+        stack.addArrangedSubview(lastMessage)
+        stack.spacing = 4
+        stack.axis = .vertical
+        stack.snp.makeConstraints { (maker) in
+            maker.width.equalTo(136)
+            maker.height.equalTo(41)
+        }
         return stack
     }()
     
-    lazy var view: UIView = {
+    lazy var middleView: UIView = {
         let view = UIView()
-        addSubview(stack)
-        stack.snp.makeConstraints { (maker) in
-            maker.centerX.centerY.top.leading.trailing.bottom.equalToSuperview()
+        view.addSubview(middleStackView)
+        middleStackView.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+            maker.top.equalToSuperview().offset(16)
+            maker.bottom.equalToSuperview().offset(-14)
         }
         return view
     }()
+    //MARK: - rightView
     
-    func setupView() {
-        addSubview(view)
-        view.snp.makeConstraints { (maker) in
-            maker.centerX.centerY.trailing.leading.top.bottom.equalToSuperview()
+    lazy var date: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 12)
+        label.snp.makeConstraints { (maker) in
+            maker.height.equalTo(17)
         }
-    }
+        return label
+    }()
+    
+    lazy var rightView: UIView = {
+        let view = UIView()
+        view.addSubview(date)
+        date.snp.makeConstraints { (maker) in
+            maker.centerX.trailing.leading.equalToSuperview()
+            maker.centerY.equalToSuperview().offset(17)
+        }
+        return view
+    }()
 }
 

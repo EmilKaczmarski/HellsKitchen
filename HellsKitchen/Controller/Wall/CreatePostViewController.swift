@@ -20,6 +20,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        uploadedImage.layer.masksToBounds = true
+        uploadedImage.contentMode = .scaleToFill
+        uploadedImage.layer.borderWidth = 1
+        uploadedImage.layer.borderColor = (Constants.Colors.deepGreen as! CGColor)
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
@@ -33,6 +37,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
+    //MARK: - adding photo
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         
@@ -62,8 +67,11 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     
-        //let image = info[UIImagePickerController.InfoKey] as? UIImage
-        //uploadedImage.image = image
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            uploadedImage.contentMode = .scaleAspectFit
+            uploadedImage.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

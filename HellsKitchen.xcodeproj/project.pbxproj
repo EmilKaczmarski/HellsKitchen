@@ -46,6 +46,7 @@
 		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
 		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
 		18E2C96824866397007BEB56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2C96724866397007BEB56 /* User.swift */; };
+		18E2C96A2486AB0F007BEB56 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2C9692486AB0F007BEB56 /* TabBarController.swift */; };
 		18E2CDBE2484E6C6000B1D42 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2CDBD2484E6C6000B1D42 /* RecipeTableViewCell.swift */; };
 		18E2CDC02484EA35000B1D42 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2CDBF2484EA35000B1D42 /* RecipeDetailViewController.swift */; };
 		18ED140D246D312E0093398A /* WallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED140C246D312E0093398A /* WallViewModel.swift */; };
@@ -101,6 +102,7 @@
 		18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D802C724731C20007F0E03 /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		18E2C96724866397007BEB56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18E2C9692486AB0F007BEB56 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		18E2CDBD2484E6C6000B1D42 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		18E2CDBF2484EA35000B1D42 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		18ED140C246D312E0093398A /* WallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModel.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
 				47712B362482E91A007E70D3 /* ProfileViewController.swift */,
+				18E2C9692486AB0F007BEB56 /* TabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
 				47712B372482E91A007E70D3 /* ProfileViewController.swift in Sources */,
+				18E2C96A2486AB0F007BEB56 /* TabBarController.swift in Sources */,
 				18ED1411246D34280093398A /* PostCell.swift in Sources */,
 				18FB2A6F24787CD800DDCAB0 /* RecipesViewModel.swift in Sources */,
 			);

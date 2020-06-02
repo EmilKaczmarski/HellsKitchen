@@ -94,7 +94,6 @@ extension ChatViewController: UITableViewDataSource {
             cell.view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
             cell.rightView.isHidden = true
             cell.leftView.isHidden = false
-            
         } else {
             cell.view.backgroundColor = UIColor(red: 1.0, green: 0.82, blue: 0.5, alpha: 1.0)
             cell.rightView.isHidden = false

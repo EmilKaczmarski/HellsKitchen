@@ -12,6 +12,7 @@ struct Constants {
     static var currentUserName = ""
     static var currentUserEmail = ""
     static let usernameKey = "username"
+    static let signInIndicator = ""
 }
 
 //MARK: -Fonts

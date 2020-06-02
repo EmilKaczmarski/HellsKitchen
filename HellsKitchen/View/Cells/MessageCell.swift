@@ -24,7 +24,7 @@ class MessageCell: UITableViewCell {
     func setupView() {
         addSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
-            maker.centerX.centerY.trailing.top.bottom.equalToSuperview()
+            maker.centerX.centerY.trailing.equalToSuperview()
         }
     }
     
@@ -61,9 +61,9 @@ class MessageCell: UITableViewCell {
     lazy var view: UIView = {
        let view = UIView()
         view.addSubview(data)
-        view.layer.cornerRadius = 7.0
+        view.layer.cornerRadius = 3.0
         data.snp.makeConstraints { (maker) in
-            maker.centerY.centerX.leading.trailing.equalToSuperview()
+            maker.bottom.top.leading.trailing.equalToSuperview()
         }
         return view
     }()

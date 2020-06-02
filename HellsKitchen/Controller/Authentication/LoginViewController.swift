@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             loginLoader.startAnimating()
             FirebaseManager.shared.signIn(email: email, password: password, in: self) {
                 self.navigationController?.popToRootViewController(animated: true)
+                self.tabBarController?.selectedIndex = 0
                 self.loginLoader.stopAnimating()
             }
         }

@@ -35,6 +35,8 @@ class RecipesViewController: UIViewController {
 
 }
 
+//MARK: - tableview methods
+
 extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.recipes.count
@@ -49,6 +51,10 @@ extension RecipesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.Segues.recipesSegue, sender: self)
     }
     
 }

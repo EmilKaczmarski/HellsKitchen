@@ -29,7 +29,6 @@ class ChatUsersViewController: UIViewController {
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = CGFloat(Constants.Sizes.chatViewCellHeight)
         setupSearchBar()
-        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +39,7 @@ class ChatUsersViewController: UIViewController {
         hidecarrotViewIfNeeded()
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        tabBarController?.tabBar.isHidden = false
     }
     
     func enableFirebaseToOfflineMode() {

@@ -12,8 +12,6 @@ import Firebase
 import GoogleSignIn
 
 class SignInMenuViewController: UIViewController, GIDSignInDelegate {
-    var name = ""
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var FBLoginButton: UIButton!
     
     @IBOutlet weak var signWithGoogleView: UIView!
@@ -24,7 +22,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
         super.viewDidLoad()
         FirebaseManager.shared.signInViewController = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        titleLabel.text = name
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         GIDSignIn.sharedInstance().delegate = self
         setupLoginButtonsViews()

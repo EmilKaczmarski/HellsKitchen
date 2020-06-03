@@ -131,6 +131,9 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     receiver = message.firstUser!
                 }
+            } else if viewModel.cells[indexPath.row] is User{
+                let user = viewModel.cells[indexPath.row] as! User
+                receiver = user.name!
             }
             vc.receiver = receiver
             vc.title = vc.receiver

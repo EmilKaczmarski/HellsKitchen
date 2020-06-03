@@ -88,15 +88,21 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if viewModel.messages[indexPath.row].sender == sender {
-            MessageCell.isUsersMessage = true
+        if viewModel.messages[indexPath.row].sender == Constants.currentUserName {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RightMessageCell
+            cell.message.text = viewModel.messages[indexPath.row].message
+            return cell
         } else {
-            MessageCell.isUsersMessage = false
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! LeftMessageCell
+            cell.message.text = viewModel.messages[indexPath.row].message
+            return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
-        cell.message.text = viewModel.messages[indexPath.row].message
-        cell.imageBox.image = UIImage(named: "test")
-        cell.selectionStyle = .none
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
+//        cell.message.text = viewModel.messages[indexPath.row].message
+//        cell.date.text = "2020-01-01"
+//        cell.imageBox.image = UIImage(named: "test")
+//        cell.selectionStyle = .none
+//        cell.backgroundColor = .clear
+//        return cell
     } 
 }

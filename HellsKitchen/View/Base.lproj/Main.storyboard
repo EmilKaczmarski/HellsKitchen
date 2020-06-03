@@ -761,66 +761,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-SD-GYG">
-                                <rect key="frame" x="20" y="108" width="374" height="709"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5fX-SD-GYG">
+                                <rect key="frame" x="20" y="108" width="374" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leftCell" id="H6R-id-8Gy">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H6R-id-8Gy" id="S0X-52-AWG">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="rightCell" id="L4Z-nJ-9GY">
-                                        <rect key="frame" x="0.0" y="71.666667938232422" width="374" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="72" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L4Z-nJ-9GY" id="aRe-yL-91W">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ra7-zy-9tp">
-                                <rect key="frame" x="40" y="832" width="334" height="34"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="277" translatesAutoresizingMaskIntoConstraints="NO" id="vJf-YG-6Se">
+                                <rect key="frame" x="20" y="820" width="351" height="56"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuC-TH-jPt">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RGV-nK-lDf">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="56"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="700" ambiguous="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-m6-gfj">
+                                                <rect key="frame" x="20" y="0.0" width="30" height="56"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="700" constant="56" id="AHR-82-iuu"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Hc2-CN-VOc"/>
+                                            <constraint firstAttribute="bottom" secondItem="TZ8-m6-gfj" secondAttribute="bottom" id="6oO-hy-yFH"/>
+                                            <constraint firstAttribute="height" constant="56" id="hXw-fN-ZcT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fW-T6-vkC">
-                                        <rect key="frame" x="300" y="0.0" width="34" height="34"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5TF-9J-LXt">
+                                        <rect key="frame" x="327" y="0.0" width="24" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fW-T6-vkC">
+                                                <rect key="frame" x="0.0" y="16" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="7B2-32-gSI"/>
+                                                    <constraint firstAttribute="height" constant="24" id="RDV-it-xKI"/>
+                                                </constraints>
+                                                <state key="normal" image="icSend"/>
+                                                <connections>
+                                                    <action selector="sendButtonPressed:" destination="hou-Sb-UY9" eventType="touchUpInside" id="bWz-8Q-GMy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="YPM-52-NPU"/>
+                                            <constraint firstAttribute="width" constant="24" id="QT8-Rb-gSl"/>
+                                            <constraint firstItem="7fW-T6-vkC" firstAttribute="centerX" secondItem="5TF-9J-LXt" secondAttribute="centerX" id="YMn-l5-kyX"/>
+                                            <constraint firstItem="7fW-T6-vkC" firstAttribute="centerY" secondItem="5TF-9J-LXt" secondAttribute="centerY" id="qUU-25-5Zj"/>
                                         </constraints>
-                                        <state key="normal" title="send"/>
-                                        <connections>
-                                            <action selector="sendButtonPressed:" destination="hou-Sb-UY9" eventType="touchUpInside" id="bWz-8Q-GMy"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="7fW-T6-vkC" firstAttribute="centerY" secondItem="Ra7-zy-9tp" secondAttribute="centerY" id="Ao8-av-H3W"/>
-                                    <constraint firstItem="QuC-TH-jPt" firstAttribute="centerY" secondItem="Ra7-zy-9tp" secondAttribute="centerY" id="DYu-lk-5RH"/>
-                                    <constraint firstItem="7fW-T6-vkC" firstAttribute="leading" secondItem="QuC-TH-jPt" secondAttribute="trailing" constant="20" id="eQf-jv-1L9"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QjQ-TX-yur" firstAttribute="trailing" secondItem="Ra7-zy-9tp" secondAttribute="trailing" constant="40" id="3Pg-Jc-Pbl"/>
-                            <constraint firstItem="Ra7-zy-9tp" firstAttribute="top" secondItem="5fX-SD-GYG" secondAttribute="bottom" constant="15" id="EWj-d4-VpB"/>
-                            <constraint firstItem="Ra7-zy-9tp" firstAttribute="leading" secondItem="QjQ-TX-yur" secondAttribute="leading" constant="40" id="Iia-eE-aiY"/>
                             <constraint firstItem="5fX-SD-GYG" firstAttribute="top" secondItem="QjQ-TX-yur" secondAttribute="top" constant="20" id="YlB-hx-42j"/>
                             <constraint firstItem="QjQ-TX-yur" firstAttribute="trailing" secondItem="5fX-SD-GYG" secondAttribute="trailing" constant="20" id="h5x-0D-Cyw"/>
                             <constraint firstItem="5fX-SD-GYG" firstAttribute="leading" secondItem="QjQ-TX-yur" secondAttribute="leading" constant="20" id="kP0-d6-V6q"/>
-                            <constraint firstAttribute="bottom" secondItem="Ra7-zy-9tp" secondAttribute="bottom" constant="30" id="z6u-DU-uqZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QjQ-TX-yur"/>
                     </view>
@@ -833,13 +848,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="message" destination="QuC-TH-jPt" id="WnU-Vz-8te"/>
+                        <outlet property="messageTextView" destination="TZ8-m6-gfj" id="Idl-Lu-RqP"/>
                         <outlet property="tableView" destination="5fX-SD-GYG" id="cmM-8s-J0g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6q-lX-Dsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1654" y="2117"/>
+            <point key="canvasLocation" x="1653.6231884057972" y="2116.7410714285716"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vJp-eh-a84">
@@ -2238,6 +2253,7 @@
         <image name="icNotifications" width="24" height="24"/>
         <image name="icPerson" width="24" height="24"/>
         <image name="icSearch" width="24" height="24"/>
+        <image name="icSend" width="24" height="24"/>
         <image name="lock" width="512" height="512"/>
         <image name="name" width="512" height="512"/>
         <image name="plainWhite" width="1920" height="1280"/>

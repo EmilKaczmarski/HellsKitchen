@@ -16,8 +16,8 @@ class ChatViewController: UIViewController {
     
     let viewModel: ChatViewModel = ChatViewModel()
     
+    @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var message: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +57,11 @@ class ChatViewController: UIViewController {
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         AlertManager.shared.isInternetAvailable { (success) in
             if success {
-                if self.message.text! != "" {
-                    self.viewModel.sendMessage(message: self.message.text!, sender: self.sender!, receiver: self.receiver!)
+                if self.messageTextView.text! != "" {
+                    self.viewModel.sendMessage(message: self.messageTextView.text!, sender: self.sender!, receiver: self.receiver!)
                     
                 }
-                self.message.text! = ""
+                self.messageTextView.text! = ""
             } else {
                 AlertManager.shared.sendMessageAlert(in: self)
             }

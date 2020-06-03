@@ -89,15 +89,16 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
         if viewModel.cells[indexPath.row] is MessageBundle {
             let message = viewModel.cells[indexPath.row] as! MessageBundle
             var name = Constants.currentUserName
-            if message.firstUser == name {
+            if message.firstUser != name {
                 name = message.secondUser!
             }
-            let date = Date(timeIntervalSince1970: Double(message.timestamp!)!)
+            if let date = Double(message.timestamp!) {
+                cell.date.text = TimeDisplayManager.shared.getDateForUserCell(timestamp: date)
+            }
             cell.name.text = name
             cell.lastMessage.isHidden = false
             cell.date.isHidden = false
             cell.lastMessage.isHidden = false
-            cell.date.text = "\(date)"[0..<10].replacingOccurrences(of: "-", with: ".")
             cell.lastMessage.text = message.lastMessage
         } else if viewModel.cells[indexPath.row] is User{
             let user = viewModel.cells[indexPath.row] as! User

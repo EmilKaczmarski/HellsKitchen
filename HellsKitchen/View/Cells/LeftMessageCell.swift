@@ -265,6 +265,4 @@ class LeftMessageCell: MessageCell {
         //end of triangle
         return view
     }()
-    
-    
 }

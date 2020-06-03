@@ -46,6 +46,7 @@
 		18BE2860246B1B7C00869B6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */; };
 		18CB97CC2475AF120054123A /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 18CB97CB2475AF120054123A /* DynamicColor */; };
 		18D1E1BB2488260E00BB0D2D /* TriLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */; };
+		18D1E1BE2488468B00BB0D2D /* TimeDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1E1BD2488468B00BB0D2D /* TimeDisplayManager.swift */; };
 		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
 		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
 		18E2C96824866397007BEB56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2C96724866397007BEB56 /* User.swift */; };
@@ -106,6 +107,7 @@
 		18BE2855246B15E000869B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriLabelView.swift; sourceTree = "<group>"; };
+		18D1E1BD2488468B00BB0D2D /* TimeDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDisplayManager.swift; sourceTree = "<group>"; };
 		18D802C724731C20007F0E03 /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		18E2C96724866397007BEB56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18E2C9692486AB0F007BEB56 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		181594C7247B3AB20014FDFE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				18D1E1BC2488467700BB0D2D /* TimeDisplayManager */,
 				181594C8247B3AC20014FDFE /* AlamofireManager */,
 				1848A89C2477185900A6DD99 /* Networking */,
 				18A075552479E96A00517BED /* AlertManager */,
@@ -353,6 +356,14 @@
 				18BE284D246B15D500869B6C /* HellsKitchen.xcdatamodeld */,
 			);
 			path = HellsKitchen;
+			sourceTree = "<group>";
+		};
+		18D1E1BC2488467700BB0D2D /* TimeDisplayManager */ = {
+			isa = PBXGroup;
+			children = (
+				18D1E1BD2488468B00BB0D2D /* TimeDisplayManager.swift */,
+			);
+			path = TimeDisplayManager;
 			sourceTree = "<group>";
 		};
 		18ED140B246D31120093398A /* Wall */ = {
@@ -585,6 +596,7 @@
 				189C038724740E7800F9B412 /* Extensions.swift in Sources */,
 				18A075572479E97F00517BED /* AlertManager.swift in Sources */,
 				4739B6522476F1EB00B57239 /* RecipeCategoryViewController.swift in Sources */,
+				18D1E1BE2488468B00BB0D2D /* TimeDisplayManager.swift in Sources */,
 				18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */,
 				18FB2A6B247820D200DDCAB0 /* RecipeCategoryViewModel.swift in Sources */,
 				187A7B702487D5F90097B912 /* MessageCell.swift in Sources */,

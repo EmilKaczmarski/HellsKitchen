@@ -31,6 +31,12 @@ class LeftMessageCell: MessageCell {
                 .trailing
                 .equalToSuperview()
         }
+        addSubview(subFooterView)
+        subFooterView.snp.makeConstraints { (maker) in
+            maker.leading.equalToSuperview().offset(48)
+            maker.trailing.equalToSuperview().offset(-100)
+            maker.bottom.equalToSuperview().offset(-13)
+        }
         backgroundColor = .clear
     }
     //MARK: - final stack view
@@ -42,6 +48,7 @@ class LeftMessageCell: MessageCell {
         stack.addArrangedSubview(wholeMessageView)
         
         stack.backgroundColor = .clear
+
         return stack
     }()
     
@@ -80,15 +87,14 @@ class LeftMessageCell: MessageCell {
     lazy var messageStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        
         stack.addArrangedSubview(reminderPhotoSeparator)
         stack.addArrangedSubview(bodyViewReminder)
         stack.addArrangedSubview(bodyViewWrapper)
-        
         bodyView.snp.makeConstraints { (maker) in
             maker.top.trailing.equalToSuperview().offset(12)
             maker.bottom.right.equalToSuperview().offset(-12)
         }
+        
         stack.backgroundColor = .clear
         return stack
     }()
@@ -105,7 +111,23 @@ class LeftMessageCell: MessageCell {
     //MARK: - left view reminder
     lazy var bodyViewReminder: UIView = {
         let view = UIView()
+        view.addSubview(bodyViewReminderBottom)
+        bodyViewReminderBottom.snp.makeConstraints { (maker) in
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-12)
+        }
         view.snp.makeConstraints { (maker) in
+            maker.width.equalTo(6)
+        }
+        return view
+    }()
+    
+    lazy var bodyViewReminderBottom: UIView = {
+        let view = UIView()
+        
+        view.snp.makeConstraints { (maker) in
+            maker.height.equalTo(6)
             maker.width.equalTo(6)
         }
         return view
@@ -135,6 +157,8 @@ class LeftMessageCell: MessageCell {
         view.layer.borderWidth = 1
         
         view.layer.cornerRadius = 5
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        
         return view
     }()
     
@@ -142,6 +166,9 @@ class LeftMessageCell: MessageCell {
         let stack = UIStackView()
         stack.addArrangedSubview(bodySubStackView)
         stack.addArrangedSubview(leftBottomView)
+        leftBottomView.snp.makeConstraints { (maker) in
+            maker.leading.equalToSuperview()
+        }
         stack.axis = .vertical
         stack.spacing = 0
         return stack
@@ -191,6 +218,7 @@ class LeftMessageCell: MessageCell {
             maker.height.equalTo(12)
         }
         view.backgroundColor = .white
+        
         return view
     }()
     //MARK: - footer
@@ -202,4 +230,41 @@ class LeftMessageCell: MessageCell {
         view.backgroundColor = .white
         return view
     }()
+    
+    lazy var subFooterView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .white
+        view.snp.makeConstraints { (maker) in
+            maker.height.equalTo(6)
+        }
+                
+        //triangle
+        view.addSubview(triangleView)
+        triangleView.snp.makeConstraints { (maker) in
+            maker.bottom.leading.equalToSuperview()
+        }
+        //end of triangle
+        
+        return view
+    }()
+    
+    lazy var triangleView: UIView = {
+        let view = UIView()
+        //triangle
+        let grayTriLabelView = TriLabelView(frame: CGRect(x: -7, y: -13, width: 14, height: 14))
+        
+        view.addSubview(grayTriLabelView)
+        grayTriLabelView.viewColor = Constants.Colors.lightGray
+        grayTriLabelView.position = .BottomRight
+        
+        let whiteTriLabelView = TriLabelView(frame: CGRect(x: -4, y: -12, width: 12, height: 12))
+        view.addSubview(whiteTriLabelView)
+        whiteTriLabelView.viewColor = .white
+        whiteTriLabelView.position = .BottomRight
+        view.backgroundColor = .white
+        //end of triangle
+        return view
+    }()
+    
+    
 }

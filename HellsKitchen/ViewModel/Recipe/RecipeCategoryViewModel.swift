@@ -118,7 +118,7 @@ extension RecipeCategoryViewModel {
                 for j in i.recipe.ingredients {
                     let ingredient = IngredientModel(context: context)
                     ingredient.name = j.text
-                    ingredient.weight = j.weight
+                    ingredient.weight = Double(j.weight)
                     ingredient.recipe = recipe
                     ingredientsArray.append(ingredient)
                 }
@@ -146,7 +146,7 @@ extension RecipeCategoryViewModel {
                     for j in i.recipe.ingredients {
                         let ingredient = IngredientModel(context: context)
                         ingredient.name = j.text
-                        ingredient.weight = j.weight
+                        ingredient.weight = Double(j.weight)
                         ingredient.recipe = recipe
                         ingredientsArray.append(ingredient)
                     }

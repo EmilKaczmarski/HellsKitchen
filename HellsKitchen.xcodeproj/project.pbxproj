@@ -45,6 +45,7 @@
 		18BE2854246B15E000869B6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE2852246B15E000869B6C /* LaunchScreen.storyboard */; };
 		18BE2860246B1B7C00869B6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */; };
 		18CB97CC2475AF120054123A /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 18CB97CB2475AF120054123A /* DynamicColor */; };
+		18D1E1BB2488260E00BB0D2D /* TriLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */; };
 		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
 		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
 		18E2C96824866397007BEB56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2C96724866397007BEB56 /* User.swift */; };
@@ -104,6 +105,7 @@
 		18BE2853246B15E000869B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18BE2855246B15E000869B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriLabelView.swift; sourceTree = "<group>"; };
 		18D802C724731C20007F0E03 /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		18E2C96724866397007BEB56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18E2C9692486AB0F007BEB56 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				187A7B6F2487D5F80097B912 /* MessageCell.swift */,
 				187A7B6A2487D2470097B912 /* LeftMessageCell.swift */,
 				187A7B6C2487D2550097B912 /* RightMessageCell.swift */,
+				18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,
 				47712B372482E91A007E70D3 /* ProfileViewController.swift in Sources */,
+				18D1E1BB2488260E00BB0D2D /* TriLabelView.swift in Sources */,
 				18E2C96A2486AB0F007BEB56 /* TabBarController.swift in Sources */,
 				18ED1411246D34280093398A /* PostCell.swift in Sources */,
 				187A7B6B2487D2480097B912 /* LeftMessageCell.swift in Sources */,

@@ -106,7 +106,8 @@ class RightMessageCell: UITableViewCell {
         view.addSubview(bodyViewReminderBottom)
         bodyViewReminderBottom.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
-            maker.trailing.bottom.equalToSuperview().offset(-12)
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-12)
             
         }
         view.snp.makeConstraints { (maker) in
@@ -117,10 +118,14 @@ class RightMessageCell: UITableViewCell {
     
     lazy var bodyViewReminderBottom: UIView = {
         let view = UIView()
+        let triLabelView = TriLabelView(frame: CGRect(x: 0, y: -6, width: 12, height: 12))
+        view.addSubview(triLabelView)
+        triLabelView.viewColor = Constants.Colors.deepGreen
+        triLabelView.position = .BottomLeft
         view.snp.makeConstraints { (maker) in
             maker.height.equalTo(6)
+            maker.width.equalTo(6)
         }
-        view.backgroundColor = .red
         return view
     }()
     
@@ -144,6 +149,7 @@ class RightMessageCell: UITableViewCell {
         view.backgroundColor = Constants.Colors.deepGreen
         
         view.layer.cornerRadius = 5
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMinXMaxYCorner]
         return view
     }()
     

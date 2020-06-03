@@ -23,7 +23,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         uploadedImage.layer.masksToBounds = true
         uploadedImage.contentMode = .scaleToFill
         uploadedImage.layer.borderWidth = 1
-        uploadedImage.layer.borderColor = (Constants.Colors.deepGreen as! CGColor)
+        uploadedImage.layer.borderColor = Constants.Colors.deepGreen.cgColor
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {

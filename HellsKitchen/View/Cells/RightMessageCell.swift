@@ -191,7 +191,7 @@ class RightMessageCell: UITableViewCell {
         view.snp.makeConstraints { (maker) in
             maker.height.equalTo(11)
         }
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.Colors.deepGreen
         return view
     }()
 }

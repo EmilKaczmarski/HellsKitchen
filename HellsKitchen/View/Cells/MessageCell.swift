@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MessageCell: LeftMessageCell, RightMessageCell {
+class MessageCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //setupView()

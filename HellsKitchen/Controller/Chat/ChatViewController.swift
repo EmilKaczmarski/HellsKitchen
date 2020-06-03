@@ -21,9 +21,10 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(MessageCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(LeftMessageCell.self, forCellReuseIdentifier: "leftCell")
+        tableView.register(RightMessageCell.self, forCellReuseIdentifier: "rightCell")
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 85.0
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -89,20 +90,23 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if viewModel.messages[indexPath.row].sender == Constants.currentUserName {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RightMessageCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "rightCell") as! RightMessageCell
             cell.message.text = viewModel.messages[indexPath.row].message
+            cell.message.text = viewModel.messages[indexPath.row].message
+            cell.date.text = "2020-01-01"
+            cell.imageBox.image = UIImage(named: "test")
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! LeftMessageCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "leftCell") as! LeftMessageCell
             cell.message.text = viewModel.messages[indexPath.row].message
+            cell.message.text = viewModel.messages[indexPath.row].message
+            cell.date.text = "2020-01-01"
+            cell.imageBox.image = UIImage(named: "test")
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
             return cell
         }
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
-//        cell.message.text = viewModel.messages[indexPath.row].message
-//        cell.date.text = "2020-01-01"
-//        cell.imageBox.image = UIImage(named: "test")
-//        cell.selectionStyle = .none
-//        cell.backgroundColor = .clear
-//        return cell
     } 
 }

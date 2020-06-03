@@ -25,6 +25,7 @@ class ChatViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 85.0
         tableView.estimatedRowHeight = UITableView.automaticDimension
         viewModel.delegate = self
     }
@@ -87,20 +88,15 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
-        cell.data.text = viewModel.messages[indexPath.row].message
         if viewModel.messages[indexPath.row].sender == sender {
-            cell.view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
-            cell.rightView.isHidden = true
-            cell.leftView.isHidden = false
+            MessageCell.isUsersMessage = true
         } else {
-            cell.view.backgroundColor = UIColor(red: 1.0, green: 0.82, blue: 0.5, alpha: 1.0)
-            cell.rightView.isHidden = false
-            cell.leftView.isHidden = true
+            MessageCell.isUsersMessage = false
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MessageCell
+        cell.message.text = viewModel.messages[indexPath.row].message
+        cell.imageBox.image = UIImage(named: "test")
         cell.selectionStyle = .none
-        cell.textLabel?.numberOfLines = 0
         return cell
     } 
 }

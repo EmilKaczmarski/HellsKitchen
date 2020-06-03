@@ -35,6 +35,8 @@ extension Constants {
         static let deepGreen = UIColor(displayP3Red: 1.0/255.0, green: 80.0/255.0, blue: 103.0/255.0, alpha: 1.0)
         static let deepGreenDisabled = UIColor(displayP3Red: 1.0/255.0, green: 80.0/255.0, blue: 103.0/255.0, alpha: 0.5)
         static let lightBlue = UIColor(displayP3Red: 250.0/255.0, green: 252.0/255.0, blue: 251.0/255.0, alpha: 1.0)
+        static let ice = UIColor(displayP3Red: 250.0/255.0, green: 252.0/255.0, blue: 251.0/251.0, alpha: 1.0)
+        static let lightGray = UIColor(displayP3Red: 204.0/255.0, green: 210.0/255.0, blue: 211.0/251.0, alpha: 1.0)
     }
 }
 

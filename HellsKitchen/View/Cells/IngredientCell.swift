@@ -60,7 +60,7 @@ class IngredientCell: UITableViewCell {
           let view = UIView()
           view.addSubview(weight)
           weight.snp.makeConstraints { (maker) in
-              maker.centerX.centerY.leading.trailing.bottom.top.equalToSuperview()
+              maker.centerX.centerY/*.leading.trailing.bottom.top*/.equalToSuperview()
           }
         view.snp.makeConstraints { (maker) in
             maker.width.equalTo(96)

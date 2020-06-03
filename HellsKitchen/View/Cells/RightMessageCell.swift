@@ -100,14 +100,29 @@ class RightMessageCell: UITableViewCell {
     }()
     
     //MARK: - left view reminder
+    
     lazy var bodyViewReminder: UIView = {
         let view = UIView()
+        view.addSubview(bodyViewReminderBottom)
+        bodyViewReminderBottom.snp.makeConstraints { (maker) in
+            maker.leading.equalToSuperview()
+            maker.trailing.bottom.equalToSuperview().offset(-12)
+            
+        }
         view.snp.makeConstraints { (maker) in
             maker.width.equalTo(6)
         }
         return view
     }()
     
+    lazy var bodyViewReminderBottom: UIView = {
+        let view = UIView()
+        view.snp.makeConstraints { (maker) in
+            maker.height.equalTo(6)
+        }
+        view.backgroundColor = .red
+        return view
+    }()
     
     //MARK: - left stack sub view top
     lazy var bodyViewWrapper: UIStackView = {
@@ -182,7 +197,7 @@ class RightMessageCell: UITableViewCell {
         view.snp.makeConstraints { (maker) in
             maker.height.equalTo(12)
         }
-        view.backgroundColor = .white
+        view.backgroundColor = Constants.Colors.deepGreen
         return view
     }()
     //MARK: - footer
@@ -191,7 +206,7 @@ class RightMessageCell: UITableViewCell {
         view.snp.makeConstraints { (maker) in
             maker.height.equalTo(11)
         }
-        view.backgroundColor = Constants.Colors.deepGreen
+        view.backgroundColor = .white
         return view
     }()
 }

@@ -63,7 +63,7 @@ class IngredientCell: UITableViewCell {
               maker.centerX.centerY/*.leading.trailing.bottom.top*/.equalToSuperview()
           }
         view.snp.makeConstraints { (maker) in
-            maker.width.equalTo(96)
+            maker.width.equalTo(59)
         }
           return view
       }()
@@ -76,5 +76,11 @@ class IngredientCell: UITableViewCell {
         weight.textAlignment = .left
         return weight
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
+        bounds = bounds.inset(by: padding)
+    }
     
 }

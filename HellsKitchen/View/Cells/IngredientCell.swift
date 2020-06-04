@@ -33,7 +33,7 @@ class IngredientCell: UITableViewCell {
         stackView.distribution = .fill
         stackView.addArrangedSubview(leftView)
         stackView.addArrangedSubview(rightView)
-        stackView.spacing = 4
+        stackView.spacing = 8
         return stackView
     }()
     
@@ -63,7 +63,7 @@ class IngredientCell: UITableViewCell {
               maker.centerX.centerY/*.leading.trailing.bottom.top*/.equalToSuperview()
           }
         view.snp.makeConstraints { (maker) in
-            maker.width.equalTo(59)
+            maker.width.equalTo(39)
         }
           return view
       }()
@@ -71,16 +71,11 @@ class IngredientCell: UITableViewCell {
     lazy var weight: UILabel = {
         let weight = UILabel()
         weight.numberOfLines = 0
+        weight.lineBreakMode = .byWordWrapping
         weight.font = UIFont.systemFont(ofSize: 14.0)
         weight.textColor = Constants.Colors.deepGreen
         weight.textAlignment = .left
         return weight
     }()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
-        bounds = bounds.inset(by: padding)
-    }
     
 }

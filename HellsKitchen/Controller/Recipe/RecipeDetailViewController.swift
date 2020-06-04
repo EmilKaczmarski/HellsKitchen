@@ -30,12 +30,16 @@ class RecipeDetailViewController: UIViewController {
         radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tableView.dataSource = self
         tableView.delegate = self
-        viewModel.delegate = self
         tableView.register(IngredientCell.self, forCellReuseIdentifier: "cell")
+        tableView.estimatedRowHeight = 28.0
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        viewModel.delegate = self
+       
         
         viewModel.setupData()
         uploadImage()
     }
+ 
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)

@@ -51,6 +51,15 @@ extension UIViewController {
         titleView.spacing = 10.0
         navigationItem.titleView = titleView
     }
+    
+    func setTitle(_ title: String) {
+        let titleLbl = UILabel()
+        titleLbl.text = title
+        titleLbl.textColor = Constants.Colors.deepGreen
+        titleLbl.font = UIFont(name: "Poppins-Bold", size: 16.0)
+        navigationItem.titleView = titleLbl
+    }
+    
 }
 
 //MARK: -UIView

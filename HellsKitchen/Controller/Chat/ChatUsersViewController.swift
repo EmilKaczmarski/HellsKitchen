@@ -88,14 +88,15 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
         
         if viewModel.cells[indexPath.row] is MessageBundle {
             let message = viewModel.cells[indexPath.row] as! MessageBundle
-            var name = Constants.currentUserName
-            if message.firstUser != name {
-                name = message.secondUser!
+            if message.firstUser == Constants.currentUserName {
+                cell.name.text = message.secondUser!
+            } else {
+                cell.name.text = message.firstUser!
             }
             if let date = Double(message.timestamp!) {
                 cell.date.text = TimeDisplayManager.shared.getDateForUserCell(timestamp: date)
             }
-            cell.name.text = name
+            
             cell.lastMessage.isHidden = false
             cell.date.isHidden = false
             cell.lastMessage.isHidden = false
@@ -137,7 +138,7 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
                 receiver = user.name!
             }
             vc.receiver = receiver
-            vc.title = vc.receiver
+            vc.setTitle(vc.receiver!)
         }
     }
     

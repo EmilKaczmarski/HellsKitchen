@@ -16,6 +16,8 @@ class ChatViewController: UIViewController {
     
     let viewModel: ChatViewModel = ChatViewModel()
     
+    @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +31,7 @@ class ChatViewController: UIViewController {
         tableView.estimatedRowHeight = 85.0
         tableView.estimatedRowHeight = UITableView.automaticDimension
         viewModel.delegate = self
+        messageTextView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +41,7 @@ class ChatViewController: UIViewController {
         setupBackButtonTitle()
         tabBarController?.tabBar.isHidden = true
     }
+    
     
     func enableFirebaseToOfflineMode() {
         // [START enable_offline]
@@ -112,4 +116,12 @@ extension ChatViewController: UITableViewDataSource {
             return cell
         }
     } 
+}
+
+//MARK: -textview delegate
+extension ChatViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        bottomView.sizeToFit()
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
 }

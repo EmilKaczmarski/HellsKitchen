@@ -11,15 +11,22 @@ import UIKit
 class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var header: UITextField!
-    @IBOutlet weak var content: UITextField!
+    @IBOutlet weak var content: UITextView!
     @IBOutlet weak var uploadedImage: UIImageView!
-    
+    @IBOutlet weak var infoStackView: UIStackView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var nameLine: UIView!
+    @IBOutlet weak var contentLine: UIView!
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var addRecipeButton: UIButton!
     
     let viewModel: PostDetailViewModel = PostDetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        buttonView.layer.cornerRadius = 20
         uploadedImage.layer.masksToBounds = true
         uploadedImage.contentMode = .scaleToFill
         uploadedImage.layer.borderWidth = 1
@@ -38,12 +45,30 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             content.text! = ""
             viewModel.savePost(post)
             navigationController?.popViewController(animated: true)
+            
         }
     }
     
-    //MARK: - adding photo
+    @IBAction func nameTextChanged(_ sender: Any) {
+        
+        nameLine.backgroundColor = Constants.Colors.deepGreen
+    }
+    
+    func enableAddRecipeButton() {
+         addRecipeButton.isEnabled = true
+         buttonView.backgroundColor = Constants.Colors.deepGreen
+     }
+     
+     func disableAddRecipeButton() {
+         addRecipeButton.isEnabled = false
+         buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
+     }
+    
+    //MARK: - Adding photo
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
+        
+        infoStackView.isHidden = true
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -96,5 +121,14 @@ extension UIImage {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
+    }
+}
+
+// MARK: - TextViewDelegate
+extension CreatePostViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        bottomView.sizeToFit()
+        placeholderLabel.isHidden = !textView.text.isEmpty
+        contentLine.backgroundColor = Constants.Colors.deepGreen
     }
 }

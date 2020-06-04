@@ -192,6 +192,7 @@ extension RecipeCategoryViewController : UISearchBarDelegate {
                 self.showNoPostViewIfNeeded()
                 self.searchBar.resignFirstResponder()
                 if !self.viewModel.doesCategoryExist(for: searchBarText) {
+                    print(searchBarText)
                     self.performReqest(for: searchBarText)
                 } else {
                     

@@ -22,8 +22,8 @@ enum RecipeAPI {
     }
     var parameters: Parameters {
         var params = [
-            "app_id": "8e701985",
-            "app_key": "b935146b5a9ff574407ec5b199899a6c",
+            "app_id": "ebf7a149",
+            "app_key": "65d8fc57094c78565fe3bff5816e90b5",
             "from": "0",
             "to": "3"
         ]
@@ -51,7 +51,6 @@ struct RecipeRepository {
     
     private static func executeRequest<T: Codable>(_ request: RecipeAPI, completion: @escaping((T?, Error?)-> Void)) {
         guard let requestUrl = request.url else { return }
-        
         AF  .request(requestUrl,
                      method: request.method,
             parameters: request.parameters)

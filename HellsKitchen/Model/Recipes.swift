@@ -82,7 +82,7 @@ enum HealthLabel: String, Codable {
 // MARK: - Ingredient
 struct Ingredient: Codable {
     let text: String
-    let weight: Int //Double
+    let weight: Double
 }
 
 // MARK: - Total

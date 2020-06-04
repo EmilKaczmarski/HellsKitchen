@@ -13,7 +13,9 @@ import GoogleSignIn
 
 class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var FBLoginButton: UIButton!
+    @IBOutlet weak var lowerLabel: UILabel!
     
+    @IBOutlet weak var upperLabel: UILabel!
     @IBOutlet weak var signWithGoogleView: UIView!
     @IBOutlet weak var signWithFacebookView: UIView!
     @IBOutlet weak var signWithEmailView: UIView!

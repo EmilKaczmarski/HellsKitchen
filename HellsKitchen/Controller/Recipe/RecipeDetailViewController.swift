@@ -118,7 +118,7 @@ extension RecipeDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! IngredientCell
         cell.name.text = viewModel.ingredients[indexPath.row].name
-        cell.weight.text = "\(viewModel.ingredients[indexPath.row].weight)"
+        cell.weight.text = "\(Int(viewModel.ingredients[indexPath.row].weight)) g"
         return cell
     }
 }

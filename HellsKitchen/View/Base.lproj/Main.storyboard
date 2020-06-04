@@ -794,6 +794,7 @@
                                         </constraints>
                                         <inset key="scrollIndicatorInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fW-T6-vkC">
@@ -867,7 +868,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="vJp-eh-a84">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="f1u-Uk-sSu" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="f1u-Uk-sSu" customClass="TabBarController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="SNr-7m-yXY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iPH-Zh-Oa2">
@@ -1085,7 +1086,7 @@
                                             <constraint firstAttribute="height" constant="43" id="LGY-rv-Kio"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="109" id="Sj4-bL-gqe"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1673,7 +1674,7 @@
                                             <constraint firstAttribute="height" constant="43" id="a42-ob-x9e"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="109" id="a62-Lt-JyL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1987,7 +1988,7 @@
                                         <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbg-XB-fSm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbg-XB-fSm">
                                         <rect key="frame" x="0.0" y="43" width="254.33333333333334" height="36"/>
                                         <color key="tintColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
@@ -2031,9 +2032,11 @@
                     <connections>
                         <outlet property="FBLoginButton" destination="Tqu-eu-akW" id="r6G-Ql-veA"/>
                         <outlet property="loginLoader" destination="Jg3-lz-DAx" id="EBk-Uw-Pn5"/>
+                        <outlet property="lowerLabel" destination="Vbg-XB-fSm" id="zUt-mJ-y3S"/>
                         <outlet property="signWithEmailView" destination="Axw-hD-sRK" id="bhl-2E-ypZ"/>
                         <outlet property="signWithFacebookView" destination="Gwc-Wh-xSf" id="XTK-CF-4Cv"/>
                         <outlet property="signWithGoogleView" destination="SXc-fW-Bz8" id="SIv-7I-L5M"/>
+                        <outlet property="upperLabel" destination="tL3-kk-g0b" id="Wzc-Xv-Rqg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPS-tp-9ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

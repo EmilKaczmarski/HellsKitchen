@@ -26,6 +26,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         uploadedImage.layer.borderColor = Constants.Colors.deepGreen.cgColor
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+    
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" {
             let timestamp = "\(Date().timeIntervalSince1970)"

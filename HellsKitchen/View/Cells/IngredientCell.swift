@@ -33,7 +33,7 @@ class IngredientCell: UITableViewCell {
         stackView.distribution = .fill
         stackView.addArrangedSubview(leftView)
         stackView.addArrangedSubview(rightView)
-        stackView.spacing = 8
+        stackView.spacing = 41
         return stackView
     }()
     

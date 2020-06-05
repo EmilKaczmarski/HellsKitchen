@@ -26,16 +26,30 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        setupAddRecipeButton()
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         buttonView.layer.cornerRadius = 20
         uploadedImage.layer.masksToBounds = true
         uploadedImage.contentMode = .scaleToFill
         uploadedImage.layer.borderWidth = 1
         uploadedImage.layer.borderColor = Constants.Colors.deepGreen.cgColor
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = true
+        //setupCancelButtonTitle()
     }
+    
+    /*func setupCancelButtonTitle() {
+        //change later
+        let cancelButton = UIBarButtonItem()
+        cancelButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = cancelButton
+    }*/
+    
+    //@IBAction func cancelButtonPressed
     
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" {
@@ -51,7 +65,16 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func nameTextChanged(_ sender: Any) {
         
+    if !header.text!.isEmpty {
+        enableAddRecipeButton()
         nameLine.backgroundColor = Constants.Colors.deepGreen
+        } else {
+            disableAddRecipeButton()
+        }
+    }
+    
+    func setupAddRecipeButton() {
+        disableAddRecipeButton()
     }
     
     func enableAddRecipeButton() {

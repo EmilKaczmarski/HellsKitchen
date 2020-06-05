@@ -651,12 +651,35 @@
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-Q1-gvq">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="200"/>
                                                             </imageView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2P-8V-Nso">
+                                                                <rect key="frame" x="0.0" y="160.00000000000006" width="335" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqf-fm-qcv">
+                                                                        <rect key="frame" x="155" y="7.6666666666666288" width="24" height="24"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" image="icEdit">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="editingButtonPressed:" destination="F5M-sh-rs9" eventType="touchUpInside" id="kw3-cl-wvO"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="nhP-8c-pS6"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.98011189700000001" green="0.98799890280000002" blue="0.98419958350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="lmN-Q1-gvq" firstAttribute="leading" secondItem="Srw-gi-VT7" secondAttribute="leading" id="16d-7x-3z5"/>
                                                             <constraint firstAttribute="bottom" secondItem="lmN-Q1-gvq" secondAttribute="bottom" id="6mF-39-eym"/>
+                                                            <constraint firstAttribute="bottom" secondItem="m2P-8V-Nso" secondAttribute="bottom" id="BCZ-R4-LQn"/>
+                                                            <constraint firstAttribute="trailing" secondItem="m2P-8V-Nso" secondAttribute="trailing" id="I9s-4J-d4E"/>
                                                             <constraint firstAttribute="trailing" secondItem="lmN-Q1-gvq" secondAttribute="trailing" id="Srk-uT-csv"/>
+                                                            <constraint firstItem="m2P-8V-Nso" firstAttribute="leading" secondItem="Srw-gi-VT7" secondAttribute="leading" id="kex-iY-PHl"/>
                                                             <constraint firstItem="lmN-Q1-gvq" firstAttribute="top" secondItem="Srw-gi-VT7" secondAttribute="top" id="tuC-kP-S8H"/>
                                                         </constraints>
                                                     </view>
@@ -748,6 +771,7 @@
                         <outlet property="buttonView" destination="fSV-si-83Z" id="l7b-RQ-l2C"/>
                         <outlet property="content" destination="RlB-sT-xNp" id="Wvc-t8-4RM"/>
                         <outlet property="contentLine" destination="RlB-sT-xNp" id="MoV-aJ-qCM"/>
+                        <outlet property="editingView" destination="m2P-8V-Nso" id="jUs-WE-c4X"/>
                         <outlet property="header" destination="KYK-Nb-6Wd" id="6be-Sc-65J"/>
                         <outlet property="infoStackView" destination="Dz0-Tn-JdG" id="jGY-Dt-V9Z"/>
                         <outlet property="nameLine" destination="pZ4-Yd-hcr" id="e4z-d0-f1f"/>
@@ -1103,7 +1127,7 @@
                                                 <rect key="frame" x="0.0" y="148" width="414" height="46"/>
                                                 <subviews>
                                                     <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t searched any  recipes yet" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0e-1i-fpj">
-                                                        <rect key="frame" x="94.666666666666671" y="-0.66666666666668561" width="224.66666666666663" height="47.666666666666664"/>
+                                                        <rect key="frame" x="107.33333333333333" y="3.3333333333333144" width="199.66666666666669" height="39.666666666666664"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                         <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1513,6 +1537,9 @@
                                                         <state key="normal" title="Profile settings">
                                                             <color key="titleColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="settingsButtonPressed:" destination="9rB-xo-7tq" eventType="touchUpInside" id="E9m-Xh-qjs"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icChevronRight" translatesAutoresizingMaskIntoConstraints="NO" id="0CQ-oK-Pih">
                                                         <rect key="frame" x="350" y="0.0" width="24" height="24"/>
@@ -1558,6 +1585,10 @@
                                                         <state key="normal" title="Notifications">
                                                             <color key="titleColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="notificationsButtonPressed:" destination="9rB-xo-7tq" eventType="touchUpInside" id="4XP-CB-Fow"/>
+                                                            <action selector="settingsButtonPressed:" destination="9rB-xo-7tq" eventType="touchUpInside" id="Z8o-oi-B5B"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icChevronRight" translatesAutoresizingMaskIntoConstraints="NO" id="mzH-5g-meF">
                                                         <rect key="frame" x="350" y="0.0" width="24" height="24"/>
@@ -1613,6 +1644,9 @@
                                                 <state key="normal" title="Log out">
                                                     <color key="titleColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="logOutButtonPressed:" destination="9rB-xo-7tq" eventType="touchUpInside" id="afs-L0-2VF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -2328,6 +2362,7 @@
         <image name="icArrowBack" width="24" height="24"/>
         <image name="icChat" width="24" height="24"/>
         <image name="icChevronRight" width="24" height="24"/>
+        <image name="icEdit" width="24" height="24"/>
         <image name="icFileUpload" width="24" height="24"/>
         <image name="icHome" width="24" height="24"/>
         <image name="icInsertPhoto" width="24" height="24"/>

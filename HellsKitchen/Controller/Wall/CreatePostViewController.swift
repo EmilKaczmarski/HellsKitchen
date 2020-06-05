@@ -20,6 +20,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var contentLine: UIView!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var addRecipeButton: UIButton!
+    @IBOutlet weak var editingView: UIView!
     
     let viewModel: PostDetailViewModel = PostDetailViewModel()
     
@@ -33,6 +34,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         uploadedImage.contentMode = .scaleToFill
         uploadedImage.layer.borderWidth = 1
         uploadedImage.layer.borderColor = Constants.Colors.deepGreen.cgColor
+        editingView.isHidden = true
         
     }
     
@@ -65,7 +67,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func nameTextChanged(_ sender: Any) {
         
-    if !header.text!.isEmpty {
+    if !header.text!.isEmpty && uploadedImage.image != nil {
         enableAddRecipeButton()
         nameLine.backgroundColor = Constants.Colors.deepGreen
         } else {
@@ -80,59 +82,76 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     func enableAddRecipeButton() {
          addRecipeButton.isEnabled = true
          buttonView.backgroundColor = Constants.Colors.deepGreen
-     }
+    }
      
-     func disableAddRecipeButton() {
+    func disableAddRecipeButton() {
          addRecipeButton.isEnabled = false
          buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
-     }
+    }
     
     //MARK: - Adding photo
     
-    @IBAction func addPhotoButtonPressed(_ sender: Any) {
-        
-        infoStackView.isHidden = true
-        
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera){
-                imagePickerController.sourceType = .camera
-                          self.present(imagePickerController, animated: true, completion: nil)
-            } else {
-                print("Camera not available")
-            }
-          
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)
-        
+    func photoPicker() {
+    infoStackView.isHidden = true
+    
+    let imagePickerController = UIImagePickerController()
+    imagePickerController.delegate = self
+    imagePickerController.allowsEditing = true
+    
+    let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+    
+    actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            imagePickerController.sourceType = .camera
+                      self.present(imagePickerController, animated: true, completion: nil)
+        } else {
+            print("Camera not available")
+        }
+      
+    }))
+    actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        imagePickerController.sourceType = .photoLibrary
+        self.present(imagePickerController, animated: true, completion: nil)
+    }))
+    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    self.present(actionSheet, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            uploadedImage.contentMode = .scaleAspectFit
-            uploadedImage.image = pickedImage
-            //pickedImage.resize(375, 200)
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
+       
+           if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+               uploadedImage.image = editedImage
+             } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+               uploadedImage.image = originalImage
+               
+           }
+           dismiss(animated: true, completion: nil)
+       }
+       
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+           picker.dismiss(animated: true, completion: nil)
     }
+       
+    
+    @IBAction func addPhotoButtonPressed(_ sender: Any) {
+        photoPicker()
+        infoStackView.isHidden = true
+        editingView.isHidden = false
+    }
+    
+   
+    @IBAction func editingButtonPressed(_ sender: Any) {
+        photoPicker()
+        infoStackView.isHidden = true
+        editingView.isHidden = false
+    }
+    
 }
 
-extension UIImage {
+//MARK: - extensions
+
+/*extension CreatePostViewController: UIImage {
     func resize(_ width: CGFloat, _ height:CGFloat) -> UIImage? {
         let widthRatio  = width / size.width
         let heightRatio = height / size.height
@@ -145,9 +164,9 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage
     }
+    
 }
-
-// MARK: - TextViewDelegate
+*/
 extension CreatePostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         bottomView.sizeToFit()

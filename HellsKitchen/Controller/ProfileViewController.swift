@@ -23,4 +23,15 @@ class ProfileViewController: UIViewController {
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         logOutIcon.transform.rotated(by: (CGFloat(Double.pi / 2)))
     }
+    
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+    }
+   
+    @IBAction func notificationsButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+    }
+    
+    
 }

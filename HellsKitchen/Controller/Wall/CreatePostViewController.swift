@@ -34,13 +34,14 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         uploadedImage.contentMode = .scaleToFill
         uploadedImage.layer.borderWidth = 1
         uploadedImage.layer.borderColor = Constants.Colors.deepGreen.cgColor
-        editingView.isHidden = true
+        hideStackViewOrEditingView()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = true
+        hideStackViewOrEditingView()
         //setupCancelButtonTitle()
     }
     
@@ -52,6 +53,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }*/
     
     //@IBAction func cancelButtonPressed
+   
     
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" {
@@ -64,6 +66,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             
         }
     }
+  
     
     @IBAction func nameTextChanged(_ sender: Any) {
         
@@ -92,8 +95,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     //MARK: - Adding photo
     
     func photoPicker() {
-    infoStackView.isHidden = true
-    
+
     let imagePickerController = UIImagePickerController()
     imagePickerController.delegate = self
     imagePickerController.allowsEditing = true
@@ -116,6 +118,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
     self.present(actionSheet, animated: true, completion: nil)
+
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -127,24 +130,23 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                
            }
            dismiss(animated: true, completion: nil)
-       }
+    }
        
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
            picker.dismiss(animated: true, completion: nil)
+            hideStackViewOrEditingView()
     }
        
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         photoPicker()
-        infoStackView.isHidden = true
-        editingView.isHidden = false
+        hideStackViewOrEditingView()
     }
     
    
     @IBAction func editingButtonPressed(_ sender: Any) {
         photoPicker()
-        infoStackView.isHidden = true
-        editingView.isHidden = false
+        hideStackViewOrEditingView()
     }
     
 }
@@ -172,5 +174,17 @@ extension CreatePostViewController: UITextViewDelegate {
         bottomView.sizeToFit()
         placeholderLabel.isHidden = !textView.text.isEmpty
         contentLine.backgroundColor = Constants.Colors.deepGreen
+    }
+}
+
+extension CreatePostViewController {
+    func hideStackViewOrEditingView() {
+           if uploadedImage.image != nil {
+               infoStackView.isHidden = true
+               editingView.isHidden = false
+           } else {
+             infoStackView.isHidden = false
+             editingView.isHidden = true
+        }
     }
 }

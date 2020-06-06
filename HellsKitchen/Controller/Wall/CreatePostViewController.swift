@@ -42,18 +42,20 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = true
         hideStackViewOrEditingView()
-        //setupCancelButtonTitle()
+        setupCancelButtonTitle()
     }
     
-    /*func setupCancelButtonTitle() {
-        //change later
+    func setupCancelButtonTitle() {
         let cancelButton = UIBarButtonItem()
         cancelButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = cancelButton
-    }*/
+    }
     
-    //@IBAction func cancelButtonPressed
-   
+    
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" {

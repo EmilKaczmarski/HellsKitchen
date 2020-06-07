@@ -265,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eU3-2N-MnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5599" y="-60"/>
+            <point key="canvasLocation" x="5638" y="721"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oR6-DJ-Xrp">
@@ -396,7 +396,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join Us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrd-Xr-ZLX">
-                                <rect key="frame" x="157" y="10" width="100" height="47.666666666666657"/>
+                                <rect key="frame" x="157" y="9.9999999999999964" width="100" height="47.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47.670000000000002" id="3l8-6x-HiR"/>
                                     <constraint firstAttribute="width" constant="100" id="FCl-pO-eeM"/>
@@ -429,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llA-bi-ZtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6603" y="-60"/>
+            <point key="canvasLocation" x="6641" y="721"/>
         </scene>
         <!--Wall View Controller-->
         <scene sceneID="AKW-CP-I8J">
@@ -522,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ht-Dh-d23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3541" y="1458"/>
+            <point key="canvasLocation" x="1655" y="1458"/>
         </scene>
         <!--Create Post View Controller-->
         <scene sceneID="zEB-lM-g1G">
@@ -797,7 +797,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qU8-6B-GVr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2612" y="1478"/>
+            <point key="canvasLocation" x="3522" y="1467"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="6i8-sc-k4m">
@@ -863,7 +863,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8t-XE-kCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3541" y="2215"/>
+            <point key="canvasLocation" x="1655" y="2178"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="0dj-YL-dUZ">
@@ -975,7 +975,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6q-lX-Dsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1653.6231884057972" y="2116.7410714285716"/>
+            <point key="canvasLocation" x="2612" y="2186"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vJp-eh-a84">
@@ -1020,12 +1020,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWP-Q6-4ux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3541" y="721"/>
+            <point key="canvasLocation" x="1655" y="721"/>
         </scene>
         <!--Profile-->
         <scene sceneID="KHY-hs-tts">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ly-Wb-Sgf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ly-Wb-Sgf" customClass="ProfileNavigationController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="icPerson" id="kcG-X5-7ei"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="otn-Ni-dYO"/>
@@ -1035,7 +1035,8 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="amu-Ik-KaN" kind="relationship" relationship="rootViewController" id="bGR-2i-HnJ"/>
+                        <segue destination="9rB-xo-7tq" kind="relationship" relationship="rootViewController" id="5Vz-ee-fM4"/>
+                        <segue destination="amu-Ik-KaN" kind="show" identifier="profileNavigationSegue" id="GeB-ow-JGk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hB4-jA-Jrq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1479,7 +1480,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4L-v3-smQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="424"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhO-5h-DR5">
                                         <rect key="frame" x="20" y="32" width="98" height="43"/>
@@ -1492,7 +1493,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Q9I-EB-gba">
-                                        <rect key="frame" x="0.0" y="249.33333333333331" width="414" height="142.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="156.33333333333337" width="414" height="142.66666666666663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQK-lt-U3E">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -1514,7 +1515,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debora Barbosa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCx-00-KNj">
-                                                <rect key="frame" x="0.0" y="124.00000000000001" width="414" height="18.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="123.99999999999999" width="414" height="18.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1532,7 +1533,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14.300000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="cOw-vr-ZK2">
-                                <rect key="frame" x="20" y="492.00000000000006" width="374" height="95.666666666666686"/>
+                                <rect key="frame" x="20" y="443" width="374" height="95.666666666666629"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15.800000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="LWh-uq-p5U">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
@@ -1573,7 +1574,7 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUy-4D-QaC">
-                                                <rect key="frame" x="0.0" y="39.666666666666629" width="374" height="1"/>
+                                                <rect key="frame" x="0.0" y="39.666666666666686" width="374" height="1"/>
                                                 <color key="backgroundColor" red="0.98031717539999996" green="0.98043435810000001" blue="0.98027724029999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.98031717539999996" green="0.98043435810000001" blue="0.98027724029999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -1634,7 +1635,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ecd-SU-QpF">
-                                <rect key="frame" x="21" y="635" width="374" height="54"/>
+                                <rect key="frame" x="21" y="586" width="374" height="54"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zmd-HQ-cuN">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="1"/>
@@ -1707,7 +1708,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6f-Cr-cyZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5599" y="721"/>
+            <point key="canvasLocation" x="4488" y="-60"/>
         </scene>
         <!--Recipes View Controller-->
         <scene sceneID="K6j-32-xfC">
@@ -2164,7 +2165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPS-tp-9ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4486" y="-60"/>
+            <point key="canvasLocation" x="4635" y="721"/>
         </scene>
         <!--Chat Users View Controller-->
         <scene sceneID="UeM-Ee-YBI">
@@ -2348,12 +2349,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQa-S2-Br0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1654" y="1418"/>
+            <point key="canvasLocation" x="2612" y="1467"/>
         </scene>
         <!--Chat-->
         <scene sceneID="wGL-WH-sQb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T7I-Ah-F5l" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T7I-Ah-F5l" customClass="ChatNavigationController" customModule="HellsKitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" image="icChat" id="gdZ-B7-hGJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xxB-UB-Ere">
@@ -2363,11 +2364,12 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="sWL-b1-FGT" kind="relationship" relationship="rootViewController" id="eOx-FO-FQx"/>
+                        <segue destination="amu-Ik-KaN" kind="show" identifier="chatNavigationSegue" id="09W-vp-gRU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mc-qK-jeD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1653.6231884057972" y="720.53571428571422"/>
+            <point key="canvasLocation" x="2612" y="730"/>
         </scene>
         <!--Add-->
         <scene sceneID="uSn-ZP-zf0">
@@ -2384,12 +2386,12 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="F5M-sh-rs9" kind="relationship" relationship="rootViewController" id="O2h-nA-P7W"/>
-                        <segue destination="amu-Ik-KaN" kind="show" identifier="addPostNavigationSegue" id="nDL-iK-A60"/>
+                        <segue destination="amu-Ik-KaN" kind="show" identifier="addPostNavigationSegue" id="jFh-ib-PSj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKN-XT-tNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2611.594202898551" y="720.53571428571422"/>
+            <point key="canvasLocation" x="3522" y="753"/>
         </scene>
     </scenes>
     <resources>
@@ -2417,6 +2419,6 @@
         <image name="plainWhite" width="1920" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nDL-iK-A60"/>
+        <segue reference="09W-vp-gRU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -43,6 +43,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         tabBarController?.tabBar.isHidden = true
         hideStackViewOrEditingView()
         setupCancelButtonTitle()
+
     }
     
     func setupCancelButtonTitle() {
@@ -53,7 +54,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        tabBarController?.selectedIndex = 0
     }
     
     

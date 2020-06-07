@@ -94,7 +94,6 @@ extension FirebaseManager {
                 guard let user = Auth.auth().currentUser else { return }
                 Constants.currentUserEmail = user.email!
                 self.setCurrentUsername() {
-                    controller.navigationController?.popViewController(animated: true)
                     completion()
                 }
             }

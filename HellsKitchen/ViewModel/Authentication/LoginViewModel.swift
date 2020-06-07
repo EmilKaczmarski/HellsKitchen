@@ -15,9 +15,5 @@ class LoginViewModel {
     var delegate: LoginViewController?
 }
 
-extension LoginViewModel {
-    
-    
-    
-    
+extension LoginViewModel {  
 }

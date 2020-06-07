@@ -48,6 +48,9 @@
 		18CB97CC2475AF120054123A /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = 18CB97CB2475AF120054123A /* DynamicColor */; };
 		18D1E1BB2488260E00BB0D2D /* TriLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */; };
 		18D1E1BE2488468B00BB0D2D /* TimeDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1E1BD2488468B00BB0D2D /* TimeDisplayManager.swift */; };
+		18D574EA248D93D80043DE9F /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D574E9248D93D80043DE9F /* ProfileNavigationController.swift */; };
+		18D574ED248D9EA10043DE9F /* ChatNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D574EC248D9EA10043DE9F /* ChatNavigationController.swift */; };
+		18D574EF248D9FA90043DE9F /* ProtectedDataNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D574EE248D9FA90043DE9F /* ProtectedDataNavigationController.swift */; };
 		18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D802C724731C20007F0E03 /* ChatUserCell.swift */; };
 		18D802CB24732775007F0E03 /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D802CA24732775007F0E03 /* LetterAvatarKit */; };
 		18E2C96824866397007BEB56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E2C96724866397007BEB56 /* User.swift */; };
@@ -110,6 +113,9 @@
 		18BE285F246B1B7C00869B6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriLabelView.swift; sourceTree = "<group>"; };
 		18D1E1BD2488468B00BB0D2D /* TimeDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDisplayManager.swift; sourceTree = "<group>"; };
+		18D574E9248D93D80043DE9F /* ProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
+		18D574EC248D9EA10043DE9F /* ChatNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNavigationController.swift; sourceTree = "<group>"; };
+		18D574EE248D9FA90043DE9F /* ProtectedDataNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedDataNavigationController.swift; sourceTree = "<group>"; };
 		18D802C724731C20007F0E03 /* ChatUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		18E2C96724866397007BEB56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18E2C9692486AB0F007BEB56 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -283,12 +289,12 @@
 			isa = PBXGroup;
 			children = (
 				18BE2848246B15D500869B6C /* WelcomeViewController.swift */,
-				183D66C0248C6F1900F3453E /* AddPostNavigationController.swift */,
 				1891080B246B386100F88489 /* MainMenuViewController.swift */,
 				18FB2A6824781CD900DDCAB0 /* Recipe */,
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
+				18D574EB248D9E820043DE9F /* NavigationControllers */,
 				47712B362482E91A007E70D3 /* ProfileViewController.swift */,
 				18E2C9692486AB0F007BEB56 /* TabBarController.swift */,
 			);
@@ -367,6 +373,17 @@
 				18D1E1BD2488468B00BB0D2D /* TimeDisplayManager.swift */,
 			);
 			path = TimeDisplayManager;
+			sourceTree = "<group>";
+		};
+		18D574EB248D9E820043DE9F /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				183D66C0248C6F1900F3453E /* AddPostNavigationController.swift */,
+				18D574E9248D93D80043DE9F /* ProfileNavigationController.swift */,
+				18D574EC248D9EA10043DE9F /* ChatNavigationController.swift */,
+				18D574EE248D9FA90043DE9F /* ProtectedDataNavigationController.swift */,
+			);
+			path = NavigationControllers;
 			sourceTree = "<group>";
 		};
 		18ED140B246D31120093398A /* Wall */ = {
@@ -572,6 +589,7 @@
 				18ED1413246D67DA0093398A /* CreatePostViewController.swift in Sources */,
 				18910808246B325900F88489 /* LoginViewController.swift in Sources */,
 				18E2CDBE2484E6C6000B1D42 /* RecipeTableViewCell.swift in Sources */,
+				18D574ED248D9EA10043DE9F /* ChatNavigationController.swift in Sources */,
 				18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */,
 				1890714724852FF9008CB184 /* SignInMenuViewController.swift in Sources */,
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
@@ -587,7 +605,9 @@
 				18A075542479D26400517BED /* FirebaseManager.swift in Sources */,
 				18E2C96824866397007BEB56 /* User.swift in Sources */,
 				187121CD246D2EF50008B307 /* WallViewController.swift in Sources */,
+				18D574EA248D93D80043DE9F /* ProfileNavigationController.swift in Sources */,
 				187A7B6D2487D2550097B912 /* RightMessageCell.swift in Sources */,
+				18D574EF248D9FA90043DE9F /* ProtectedDataNavigationController.swift in Sources */,
 				187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */,
 				187121CB246C84C20008B307 /* ChatViewModel.swift in Sources */,
 				1891080A246B36B400F88489 /* Constants.swift in Sources */,

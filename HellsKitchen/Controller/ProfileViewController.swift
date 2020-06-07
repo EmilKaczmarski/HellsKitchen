@@ -20,7 +20,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
-        logOutIcon.transform.rotated(by: (CGFloat(Double.pi / 2)))
+//        logOutIcon.transform.rotated(by: (CGFloat(Double.pi / 2)))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func settingsButtonPressed(_ sender: Any) {

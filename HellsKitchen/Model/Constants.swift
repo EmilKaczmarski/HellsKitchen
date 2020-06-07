@@ -52,6 +52,8 @@ extension Constants {
         static let recipeCategorySegue = "recipeCategorySegue"
         
         static let addPostNavigationSegue = "addPostNavigationSegue"
+        static let profileNavigationSegue = "profileNavigationSegue"
+        static let chatNavigationSegue = "chatNavigationSegue"
     }
 }
 

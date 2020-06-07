@@ -10,4 +10,6 @@ import UIKit
 
 class AddPostNavigationController: ProtectedDataNavigationController {
     override var segueName: String? { get { return Constants.Segues.addPostNavigationSegue } }
+    override var upperLabelForChildController: String? { get { return "Sign in to add your"} }
+    override var lowerLabelForChildController: String? { get { return "post"} }
 }

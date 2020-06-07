@@ -12,6 +12,9 @@ import Firebase
 import GoogleSignIn
 
 class SignInMenuViewController: UIViewController, GIDSignInDelegate {
+    
+    var lowerTitle = ""
+    var upperTitle = ""
     @IBOutlet weak var FBLoginButton: UIButton!
     @IBOutlet weak var lowerLabel: UILabel!
     
@@ -32,6 +35,12 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = true
+        setupUpperAndLowerTitle()
+    }
+    
+    func setupUpperAndLowerTitle() {
+        upperLabel.text = upperTitle
+        lowerLabel.text = lowerTitle
     }
     
     func setupLoginButtonsViews() {

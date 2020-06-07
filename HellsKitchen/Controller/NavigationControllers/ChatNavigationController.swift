@@ -9,5 +9,7 @@
 import Foundation
 
 class ChatNavigationController: ProtectedDataNavigationController {
-   override var segueName: String? { get { return Constants.Segues.chatNavigationSegue } }
+    override var segueName: String? { get { return Constants.Segues.chatNavigationSegue } }
+    override var upperLabelForChildController: String? { get { return "Sign in to see your"} }
+    override var lowerLabelForChildController: String? { get { return "messages"} }
 }

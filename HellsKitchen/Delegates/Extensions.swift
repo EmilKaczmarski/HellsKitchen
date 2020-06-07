@@ -90,3 +90,19 @@ class TriangleView : UIView {
         context.fillPath()
     }
 }
+
+//MARK: - navigation controllers
+
+extension UINavigationController {
+    
+    ///Get previous view controller of the navigation stack
+    func previousViewController() -> UIViewController?{
+        
+        let lenght = self.viewControllers.count
+        
+        let previousViewController: UIViewController? = lenght >= 2 ? self.viewControllers[lenght-2] : nil
+        
+        return previousViewController
+    }
+    
+}

@@ -39,6 +39,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         setupBackButtonTitle()
     }
     
+    
+
     func setupBackButtonTitle() {
         let backButton = UIBarButtonItem()
         backButton.title = ""
@@ -55,8 +57,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             loginLoader.startAnimating()
             FirebaseManager.shared.signIn(email: email, password: password, in: self) {
                 self.navigationController?.popToRootViewController(animated: false)
-                //self.tabBarController?.selectedIndex = 4
-            
                 self.loginLoader.stopAnimating()
             }
         }
@@ -97,7 +97,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     @IBAction func registerNowButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
     }
-    
     
 //MARK: - facebook extension
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {

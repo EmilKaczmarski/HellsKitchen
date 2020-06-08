@@ -35,6 +35,17 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = true
         setupUpperAndLowerTitle()
+        if Constants.currentUserName != "" {
+            navigationController?.popToRootViewController(animated: false)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
     }
     
     func setupUpperAndLowerTitle() {

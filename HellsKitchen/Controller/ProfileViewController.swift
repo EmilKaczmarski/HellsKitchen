@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var logOutIcon: UIImageView!
     @IBOutlet weak var username: UILabel!
     
+    @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         profilePicture.layer.masksToBounds = true

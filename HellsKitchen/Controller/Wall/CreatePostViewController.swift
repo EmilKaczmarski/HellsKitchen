@@ -11,16 +11,17 @@ import UIKit
 class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var header: UITextField!
-    @IBOutlet weak var content: UITextView!
     @IBOutlet weak var uploadedImage: UIImageView!
     @IBOutlet weak var infoStackView: UIStackView!
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var nameLine: UIView!
-    @IBOutlet weak var contentLine: UIView!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var addRecipeButton: UIButton!
     @IBOutlet weak var editingView: UIView!
+    
+    //texview
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var content: UITextView!
+    @IBOutlet weak var contentPlaceholder: UILabel!
     
     let viewModel: PostDetailViewModel = PostDetailViewModel()
     
@@ -35,7 +36,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         uploadedImage.layer.borderWidth = 1
         uploadedImage.layer.borderColor = Constants.Colors.deepGreen.cgColor
         hideStackViewOrEditingView()
-        
+        contentView.layer.masksToBounds = true
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = Constants.Colors.lightGray.cgColor
+        content.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +61,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         tabBarController?.selectedIndex = 0
     }
     
-    
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" {
             let timestamp = "\(Date().timeIntervalSince1970)"
@@ -73,9 +76,14 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func nameTextChanged(_ sender: Any) {
         
+    if !header.text!.isEmpty {
+            nameLine.backgroundColor = Constants.Colors.deepGreen
+        } else {
+            nameLine.backgroundColor = Constants.Colors.lightGray
+        }
+        
     if !header.text!.isEmpty && uploadedImage.image != nil {
         enableAddRecipeButton()
-        nameLine.backgroundColor = Constants.Colors.deepGreen
         } else {
             disableAddRecipeButton()
         }
@@ -156,36 +164,25 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
 
 //MARK: - extensions
 
-/*extension CreatePostViewController: UIImage {
-    func resize(_ width: CGFloat, _ height:CGFloat) -> UIImage? {
-        let widthRatio  = width / size.width
-        let heightRatio = height / size.height
-        let ratio = widthRatio > heightRatio ? heightRatio : widthRatio
-        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
-        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        self.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-}
-*/
 extension CreatePostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        bottomView.sizeToFit()
-        placeholderLabel.isHidden = !textView.text.isEmpty
-        contentLine.backgroundColor = Constants.Colors.deepGreen
+        contentView.sizeToFit()
+        contentPlaceholder.isHidden = !textView.text.isEmpty
+        
+        if !content.text!.isEmpty {
+            contentView.layer.borderColor = Constants.Colors.deepGreen.cgColor
+        } else {
+            contentView.layer.borderColor = Constants.Colors.lightGray.cgColor
+        }
     }
 }
 
 extension CreatePostViewController {
     func hideStackViewOrEditingView() {
-           if uploadedImage.image != nil {
-               infoStackView.isHidden = true
-               editingView.isHidden = false
-           } else {
+        if uploadedImage.image != nil {
+            infoStackView.isHidden = true
+            editingView.isHidden = false
+        } else {
              infoStackView.isHidden = false
              editingView.isHidden = true
         }

@@ -17,7 +17,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     var upperTitle = ""
     @IBOutlet weak var FBLoginButton: UIButton!
     @IBOutlet weak var lowerLabel: UILabel!
-    
     @IBOutlet weak var upperLabel: UILabel!
     @IBOutlet weak var signWithGoogleView: UIView!
     @IBOutlet weak var signWithFacebookView: UIView!
@@ -71,9 +70,18 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                 print(error.localizedDescription)
                 return
             }
-            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-            FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
-                self.loginLoader.stopAnimating()
+            if let token = AccessToken.current?.tokenString {
+                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                GraphRequest(graphPath: "/me", parameters: ["fields": "email"]).start { (connection, result, err) in
+                    if let results = result as? [String: Any] {
+                        if let email = results["email"] as? String {
+                            print(email)
+                        }
+                    }
+                }
+                FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
+                    self.loginLoader.stopAnimating()
+                }
             }
         }
     }

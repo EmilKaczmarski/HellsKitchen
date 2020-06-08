@@ -77,9 +77,9 @@ class FirebaseManager {
         }
     }
     
-    
     private func intit() {
     }
+    
 }
 //MARK: - method useful for sign in user
 extension FirebaseManager {
@@ -126,23 +126,24 @@ extension FirebaseManager {
 //MARK: - method useful for sign in user by facebook
 
 extension FirebaseManager {
-    func signInWithExternalApplication(with credential: AuthCredential, type: ControllerType,completion: @escaping ()-> Void) {
+    func signInWithExternalApplication(with credential: AuthCredential, type: ControllerType, completion: @escaping ()-> Void) {
         let controller = type.controller
         if type == .login {
             signInViewController!.loginLoader.startAnimating()
         }
+        
+        
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 print(error.localizedDescription)
                 completion()
             }
             guard let userEmail = Auth.auth().currentUser?.email else { return }
-    
             FirebaseManager.shared.checkWhetherEmailExists(with: userEmail) { (doesExist) in
                 if doesExist {
                     Constants.currentUserEmail = userEmail
                     FirebaseManager.shared.setCurrentUsername {
-                        controller.tabBarController?.selectedIndex = 0
+                        controller.navigationController?.popToRootViewController(animated: false)
                     }
                 } else {
                     AlertManager.shared.askNewUserToProvideName(with: "please provide new username", in: controller)

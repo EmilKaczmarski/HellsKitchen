@@ -13,10 +13,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var logOutIcon: UIImageView!
+    @IBOutlet weak var username: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
+        username.text = Constants.currentUserName
     }
     
     @IBAction func settingsButtonPressed(_ sender: Any) {

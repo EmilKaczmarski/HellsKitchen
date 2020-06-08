@@ -22,13 +22,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
-        //Facebook
-//        FBLoginButton.delegate = self
-//        FBLoginButton.permissions = ["public_profile", "email"]
-        //Google
-//        GIDSignIn.sharedInstance()?.presentingViewController = self
-        //FirebaseManager.shared.loginViewController = self
-        //GIDSignIn.sharedInstance().signIn()
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         loginButtonView.layer.cornerRadius = 20
     }

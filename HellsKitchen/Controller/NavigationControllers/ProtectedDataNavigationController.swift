@@ -23,7 +23,6 @@ class ProtectedDataNavigationController: UINavigationController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        print(Constants.currentUserName)
         if Constants.currentUserName == "" {
             if let name = segueName {
                 performSegue(withIdentifier: name, sender: self)

@@ -22,6 +22,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
 //        logOutIcon.transform.rotated(by: (CGFloat(Double.pi / 2)))
+        
+        tabBarController?.tabBar.isHidden = false
+        username.text = Constants.currentUserName
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +42,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
+        FirebaseManager.shared.signOutUser { success in
+            if success {
+                self.tabBarController?.selectedIndex = 0
+            }
+        }
     }
     
      func profilePicturePicker() {

@@ -21,7 +21,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                 self.selectedIndex = 0
             }
         }
-        
     }
 
     // UITabBarControllerDelegate

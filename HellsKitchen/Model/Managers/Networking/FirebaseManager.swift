@@ -122,7 +122,20 @@ extension FirebaseManager {
     }
 }
 
-
+//MARK: - sing out
+extension FirebaseManager {
+    func signOutUser(completion: @escaping(Bool)-> Void) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            Constants.currentUserName = ""
+            completion(true)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            completion(false)
+        }
+    }
+}
 //MARK: - method useful for sign in user by facebook
 
 extension FirebaseManager {

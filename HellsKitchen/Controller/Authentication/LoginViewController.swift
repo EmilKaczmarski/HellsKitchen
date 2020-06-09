@@ -32,8 +32,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         setupBackButtonTitle()
     }
     
-    
-
     func setupBackButtonTitle() {
         let backButton = UIBarButtonItem()
         backButton.title = ""

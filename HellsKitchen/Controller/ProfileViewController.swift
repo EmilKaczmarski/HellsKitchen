@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func logOutButtonPressed(_ sender: Any) {
         FirebaseManager.shared.signOutUser { success in
             if success {
-                self.tabBarController?.selectedIndex = 0
+               
             }
         }
     }

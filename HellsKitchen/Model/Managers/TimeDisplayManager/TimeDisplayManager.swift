@@ -33,7 +33,7 @@ class TimeDisplayManager {
         } else if calendar.isDateInYesterday(date){
             daysComponent = " Yesterday"
         } else {
-            daysComponent = " \(date)"[0..<10].replacingOccurrences(of: "-", with: ".")
+            daysComponent = " \(date)"[0..<11].replacingOccurrences(of: "-", with: ".")
         }
         return daysComponent
     }

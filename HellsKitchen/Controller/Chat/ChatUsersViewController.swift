@@ -31,7 +31,14 @@ class ChatUsersViewController: UIViewController {
         setupSearchBar()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(false)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        if Constants.currentUserName != "" {
+            navigationController?.popToRootViewController(animated: false)
+        }
         super.viewWillAppear(true)
         enableFirebaseToOfflineMode()
         viewModel.setupData()

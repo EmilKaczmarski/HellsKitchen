@@ -53,7 +53,7 @@ struct RecipeRepository {
         guard let requestUrl = request.url else { return }
         AF  .request(requestUrl,
                      method: request.method,
-            parameters: request.parameters)
+                     parameters: request.parameters)
             .response { response in
                 guard let data = response.data else { return }
                 do {
@@ -67,8 +67,6 @@ struct RecipeRepository {
                         completion(nil, error)
                     }
                 }
-                
-                
         }
     }
 }

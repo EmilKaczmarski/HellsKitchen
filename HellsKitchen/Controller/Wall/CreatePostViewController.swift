@@ -17,8 +17,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var addRecipeButton: UIButton!
     @IBOutlet weak var editingView: UIView!
-    
-    //texview
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var contentPlaceholder: UILabel!
@@ -47,7 +45,9 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         tabBarController?.tabBar.isHidden = true
         hideStackViewOrEditingView()
         setupCancelButtonTitle()
-
+        if Constants.currentUserName != "" {
+            navigationController?.popToRootViewController(animated: false)
+        }
     }
     
     func setupCancelButtonTitle() {

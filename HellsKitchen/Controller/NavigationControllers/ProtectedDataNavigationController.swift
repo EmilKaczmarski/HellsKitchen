@@ -8,7 +8,7 @@
 
 import UIKit
 class ProtectedDataNavigationController: UINavigationController {
-    var segueName: String? { get { return nil} }
+    var segueName: String? { get { return nil } }
     var upperLabelForChildController: String? { get { return nil} }
     var lowerLabelForChildController: String? { get { return nil} }
     override func viewDidLoad() {
@@ -16,7 +16,12 @@ class ProtectedDataNavigationController: UINavigationController {
         super.viewWillAppear(false)
         if Constants.currentUserName == "" {
             if let name = segueName {
-                performSegue(withIdentifier: name, sender: self)
+                self.performSegue(withIdentifier: name, sender: self)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if !(UIApplication.getTopViewController() is SignInMenuViewController) {
+                        self.performSegue(withIdentifier: name, sender: self)
+                    }
+                }
             }
         }
     }
@@ -25,10 +30,16 @@ class ProtectedDataNavigationController: UINavigationController {
         super.viewWillAppear(false)
         if Constants.currentUserName == "" {
             if let name = segueName {
-                performSegue(withIdentifier: name, sender: self)
+                self.performSegue(withIdentifier: name, sender: self)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if !(UIApplication.getTopViewController() is SignInMenuViewController) {
+                        self.performSegue(withIdentifier: name, sender: self)
+                    }
+                }
             }
         }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SignInMenuViewController

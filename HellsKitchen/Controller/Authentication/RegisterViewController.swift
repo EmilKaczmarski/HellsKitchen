@@ -15,20 +15,23 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var registerView: UIView!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerLoader: UIActivityIndicatorView!
     
     let viewModel: RegisterViewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        registerView.layer.cornerRadius = 10
-        navigationController?.navigationBar.tintColor = UIColor(hexaString: Constants.Colors.deepRed)
-        registerButton.layer.cornerRadius = 10
+        setupRegisterButton()
+        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        registerView.layer.cornerRadius = 20
+        navigationController?.navigationBar.tintColor = Constants.Colors.deepGreen
         FirebaseManager.shared.registerViewController = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = true
         setupBackButtonTitle()
     }
     
@@ -38,9 +41,50 @@ class RegisterViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
+    func enableRegisterButton() {
+        registerButton.isEnabled = true
+        registerView.backgroundColor = Constants.Colors.deepGreen
+    }
+    
+    func disableRegisterButton() {
+        registerButton.isEnabled = false
+        registerView.backgroundColor = Constants.Colors.deepGreenDisabled
+    }
+    
+    
+    @IBAction func usernameTextChanged(_ sender: Any) {
+        if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty && !usernameTextField.text!.isEmpty {
+            enableRegisterButton()
+        } else {
+            disableRegisterButton()
+        }
+    }
+    
+    @IBAction func emailTextChanged(_ sender: Any) {
+        if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty && !usernameTextField.text!.isEmpty {
+            enableRegisterButton()
+        } else {
+            disableRegisterButton()
+        }
+    }
+    
+    @IBAction func passwordTextChanged(_ sender: Any) {
+        if emailTextField.text!.contains("@") && !passwordTextField.text!.isEmpty && !usernameTextField.text!.isEmpty {
+            enableRegisterButton()
+        } else {
+            disableRegisterButton()
+        }
+    }
+    
+    func setupRegisterButton() {
+        disableRegisterButton()
+    }
+    
     @IBAction func registerButtonPressed(_ sender: UIButton) {
+        self.registerLoader.startAnimating()
         guard let nickname = usernameTextField.text else { return }
         viewModel.registerUser(nickname, emailTextField: emailTextField.text, passwordTextField: passwordTextField.text)
+        self.registerLoader.stopAnimating()
     }
     
 }

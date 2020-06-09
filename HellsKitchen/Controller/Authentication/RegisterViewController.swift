@@ -25,7 +25,6 @@ class RegisterViewController: UIViewController {
         setupRegisterButton()
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         registerView.layer.cornerRadius = 20
-        navigationController?.navigationBar.tintColor = Constants.Colors.deepGreen
         FirebaseManager.shared.registerViewController = self
     }
     
@@ -41,6 +40,9 @@ class RegisterViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     func enableRegisterButton() {
         registerButton.isEnabled = true
         registerView.backgroundColor = Constants.Colors.deepGreen

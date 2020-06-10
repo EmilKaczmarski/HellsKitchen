@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -42,6 +43,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
+        LoginManager().logOut()
         FirebaseManager.shared.signOutUser { success in
             if success {
                

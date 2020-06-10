@@ -81,8 +81,8 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                 print(error.localizedDescription)
                 return
             }
-            if let token = AccessToken.current?.tokenString {
-                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+            if let token = AccessToken.current {
+                let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
                 GraphRequest(graphPath: "/me", parameters: ["fields": "email"]).start { (connection, result, err) in
                     if let results = result as? [String: Any] {
                         if let email = results["email"] as? String {
@@ -90,8 +90,10 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                         }
                     }
                 }
-                FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
-                    self.loginLoader.stopAnimating()
+                if !token.isExpired {
+                    FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
+                        self.loginLoader.stopAnimating()
+                    }
                 }
             }
         }

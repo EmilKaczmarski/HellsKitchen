@@ -58,9 +58,9 @@ class ChatUsersViewModel {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
                         let element = i.data()
-                        if element[element.startIndex].key != Constants.currentUserName {
+                        if (element["username"] as! String) != Constants.currentUserName {
                             var user = User()
-                            user.name = element[element.startIndex].key
+                            user.name = (element["username"] as! String)
                             self.users.append(user)
                         }
                     }

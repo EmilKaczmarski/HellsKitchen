@@ -8,11 +8,13 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class FirebaseManager {
     
     static let shared = FirebaseManager()
     let db = Firestore.firestore()
+    let storageRef = Storage.storage().reference()
     var loginViewController: LoginViewController?
     var signInViewController: SignInMenuViewController?
     var registerViewController: RegisterViewController?
@@ -42,10 +44,10 @@ class FirebaseManager {
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
-                        if i.data().values.contains(where: { (value) -> Bool in
-                            return (value as! String) == email
-                        }) {
+                        let element = i.data()
+                        if (element[Constants.FStore.UserComponents.email] as! String) == email {
                             doesExist = true
+                            completion(true)
                         }
                     }
                 }
@@ -64,9 +66,8 @@ class FirebaseManager {
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
-                        if i.data().keys.contains(where: { (key) -> Bool in
-                            return key == userName
-                        }) {
+                        let element = i.data()
+                        if (element[Constants.FStore.UserComponents.username] as! String) == userName  {
                             doesExist = true
                             completion(true)
                         }
@@ -100,7 +101,6 @@ extension FirebaseManager {
         }
     }
     
-    
     func setCurrentUsername(completion: @escaping ()-> Void) {
         self.db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
             if let err = error {
@@ -109,9 +109,9 @@ extension FirebaseManager {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
                         let element = i.data()
-                        if element[element.startIndex].value as! String == Constants.currentUserEmail {
-                            Constants.currentUserName = element[element.startIndex].key
-                            UserDefaults.standard.set(element[element.startIndex].key, forKey: Constants.usernameKey)
+                        if element["email"] as! String == Constants.currentUserEmail {
+                            Constants.currentUserName = element["username"] as! String
+                            UserDefaults.standard.set(element["email"] as! String, forKey: Constants.usernameKey)
                             completion()
                         }
                     }
@@ -179,14 +179,17 @@ extension FirebaseManager {
                         print(error.localizedDescription)
                     }
                 }
-                
                 self.addUserToList(email: email, username: username)
             }
         }
     }
     
     func addUserToList(email: String, username: String) {
-        db.collection(Constants.FStore.allUsers).addDocument(data: [username: email]) { (error) in
+        db.collection(Constants.FStore.allUsers)
+            .addDocument(data: [
+                Constants.FStore.UserComponents.email: email,
+                Constants.FStore.UserComponents.username: username
+                ]) { (error) in
             if let err = error {
                 print(err.localizedDescription)
             } else {
@@ -194,5 +197,46 @@ extension FirebaseManager {
             }
         }
     }
+}
+
+//MARK: - profile details
+extension FirebaseManager {
+    func saveImageToFirebase(as data: Data) {
+        // Create a reference to the file you want to upload
+        let riversRef = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
+
+        // Upload the file to the path "images/rivers.jpg"
+        let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
+          guard let metadata = metadata else {
+            // Uh-oh, an error occurred!
+            print( "Uh-oh, an error occurred!")
+            return
+          }
+          // Metadata contains file metadata such as size, content-type.
+          let size = metadata.size
+          // You can also access to download URL after upload.
+          riversRef.downloadURL { (url, error) in
+            guard let downloadURL = url else {
+              //print( "Uh-oh, an error occurred!")
+              return
+            }
+          }
+        }
+    }
+    
+    func getProfilePictureData(for username: String, completion: @escaping (Data?, Error?)-> ()) {
+        let pictureRef = storageRef.child("profilePictures/\(username).jpg")
+        pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("no success")
+                print(error.localizedDescription)
+                completion(nil, error)
+            } else {
+                print("success")
+                completion(data!, nil)
+            }
+        }
+    }
     
 }
+

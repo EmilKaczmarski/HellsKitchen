@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UITabBar.appearance().selectionIndicatorImage = Constants.Functions.getImageWithColorPosition(color: Constants.Colors.deepGreen , size: CGSize(width:(UIScreen.main.bounds.width)/6.7,height: 56), lineSize: CGSize(width:(UIScreen.main.bounds.width)/6.7, height:2))
         
         Messaging.messaging().delegate = self
-      
+
         if #available(iOS 10.0, *) {
                // For iOS 10 display notification (sent via APNS)
                UNUserNotificationCenter.current().delegate = self

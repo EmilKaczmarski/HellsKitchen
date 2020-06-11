@@ -115,7 +115,7 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
             cell.date.isHidden = true
             cell.lastMessage.isHidden = true
         }
-        cell.imageBox.image = UIImage(named: "test")
+        cell.imageBox.image = UIImage(named: "defaultProfilePicture")
         hidecarrotViewIfNeeded()
         return cell
     }

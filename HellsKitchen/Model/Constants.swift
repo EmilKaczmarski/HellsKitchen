@@ -78,6 +78,11 @@ extension Constants {
             static let lastMessage = "lastMessage"
         }
         
+        struct UserComponents {
+            static let username = "username"
+            static let email = "email"
+        }
+        
         struct PostComponents {
             static let id = "id"
             static let title = "title"
@@ -139,4 +144,11 @@ extension Constants {
 }
 
 
-//MARK: - extensions
+//MARK: - pictures
+
+
+extension Constants {
+    struct Pictures {
+        static let defaultProfile = UIImage(named: "defaultProfilePicture" )
+    }
+}

@@ -97,7 +97,7 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightCell") as! RightMessageCell
             cell.message.text = viewModel.messages[indexPath.row].message
             cell.message.text = viewModel.messages[indexPath.row].message
-            cell.imageBox.image = UIImage(named: "test")
+            cell.imageBox.image = UIImage(named: "defaultProfilePicture")
             if let date = Double(viewModel.messages[indexPath.row].timestamp!) {
                 cell.date.text = TimeDisplayManager.shared.getDateForMessageCell(timestamp: date)
             }
@@ -110,7 +110,7 @@ extension ChatViewController: UITableViewDataSource {
             if let date = Double(viewModel.messages[indexPath.row].timestamp!) {
                 cell.date.text = TimeDisplayManager.shared.getDateForMessageCell(timestamp: date)
             }
-            cell.imageBox.image = UIImage(named: "test")
+            cell.imageBox.image = UIImage(named: "defaultProfilePicture")
             cell.selectionStyle = .none
             cell.backgroundColor = .clear
             return cell

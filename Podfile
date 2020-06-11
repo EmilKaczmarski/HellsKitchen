@@ -11,4 +11,5 @@ target 'HellsKitchen' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
 end

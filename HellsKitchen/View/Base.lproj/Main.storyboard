@@ -1231,7 +1231,7 @@
                                                 <rect key="frame" x="0.0" y="148" width="414" height="46"/>
                                                 <subviews>
                                                     <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t searched any  recipes yet" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0e-1i-fpj">
-                                                        <rect key="frame" x="94.666666666666671" y="-0.66666666666668561" width="224.66666666666663" height="47.666666666666664"/>
+                                                        <rect key="frame" x="107.33333333333333" y="3.3333333333333144" width="199.66666666666669" height="39.666666666666664"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                         <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1579,7 +1579,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Q9I-EB-gba">
-                                        <rect key="frame" x="0.0" y="152.33333333333337" width="414" height="146.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="156.33333333333337" width="414" height="142.66666666666663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQK-lt-U3E">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -1601,7 +1601,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debora Barbosa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCx-00-KNj">
-                                                <rect key="frame" x="0.0" y="123.99999999999999" width="414" height="22.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="123.99999999999999" width="414" height="18.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1944,7 +1944,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-Dm-YfO">
-                                <rect key="frame" x="19" y="240.99999999999997" width="376" height="317.33333333333326"/>
+                                <rect key="frame" x="19" y="240.99999999999997" width="376" height="309.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axw-hD-sRK">
                                         <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
@@ -2159,16 +2159,16 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x2t-oN-12m">
-                                        <rect key="frame" x="76.666666666666671" y="246.66666666666666" width="222.66666666666663" height="70.666666666666657"/>
+                                        <rect key="frame" x="88.333333333333329" y="246.66666666666666" width="199.66666666666669" height="62.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avt-tJ-7gd">
-                                                <rect key="frame" x="0.0" y="0.0" width="222.66666666666666" height="22.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="199.66666666666666" height="18.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                                 <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKo-Jh-ycl">
-                                                <rect key="frame" x="73.999999999999986" y="30.666666666666686" width="75.000000000000014" height="40"/>
+                                                <rect key="frame" x="65.333333333333329" y="26.666666666666686" width="68.999999999999986" height="36"/>
                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="20"/>
                                                 <state key="normal" title="Sign up">
                                                     <color key="titleColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2215,7 +2215,7 @@
                                 </constraints>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Jg3-lz-DAx">
-                                <rect key="frame" x="177" y="596" width="60" height="60"/>
+                                <rect key="frame" x="177" y="588" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Ns4-Y0-5rn"/>
                                     <constraint firstAttribute="width" constant="60" id="Pv1-EG-SWi"/>

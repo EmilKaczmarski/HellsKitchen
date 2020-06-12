@@ -58,7 +58,6 @@ extension WallViewController {
         tableView.register(PostCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 85.0
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
@@ -116,7 +115,7 @@ extension WallViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PostCell
         cell.content.text = viewModel.posts[indexPath.row].content
-        cell.owner.text = viewModel.posts[indexPath.row].owner
+        cell.name.text = viewModel.posts[indexPath.row].owner
         cell.title.text = viewModel.posts[indexPath.row].title
         let date = Date(timeIntervalSince1970: Double(viewModel.posts[indexPath.row].createTimestamp)!)
         cell.date.text = "\(date)"[0..<10]

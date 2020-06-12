@@ -172,6 +172,7 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
                 let user = viewModel.cells[indexPath.row] as! User
                 receiver = user.name!
             }
+            vc.receiverProfilePicture = viewModel.userImages[receiver]
             vc.receiver = receiver
             vc.setTitle(vc.receiver!)
         }

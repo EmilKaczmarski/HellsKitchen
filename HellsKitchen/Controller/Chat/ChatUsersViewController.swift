@@ -76,6 +76,33 @@ class ChatUsersViewController: UIViewController {
     }
 }
 
+//MARK: - loading images
+extension ChatUsersViewController {
+    func loadUserImages() {
+        for user in viewModel.users {
+            viewModel.setUserProfilePicture(for: user) {
+                self.viewModel.userImages[user.name!] = user.profilePicture!
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func loadMessageImages() {
+        for message in viewModel.allMessages {
+            var username = ""
+            if message.firstUser != Constants.currentUserName {
+                username = message.firstUser!
+            } else {
+                username = message.secondUser!
+            }
+            viewModel.setMessageProfilePicture(in: message, for: username) {
+                self.viewModel.messageImages[username] = message.profilePicture!
+                self.tableView.reloadData()
+            }
+        }
+    }
+}
+
 //MARK: - noUsersView methods
 extension ChatUsersViewController {
     func hidecarrotViewIfNeeded() {
@@ -103,19 +130,20 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
             if let date = Double(message.timestamp!) {
                 cell.date.text = TimeDisplayManager.shared.getDateForUserCell(timestamp: date)
             }
-            
             cell.lastMessage.isHidden = false
             cell.date.isHidden = false
             cell.lastMessage.isHidden = false
             cell.lastMessage.text = message.lastMessage
+            cell.imageBox.image = viewModel.messageImages[cell.name.text!]
         } else if viewModel.cells[indexPath.row] is User{
             let user = viewModel.cells[indexPath.row] as! User
             cell.name.text = user.name
             cell.lastMessage.isHidden = true
             cell.date.isHidden = true
             cell.lastMessage.isHidden = true
+            cell.imageBox.image = viewModel.userImages[user.name!]
         }
-        cell.imageBox.image = UIImage(named: "defaultProfilePicture")
+        
         hidecarrotViewIfNeeded()
         return cell
     }

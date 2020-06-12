@@ -129,7 +129,6 @@ extension RecipeCategoryViewModel {
             newCategory.name = givenRecipes.q
             newCategory.recipes = NSSet(array: recipeArray)
         } else {
-            
             guard let category = findCategory(for: givenRecipes.q) else { return }
             
             for i in givenRecipes.hits {

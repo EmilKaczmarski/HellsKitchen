@@ -6,8 +6,9 @@
 //  Copyright © 2020 Emil. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct User {
+class User {
     var name: String?
+    var profilePicture: UIImage?
 }

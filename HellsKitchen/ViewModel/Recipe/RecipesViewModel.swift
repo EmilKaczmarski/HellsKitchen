@@ -21,7 +21,7 @@ class RecipesViewModel {
 extension RecipesViewModel {
     func downloadImage(for recipe: RecipeModel, completion: @escaping ()-> ()) {
         AF
-            .request(recipe.imageUrl!, method:  .get)
+            .request(recipe.imageUrl!, method: .get)
             .response {
                 response in
                 switch response.result {

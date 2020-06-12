@@ -19,7 +19,6 @@ class RegisterViewModel {
             return
         }
         
-        
         FirebaseManager.shared.checkWhetherUserExists(with: nickname) {[weak self] (doesExist) in
             if !doesExist {
                 if let email = emailTextField, let password = passwordTextField {

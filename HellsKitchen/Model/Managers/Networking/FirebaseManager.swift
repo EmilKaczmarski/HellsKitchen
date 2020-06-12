@@ -189,12 +189,12 @@ extension FirebaseManager {
             .addDocument(data: [
                 Constants.FStore.UserComponents.email: email,
                 Constants.FStore.UserComponents.username: username
-                ]) { (error) in
-            if let err = error {
-                print(err.localizedDescription)
-            } else {
-                
-            }
+            ]) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {
+                    
+                }
         }
     }
 }
@@ -202,40 +202,36 @@ extension FirebaseManager {
 //MARK: - profile details
 extension FirebaseManager {
     func saveProfilePictureToFirebase(as data: Data) {
-        // Create a reference to the file you want to upload
         let riversRef = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
-        print("two")
-        // Upload the file to the path "images/rivers.jpg"
         let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-            // Uh-oh, an error occurred!
-            print(error)
-            print( "Uh-oh, an error occurred!")
-            return
-          }
-          // Metadata contains file metadata such as size, content-type.
-          let size = metadata.size
-          // You can also access to download URL after upload.
-          riversRef.downloadURL { (url, error) in
-            guard let downloadURL = url else {
-              //print( "Uh-oh, an error occurred!")
-              return
+            guard let metadata = metadata else {
+                print(error)
+                return
             }
-          }
+            let size = metadata.size
+            riversRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print(error)
+                    return
+                }
+            }
         }
     }
-    
+}
+//MARK: - profile pictures
+extension FirebaseManager {
     func getProfilePictureData(for username: String, completion: @escaping (Data?, Error?)-> ()) {
         let pictureRef = storageRef.child("profilePictures/\(username).jpg")
-        pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                completion(nil, error)
-            } else {
-                completion(data!, nil)
+        DispatchQueue.main.async {
+            pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    completion(nil, error)
+                } else {
+                    completion(data!, nil)
+                }
             }
         }
     }
-    
 }
 

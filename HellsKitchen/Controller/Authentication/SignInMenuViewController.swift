@@ -125,7 +125,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
             print(pic?.absoluteString)
             if let data = NSData(contentsOf: url!) {
                 let image = UIImage(data: data as Data)
-                //FirebaseManager.shared.saveProfilePictureToFirebase(as: image!.jpegData(compressionQuality: 0.2)!)
                 Constants.currentUserProfilePicture = image
             }
         }

@@ -6,13 +6,15 @@
 //  Copyright © 2020 Emil. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Firebase
 
 class ChatUsersViewModel {
     var delegate: ChatUsersViewController?
     var allMessages: [MessageBundle] = [MessageBundle]()
     var users: [User] = [User]()
+    var userImages: [String: UIImage] = [String: UIImage]()
+    var messageImages: [String: UIImage] = [String: UIImage]()
     var filteredUsers: [User] = [User]()
     var cells: [Any] = [Any]()
     
@@ -36,42 +38,47 @@ class ChatUsersViewModel {
             result = success
         }
         
-        loadAllUsers()
+        loadAllUsers() {
+            self.delegate!.loadUserImages()
+        }
         
         loadMessages() {
             group.notify(queue: DispatchQueue.main) {
                 if result {
                     self.delegate!.dismiss(animated: true, completion: nil)
+                    self.delegate!.loadMessageImages()
                 }
             }
         }
     }
     
-    func loadAllUsers() {
+    func loadAllUsers(completion: @escaping()-> ()) {
         self.delegate!.db.collection(Constants.FStore.allUsers).getDocuments {
             (querySnapshot, error) in
             if let err = error {
                 AlertManager.shared.errorAlert(in: self.delegate!)
                 print(err.localizedDescription)
+                completion()
             } else {
                 self.users = []
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
                         let element = i.data()
                         if (element["username"] as! String) != Constants.currentUserName {
-                            var user = User()
+                            let user = User()
                             user.name = (element["username"] as! String)
                             self.users.append(user)
+                            self.delegate?.tableView.reloadData()
                         }
                     }
                     self.filteredUsers = self.users
+                    completion()
                 }
             }
         }
     }
     
     func loadMessages(completion: @escaping ()-> ()) {
-        
         self.delegate!.db.collection(Constants.FStore.allMessages).addSnapshotListener {
             (querySnapshot, error) in
             if let err = error {
@@ -103,9 +110,39 @@ class ChatUsersViewModel {
                 }
             }
             self.cells = self.allMessages
+            self.delegate!.loadMessageImages()
+            self.delegate!.loadUserImages()
             self.delegate!.tableView.reloadData()
             completion()
         }
     }
 }
 
+extension ChatUsersViewModel {
+    func setUserProfilePicture(for user: User, completion: @escaping()-> ()) {
+        FirebaseManager.shared.getProfilePictureData(for: user.name!) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                user.profilePicture = Constants.Pictures.defaultProfile
+                completion()
+                return
+            }
+            user.profilePicture = UIImage(data: data!)
+            completion()
+        }
+    }
+    
+    func setMessageProfilePicture(in message: MessageBundle, for username: String, completion: @escaping()-> ()) {
+        FirebaseManager.shared.getProfilePictureData(for: username) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                message.profilePicture = Constants.Pictures.defaultProfile
+                completion()
+                return
+            }
+            message.profilePicture = UIImage(data: data!)
+            completion()
+        }
+    }
+    
+}

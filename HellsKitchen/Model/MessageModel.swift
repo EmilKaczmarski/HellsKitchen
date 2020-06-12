@@ -6,14 +6,15 @@
 //  Copyright © 2020 Emil. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct MessageBundle {
+class MessageBundle {
     var firstUser: String?
     var secondUser: String?
     var messageges: [MessageModel]?
     var lastMessage: String?
     var timestamp: String?
+    var profilePicture: UIImage?
 }
 
 struct MessageModel {

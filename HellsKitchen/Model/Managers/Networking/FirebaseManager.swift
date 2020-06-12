@@ -209,6 +209,7 @@ extension FirebaseManager {
         let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
           guard let metadata = metadata else {
             // Uh-oh, an error occurred!
+            print(error)
             print( "Uh-oh, an error occurred!")
             return
           }

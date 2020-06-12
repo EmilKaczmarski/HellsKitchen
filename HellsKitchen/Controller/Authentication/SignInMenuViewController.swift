@@ -94,7 +94,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                         let url = URL(string: imageURL)
                         if let data = NSData(contentsOf: url!) {
                             let image = UIImage(data: data as Data)
-                            FirebaseManager.shared.saveProfilePictureToFirebase(as: image!.jpegData(compressionQuality: 0.2)!)
                             Constants.currentUserProfilePicture = image
                         }
                     }
@@ -119,7 +118,17 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        
+        if user.profile.hasImage
+        {
+            let pic = user.profile.imageURL(withDimension: 100)
+            let url = URL(string: pic!.absoluteString)
+            print(pic?.absoluteString)
+            if let data = NSData(contentsOf: url!) {
+                let image = UIImage(data: data as Data)
+                //FirebaseManager.shared.saveProfilePictureToFirebase(as: image!.jpegData(compressionQuality: 0.2)!)
+                Constants.currentUserProfilePicture = image
+            }
+        }
         FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
             self.loginLoader.stopAnimating()
         }

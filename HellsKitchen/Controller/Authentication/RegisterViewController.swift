@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var registerView: UIView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var registerLoader: UIActivityIndicatorView!
+    @IBOutlet weak var attributedString: UILabel!
     
     let viewModel: RegisterViewModel = RegisterViewModel()
     
@@ -26,6 +27,14 @@ class RegisterViewController: UIViewController {
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         registerView.layer.cornerRadius = 20
         FirebaseManager.shared.registerViewController = self
+        
+        let attributedString = NSMutableAttributedString(string: "By signing up I accept the terms of use \nand the data privacy policy.", attributes: [
+            .font: UIFont.systemFont(ofSize: 12.0),
+          .foregroundColor: UIColor(red: 1.0 / 255.0, green: 80.0 / 255.0, blue: 103.0 / 255.0, alpha: 1.0),
+          .kern: 0.0
+        ])
+        attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12.0), range: NSRange(location: 27, length: 12))
+        attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12.0), range: NSRange(location: 49, length: 19))
     }
     
     override func viewWillAppear(_ animated: Bool) {

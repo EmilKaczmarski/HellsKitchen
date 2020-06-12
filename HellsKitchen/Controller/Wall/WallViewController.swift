@@ -122,8 +122,7 @@ extension WallViewController: UITableViewDataSource {
         cell.date.text = "\(date)"[0..<10]
         //temp section to show ui
         cell.postImage.image = UIImage(named: "pasta")
-        cell.firstComment.text = "some first comment"
-        cell.secondComment.text = "some second comment blabla"
+        cell.profileImage.image = UIImage(named: "pasta")
         //end of temp section
         cell.selectionStyle = .none
         return cell

@@ -27,83 +27,105 @@ class PostCell: UITableViewCell {
             maker.centerX.trailing.bottom.equalToSuperview()
             maker.top.equalToSuperview().offset(20.0)
         }
-        backgroundColor = UIColor(hexaString: Constants.Colors.lightGreen)
+        backgroundColor = UIColor.white
     }
+    
+//MARK: - top view: profile image and name
+    
+    lazy var profileImage: UIImageView = {
+           let profile = UIImageView()
+           profile.snp.makeConstraints { (maker)
+               in
+               maker.width.equalTo(30)
+               maker.height.equalTo(30)
+           }
+           profile.layer.cornerRadius = profile.bounds.width / 2
+           profile.layer.masksToBounds = true
+           return profile
+    }()
+
+    lazy var name: UILabel = {
+         let name = UILabel()
+         name.textAlignment = .left
+         name.numberOfLines = 1
+         name.font = UIFont.systemFont(ofSize: 14.0)
+         name.textColor = Constants.Colors.deepGreen
+         return name
+     }()
+    
+    lazy var leftView: UIView = {
+        let view = UIView()
+        view.addSubview(profileImage)
+        profileImage.snp.makeConstraints { (maker) in
+            maker.centerX.centerY.equalToSuperview()
+        }
+        view.snp.makeConstraints { (maker) in
+            maker.width.equalTo(70)
+        }
+        return view
+    }()
+    
+     lazy var rightView: UIView = {
+         let view = UIView()
+         view.addSubview(name)
+         name.snp.makeConstraints { (maker) in
+             maker.centerX.centerY.leading.trailing.bottom.top.equalToSuperview()
+         }
+         return view
+     }()
+   
+    lazy var owner: UIStackView = {
+          let owner = UIStackView()
+          owner.addArrangedSubview(leftView)
+          owner.addArrangedSubview(rightView)
+          owner.spacing = 20
+          return owner
+      }()
+
+//MARK: - bottom view: photo, title and date
     
     lazy var postImage: UIImageView = {
        let image = UIImageView()
+        image.snp.makeConstraints { (maker)
+            in
+            maker.width.equalTo(335)
+            maker.height.equalTo(200)
+        }
+        image.layer.cornerRadius = 3
+        image.layer.masksToBounds = true
         return image
     }()
-    
-    lazy var firstComment: UILabel = {
-        let comment = UILabel()
-        comment.textAlignment = .left
-        comment.numberOfLines = 0
-        comment.lineBreakMode = .byWordWrapping
-        comment.backgroundColor = .white
-        return comment
-    }()
-    
-    lazy var firstCommentView: UIView = {
-       let firstCommentView = UIView()
-        firstCommentView.addSubview(firstComment)
-        firstComment.snp.makeConstraints { (maker) in
-            maker.left.right.bottom.top.equalTo(20)
-            maker.right.equalTo(-20)
-        }
-        return firstCommentView
-    }()
 
-    lazy var secondComment: UILabel = {
-        let comment = UILabel()
-        comment.textAlignment = .left
-        comment.numberOfLines = 0
-        comment.lineBreakMode = .byWordWrapping
-        comment.backgroundColor = .white
-        return comment
-    }()
-    
-    lazy var secondCommentView: UIView = {
-       let secondCommentView = UIView()
-        secondCommentView.addSubview(secondComment)
-        secondComment.snp.makeConstraints { (maker) in
-            maker.left.top.bottom.equalTo(20)
-            maker.right.equalTo(-20)
-        }
-        return secondCommentView
+    lazy var title: UILabel = {
+        let title = UILabel()
+        title.textAlignment = .left
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
+        title.font = UIFont.boldSystemFont(ofSize: 16.0)
+        title.textColor = Constants.Colors.deepGreen
+        return title
     }()
     
     lazy var date: UILabel = {
         let date = UILabel()
-        date.textAlignment = .right
+        date.textAlignment = .left
         date.numberOfLines = 0
         date.lineBreakMode = .byWordWrapping
+        date.font = UIFont.systemFont(ofSize: 12.0)
+        date.textColor = UIColor.lightGray
         return date
     }()
     
-    lazy var owner: UILabel = {
-        let owner = UILabel()
-        owner.textAlignment = .left
-        owner.numberOfLines = 0
-        owner.lineBreakMode = .byWordWrapping
-        return owner
+    lazy var bottomView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.addSubview(postImage)
+        stackView.addSubview(title)
+        stackView.addSubview(date)
+        stackView.axis = .vertical
+        stackView.spacing = 15
+        return stackView
     }()
-    
-    lazy var header: UIStackView = {
-        let header = UIStackView()
-        header.addArrangedSubview(owner)
-        header.addArrangedSubview(date)
-        return header
-    }()
-    
-    lazy var title: UILabel = {
-        let title = UILabel()
-        title.textAlignment = .center
-        title.numberOfLines = 0
-        title.lineBreakMode = .byWordWrapping
-        return title
-    }()
-    
+       
     lazy var content: UILabel = {
         let content = UILabel()
         content.textAlignment = .center
@@ -111,16 +133,16 @@ class PostCell: UITableViewCell {
         content.lineBreakMode = .byWordWrapping
         return content
     }()
+   
+//MARK: - final post view
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.addArrangedSubview(header)
-        stackView.addArrangedSubview(title)
-        stackView.addArrangedSubview(postImage)
-        stackView.addArrangedSubview(content)
-        stackView.addArrangedSubview(firstCommentView)
-        stackView.addArrangedSubview(secondCommentView)
+        stackView.addArrangedSubview(owner)
+        stackView.addArrangedSubview(bottomView)
+        //stackView.addArrangedSubview(content)
         stackView.axis = .vertical
+        stackView.spacing = 16
         return stackView
     }()
     
@@ -129,10 +151,8 @@ class PostCell: UITableViewCell {
         view.addSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
             maker.centerX.trailing.top.equalToSuperview()
-            maker.bottom.equalToSuperview().offset(-firstCommentView.frame.height - secondCommentView.frame.height - 30)
         }
-        view.layer.cornerRadius = 10.0
-        view.backgroundColor = Constants.Colors.deepGreen
+        view.backgroundColor = UIColor.white
         return view
     }()
 }

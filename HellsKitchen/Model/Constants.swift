@@ -11,8 +11,10 @@ import UIKit
 struct Constants {
     static var currentUserName = ""
     static var currentUserEmail = ""
+    static var currentUserProfilePicture = UIImage(named: "defaultProfilePicture")
     static let usernameKey = "username"
     static let signInIndicator = ""
+    
 }
 
 //MARK: -Fonts

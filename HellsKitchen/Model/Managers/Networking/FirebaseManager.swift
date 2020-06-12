@@ -201,10 +201,10 @@ extension FirebaseManager {
 
 //MARK: - profile details
 extension FirebaseManager {
-    func saveImageToFirebase(as data: Data) {
+    func saveProfilePictureToFirebase(as data: Data) {
         // Create a reference to the file you want to upload
         let riversRef = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
-
+        print("two")
         // Upload the file to the path "images/rivers.jpg"
         let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
           guard let metadata = metadata else {
@@ -228,11 +228,9 @@ extension FirebaseManager {
         let pictureRef = storageRef.child("profilePictures/\(username).jpg")
         pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
             if let error = error {
-                print("no success")
                 print(error.localizedDescription)
                 completion(nil, error)
             } else {
-                print("success")
                 completion(data!, nil)
             }
         }

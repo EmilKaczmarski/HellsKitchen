@@ -84,11 +84,21 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
             if let token = AccessToken.current {
                 let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
                 GraphRequest(graphPath: "/me", parameters: ["fields": "email"]).start { (connection, result, err) in
-                    if let results = result as? [String: Any] {
-                        if let email = results["email"] as? String {
-                            print(email)
+                    if error != nil {
+                        print("Error",error!.localizedDescription)
+                    } else {
+                        let field = result! as? [String:Any]
+                        let userId = field!["id"]
+                        let imageURL = "http://graph.facebook.com/\(userId!)/picture?type=large"
+                        print(imageURL)
+                        let url = URL(string: imageURL)
+                        if let data = NSData(contentsOf: url!) {
+                            let image = UIImage(data: data as Data)
+                            FirebaseManager.shared.saveProfilePictureToFirebase(as: image!.jpegData(compressionQuality: 0.2)!)
+                            Constants.currentUserProfilePicture = image
                         }
                     }
+                    print("requestbody")
                 }
                 if !token.isExpired {
                     FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {

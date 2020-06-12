@@ -47,14 +47,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 
             }
         }
+         Constants.currentUserProfilePicture = UIImage(named: "defaultProfilePicture")
     }
     
     func loadProfilePicture() {
         FirebaseManager.shared.getProfilePictureData(for: Constants.currentUserName) { (data, error) in
             if error != nil {
-                self.profilePicture.image = Constants.Pictures.defaultProfile
+                self.profilePicture.image = Constants.currentUserProfilePicture
             } else {
                 self.profilePicture.image = UIImage(data: data!)
+                Constants.currentUserProfilePicture = UIImage(data: data!)
             }
             self.view.layoutIfNeeded()
         }
@@ -93,7 +95,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             profilePicture.image = originalImage
         }
         if let imageData = profilePicture.image?.jpegData(compressionQuality: 0.2) {
-            FirebaseManager.shared.saveImageToFirebase(as: imageData)
+            FirebaseManager.shared.saveProfilePictureToFirebase(as: imageData)
         }
         dismiss(animated: true, completion: nil)
     }

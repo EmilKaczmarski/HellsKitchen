@@ -1,0 +1,38 @@
+//
+//  PostViewCell.swift
+//  HellsKitchen
+//
+//  Created by Aleksandra Brzostek on 6/13/20.
+//  Copyright © 2020 Emil. All rights reserved.
+//
+
+import UIKit
+
+class PostViewCell: UITableViewCell {
+
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var date: UILabel!
+    
+   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+       super.init(style: style, reuseIdentifier: reuseIdentifier)
+   }
+   required init?(coder: NSCoder) {
+       super.init(coder: coder)
+   }
+   
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}

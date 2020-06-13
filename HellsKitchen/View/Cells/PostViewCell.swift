@@ -15,15 +15,7 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
-    
-   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-       super.init(style: style, reuseIdentifier: reuseIdentifier)
-   }
-   required init?(coder: NSCoder) {
-       super.init(coder: coder)
-   }
-   
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

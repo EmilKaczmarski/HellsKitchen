@@ -24,7 +24,6 @@ class WallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableViewParameters()
         viewModel.delegate = self
         setupNavigationBar()
         viewModel.loadPosts()
@@ -36,6 +35,7 @@ class WallViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
+        setupTableViewParameters()
         if Constants.currentUserName != "" {
             userIsLoggedIn()
         } else {
@@ -58,13 +58,11 @@ extension WallViewController {
 //MARK: - setup view
 extension WallViewController {
     private func setupTableViewParameters() {
-        
         let nib = UINib(nibName: "PostViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostViewCell")
-        //tableView.dataSource = self
+        tableView.dataSource = self
         tableView.delegate = self
-        tableView.estimatedRowHeight = 85.0
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 340.0
     }
     
     private func loadNoPostsView() {
@@ -110,8 +108,7 @@ extension WallViewController: UITableViewDelegate {
     
 }
 
-
-/*//MARK: - Datasource methods
+//MARK: - Datasource methods
 extension WallViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.posts.count
@@ -119,17 +116,17 @@ extension WallViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostViewCell", for: indexPath) as! PostViewCell
-        //cell.content.text = viewModel.posts[indexPath.row].content
         cell.name.text = viewModel.posts[indexPath.row].owner
         cell.title.text = viewModel.posts[indexPath.row].title
+        print(viewModel.posts[indexPath.row].title)
         let date = Date(timeIntervalSince1970: Double(viewModel.posts[indexPath.row].createTimestamp)!)
         cell.date.text = "\(date)"[0..<10]
         //temp section to show ui
-        cell.postImage.image = UIImage(named: "pasta")
-        cell.profilePicture.image = UIImage(named: "pasta")
+        cell.postImage.image = UIImage(named: "pepperLeft")
+        cell.profilePicture.image = UIImage(named: "pepperLeft")
         //end of temp section
         cell.selectionStyle = .none
         return cell
     }
 }
-*/
+

@@ -40,7 +40,9 @@ class AlertManager {
                     Constants.currentUserEmail = userEmail
                     Constants.currentUserName = username
                     FirebaseManager.shared.addUserToList(email: userEmail, username: username)
-                    FirebaseManager.shared.setCurrentUsername {
+                    FirebaseManager.shared.setCurrentUserInfo {
+                        Constants.currentUserProfilePicture = Constants.externalRegisterProfilePicture!
+                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
                         controller.navigationController?.popToRootViewController(animated: true)
                     }
                 }

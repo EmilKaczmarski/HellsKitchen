@@ -94,14 +94,14 @@ extension FirebaseManager {
             } else {
                 guard let user = Auth.auth().currentUser else { return }
                 Constants.currentUserEmail = user.email!
-                self.setCurrentUsername() {
+                self.setCurrentUserInfo {
                     completion()
                 }
             }
         }
     }
     
-    func setCurrentUsername(completion: @escaping ()-> Void) {
+    func setCurrentUserInfo(completion: @escaping ()-> Void) {
         self.db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
             if let err = error {
                 print(err.localizedDescription)
@@ -110,6 +110,7 @@ extension FirebaseManager {
                     for i in snapshotDocuments {
                         let element = i.data()
                         if element["email"] as! String == Constants.currentUserEmail {
+                            Constants.hasDefaultImage = (element["hasDefaultImage"] as! Bool)
                             Constants.currentUserName = element["username"] as! String
                             UserDefaults.standard.set(element["email"] as! String, forKey: Constants.usernameKey)
                             completion()
@@ -155,15 +156,14 @@ extension FirebaseManager {
             FirebaseManager.shared.checkWhetherEmailExists(with: userEmail) { (doesExist) in
                 if doesExist {
                     Constants.currentUserEmail = userEmail
-                    FirebaseManager.shared.setCurrentUsername {
+                    FirebaseManager.shared.setCurrentUserInfo {
                         controller.navigationController?.popToRootViewController(animated: false)
-                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
+                        completion()
                     }
                 } else {
                     AlertManager.shared.askNewUserToProvideName(with: "please provide new username", in: controller)
                 }
             }
-            completion()
         }
     }
 }
@@ -189,7 +189,8 @@ extension FirebaseManager {
         db.collection(Constants.FStore.allUsers)
             .addDocument(data: [
                 Constants.FStore.UserComponents.email: email,
-                Constants.FStore.UserComponents.username: username
+                Constants.FStore.UserComponents.username: username,
+                Constants.FStore.UserComponents.hasDefaultImage: true
             ]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
@@ -230,6 +231,30 @@ extension FirebaseManager {
                     completion(nil, error)
                 } else {
                     completion(data!, nil)
+                }
+            }
+        }
+    }
+    
+    func imageHasChanged() {
+        if !Constants.hasDefaultImage! {
+            return
+        }
+        Constants.hasDefaultImage = false
+        db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for i in snapshotDocuments {
+                        var element = i.data()
+                        if element["email"] as! String == Constants.currentUserEmail {
+                            
+                            self.db.collection("allUsers").document(i.documentID).setData(["hasDefaultImage": false], merge: true)
+                            element.updateValue(false, forKey: "hasDefaultImage")
+                            return
+                        }
+                    }
                 }
             }
         }

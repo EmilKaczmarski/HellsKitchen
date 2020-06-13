@@ -11,7 +11,9 @@ import UIKit
 struct Constants {
     static var currentUserName = ""
     static var currentUserEmail = ""
+    static var hasDefaultImage: Bool?
     static var currentUserProfilePicture = UIImage(named: "defaultProfilePicture")
+    static var externalRegisterProfilePicture: UIImage?
     static let usernameKey = "username"
     static let signInIndicator = ""
     
@@ -83,6 +85,7 @@ extension Constants {
         struct UserComponents {
             static let username = "username"
             static let email = "email"
+            static let hasDefaultImage = "hasDefaultImage"
         }
         
         struct PostComponents {

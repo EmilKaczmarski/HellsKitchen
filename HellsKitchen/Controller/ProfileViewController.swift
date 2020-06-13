@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if let imageData = profilePicture.image?.jpegData(compressionQuality: 0.2) {
             FirebaseManager.shared.saveProfilePictureToFirebase(as: imageData)
         }
+        FirebaseManager.shared.imageHasChanged()
         dismiss(animated: true, completion: nil)
     }
     

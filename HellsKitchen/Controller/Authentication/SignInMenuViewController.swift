@@ -83,6 +83,7 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
             }
             if let token = AccessToken.current {
                 let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+                
                 GraphRequest(graphPath: "/me", parameters: ["fields": "email"]).start { (connection, result, err) in
                     if error != nil {
                         print("Error",error!.localizedDescription)
@@ -96,7 +97,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                             let image = UIImage(data: data as Data)
                             Constants.currentUserProfilePicture = image
                         }
-                        
                     }
                 }
                 if !token.isExpired {
@@ -119,18 +119,31 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        if user.profile.hasImage
-        {
+        if user.profile.hasImage {
             let pic = user.profile.imageURL(withDimension: 100)
             let url = URL(string: pic!.absoluteString)
             print(pic?.absoluteString)
             if let data = NSData(contentsOf: url!) {
                 let image = UIImage(data: data as Data)
-                Constants.currentUserProfilePicture = image
+                Constants.externalRegisterProfilePicture = image
             }
         }
         FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
             self.loginLoader.stopAnimating()
+            guard let hasDefaultImage = Constants.hasDefaultImage else { return }
+            if hasDefaultImage {
+                if user.profile.hasImage
+                {
+                    let pic = user.profile.imageURL(withDimension: 100)
+                    let url = URL(string: pic!.absoluteString)
+                    print(pic?.absoluteString)
+                    if let data = NSData(contentsOf: url!) {
+                        let image = UIImage(data: data as Data)
+                        Constants.currentUserProfilePicture = image
+                    }
+                }
+                FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
+            }
         }
     }
     

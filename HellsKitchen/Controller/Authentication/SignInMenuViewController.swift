@@ -95,14 +95,19 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                         let url = URL(string: imageURL)
                         if let data = NSData(contentsOf: url!) {
                             let image = UIImage(data: data as Data)
-                            Constants.currentUserProfilePicture = image
+                            Constants.externalRegisterProfilePicture = image
                         }
                     }
                 }
                 if !token.isExpired {
                     FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
-                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.pngData())!)
                         self.loginLoader.stopAnimating()
+                        
+                        guard let hasDefaultImage = Constants.hasDefaultImage else { return }
+                        if hasDefaultImage {
+                            Constants.currentUserProfilePicture = Constants.externalRegisterProfilePicture!
+                        }
+                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
                     }
                 }
             }

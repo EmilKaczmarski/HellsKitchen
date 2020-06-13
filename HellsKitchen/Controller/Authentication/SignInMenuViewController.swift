@@ -96,11 +96,12 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                             let image = UIImage(data: data as Data)
                             Constants.currentUserProfilePicture = image
                         }
+                        
                     }
-                    print("requestbody")
                 }
                 if !token.isExpired {
                     FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
+                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.pngData())!)
                         self.loginLoader.stopAnimating()
                     }
                 }

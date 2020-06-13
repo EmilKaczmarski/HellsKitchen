@@ -157,6 +157,7 @@ extension FirebaseManager {
                     Constants.currentUserEmail = userEmail
                     FirebaseManager.shared.setCurrentUsername {
                         controller.navigationController?.popToRootViewController(animated: false)
+                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
                     }
                 } else {
                     AlertManager.shared.askNewUserToProvideName(with: "please provide new username", in: controller)

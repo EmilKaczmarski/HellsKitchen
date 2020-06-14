@@ -63,13 +63,13 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" {
-            let timestamp = "\(Date().timeIntervalSince1970)"
-            let post = Post(id: "\(Constants.currentUserName)\(Int(timestamp))", title: header.text!, owner: Constants.currentUserName, content: content.text!, createTimestamp: timestamp, lastCommentTimestamp: timestamp, comments: [])
+            let timestamp = "\(Int(Date().timeIntervalSince1970))"
+            let post = Post(id: "\(Constants.currentUserName)\(timestamp)", title: header.text!, owner: Constants.currentUserName, content: content.text!, createTimestamp: timestamp)
             header.text! = ""
             content.text! = ""
             viewModel.savePost(post)
-            navigationController?.popViewController(animated: true)
-            
+            FirebaseManager.shared.savePostPictureToFirebase(as: (uploadedImage.image?.jpegData(compressionQuality: 0.4))!, for: post.id)
+            tabBarController?.selectedIndex = 0
         }
     }
   
@@ -147,19 +147,16 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
            picker.dismiss(animated: true, completion: nil)
             hideStackViewOrEditingView()
     }
-       
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         photoPicker()
         hideStackViewOrEditingView()
     }
-    
    
     @IBAction func editingButtonPressed(_ sender: Any) {
         photoPicker()
         hideStackViewOrEditingView()
     }
-    
 }
 
 //MARK: - extensions

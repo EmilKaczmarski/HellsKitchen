@@ -44,7 +44,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HHu-VB-ofc">
                                 <rect key="frame" x="0.0" y="46" width="335" height="264"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-8y-Fiu">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-8y-Fiu">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="qNQ-L1-s1d"/>

@@ -155,5 +155,6 @@ extension Constants {
 extension Constants {
     struct Pictures {
         static let defaultProfile = UIImage(named: "defaultProfilePicture" )
+        static let defaultPost = UIImage(named: "plainWhite")
     }
 }

@@ -19,10 +19,8 @@ class PostDetailViewModel {
                 Constants.FStore.PostComponents.id : post.id,
                 Constants.FStore.PostComponents.content : post.content,
                 Constants.FStore.PostComponents.createTimestamp : post.createTimestamp,
-                Constants.FStore.PostComponents.lastCommentTimestamp : post.lastCommentTimestamp!,
                 Constants.FStore.PostComponents.owner : post.owner,
-                Constants.FStore.PostComponents.title : post.title,
-                //Constants.FStore.PostComponents.comments : post.comments
+                Constants.FStore.PostComponents.title : post.title
             ])
     }
 }

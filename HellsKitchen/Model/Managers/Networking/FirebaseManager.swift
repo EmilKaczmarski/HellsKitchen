@@ -201,17 +201,34 @@ extension FirebaseManager {
     }
 }
 
-//MARK: - profile details
+//MARK: - saving images to database
 extension FirebaseManager {
     func saveProfilePictureToFirebase(as data: Data) {
-        let riversRef = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
-        let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
+        let dbRef = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
+        let uploadTask = dbRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 print(error)
                 return
             }
             let size = metadata.size
-            riversRef.downloadURL { (url, error) in
+            dbRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print(error)
+                    return
+                }
+            }
+        }
+    }
+    
+    func savePostPictureToFirebase(as data: Data, for postId: String) {
+        let dbRef = storageRef.child("postPictures/\(postId).jpg")
+        let uploadTask = dbRef.putData(data, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                print(error)
+                return
+            }
+            let size = metadata.size
+            dbRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     print(error)
                     return
@@ -224,6 +241,20 @@ extension FirebaseManager {
 extension FirebaseManager {
     func getProfilePictureData(for username: String, completion: @escaping (Data?, Error?)-> ()) {
         let pictureRef = storageRef.child("profilePictures/\(username).jpg")
+        DispatchQueue.main.async {
+            pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    completion(nil, error)
+                } else {
+                    completion(data!, nil)
+                }
+            }
+        }
+    }
+    
+    func getPostPictureData(for postId: String, completion: @escaping (Data?, Error?)-> ()) {
+        let pictureRef = storageRef.child("postPictures/\(postId).jpg")
         DispatchQueue.main.async {
             pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
                 if let error = error {

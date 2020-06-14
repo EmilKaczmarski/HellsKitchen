@@ -12,6 +12,8 @@ import DynamicColor
 
 class WallViewController: UIViewController {
     
+    
+    @IBOutlet weak var carrotView: UIStackView!
     @IBOutlet weak var noPostsView: UIView!
     @IBOutlet weak var homeButton: UITabBarItem!
     @IBOutlet weak var searchButton: UITabBarItem!
@@ -111,6 +113,11 @@ extension WallViewController: UITableViewDelegate {
 //MARK: - Datasource methods
 extension WallViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel.posts.count == 0 {
+            carrotView.isHidden = false
+        } else {
+            carrotView.isHidden = true
+        }
         return viewModel.posts.count
     }
     
@@ -125,6 +132,13 @@ extension WallViewController: UITableViewDataSource {
         //temp section to show ui
         cell.postImage.image = UIImage(named: "pepperLeft")
         //cell.profilePicture.image =
+        let postId = "\(owner)\(Int(viewModel.posts[indexPath.row].createTimestamp)!)"
+        if let image = viewModel.usersImages[postId] {
+            cell.postImage.image = image
+        } else {
+            cell.postImage.image = Constants.Pictures.defaultPost
+        }
+        
         if let image = viewModel.usersImages[owner] {
             cell.profilePicture.image = image
         } else {

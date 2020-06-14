@@ -597,6 +597,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="obb-bN-c1T"/>
                     <connections>
+                        <outlet property="carrotView" destination="DX6-Xl-hHH" id="ltT-XP-ECU"/>
                         <outlet property="noPostsView" destination="i5A-da-2eb" id="fhu-hB-Nja"/>
                         <outlet property="tableView" destination="fH7-bJ-MnI" id="gVU-oC-0be"/>
                     </connections>

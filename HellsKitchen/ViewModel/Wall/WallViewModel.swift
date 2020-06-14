@@ -12,6 +12,7 @@ class WallViewModel {
     let db = Firestore.firestore()
     var delegate: WallViewController?
     var posts = [Post]()
+    var postsImages: [String: UIImage] = [String: UIImage]()
     var usersImages: [String: UIImage] = [String: UIImage]()
     func loadPosts() {
         db
@@ -41,6 +42,17 @@ class WallViewModel {
                                     self.delegate!.tableView.reloadData()
                                 }
                             }
+                            if self.postsImages[post.id] == nil {
+                                FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
+                                    if error != nil {
+                                        print(error!.localizedDescription )
+                                        return
+                                    }
+                                    self.postsImages[post.id] = UIImage(data: data!)
+                                    self.delegate!.tableView.reloadData()
+                                }
+                            }
+                            
                             self.posts.insert(post, at: 0)
                         }
                         

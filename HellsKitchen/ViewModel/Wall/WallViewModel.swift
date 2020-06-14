@@ -6,13 +6,13 @@
 //  Copyright © 2020 Emil. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Firebase
 class WallViewModel {
     let db = Firestore.firestore()
     var delegate: WallViewController?
     var posts = [Post]()
-    
+    var usersImages: [String: UIImage] = [String: UIImage]()
     func loadPosts() {
         db
             .collection(Constants.FStore.posts)
@@ -31,6 +31,16 @@ class WallViewModel {
                                             createTimestamp: "\(data["createTimestamp"] ?? "")",
                                 lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
                                             comments: [])
+                            if self.usersImages[post.owner] == nil {
+                                FirebaseManager.shared.getProfilePictureData(for: post.owner) { (data, error) in
+                                    if error != nil {
+                                        print(error!.localizedDescription )
+                                        return
+                                    }
+                                    self.usersImages[post.owner] = UIImage(data: data!)
+                                    self.delegate!.tableView.reloadData()
+                                }
+                            }
                             self.posts.insert(post, at: 0)
                         }
                         

@@ -116,15 +116,22 @@ extension WallViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostViewCell", for: indexPath) as! PostViewCell
-        cell.name.text = viewModel.posts[indexPath.row].owner
+        let owner = viewModel.posts[indexPath.row].owner
+        cell.name.text = owner
         cell.title.text = viewModel.posts[indexPath.row].title
         print(viewModel.posts[indexPath.row].title)
         let date = Date(timeIntervalSince1970: Double(viewModel.posts[indexPath.row].createTimestamp)!)
         cell.date.text = "\(date)"[0..<10]
         //temp section to show ui
         cell.postImage.image = UIImage(named: "pepperLeft")
-        cell.profilePicture.image = UIImage(named: "pepperLeft")
+        //cell.profilePicture.image =
+        if let image = viewModel.usersImages[owner] {
+            cell.profilePicture.image = image
+        } else {
+            cell.profilePicture.image = Constants.Pictures.defaultProfile
+        }
         //end of temp section
+        
         cell.selectionStyle = .none
         return cell
     }

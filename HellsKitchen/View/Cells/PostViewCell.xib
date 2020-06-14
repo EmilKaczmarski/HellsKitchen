@@ -27,6 +27,11 @@
                                             <constraint firstAttribute="width" constant="30" id="Vzg-53-bNR"/>
                                             <constraint firstAttribute="height" constant="30" id="ccR-gQ-O3c"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debora Barbosa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPo-7D-u5c">
                                         <rect key="frame" x="38" y="0.0" width="297" height="30"/>
@@ -84,7 +89,7 @@
                 <outlet property="profilePicture" destination="DuS-29-TVq" id="wlD-xw-YBt"/>
                 <outlet property="title" destination="b4Z-Cd-eYS" id="5dK-9w-uDg"/>
             </connections>
-            <point key="canvasLocation" x="75" y="101"/>
+            <point key="canvasLocation" x="73.913043478260875" y="100.44642857142857"/>
         </tableViewCell>
     </objects>
 </document>

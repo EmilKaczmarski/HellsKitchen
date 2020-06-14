@@ -22,7 +22,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var contentPlaceholder: UILabel!
     
     let viewModel: PostDetailViewModel = PostDetailViewModel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
@@ -69,7 +68,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             content.text! = ""
             viewModel.savePost(post)
             FirebaseManager.shared.savePostPictureToFirebase(as: (uploadedImage.image?.jpegData(compressionQuality: 0.4))!, for: post.id)
-            tabBarController?.selectedIndex = 0
+            self.tabBarController?.selectedIndex = 0
+            
         }
     }
   

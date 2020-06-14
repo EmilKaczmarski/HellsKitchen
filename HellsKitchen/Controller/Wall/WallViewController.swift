@@ -31,12 +31,12 @@ class WallViewController: UIViewController {
         viewModel.loadPosts()
         loadNoPostsView()
         tableView.separatorStyle = .none
-   
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
+        
         setupTableViewParameters()
         if Constants.currentUserName != "" {
             userIsLoggedIn()
@@ -89,7 +89,7 @@ extension WallViewController {
         if Constants.currentUserName == "" {
             AlertManager.shared.requiedAuthorisationAlert(in: self)
         } else {
-            performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
+            //performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
         }
     }
     
@@ -114,9 +114,9 @@ extension WallViewController: UITableViewDelegate {
 extension WallViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.posts.count == 0 {
-            carrotView.isHidden = false
+            noPostsView.isHidden = false
         } else {
-            carrotView.isHidden = true
+            noPostsView.isHidden = true
         }
         return viewModel.posts.count
     }
@@ -129,11 +129,8 @@ extension WallViewController: UITableViewDataSource {
         print(viewModel.posts[indexPath.row].title)
         let date = Date(timeIntervalSince1970: Double(viewModel.posts[indexPath.row].createTimestamp)!)
         cell.date.text = "\(date)"[0..<10]
-        //temp section to show ui
-        cell.postImage.image = UIImage(named: "pepperLeft")
-        //cell.profilePicture.image =
         let postId = "\(owner)\(Int(viewModel.posts[indexPath.row].createTimestamp)!)"
-        if let image = viewModel.usersImages[postId] {
+        if let image = viewModel.postsImages[postId] {
             cell.postImage.image = image
         } else {
             cell.postImage.image = Constants.Pictures.defaultPost

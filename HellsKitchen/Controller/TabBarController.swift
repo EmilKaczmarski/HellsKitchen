@@ -14,17 +14,17 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // UITabBarDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.selectedIndex = 0
-        if Constants.currentUserName == "" {
-            print(item.title!)
-            if item.title! == "Chat" {
-                self.selectedIndex = 0
-            }
-        }
+//        self.selectedIndex = 0
+//        if Constants.currentUserName == "" {
+//            print(item.title!)
+//            if item.title! == "Chat" {
+//                self.selectedIndex = 0
+//            }
+//        }
     }
 
     // UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        tabBarController.selectedIndex = 0
+        //tabBarController.selectedIndex = 0
     }    
 }

@@ -224,13 +224,11 @@ extension FirebaseManager {
         let dbRef = storageRef.child("postPictures/\(postId).jpg")
         let uploadTask = dbRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
-                print(error)
                 return
             }
             let size = metadata.size
             dbRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
-                    print(error)
                     return
                 }
             }

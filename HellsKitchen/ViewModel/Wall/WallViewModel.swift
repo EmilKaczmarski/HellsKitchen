@@ -31,7 +31,7 @@ class WallViewModel {
                                             content: data["content"] as! String,
                                             createTimestamp: "\(data["createTimestamp"] ?? "")",
                                 lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
-                                            comments: [])
+                                comments: [])
                             if self.usersImages[post.owner] == nil {
                                 FirebaseManager.shared.getProfilePictureData(for: post.owner) { (data, error) in
                                     if error != nil {
@@ -49,17 +49,14 @@ class WallViewModel {
                                         return
                                     }
                                     self.postsImages[post.id] = UIImage(data: data!)
+                                    self.posts.insert(post, at: 0)
                                     self.delegate!.tableView.reloadData()
                                 }
                             }
-                            
-                            self.posts.insert(post, at: 0)
                         }
-                        
                     }
                     self.delegate!.tableView.reloadData()
                 }
         }
     }
-    
 }

@@ -45,18 +45,33 @@ class WallViewModel {
                             if self.postsImages[post.id] == nil {
                                 FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
                                     if error != nil {
-                                        print(error!.localizedDescription )
+                                        self.setPostPicture(for: post)
                                         return
                                     }
                                     self.postsImages[post.id] = UIImage(data: data!)
                                     self.posts.insert(post, at: 0)
                                     self.delegate!.tableView.reloadData()
                                 }
+                            } else {
+                                self.posts.insert(post, at: 0)
+                                self.delegate!.tableView.reloadData()
                             }
                         }
                     }
-                    self.delegate!.tableView.reloadData()
+                    
                 }
+        }
+    }
+    func setPostPicture(for post: Post) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
+                if error != nil {
+                    return
+                }
+                self.postsImages[post.id] = UIImage(data: data!)
+                self.posts.insert(post, at: 0)
+                self.delegate!.tableView.reloadData()
+            }
         }
     }
 }

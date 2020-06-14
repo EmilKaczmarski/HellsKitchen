@@ -69,7 +69,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             viewModel.savePost(post)
             FirebaseManager.shared.savePostPictureToFirebase(as: (uploadedImage.image?.jpegData(compressionQuality: 0.4))!, for: post.id)
             self.tabBarController?.selectedIndex = 0
-            
         }
     }
   

@@ -35,7 +35,7 @@ class WallViewModel {
                             if self.usersImages[post.owner] == nil {
                                 FirebaseManager.shared.getProfilePictureData(for: post.owner) { (data, error) in
                                     if error != nil {
-                                        print(error!.localizedDescription )
+                                        print(error!.localizedDescription)
                                         return
                                     }
                                     self.usersImages[post.owner] = UIImage(data: data!)
@@ -49,12 +49,10 @@ class WallViewModel {
                                         return
                                     }
                                     self.postsImages[post.id] = UIImage(data: data!)
-                                    self.posts.insert(post, at: 0)
-                                    self.delegate!.tableView.reloadData()
+                                    self.insertPost(post)
                                 }
                             } else {
-                                self.posts.insert(post, at: 0)
-                                self.delegate!.tableView.reloadData()
+                                self.insertPost(post)
                             }
                         }
                     }
@@ -63,15 +61,38 @@ class WallViewModel {
         }
     }
     func setPostPicture(for post: Post) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
                 if error != nil {
                     return
                 }
                 self.postsImages[post.id] = UIImage(data: data!)
-                self.posts.insert(post, at: 0)
+                self.insertPost(post)
                 self.delegate!.tableView.reloadData()
             }
         }
     }
+    
+    func insertPost(_ post: Post) {
+        if posts.count == 0 {
+            posts.insert(post, at: 0)
+            delegate!.tableView.reloadData()
+            return
+        }
+        var index = 0
+        for i in posts {
+            print(i.title)
+            print(i.createTimestamp)
+            print(post.createTimestamp)
+            if i.createTimestamp < post.createTimestamp {
+                posts.insert(post, at: index)
+                delegate!.tableView.reloadData()
+                return
+            }
+            index += 1
+        }
+        posts.append(post)
+        delegate!.tableView.reloadData()
+    }
+    
 }

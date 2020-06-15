@@ -89,7 +89,7 @@ extension WallViewController {
         if Constants.currentUserName == "" {
             AlertManager.shared.requiedAuthorisationAlert(in: self)
         } else {
-            //performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
+            performSegue(withIdentifier: Constants.Segues.wallDetailSegue, sender: self)
         }
     }
     
@@ -142,7 +142,17 @@ extension WallViewController: UITableViewDataSource {
             cell.profilePicture.image = Constants.Pictures.defaultProfile
         }
         //end of temp section
-        
+        let screenSize: CGRect = UIScreen.main.bounds
+        if screenSize.width > 375 {
+            let viewWidth = (screenSize.width - cell.middleView.frame.width)/2
+            cell.leftView.snp.makeConstraints { (maker) in
+                maker.width.equalTo(viewWidth)
+            }
+            
+            cell.rightView.snp.makeConstraints { (maker) in
+                maker.width.equalTo(viewWidth)
+            }
+        }
         cell.selectionStyle = .none
         return cell
     }

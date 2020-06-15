@@ -16,7 +16,10 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var detailsButton: UIButton!
+    @IBOutlet weak var leftView: UIView!
+    @IBOutlet weak var middleView: UIView!
     
+    @IBOutlet weak var rightView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

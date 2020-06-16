@@ -31,7 +31,10 @@ class AlertManager {
         alert.addAction(UIAlertAction(title: "done", style: .cancel, handler: {
             action in
             guard let username = alert.textFields![0].text else { return }
-            
+            if username.contains(" ") || username.count == 0 || username.contains("@") {
+                AlertManager.shared.askNewUserToProvideName(with: "please provide new username which is not empty, without @ and empty spaces", in: controller)
+                return
+            }
             FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
                 if doesExist {
                     AlertManager.shared.askNewUserToProvideName(with: "whoops username is not unique, please provide new one", in: controller)

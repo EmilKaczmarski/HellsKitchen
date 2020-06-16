@@ -107,6 +107,5 @@ class RegisterViewController: UIViewController {
     
     @IBAction func signInButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-    }
-    
+    }    
 }

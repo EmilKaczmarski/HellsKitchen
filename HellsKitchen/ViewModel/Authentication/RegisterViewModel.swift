@@ -14,8 +14,8 @@ class RegisterViewModel {
     
     func registerUser(_ nickname: String, emailTextField: String?, passwordTextField: String?) {
         
-        if nickname.contains("@") {
-            print("nickname can't contain @")
+        if nickname.contains(" ") || nickname.count == 0 || nickname.contains("@") {
+            print("alert here!!!!")
             return
         }
         
@@ -23,8 +23,9 @@ class RegisterViewModel {
             if !doesExist {
                 if let email = emailTextField, let password = passwordTextField {
                     FirebaseManager.shared.createUser(email: email, password: password, username: nickname)
-                    Constants.currentUserName = nickname
-                    Constants.currentUserEmail = email
+//                    Constants.currentUserName = nickname
+//                    Constants.currentUserEmail = email
+                    //need to verify email alert
                     self!.delegate!.navigationController?.popToRootViewController(animated: true)
                 }
             }

@@ -25,6 +25,33 @@ class TimeDisplayManager {
         return "Sent •" + daysComponent + hourComponent
     }
     
+    func getDateForPostCell(timestamp: Double)-> String {
+        let date = Date(timeIntervalSince1970: timestamp)
+        let currentTimestamp = Date().timeIntervalSince1970
+        let diff = currentTimestamp - timestamp
+        
+        if diff < 60 {
+            return "less than 1 minute ago"
+        }
+        
+        if diff < 120 {
+            return "1 minute ago"
+        }
+        
+        if diff < 3600 {
+            return "\(Int(diff/60.0)) minutes ago"
+        }
+        
+        if diff < 7200 {
+            return "1 hour ago"
+        }
+        
+        if diff < 86400 {
+            return "\(Int(diff/3600.0)) hours ago"
+        }
+        return getDaysComponent(for: date)
+    }
+    
     private func getDaysComponent(for date: Date)-> String {
         let calendar = Calendar.current
         var daysComponent = ""

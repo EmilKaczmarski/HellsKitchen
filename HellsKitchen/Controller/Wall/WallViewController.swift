@@ -43,6 +43,7 @@ class WallViewController: UIViewController {
         } else {
             userIsLoggedOut()
         }
+        tableView.reloadData()
     }
 }
 
@@ -126,9 +127,8 @@ extension WallViewController: UITableViewDataSource {
         let owner = viewModel.posts[indexPath.row].owner
         cell.name.text = owner
         cell.title.text = viewModel.posts[indexPath.row].title
-        print(viewModel.posts[indexPath.row].title)
-        let date = Date(timeIntervalSince1970: Double(viewModel.posts[indexPath.row].createTimestamp)!)
-        cell.date.text = "\(date)"[0..<10]
+        let createTimestamp = Double(viewModel.posts[indexPath.row].createTimestamp)
+        cell.date.text = TimeDisplayManager.shared.getDateForPostCell(timestamp: createTimestamp!)
         let postId = "\(owner)\(Int(viewModel.posts[indexPath.row].createTimestamp)!)"
         if let image = viewModel.postsImages[postId] {
             cell.postImage.image = image
@@ -157,4 +157,3 @@ extension WallViewController: UITableViewDataSource {
         return cell
     }
 }
-

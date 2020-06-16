@@ -45,6 +45,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         uploadedImage.image = nil
         hideStackViewOrEditingView()
         setupCancelButtonTitle()
+        header.text = ""
+        content.text = ""
         if Constants.currentUserName != "" {
             navigationController?.popToRootViewController(animated: false)
         }
@@ -81,6 +83,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             nameLine.backgroundColor = Constants.Colors.lightGray
         }
         
+        addRecipteButtonSwitch()
+    }
+    
+    func addRecipteButtonSwitch() {
         if !header.text!.isEmpty && uploadedImage.image != nil {
             enableAddRecipeButton()
         } else {
@@ -137,6 +143,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             uploadedImage.image = originalImage
         }
         hideStackViewOrEditingView()
+        addRecipteButtonSwitch()
         dismiss(animated: true, completion: nil)
     }
     

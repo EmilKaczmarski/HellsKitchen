@@ -69,6 +69,7 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         tabBarController?.selectedIndex = 0
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func googleLoginPressed(_ sender: UIButton) {

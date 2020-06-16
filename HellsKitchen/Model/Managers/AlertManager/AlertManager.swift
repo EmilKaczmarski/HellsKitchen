@@ -52,15 +52,12 @@ class AlertManager {
     }
     
     func requiedAuthorisationAlert(in controller: WallViewController) {
-        let alert = UIAlertController(title: "Please Log In", message: "Don't have an account? Register Now!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Please Log In", message: "to see recipe details authorisation is required", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
             controller.performSegue(withIdentifier: Constants.Segues.wallLoginSegue, sender: self)
         }))
         
-        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action) in
-            controller.performSegue(withIdentifier: Constants.Segues.wallRegisterSegue, sender: self)
-        }))
         controller.present(alert, animated: true)
     }
     

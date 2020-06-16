@@ -16,8 +16,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var registerView: UIView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var registerLoader: UIActivityIndicatorView!
-    @IBOutlet weak var attributedString: UILabel!
     
+    @IBOutlet weak var termsOfUse: UILabel!
     let viewModel: RegisterViewModel = RegisterViewModel()
     
     override func viewDidLoad() {
@@ -27,7 +27,11 @@ class RegisterViewController: UIViewController {
         setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
         registerView.layer.cornerRadius = 20
         FirebaseManager.shared.registerViewController = self
+        setTermsOfUseLabel()
         
+    }
+    
+    func setTermsOfUseLabel() {
         let attributedString = NSMutableAttributedString(string: "By signing up I accept the terms of use \nand the data privacy policy.", attributes: [
             .font: UIFont.systemFont(ofSize: 12.0),
           .foregroundColor: UIColor(red: 1.0 / 255.0, green: 80.0 / 255.0, blue: 103.0 / 255.0, alpha: 1.0),
@@ -35,6 +39,8 @@ class RegisterViewController: UIViewController {
         ])
         attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12.0), range: NSRange(location: 27, length: 12))
         attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12.0), range: NSRange(location: 49, length: 19))
+        termsOfUse.attributedText = attributedString
+        termsOfUse.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +55,10 @@ class RegisterViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
-    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func backButtonPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
     func enableRegisterButton() {
         registerButton.isEnabled = true
         registerView.backgroundColor = Constants.Colors.deepGreen
@@ -96,6 +103,10 @@ class RegisterViewController: UIViewController {
         guard let nickname = usernameTextField.text else { return }
         viewModel.registerUser(nickname, emailTextField: emailTextField.text, passwordTextField: passwordTextField.text)
         self.registerLoader.stopAnimating()
+    }
+    
+    @IBAction func signInButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
     
 }

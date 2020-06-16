@@ -47,6 +47,8 @@ extension Constants {
 //MARK: - Segues
 extension Constants {
     struct Segues {
+        static let wallRegisterSegue = "wallRegisterSegue"
+        static let wallLoginSegue = "wallLoginSegue"
         static let registerSegue = "registerSegue"
         static let loginSegue = "loginSegue"
         static let chatUsersSegue = "chatUsersSegue"

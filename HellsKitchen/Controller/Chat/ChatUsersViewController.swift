@@ -25,7 +25,7 @@ class ChatUsersViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 71
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = CGFloat(Constants.Sizes.chatViewCellHeight)
         setupSearchBar()

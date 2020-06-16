@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.cornerRadius = profilePicture.bounds.width / 2
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         tabBarController?.tabBar.isHidden = false
         username.text = Constants.currentUserName
     }

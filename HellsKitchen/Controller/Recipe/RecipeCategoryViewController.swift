@@ -27,7 +27,7 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
         viewModel.loadSavedData() {
             self.tableView.reloadData()
         }
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         setupSearchBar()
     }
     

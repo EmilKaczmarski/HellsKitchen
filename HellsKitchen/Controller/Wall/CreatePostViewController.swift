@@ -26,7 +26,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         viewModel.delegate = self
         setupAddRecipeButton()
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         buttonView.layer.cornerRadius = 20
         uploadedImage.layer.masksToBounds = true
         uploadedImage.contentMode = .scaleToFill

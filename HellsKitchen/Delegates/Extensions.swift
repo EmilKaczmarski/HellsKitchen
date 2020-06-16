@@ -43,12 +43,12 @@ extension UIViewController {
         titleLbl.font = UIFont(name: "PlayfairDisplay-Bold", size: 14.0)
         let imageView = UIImageView(image: image)
         imageView.snp.makeConstraints { (maker) in
-            maker.width.equalTo(15.0)
+            maker.width.equalTo(110.0)
             maker.height.equalTo(23.0)
         }
         let titleView = UIStackView(arrangedSubviews: [titleLbl, imageView])
         titleView.axis = .horizontal
-        titleView.spacing = 10.0
+        titleView.spacing = 1.0
         navigationItem.titleView = titleView
     }
     

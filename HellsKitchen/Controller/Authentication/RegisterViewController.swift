@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         setupRegisterButton()
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         registerView.layer.cornerRadius = 20
         FirebaseManager.shared.registerViewController = self
         setTermsOfUseLabel()

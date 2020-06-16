@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NpG-0q-3DZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NpG-0q-3DZ">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="PlayfairDisplay-Bold.ttf">
-            <string>PlayfairDisplay-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="DMd-Ix-vnB">
@@ -20,53 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="LhV-2l-u0m">
-                                <rect key="frame" x="56" y="340.66666666666669" width="302" height="131"/>
-                                <subviews>
-                                    <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRx-QF-tzH">
-                                        <rect key="frame" x="0.0" y="0.0" width="302" height="46"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fire" translatesAutoresizingMaskIntoConstraints="NO" id="BgT-0g-YQx">
-                                                <rect key="frame" x="130.66666666666666" y="-9" width="41" height="64"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="41" id="7xV-jx-csj"/>
-                                                    <constraint firstAttribute="height" constant="64" id="rYD-Y8-eMK"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="BgT-0g-YQx" firstAttribute="centerX" secondItem="zRx-QF-tzH" secondAttribute="centerX" id="NhQ-m5-waE"/>
-                                            <constraint firstItem="BgT-0g-YQx" firstAttribute="centerY" secondItem="zRx-QF-tzH" secondAttribute="centerY" id="ZK5-Ux-21U"/>
-                                            <constraint firstAttribute="height" constant="46" id="z5I-pY-ndK"/>
-                                        </constraints>
-                                    </view>
-                                    <view verifyAmbiguity="ignoreSizes" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-HW-pee">
-                                        <rect key="frame" x="0.0" y="78" width="302" height="53"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hell’s kitchen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfc-74-inQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="302" height="40"/>
-                                                <fontDescription key="fontDescription" name="PlayfairDisplay-Bold" family="Playfair Display" pointSize="40"/>
-                                                <color key="textColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="hfc-74-inQ" firstAttribute="leading" secondItem="lcf-HW-pee" secondAttribute="leading" id="4d6-ux-noJ"/>
-                                            <constraint firstAttribute="height" constant="53" id="Zfv-iy-X2W"/>
-                                            <constraint firstAttribute="trailing" secondItem="hfc-74-inQ" secondAttribute="trailing" id="cw3-pD-4Tt"/>
-                                            <constraint firstAttribute="bottom" secondItem="hfc-74-inQ" secondAttribute="bottom" constant="13" id="gJB-iP-XA3"/>
-                                            <constraint firstItem="hfc-74-inQ" firstAttribute="top" secondItem="lcf-HW-pee" secondAttribute="top" id="whq-Ny-HPS"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group2" translatesAutoresizingMaskIntoConstraints="NO" id="v2L-q6-rmv">
+                                <rect key="frame" x="77" y="343" width="262" height="133"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.9882352941176471" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LhV-2l-u0m" firstAttribute="leading" secondItem="zZr-w0-Bjk" secondAttribute="leading" constant="56" id="Sk4-jp-ptd"/>
-                            <constraint firstItem="LhV-2l-u0m" firstAttribute="centerY" secondItem="y7W-ty-aU3" secondAttribute="centerY" constant="-42" id="k7W-Oc-gI7"/>
-                            <constraint firstItem="zZr-w0-Bjk" firstAttribute="trailing" secondItem="LhV-2l-u0m" secondAttribute="trailing" constant="56" id="lP3-Yg-0eh"/>
-                            <constraint firstItem="LhV-2l-u0m" firstAttribute="centerX" secondItem="y7W-ty-aU3" secondAttribute="centerX" id="mdJ-c3-Dc5"/>
+                            <constraint firstItem="v2L-q6-rmv" firstAttribute="leading" secondItem="zZr-w0-Bjk" secondAttribute="leading" constant="77" id="1Gy-nh-59n"/>
+                            <constraint firstItem="v2L-q6-rmv" firstAttribute="top" secondItem="zZr-w0-Bjk" secondAttribute="top" constant="299" id="AQ0-yH-cY0"/>
+                            <constraint firstItem="zZr-w0-Bjk" firstAttribute="trailing" secondItem="v2L-q6-rmv" secondAttribute="trailing" constant="75" id="W9R-ix-8m9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zZr-w0-Bjk"/>
                     </view>
@@ -77,6 +34,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fire" width="29" height="46"/>
+        <image name="group2" width="262" height="133"/>
     </resources>
 </document>

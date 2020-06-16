@@ -24,7 +24,7 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var url: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         radiusView.layer.cornerRadius = 26
         radiusView.layer.masksToBounds = true
         radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

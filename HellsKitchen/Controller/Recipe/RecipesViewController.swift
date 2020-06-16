@@ -24,7 +24,7 @@ class RecipesViewController: UIViewController {
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: "cell")
         viewModel.delegate = self
         setupSearchBar()
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         loadImages()
     }
     

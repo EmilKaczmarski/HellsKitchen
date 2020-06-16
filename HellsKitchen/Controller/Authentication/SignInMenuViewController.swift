@@ -26,7 +26,7 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
         super.viewDidLoad()
         FirebaseManager.shared.signInViewController = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         GIDSignIn.sharedInstance().delegate = self
         setupLoginButtonsViews()
     }

@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         super.viewDidLoad()
         setupLoginButton()
         viewModel.delegate = self
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
         loginButtonView.layer.cornerRadius = 20
     }
     

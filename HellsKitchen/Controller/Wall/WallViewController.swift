@@ -100,7 +100,9 @@ extension WallViewController {
             if segue.identifier == Constants.Segues.wallDetailSegue {
                 let vc = segue.destination as! PostDetailViewController
                 if let indexPath = tableView.indexPathForSelectedRow {
-                    vc.postId = viewModel.posts[indexPath.row].id
+                    vc.post = viewModel.posts[indexPath.row]
+                    let postId = viewModel.posts[indexPath.row].id
+                    vc.postImage = viewModel.postsImages[postId]
                 }
             }
         }

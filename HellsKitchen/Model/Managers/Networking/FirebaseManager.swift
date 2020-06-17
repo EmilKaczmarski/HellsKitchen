@@ -304,22 +304,26 @@ extension FirebaseManager {
     func removeAccount(completion: @escaping (Bool)-> ()) {
         let user = Auth.auth().currentUser
         user?.delete { error in
-          if let error = error {
-            print(error.localizedDescription)
-            completion(false)
-          } else {
-            FirebaseManager.shared.removeAccountFromUserList { (success) in
-                Constants.currentUserName = ""
-                Constants.currentUserEmail = ""
-                Constants.currentUserProfilePicture = Constants.Pictures.defaultProfile
-                completion(success)
+            if let error = error {
+                print(error.localizedDescription)
+                completion(false)
+            } else {
+                self.removeAccountFromUserList { (success) in
+                    if success {
+                        self.removeProfilePictureFromCloudForCurrentUser {
+                            Constants.currentUserName = ""
+                            Constants.currentUserEmail = ""
+                            Constants.currentUserProfilePicture = Constants.Pictures.defaultProfile
+                            completion(true)
+                        }
+                    }
+                }
             }
-          }
         }
     }
     
     func removeAccountFromUserList(completion: @escaping (Bool)-> ()) {
-        FirebaseManager.shared.getDocumentIdForCurrentUser { (id) in
+        self.getDocumentIdForCurrentUser { (id) in
             if id == "" {
                 completion(false)
                 return
@@ -354,4 +358,18 @@ extension FirebaseManager {
             }
         }
     }
+    
+    func removeProfilePictureFromCloudForCurrentUser(completion: @escaping ()-> ()) {
+        let picture = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
+        // Delete the file
+        picture.delete { error in
+          if let error = error {
+            print(error.localizedDescription)
+            completion()
+          } else {
+            completion()
+          }
+        }
+    }
+    
 }

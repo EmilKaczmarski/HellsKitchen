@@ -18,11 +18,17 @@ class ProfileSettingsViewController: UIViewController {
     }
     
     @IBAction func removeAccountButtonPressed(_ sender: UIButton) {
-        FirebaseManager.shared.removeAccount {
-            
+        AlertManager.shared.confirmAccountRemovalAlert(in: self) { confirmed in
+            if confirmed {
+                FirebaseManager.shared.removeAccount { success in
+                    if success {
+                        AlertManager.shared.accountRemovedAlert(in: self) {
+                            self.tabBarController?.selectedIndex = 0
+                        }
+                    }
+                }
+            }
         }
         navigationController?.popViewController(animated: true)
     }
-    
-    
 }

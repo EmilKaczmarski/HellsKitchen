@@ -176,3 +176,29 @@ extension AlertManager {
         controller.present(alert, animated: true)
     }
 }
+
+//MARK: - remove account alerts
+extension AlertManager {
+    func confirmAccountRemovalAlert(in controller: UIViewController, completion: @escaping (Bool)-> ()) {
+        let alert = UIAlertController(title: "are you sure that you want to remove your account?", message: nil, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "yes", style: .default) { (action) in
+            completion(true)
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel) { action in
+            completion(false)
+        }
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        controller.present(alert, animated: true)
+    }
+    
+    func accountRemovedAlert(in controller: UIViewController, completion: @escaping ()-> ()) {
+        let alert = UIAlertController(title: "account has been removed", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel) { (action) in
+            completion()
+        }
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
+}

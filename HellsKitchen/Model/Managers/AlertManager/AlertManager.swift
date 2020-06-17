@@ -176,3 +176,22 @@ extension AlertManager {
         controller.present(alert, animated: true)
     }
 }
+
+//MARK: - change password/username alerts
+
+extension AlertManager {
+     func passwordChangedAlert(in controller: UIViewController) {
+           let alert = UIAlertController(title: "Great!", message: "Your password has been changed", preferredStyle: .alert)
+           let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+           alert.addAction(action)
+           controller.present(alert, animated: true)
+    }
+    
+    func usernameChangedAlert(in controller: UIViewController) {
+           let alert = UIAlertController(title: "Great!", message: "Your username has been changed", preferredStyle: .alert)
+           let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+           alert.addAction(action)
+           controller.present(alert, animated: true)
+       }
+    
+}

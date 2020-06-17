@@ -82,7 +82,7 @@ extension WallViewController {
 //MARK: - setup navigation controller
 extension WallViewController {
     private func setupNavigationBar(){
-        setTitle("hell's kitchen", andImage: #imageLiteral(resourceName: "fire"))
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
     }
 }
 

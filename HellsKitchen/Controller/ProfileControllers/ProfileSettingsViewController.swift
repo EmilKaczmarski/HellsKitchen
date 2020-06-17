@@ -17,7 +17,6 @@ class ProfileSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupChangeButtons()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
     }
     
@@ -26,54 +25,17 @@ class ProfileSettingsViewController: UIViewController {
     }
     
     @IBAction func removeAccountButtonPressed(_ sender: UIButton) {
-        FirebaseManager.shared.removeAccount {
-            
+        AlertManager.shared.confirmAccountRemovalAlert(in: self) { confirmed in
+            if confirmed {
+                FirebaseManager.shared.removeAccount { success in
+                    if success {
+                        AlertManager.shared.accountRemovedAlert(in: self) {
+                            self.tabBarController?.selectedIndex = 0
+                        }
+                    }
+                }
+            }
         }
         navigationController?.popViewController(animated: true)
-    }
-    
-    //MARK: - change password/username
-    
-    func enableChangePasswordButton() {
-        changePasswordButton.isEnabled = true
-    }
-    
-    func disableChangePasswordButton() {
-        changePasswordButton.isEnabled = false
-    }
-    
-    func enableChangeUsernameButton() {
-        changePasswordButton.isEnabled = true
-    }
-    
-    func disableChangeUsernameButton() {
-        changePasswordButton.isEnabled = false
-    }
-    
-    func setupChangeButtons() {
-        disableChangePasswordButton()
-        disableChangeUsernameButton()
-    }
-    
-    @IBAction func changePasswordButtonPressed(_ sender: Any) {
-    }
-    
-    @IBAction func changeUsernameButtonPressed(_ sender: Any) {
-    }
-    
-    @IBAction func changePasswordTextFieldChanged(_ sender: Any) {
-        if !changePasswordTextField.text!.isEmpty {
-            enableChangePasswordButton()
-        } else {
-            disableChangePasswordButton()
-        }
-    }
-    
-    @IBAction func changeUsernameTextFieldChanged(_ sender: Any) {
-        if !changeUsernameTextField.text!.isEmpty && !changeUsernameTextField.text!.contains(" ") {
-            enableChangeUsernameButton()
-        } else {
-            disableChangeUsernameButton()
-        }
     }
 }

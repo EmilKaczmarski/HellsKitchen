@@ -302,17 +302,58 @@ extension FirebaseManager {
 //MARK: - removing account
 extension FirebaseManager {
     func removeAccount(completion: @escaping (Bool)-> ()) {
-        
         let user = Auth.auth().currentUser
         user?.delete { error in
           if let error = error {
-            // An error happened.
+            print(error.localizedDescription)
+            completion(false)
           } else {
-            // Account deleted.
+            FirebaseManager.shared.removeAccountFromUserList { (success) in
+                Constants.currentUserName = ""
+                Constants.currentUserEmail = ""
+                Constants.currentUserProfilePicture = Constants.Pictures.defaultProfile
+                completion(success)
+            }
           }
         }
     }
     
+    func removeAccountFromUserList(completion: @escaping (Bool)-> ()) {
+        FirebaseManager.shared.getDocumentIdForCurrentUser { (id) in
+            if id == "" {
+                completion(false)
+                return
+            }
+            
+            self.db.collection(Constants.FStore.allUsers).document(id).delete() { err in
+                if let err = err {
+                    print(err.localizedDescription)
+                    completion(false)
+                } else {
+                    completion(true)
+                }
+            }
+        }
+    }
+    
+    func getDocumentIdForCurrentUser(completion: @escaping (String)-> ()) {
+        db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                completion("")
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for i in snapshotDocuments {
+                        let element = i.data()
+                        print(Constants.currentUserName)
+                        if element["username"]! as! String == Constants.currentUserName {
+                            completion(i.documentID)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 //MARK: - change password/user

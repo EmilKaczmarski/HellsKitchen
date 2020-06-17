@@ -177,21 +177,29 @@ extension AlertManager {
     }
 }
 
-//MARK: - change password/username alerts
 
+//MARK: - remove account alerts
 extension AlertManager {
-     func passwordChangedAlert(in controller: UIViewController) {
-           let alert = UIAlertController(title: "Great!", message: "Your password has been changed", preferredStyle: .alert)
-           let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-           alert.addAction(action)
-           controller.present(alert, animated: true)
+    func confirmAccountRemovalAlert(in controller: UIViewController, completion: @escaping (Bool)-> ()) {
+        let alert = UIAlertController(title: "are you sure that you want to remove your account?", message: nil, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "yes", style: .default) { (action) in
+            completion(true)
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel) { action in
+            completion(false)
+        }
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        controller.present(alert, animated: true)
     }
     
-    func usernameChangedAlert(in controller: UIViewController) {
-           let alert = UIAlertController(title: "Great!", message: "Your username has been changed", preferredStyle: .alert)
-           let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-           alert.addAction(action)
-           controller.present(alert, animated: true)
-       }
-    
+    func accountRemovedAlert(in controller: UIViewController, completion: @escaping ()-> ()) {
+        let alert = UIAlertController(title: "account has been removed", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel) { (action) in
+            completion()
+        }
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
 }

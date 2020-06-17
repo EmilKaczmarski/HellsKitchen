@@ -373,3 +373,29 @@ extension FirebaseManager {
     }
     
 }
+
+//MARK: - change password/user
+extension FirebaseManager {
+    
+func changeUser(username: String, completion: @escaping (Bool)-> ()) {
+    /*Auth.auth().changeUser() { authResult, error in
+        if let err = error {
+            print(err.localizedDescription)
+            completion(false)
+        } else {
+           //change username
+        }
+     */
+    }
+
+func changePassword(username: String, completion: @escaping (Bool)-> ()) {
+    /*Auth.auth().changePassword() { authResult, error in
+        if let err = error {
+            print(err.localizedDescription)
+            completion(false)
+        } else {
+           //change username
+        }
+     */
+    }
+}

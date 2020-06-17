@@ -9,8 +9,16 @@
 import UIKit
 
 class ProfileSettingsViewController: UIViewController {
+    
+    @IBOutlet weak var changePasswordTextField: UITextField!
+    @IBOutlet weak var changePasswordButton: UIButton!
+    @IBOutlet weak var changeUsernameTextField: UITextField!
+    @IBOutlet weak var changeUsernameButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTitle("", andImage: #imageLiteral(resourceName: "logo"))
+        setupChangeButtons()
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
@@ -31,4 +39,49 @@ class ProfileSettingsViewController: UIViewController {
         }
         navigationController?.popViewController(animated: true)
     }
+    
+    //MARK: - change password/username
+      
+      func enableChangePasswordButton() {
+          changePasswordButton.isEnabled = true
+      }
+      
+      func disableChangePasswordButton() {
+          changePasswordButton.isEnabled = false
+      }
+      
+      func enableChangeUsernameButton() {
+          changePasswordButton.isEnabled = true
+      }
+      
+      func disableChangeUsernameButton() {
+          changePasswordButton.isEnabled = false
+      }
+      
+      func setupChangeButtons() {
+          disableChangePasswordButton()
+          disableChangeUsernameButton()
+      }
+      
+      @IBAction func changePasswordButtonPressed(_ sender: Any) {
+      }
+      
+      @IBAction func changeUsernameButtonPressed(_ sender: Any) {
+      }
+      
+      @IBAction func changePasswordTextFieldChanged(_ sender: Any) {
+          if !changePasswordTextField.text!.isEmpty {
+              enableChangePasswordButton()
+          } else {
+              disableChangePasswordButton()
+          }
+      }
+      
+      @IBAction func changeUsernameTextFieldChanged(_ sender: Any) {
+          if !changeUsernameTextField.text!.isEmpty && !changeUsernameTextField.text!.contains(" ") {
+              enableChangeUsernameButton()
+          } else {
+              disableChangeUsernameButton()
+          }
+      }
 }

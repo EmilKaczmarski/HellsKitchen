@@ -46,8 +46,10 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             loginLoader.startAnimating()
-            FirebaseManager.shared.signIn(email: email, password: password, in: self) {
-                self.navigationController?.popToRootViewController(animated: false)
+            FirebaseManager.shared.signIn(email: email, password: password, in: self) { success in
+                if success {
+                    self.navigationController?.popToRootViewController(animated: false)
+                }
                 self.loginLoader.stopAnimating()
             }
         }

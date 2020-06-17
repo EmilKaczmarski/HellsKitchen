@@ -101,7 +101,13 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         self.registerLoader.startAnimating()
         guard let nickname = usernameTextField.text else { return }
-        viewModel.registerUser(nickname, emailTextField: emailTextField.text, passwordTextField: passwordTextField.text)
+        viewModel.registerUser(nickname, emailTextField: emailTextField.text, passwordTextField: passwordTextField.text) { success in
+            if success {
+                AlertManager.shared.userHasBeenRegisteredAlert(in: self)
+            } else {
+                
+            }
+        }
         self.registerLoader.stopAnimating()
     }
     

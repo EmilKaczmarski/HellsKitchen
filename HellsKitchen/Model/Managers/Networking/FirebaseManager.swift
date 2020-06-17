@@ -84,18 +84,24 @@ class FirebaseManager {
 }
 //MARK: - method useful for sign in user
 extension FirebaseManager {
-    func signIn(email: String, password: String, in controller: UIViewController, completion: @escaping ()-> Void) {
+    func signIn(email: String, password: String, in controller: UIViewController, completion: @escaping (Bool)-> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in
             if let err = error {
                 let alertInfo = "whoops something went wrong"
                 AlertManager.shared.textInputAlert(with: alertInfo, buttonTitle: "try again", for: controller)
                 print(err.localizedDescription)
-                completion()
+                completion(false)
             } else {
                 guard let user = Auth.auth().currentUser else { return }
-                Constants.currentUserEmail = user.email!
-                self.setCurrentUserInfo {
-                    completion()
+                if user.isEmailVerified {
+                    Constants.currentUserEmail = user.email!
+                    self.setCurrentUserInfo {
+                        completion(true)
+                    }
+                } else {
+                    AlertManager.shared.verifyEmailAlert(in: controller) {
+                        completion(false)
+                    }
                 }
             }
         }
@@ -170,17 +176,20 @@ extension FirebaseManager {
 
 //MARK: - method useful for register user
 extension FirebaseManager {
-    func createUser(email: String, password: String, username: String) {
+    func createUser(email: String, password: String, username: String, completion: @escaping (Bool)-> ()) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let err = error {
                 print(err.localizedDescription)
+                completion(false)
             } else {
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
                     if let error = error {
                         print(error.localizedDescription)
+                        completion(false)
                     }
                 }
                 self.addUserToList(email: email, username: username)
+                completion(true)
             }
         }
     }

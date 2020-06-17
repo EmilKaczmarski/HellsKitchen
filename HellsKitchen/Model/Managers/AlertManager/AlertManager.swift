@@ -126,3 +126,53 @@ class AlertManager {
             controller.present(alert, animated: true)
     }
 }
+
+//MARK: - register alerts
+extension AlertManager {
+    func userHasBeenRegisteredAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "Cool!", message: "You have been successfully registered. To use your account and join our community you need to only check your email and finish authentication using link that we sent. May the food be with you!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "got it", style: .cancel) { (action) in
+            controller.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
+    
+    func wrongUsernameAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "wrong username", message: "please provide new username which is not empty, without @ and empty spaces", preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
+    
+    func notUniqueUsernameAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "username is not unique", message: "please provide new username which is not unique", preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
+    
+    func notUniqueEmailAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "whoops", message: "It seems that account with this email already exists. If this email belongs to you please login, otherwise try with different credentials", preferredStyle: .alert)
+        let tryAgain = UIAlertAction(title: "try again", style: .cancel, handler: nil)
+        let signIn = UIAlertAction(title: "sign in", style: .default) { (action) in
+            controller.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(tryAgain)
+        alert.addAction(signIn)
+        controller.present(alert, animated: true)
+    }
+    
+    func verifyEmailAlert(in controller: UIViewController, completion: @escaping ()-> ()) {
+        let alert = UIAlertController(title: "please verify your email", message: "check your email and find authentication link, if you haven't received anything please press help", preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel) { action in
+            completion()
+        }
+        let helpAction = UIAlertAction(title: "help", style: .default) { action in
+            completion()
+        }
+        alert.addAction(action)
+        alert.addAction(helpAction)
+        controller.present(alert, animated: true)
+    }
+}

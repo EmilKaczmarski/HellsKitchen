@@ -97,7 +97,7 @@ class AlertManager {
         controller.present(alert, animated: true)
     }
     
-  
+    
     func isInternetAvailable(completion: @escaping (Bool) -> ()){
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
@@ -120,10 +120,10 @@ class AlertManager {
     }
     
     func sendMessageAlert(in controller: UIViewController) {
-            let alert = UIAlertController(title: "Alert", message: "No internet connection", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addAction(action)
-            controller.present(alert, animated: true)
+        let alert = UIAlertController(title: "Alert", message: "No internet connection", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(action)
+        controller.present(alert, animated: true)
     }
 }
 
@@ -206,18 +206,47 @@ extension AlertManager {
 
 //MARK: - change password/username alerts
 extension AlertManager {
-     func passwordChangedAlert(in controller: UIViewController) {
-           let alert = UIAlertController(title: "Great!", message: "Your password has been changed", preferredStyle: .alert)
-           let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-           alert.addAction(action)
-           controller.present(alert, animated: true)
+    func passwordChangedAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "Great!", message: "Your password has been changed", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alert.addAction(action)
+        controller.present(alert, animated: true)
     }
     
     func usernameChangedAlert(in controller: UIViewController) {
-           let alert = UIAlertController(title: "Great!", message: "Your username has been changed", preferredStyle: .alert)
-           let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-           alert.addAction(action)
-           controller.present(alert, animated: true)
-       }
-
+        let alert = UIAlertController(title: "Great!", message: "Your username has been changed", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
+    
+    func askUserToChangeUsername(with title: String, in controller: UIViewController) {
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "new username"
+        }
+        alert.addAction(UIAlertAction(title: "done", style: .cancel, handler: {
+            action in
+            guard let username = alert.textFields![0].text else { return }
+            if username.contains(" ") || username.count == 0 || username.contains("@") {
+                AlertManager.shared.askUserToChangeUsername(with: "please provide new username which is not empty, without @ and empty spaces", in: controller)
+                return
+            }
+            FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
+                if doesExist {
+                    AlertManager.shared.askUserToChangeUsername(with: "whoops username is not unique, please provide new one", in: controller)
+                } else {
+                    FirebaseManager.shared.changeUsername(to: username) { (success) in
+                        if success {
+                            AlertManager.shared.usernameChangedAlert(in: controller)
+                        }
+                    }
+                }
+            }
+        }))
+        controller.present(alert, animated: false)
+    }
+    
 }
+

@@ -287,7 +287,6 @@ extension FirebaseManager {
                     for i in snapshotDocuments {
                         var element = i.data()
                         if element["email"] as! String == Constants.currentUserEmail {
-                            
                             self.db.collection("allUsers").document(i.documentID).setData(["hasDefaultImage": false], merge: true)
                             element.updateValue(false, forKey: "hasDefaultImage")
                             return
@@ -363,12 +362,12 @@ extension FirebaseManager {
         let picture = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
         // Delete the file
         picture.delete { error in
-          if let error = error {
-            print(error.localizedDescription)
-            completion()
-          } else {
-            completion()
-          }
+            if let error = error {
+                print(error.localizedDescription)
+                completion()
+            } else {
+                completion()
+            }
         }
     }
     
@@ -377,25 +376,42 @@ extension FirebaseManager {
 //MARK: - change password/user
 extension FirebaseManager {
     
-func changeUser(username: String, completion: @escaping (Bool)-> ()) {
-    /*Auth.auth().changeUser() { authResult, error in
-        if let err = error {
-            print(err.localizedDescription)
-            completion(false)
-        } else {
-           //change username
+    func changeUsername(to username: String, completion: @escaping (Bool)-> ()) {
+        self.getDocumentIdForCurrentUser { (id) in
+            if id == "" {
+                completion(false)
+                return
+            }
+            self.db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                    completion(false)
+                } else {
+                    if let snapshotDocuments = querySnapshot?.documents {
+                        for i in snapshotDocuments {
+                            var element = i.data()
+                            if element["email"] as! String == Constants.currentUserEmail {
+                                self.db.collection("allUsers").document(i.documentID).setData(["username": username], merge: true)
+                                element.updateValue(username, forKey: "username")
+                                Constants.currentUserName = username
+                                completion(true)
+                                return
+                            }
+                        }
+                    }
+                }
+            }
         }
-     */
     }
-
-func changePassword(username: String, completion: @escaping (Bool)-> ()) {
-    /*Auth.auth().changePassword() { authResult, error in
-        if let err = error {
-            print(err.localizedDescription)
-            completion(false)
-        } else {
-           //change username
-        }
-     */
+    
+    func changePassword(username: String, completion: @escaping (Bool)-> ()) {
+        /*Auth.auth().changePassword() { authResult, error in
+         if let err = error {
+         print(err.localizedDescription)
+         completion(false)
+         } else {
+         //change username
+         }
+         */
     }
 }

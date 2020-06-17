@@ -299,3 +299,18 @@ extension FirebaseManager {
     }
 }
 
+//MARK: - removing account
+extension FirebaseManager {
+    func removeAccount(completion: @escaping (Bool)-> ()) {
+        
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+          if let error = error {
+            // An error happened.
+          } else {
+            // Account deleted.
+          }
+        }
+    }
+    
+}

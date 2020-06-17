@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		181594C4247B242F0014FDFE /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C3247B242F0014FDFE /* IngredientCell.swift */; };
 		181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */; };
+		182CF760249A545D00706F44 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182CF75F249A545D00706F44 /* ProfileSettingsViewController.swift */; };
 		18364E70246BE46A00F8DEBE /* ChatUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */; };
 		18364E73246BE72D00F8DEBE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18364E72246BE72D00F8DEBE /* SnapKit */; };
 		18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18364E78246BF2B600F8DEBE /* ChatViewController.swift */; };
@@ -79,6 +80,7 @@
 		1805D7CE2483DF960014317E /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		181594C3247B242F0014FDFE /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		181594C5247B25370014FDFE /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
+		182CF75F249A545D00706F44 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		18364E6F246BE46A00F8DEBE /* ChatUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewController.swift; sourceTree = "<group>"; };
 		18364E78246BF2B600F8DEBE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		18364E7A246BF52300F8DEBE /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -211,6 +213,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		182CF75E249A53C900706F44 /* ProfileControllers */ = {
+			isa = PBXGroup;
+			children = (
+				47712B362482E91A007E70D3 /* ProfileViewController.swift */,
+				182CF75F249A545D00706F44 /* ProfileSettingsViewController.swift */,
+			);
+			path = ProfileControllers;
+			sourceTree = "<group>";
+		};
 		18364E81246C085100F8DEBE /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,8 +308,8 @@
 				187121CF246D2F4B0008B307 /* Authentication */,
 				187121CE246D2EFE0008B307 /* Chat */,
 				187121D0246D2F610008B307 /* Wall */,
+				182CF75E249A53C900706F44 /* ProfileControllers */,
 				18D574EB248D9E820043DE9F /* NavigationControllers */,
-				47712B362482E91A007E70D3 /* ProfileViewController.swift */,
 				18E2C9692486AB0F007BEB56 /* TabBarController.swift */,
 			);
 			path = Controller;
@@ -596,6 +607,7 @@
 				18E2CDBE2484E6C6000B1D42 /* RecipeTableViewCell.swift in Sources */,
 				18D574ED248D9EA10043DE9F /* ChatNavigationController.swift in Sources */,
 				18ED1415246D70C40093398A /* PostDetailViewController.swift in Sources */,
+				182CF760249A545D00706F44 /* ProfileSettingsViewController.swift in Sources */,
 				1890714724852FF9008CB184 /* SignInMenuViewController.swift in Sources */,
 				18BE2849246B15D500869B6C /* WelcomeViewController.swift in Sources */,
 				181594C6247B25370014FDFE /* RecipeDetailViewModel.swift in Sources */,

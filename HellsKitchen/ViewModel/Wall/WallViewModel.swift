@@ -29,6 +29,8 @@ class WallViewModel {
                                             title: data["title"] as! String,
                                             owner: data["owner"] as! String,
                                             content: data["content"] as! String,
+                                            cooking: data["cooking"] as! String,
+                                            calories: data["calories"] as! String,
                                             createTimestamp: "\(data["createTimestamp"] ?? "")",
                                 lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
                                 comments: [])

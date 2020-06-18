@@ -34,6 +34,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func changeProfilePictureButtonPressed(_ sender: UIButton) {
         profilePicturePicker()
     }
     

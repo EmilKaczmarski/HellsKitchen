@@ -74,6 +74,10 @@ class WallViewModel {
     }
     
     func insertPost(_ post: Post) {
+        if doesPostExist(with: post.id) {
+            return
+        }
+        
         if posts.count == 0 {
             posts.insert(post, at: 0)
             delegate!.tableView.reloadData()
@@ -95,4 +99,9 @@ class WallViewModel {
         delegate!.tableView.reloadData()
     }
     
+    func doesPostExist(with id: String)-> Bool {
+        return posts.contains { (post) -> Bool in
+            return post.id == id
+        }
+    }
 }

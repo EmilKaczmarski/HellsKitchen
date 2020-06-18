@@ -35,9 +35,8 @@ class WallViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
-        if viewModel.posts.count == 0 {
-            viewModel.loadPosts()
-        }
+        //if viewModel.posts.count == 0 {
+        viewModel.loadPosts()
         setupTableViewParameters()
         if Constants.currentUserName != "" {
             userIsLoggedIn()

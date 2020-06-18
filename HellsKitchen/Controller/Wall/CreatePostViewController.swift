@@ -20,12 +20,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var contentPlaceholder: UILabel!
-    @IBOutlet weak var caloriesLine: UIView!
-    @IBOutlet weak var kcalLabel: UILabel!
-    @IBOutlet weak var minutesLabel: UILabel!
-    @IBOutlet weak var cookingTimeLine: UIView!
-    @IBOutlet weak var cooking: UITextField!
-    @IBOutlet weak var calories: UITextField!
     
     let viewModel: PostDetailViewModel = PostDetailViewModel()
     override func viewDidLoad() {
@@ -33,8 +27,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         viewModel.delegate = self
         setupAddRecipeButton()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
-        minutesLabel.isHidden = true
-        kcalLabel.isHidden = true
         buttonView.layer.cornerRadius = 20
         uploadedImage.layer.masksToBounds = true
         uploadedImage.contentMode = .scaleToFill
@@ -55,8 +47,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         setupCancelButtonTitle()
         header.text = ""
         content.text = ""
-        cooking.text = ""
-        calories.text = ""
         if Constants.currentUserName != "" {
             navigationController?.popToRootViewController(animated: false)
         }
@@ -74,13 +64,11 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
-        if header.text! != "" && content.text! != "" && calories.text! != "" && cooking.text! != "" {
+        if header.text! != "" && content.text! != "" {
             let timestamp = "\(Int(Date().timeIntervalSince1970))"
-            let post = Post(id: "\(Constants.currentUserName)\(timestamp)", title: header.text!, owner: Constants.currentUserName, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp)
+            let post = Post(id: "\(Constants.currentUserName)\(timestamp)", title: header.text!, owner: Constants.currentUserName, content: content.text!, createTimestamp: timestamp)
             header.text! = ""
             content.text! = ""
-            cooking.text! = ""
-            calories.text! = ""
             viewModel.savePost(post)
             FirebaseManager.shared.savePostPictureToFirebase(as: (uploadedImage.image?.jpegData(compressionQuality: 0.4))!, for: post.id)
             self.tabBarController?.selectedIndex = 0
@@ -98,28 +86,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         addRecipteButtonSwitch()
     }
     
-    
-    @IBAction func cookingTextChanged(_ sender: Any) {
-        if !cooking.text!.isEmpty {
-            cookingTimeLine.backgroundColor = Constants.Colors.deepGreen
-            minutesLabel.isHidden = false
-        } else {
-            cookingTimeLine.backgroundColor = Constants.Colors.lightGray
-            minutesLabel.isHidden = true
-        }
-    }
-    
-    @IBAction func caloriesTextChanged(_ sender: Any) {
-        if !calories.text!.isEmpty {
-            caloriesLine.backgroundColor = Constants.Colors.deepGreen
-            minutesLabel.isHidden = false
-        } else {
-            caloriesLine.backgroundColor = Constants.Colors.lightGray
-            minutesLabel.isHidden = true
-        }
-    }
     func addRecipteButtonSwitch() {
-        if !header.text!.isEmpty && uploadedImage.image != nil && !cooking.text!.isEmpty && !calories.text!.isEmpty {
+        if !header.text!.isEmpty && uploadedImage.image != nil {
             enableAddRecipeButton()
         } else {
             disableAddRecipeButton()

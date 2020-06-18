@@ -20,9 +20,7 @@ class PostDetailViewModel {
                 Constants.FStore.PostComponents.content : post.content,
                 Constants.FStore.PostComponents.createTimestamp : post.createTimestamp,
                 Constants.FStore.PostComponents.owner : post.owner,
-                Constants.FStore.PostComponents.title : post.title,
-                Constants.FStore.PostComponents.calories : post.calories,
-                Constants.FStore.PostComponents.cooking : post.cooking
+                Constants.FStore.PostComponents.title : post.title
             ])
     }
 }

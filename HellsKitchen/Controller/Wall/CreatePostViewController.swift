@@ -112,10 +112,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func caloriesTextChanged(_ sender: Any) {
         if !calories.text!.isEmpty {
             caloriesLine.backgroundColor = Constants.Colors.deepGreen
-            minutesLabel.isHidden = false
+            kcalLabel.isHidden = false
         } else {
             caloriesLine.backgroundColor = Constants.Colors.lightGray
-            minutesLabel.isHidden = true
+            kcalLabel.isHidden = true
         }
     }
     func addRecipteButtonSwitch() {

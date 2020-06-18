@@ -404,14 +404,17 @@ extension FirebaseManager {
         }
     }
     
-    func changePassword(username: String, completion: @escaping (Bool)-> ()) {
-        /*Auth.auth().changePassword() { authResult, error in
-         if let err = error {
-         print(err.localizedDescription)
-         completion(false)
-         } else {
-         //change username
-         }
-         */
+    func changePassword(email: String, currentPassword: String, newPassword: String, completion: @escaping (Error?) -> Void) {
+        let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
+        Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (result, error) in
+            if let error = error {
+                completion(error)
+            }
+            else {
+                Auth.auth().currentUser?.updatePassword(to: newPassword, completion: { (error) in
+                    completion(error)
+                })
+            }
+        })
     }
 }

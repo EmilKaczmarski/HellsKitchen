@@ -8,20 +8,38 @@
 
 import UIKit
 
-class ProfileSettingsViewController: UIViewController {
-    
-    @IBOutlet weak var changePasswordTextField: UITextField!
-    @IBOutlet weak var changePasswordButton: UIButton!
+class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
     @IBOutlet weak var changeUsernameTextField: UITextField!
-    @IBOutlet weak var changeUsernameButton: UIButton!
+    @IBOutlet weak var changePasswordTextField: UITextField!
+    @IBOutlet weak var profilePictureView: UIView!
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var saveChangesButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
+        tabBarController?.tabBar.isHidden = false
+        profilePictureView.layer.masksToBounds = true
+        profilePictureView.layer.cornerRadius = profilePictureView.bounds.width / 2
+        buttonView.layer.cornerRadius = 25
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
+        loadProfilePicture()
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    @IBAction func changeProfilePictureButton(_ sender: Any) {
+        profilePicturePicker()
+        
     }
     
     @IBAction func removeAccountButtonPressed(_ sender: UIButton) {
@@ -38,47 +56,79 @@ class ProfileSettingsViewController: UIViewController {
         }
         navigationController?.popViewController(animated: true)
     }
+    
+    //MARK: - change profile picture
+    
+    func profilePicturePicker() {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        
+        let actionSheet = UIAlertController(title: "Profile Picture Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                print("Camera not available")
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profilePicture.image = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profilePicture.image = originalImage
+        }
+        if let imageData = profilePicture.image?.jpegData(compressionQuality: 0.2) {
+            FirebaseManager.shared.saveProfilePictureToFirebase(as: imageData)
+        }
+        FirebaseManager.shared.imageHasChanged()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func loadProfilePicture() {
+        FirebaseManager.shared.getProfilePictureData(for: Constants.currentUserName) { (data, error) in
+            if error != nil {
+                self.profilePicture.image = Constants.currentUserProfilePicture
+            } else {
+                self.profilePicture.image = UIImage(data: data!)
+                Constants.currentUserProfilePicture = UIImage(data: data!)
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     //MARK: - change password/username
-      
-//      func enableChangePasswordButton() {
-//          changePasswordButton.isEnabled = true
+
+//
+//      func enableSaveChangesButton() {
+//          saveChangesPasswordButton.isEnabled = true
+//      buttonView.backgroundColor =                Constants.Colors.deepGreen
 //      }
 //
-//      func disableChangePasswordButton() {
-//          changePasswordButton.isEnabled = false
-//      }
-//
-//      func enableChangeUsernameButton() {
-//          changePasswordButton.isEnabled = true
-//      }
-//
-//      func disableChangeUsernameButton() {
-//          changePasswordButton.isEnabled = false
+//      func disableSavehangesButton() {
+//          saveChangesButton.isEnabled = false
+//          buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
 //      }
 
     
-    @IBAction func changePasswordButtonPressed(_ sender: Any) {
+    @IBAction func saveChangesButton(_ sender: Any) {
+        AlertManager.shared.askUserToChangeUsername(with: "please provide new username or password", in: self)
     }
-    
-    @IBAction func changeUsernameButtonPressed(_ sender: Any) {
-        
-        AlertManager.shared.askUserToChangeUsername(with: "please provide new username", in: self)
-        
-    }
-    
-    //      @IBAction func changePasswordTextFieldChanged(_ sender: Any) {
-//          if !changePasswordTextField.text!.isEmpty {
-//              enableChangePasswordButton()
-//          } else {
-//              disableChangePasswordButton()
-//          }
-//      }
-//
-//      @IBAction func changeUsernameTextFieldChanged(_ sender: Any) {
-//          if !changeUsernameTextField.text!.isEmpty && !changeUsernameTextField.text!.contains(" ") {
-//              enableChangeUsernameButton()
-//          } else {
-//              disableChangeUsernameButton()
-//          }
-//      }
 }

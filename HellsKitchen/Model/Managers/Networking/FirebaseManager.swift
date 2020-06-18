@@ -377,6 +377,18 @@ extension FirebaseManager {
 extension FirebaseManager {
     
     func changeUsername(to username: String, completion: @escaping (Bool)-> ()) {
+        self.changeUsernameInAllUsers(to: username) { (success) in
+            if success {
+                completion(false)
+                return
+            }
+            
+        }
+        Constants.currentUserName = username
+
+    }
+    
+    func changeUsernameInAllUsers(to username: String, completion: @escaping (Bool)-> ()) {
         self.getDocumentIdForCurrentUser { (id) in
             if id == "" {
                 completion(false)
@@ -393,7 +405,6 @@ extension FirebaseManager {
                             if element["email"] as! String == Constants.currentUserEmail {
                                 self.db.collection("allUsers").document(i.documentID).setData(["username": username], merge: true)
                                 element.updateValue(username, forKey: "username")
-                                Constants.currentUserName = username
                                 completion(true)
                                 return
                             }
@@ -403,6 +414,7 @@ extension FirebaseManager {
             }
         }
     }
+    
     
     func changePassword(username: String, completion: @escaping (Bool)-> ()) {
         /*Auth.auth().changePassword() { authResult, error in

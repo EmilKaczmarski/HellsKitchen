@@ -62,7 +62,7 @@ class ProfileSettingsViewController: UIViewController {
     
     @IBAction func changeUsernameButtonPressed(_ sender: Any) {
         
-        AlertManager.shared.askUserToChangeUsername(with: "please provide new username", in: self)
+        AlertManager.shared.changeUsernameAlert(with: "please provide new username", in: self)
         
     }
     

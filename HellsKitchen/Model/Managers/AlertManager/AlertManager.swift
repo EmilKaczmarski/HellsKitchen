@@ -220,7 +220,7 @@ extension AlertManager {
         controller.present(alert, animated: true)
     }
     
-    func askUserToChangeUsername(with title: String, in controller: UIViewController) {
+    func changeUsernameAlert(with title: String, in controller: UIViewController) {
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
@@ -230,12 +230,12 @@ extension AlertManager {
             action in
             guard let username = alert.textFields![0].text else { return }
             if username.contains(" ") || username.count == 0 || username.contains("@") {
-                AlertManager.shared.askUserToChangeUsername(with: "please provide new username which is not empty, without @ and empty spaces", in: controller)
+                AlertManager.shared.changeUsernameAlert(with: "please provide new username which is not empty, without @ and empty spaces", in: controller)
                 return
             }
             FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
                 if doesExist {
-                    AlertManager.shared.askUserToChangeUsername(with: "whoops username is not unique, please provide new one", in: controller)
+                    AlertManager.shared.changeUsernameAlert(with: "whoops username is not unique, please provide new one", in: controller)
                 } else {
                     FirebaseManager.shared.changeUsername(to: username) { (success) in
                         if success {

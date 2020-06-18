@@ -100,8 +100,8 @@ class ChatUsersViewModel {
                         
                         if isFound {
                             var messageBundle = MessageBundle()
-                            messageBundle.firstUser = element["firstUser"] as? String
-                            messageBundle.secondUser = element["secondUser"] as? String
+                            messageBundle.firstUsername = element["firstUser"] as? String
+                            messageBundle.secondUsername = element["secondUser"] as? String
                             messageBundle.timestamp = element["timestamp"] as? String
                             messageBundle.lastMessage = element["lastMessage"] as? String
                             self.allMessages.append(messageBundle)

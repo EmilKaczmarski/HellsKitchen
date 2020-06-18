@@ -61,7 +61,7 @@ extension ChatViewModel {
         }
     }
     
-    func sendMessage(message: String, sender: String, receiver: String) {
+    func sendMessage(message: String, senderUsername: String, receiverUsername: String, senderEmail: String, receiverEmail: String) {
         let mess = MessageModel(message: message, sender: sender, timestamp: "\(Date().timeIntervalSince1970)")
         delegate!.db.collection(Constants.FStore.messages)
             .document(self.messagesId).setData(

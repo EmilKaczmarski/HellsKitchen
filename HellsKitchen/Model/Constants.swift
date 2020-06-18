@@ -94,6 +94,8 @@ extension Constants {
             static let title = "title"
             static let owner = "owner"
             static let content = "content"
+            static let cooking = "cooking"
+            static let calories = "calories"
             static let createTimestamp = "createTimestamp"
             static let lastCommentTimestamp = "lastCommentTimestamp"
             static let comments = "comments"

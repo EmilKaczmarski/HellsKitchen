@@ -14,6 +14,8 @@ struct Post {
     let owner: String
     //let photo: UIImage() in further plans
     let content: String
+    let cooking: String
+    let calories: String
     let createTimestamp: String
     var lastCommentTimestamp: String?
     var comments: [Comment]?

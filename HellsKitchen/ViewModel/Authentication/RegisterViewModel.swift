@@ -27,7 +27,7 @@ class RegisterViewModel {
                         if success {
                             completion(true)
                         } else {
-                            AlertManager.shared.notUniqueEmailAlert(in: self.delegate!)
+                            AlertManager.shared.notUniqueEmailAlertWithSingInOption(in: self.delegate!)
                             completion(false)
                         }
                     }

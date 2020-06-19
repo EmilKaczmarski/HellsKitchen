@@ -152,7 +152,7 @@ extension AlertManager {
         controller.present(alert, animated: true)
     }
     
-    func notUniqueEmailAlert(in controller: UIViewController) {
+    func notUniqueEmailAlertWithSingInOption(in controller: UIViewController) {
         let alert = UIAlertController(title: "whoops", message: "It seems that account with this email already exists. If this email belongs to you please login, otherwise try with different credentials", preferredStyle: .alert)
         let tryAgain = UIAlertAction(title: "try again", style: .cancel, handler: nil)
         let signIn = UIAlertAction(title: "sign in", style: .default) { (action) in
@@ -160,6 +160,13 @@ extension AlertManager {
         }
         alert.addAction(tryAgain)
         alert.addAction(signIn)
+        controller.present(alert, animated: true)
+    }
+    
+    func notUniqueEmailAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "whoops", message: "It seems that account with this email already exists. Please find another username", preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        alert.addAction(action)
         controller.present(alert, animated: true)
     }
     

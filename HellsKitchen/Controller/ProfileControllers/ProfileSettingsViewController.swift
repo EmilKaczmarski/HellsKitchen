@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var changeUsernameTextField: UITextField!
     @IBOutlet weak var changePasswordTextField: UITextField!
     @IBOutlet weak var profilePictureView: UIView!
@@ -114,23 +114,35 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     }
     
     //MARK: - change password/username
-
-//
-//      func enableSaveChangesButton() {
-//          saveChangesPasswordButton.isEnabled = true
-//      buttonView.backgroundColor =                Constants.Colors.deepGreen
-//      }
-//
-//      func disableSavehangesButton() {
-//          saveChangesButton.isEnabled = false
-//          buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
-//      }
-
+    
+    //
+    //      func enableSaveChangesButton() {
+    //          saveChangesPasswordButton.isEnabled = true
+    //      buttonView.backgroundColor =                Constants.Colors.deepGreen
+    //      }
+    //
+    //      func disableSavehangesButton() {
+    //          saveChangesButton.isEnabled = false
+    //          buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
+    //      }
+    
     
     @IBAction func saveChangesButton(_ sender: Any) {
-        FirebaseManager.shared.changeUsername(to: changeUsernameTextField.text!) { (success) in
-            if success {
-                AlertManager.shared.usernameChangedAlert(in: self)
+        guard let username = changeUsernameTextField.text else { return }
+        if username.contains(" ") || username.count == 0 || username.contains("@") {
+            AlertManager.shared.wrongUsernameAlert(in: self)
+            return
+        }
+        
+        FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
+            if doesExist {
+                AlertManager.shared.notUniqueEmailAlert(in: self)
+                return
+            }
+            FirebaseManager.shared.changeUsername(to: username) { (success) in
+                if success {
+                    AlertManager.shared.usernameChangedAlert(in: self)
+                }
             }
         }
     }

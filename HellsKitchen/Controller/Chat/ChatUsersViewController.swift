@@ -81,7 +81,7 @@ extension ChatUsersViewController {
     func loadUserImages() {
         for user in viewModel.users {
             viewModel.setUserProfilePicture(for: user) {
-                self.viewModel.userImages[user.name!] = user.profilePicture!
+                self.viewModel.userImages[user.email!] = user.profilePicture!
                 self.tableView.reloadData()
             }
         }
@@ -89,14 +89,14 @@ extension ChatUsersViewController {
     
     func loadMessageImages() {
         for message in viewModel.allMessages {
-            var username = ""
-            if message.firstUserEmail != Constants.currentUserName {
-                username = message.firstUserEmail!
+            var email = ""
+            if message.firstUserEmail != Constants.currentUserEmail {
+                email = message.firstUserEmail!
             } else {
-                username = message.secondUserEmail!
+                email = message.secondUserEmail!
             }
-            viewModel.setMessageProfilePicture(in: message, for: username) {
-                self.viewModel.messageImages[username] = message.profilePicture!
+            viewModel.setMessageProfilePicture(in: message, for: email) {
+                self.viewModel.messageImages[email] = message.profilePicture!
                 self.tableView.reloadData()
             }
         }
@@ -124,8 +124,10 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
             let message = viewModel.cells[indexPath.row] as! MessageBundle
             if message.firstUserEmail == Constants.currentUserEmail {
                 cell.name.text = message.secondUserName!
+                cell.imageBox.image = viewModel.messageImages[message.secondUserEmail!]
             } else {
                 cell.name.text = message.firstUserName!
+                cell.imageBox.image = viewModel.messageImages[message.firstUserEmail!]
             }
             if let date = Double(message.timestamp!) {
                 cell.date.text = TimeDisplayManager.shared.getDateForUserCell(timestamp: date)
@@ -134,14 +136,13 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
             cell.date.isHidden = false
             cell.lastMessage.isHidden = false
             cell.lastMessage.text = message.lastMessage
-            cell.imageBox.image = viewModel.messageImages[cell.name.text!]
         } else if viewModel.cells[indexPath.row] is User{
             let user = viewModel.cells[indexPath.row] as! User
             cell.name.text = user.name
             cell.lastMessage.isHidden = true
             cell.date.isHidden = true
             cell.lastMessage.isHidden = true
-            cell.imageBox.image = viewModel.userImages[user.name!]
+            cell.imageBox.image = viewModel.userImages[user.email!]
         }
         
         hidecarrotViewIfNeeded()

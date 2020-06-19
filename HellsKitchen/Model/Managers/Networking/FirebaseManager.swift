@@ -213,7 +213,7 @@ extension FirebaseManager {
 //MARK: - saving images to database
 extension FirebaseManager {
     func saveProfilePictureToFirebase(as data: Data) {
-        let dbRef = storageRef.child("profilePictures/\(Constants.currentUserName).jpg")
+        let dbRef = storageRef.child("profilePictures/\(Constants.currentUserEmail).jpg")
         let uploadTask = dbRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 print(error)
@@ -246,8 +246,8 @@ extension FirebaseManager {
 }
 //MARK: - profile pictures
 extension FirebaseManager {
-    func getProfilePictureData(for username: String, completion: @escaping (Data?, Error?)-> ()) {
-        let pictureRef = storageRef.child("profilePictures/\(username).jpg")
+    func getProfilePictureData(for email: String, completion: @escaping (Data?, Error?)-> ()) {
+        let pictureRef = storageRef.child("profilePictures/\(email).jpg")
         DispatchQueue.main.async {
             pictureRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
                 if let error = error {

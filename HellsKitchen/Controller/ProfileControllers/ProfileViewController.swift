@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func loadProfilePicture() {
-        FirebaseManager.shared.getProfilePictureData(for: Constants.currentUserName) { (data, error) in
+        FirebaseManager.shared.getProfilePictureData(for: Constants.currentUserEmail) { (data, error) in
             if error != nil {
                 self.profilePicture.image = Constants.currentUserProfilePicture
             } else {

@@ -123,7 +123,7 @@ class ChatUsersViewModel {
 
 extension ChatUsersViewModel {
     func setUserProfilePicture(for user: User, completion: @escaping()-> ()) {
-        FirebaseManager.shared.getProfilePictureData(for: user.name!) { (data, error) in
+        FirebaseManager.shared.getProfilePictureData(for: user.email!) { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
                 user.profilePicture = Constants.Pictures.defaultProfile
@@ -135,8 +135,8 @@ extension ChatUsersViewModel {
         }
     }
     
-    func setMessageProfilePicture(in message: MessageBundle, for username: String, completion: @escaping()-> ()) {
-        FirebaseManager.shared.getProfilePictureData(for: username) { (data, error) in
+    func setMessageProfilePicture(in message: MessageBundle, for email: String, completion: @escaping()-> ()) {
+        FirebaseManager.shared.getProfilePictureData(for: email) { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
                 message.profilePicture = Constants.Pictures.defaultProfile

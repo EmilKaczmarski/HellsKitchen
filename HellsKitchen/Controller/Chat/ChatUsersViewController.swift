@@ -90,10 +90,10 @@ extension ChatUsersViewController {
     func loadMessageImages() {
         for message in viewModel.allMessages {
             var username = ""
-            if message.firstUser != Constants.currentUserName {
-                username = message.firstUser!
+            if message.firstUserEmail != Constants.currentUserName {
+                username = message.firstUserEmail!
             } else {
-                username = message.secondUser!
+                username = message.secondUserEmail!
             }
             viewModel.setMessageProfilePicture(in: message, for: username) {
                 self.viewModel.messageImages[username] = message.profilePicture!
@@ -122,10 +122,10 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
         
         if viewModel.cells[indexPath.row] is MessageBundle {
             let message = viewModel.cells[indexPath.row] as! MessageBundle
-            if message.firstUser == Constants.currentUserName {
-                cell.name.text = message.secondUser!
+            if message.firstUserEmail == Constants.currentUserEmail {
+                cell.name.text = message.secondUserName!
             } else {
-                cell.name.text = message.firstUser!
+                cell.name.text = message.firstUserName!
             }
             if let date = Double(message.timestamp!) {
                 cell.date.text = TimeDisplayManager.shared.getDateForUserCell(timestamp: date)
@@ -158,23 +158,29 @@ extension ChatUsersViewController: UITableViewDelegate, UITableViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ChatViewController
-        vc.sender = Constants.currentUserName
+        vc.senderEmail = Constants.currentUserEmail
+        vc.senderUsername = Constants.currentUserName
         if let indexPath = tableView.indexPathForSelectedRow {
-            var receiver = ""
+            var receiverEmail = ""
+            var receiverUsername = ""
             if viewModel.cells[indexPath.row] is MessageBundle {
                 let message = viewModel.cells[indexPath.row] as! MessageBundle
-                if message.firstUser == Constants.currentUserName {
-                    receiver = message.secondUser!
+                if message.firstUserEmail == Constants.currentUserEmail{
+                    receiverEmail = message.secondUserEmail!
+                    receiverUsername = message.secondUserName!
                 } else {
-                    receiver = message.firstUser!
+                    receiverEmail = message.firstUserEmail!
+                    receiverUsername = message.firstUserName!
                 }
             } else if viewModel.cells[indexPath.row] is User{
                 let user = viewModel.cells[indexPath.row] as! User
-                receiver = user.name!
+                receiverEmail = user.email!
+                receiverUsername = user.name!
             }
-            vc.receiverProfilePicture = viewModel.userImages[receiver]
-            vc.receiver = receiver
-            vc.setTitle(vc.receiver!)
+            vc.receiverProfilePicture = viewModel.userImages[receiverEmail]
+            vc.receiverEmail = receiverEmail
+            vc.receiverUsername = receiverUsername
+            vc.setTitle(vc.receiverUsername!)
         }
     }
     

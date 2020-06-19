@@ -64,9 +64,10 @@ class ChatUsersViewModel {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
                         let element = i.data()
-                        if (element["username"] as! String) != Constants.currentUserName {
+                        if (element["email"] as! String) != Constants.currentUserEmail {
                             let user = User()
                             user.name = (element["username"] as! String)
+                            user.email = (element["email"] as! String)
                             self.users.append(user)
                             self.delegate?.tableView.reloadData()
                         }
@@ -93,15 +94,17 @@ class ChatUsersViewModel {
                         var isFound = false
                         let element = i.data()
                         for (value) in element.values {
-                            if (value as! String) == Constants.currentUserName {
+                            if (value as! String) == Constants.currentUserEmail {
                                 isFound = true
                             }
                         }
                         
                         if isFound {
                             var messageBundle = MessageBundle()
-                            messageBundle.firstUser = element["firstUser"] as? String
-                            messageBundle.secondUser = element["secondUser"] as? String
+                            messageBundle.firstUserEmail = element["firstUserEmail"] as? String
+                            messageBundle.firstUserName = element["firstUserName"] as? String
+                            messageBundle.secondUserEmail = element["secondUserEmail"] as? String
+                            messageBundle.secondUserName = element["secondUserName"] as? String
                             messageBundle.timestamp = element["timestamp"] as? String
                             messageBundle.lastMessage = element["lastMessage"] as? String
                             self.allMessages.append(messageBundle)

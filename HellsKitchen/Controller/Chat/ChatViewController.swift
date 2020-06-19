@@ -11,8 +11,10 @@ import Firebase
 
 class ChatViewController: UIViewController {
     let db = Firestore.firestore()
-    var sender: String?
-    var receiver: String?
+    var senderEmail: String?
+    var receiverEmail: String?
+    var senderUsername: String?
+    var receiverUsername: String?
     var receiverProfilePicture: UIImage?
     let viewModel: ChatViewModel = ChatViewModel()
     
@@ -62,7 +64,7 @@ class ChatViewController: UIViewController {
         AlertManager.shared.isInternetAvailable { (success) in
             if success {
                 if self.messageTextView.text! != "" {
-                    self.viewModel.sendMessage(message: self.messageTextView.text!, sender: self.sender!, receiver: self.receiver!)
+                    self.viewModel.sendMessage(message: self.messageTextView.text!, senderEmail: self.senderEmail!, senderUsername: self.senderUsername! , receiverEmail: self.receiverEmail!, receiverUsername: self.receiverUsername!)
                     
                 }
                 self.messageTextView.text! = ""
@@ -93,7 +95,9 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if viewModel.messages[indexPath.row].sender == Constants.currentUserName {
+        print(viewModel.messages[indexPath.row].senderEmail)
+        print(Constants.currentUserEmail)
+        if viewModel.messages[indexPath.row].senderEmail == Constants.currentUserEmail {
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightCell") as! RightMessageCell
             cell.message.text = viewModel.messages[indexPath.row].message
             cell.message.text = viewModel.messages[indexPath.row].message

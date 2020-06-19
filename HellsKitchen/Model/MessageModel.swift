@@ -9,8 +9,10 @@
 import UIKit
 
 class MessageBundle {
-    var firstUser: String?
-    var secondUser: String?
+    var firstUserEmail: String?
+    var secondUserEmail: String?
+    var firstUserName: String?
+    var secondUserName: String?
     var messageges: [MessageModel]?
     var lastMessage: String?
     var timestamp: String?
@@ -19,6 +21,6 @@ class MessageBundle {
 
 struct MessageModel {
     var message: String?
-    var sender: String?
+    var senderEmail: String?
     var timestamp: String?
 }

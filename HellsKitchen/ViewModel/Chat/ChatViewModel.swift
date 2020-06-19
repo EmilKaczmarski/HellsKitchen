@@ -16,17 +16,16 @@ class ChatViewModel {
     
     lazy var messagesId: String = {
         var id = "trash"
-        if let sender = delegate!.sender, let receiver = delegate!.receiver {
-            if sender < receiver {
-                id = sender + "@" + receiver
+        if let senderEmail = delegate!.senderEmail, let receiverEmail = delegate!.receiverEmail {
+            if senderEmail < receiverEmail {
+                id = senderEmail + "@" + receiverEmail
             } else {
-                id = receiver + "@" + sender
+                id = receiverEmail + "@" + senderEmail
             }
         }
         return id
     }()
 }
-
 
 //MARK: - Cloud
 
@@ -47,7 +46,7 @@ extension ChatViewModel {
                             let data = i.data()
                             var message = MessageModel()
                             message.message = data["message"] as? String
-                            message.sender = data["sender"] as? String
+                            message.senderEmail = data["senderEmail"] as? String
                             message.timestamp = "\(data["timestamp"]!)"
                             self.messages.append(message)
                         }
@@ -61,15 +60,17 @@ extension ChatViewModel {
         }
     }
     
-    func sendMessage(message: String, sender: String, receiver: String) {
-        let mess = MessageModel(message: message, sender: sender, timestamp: "\(Date().timeIntervalSince1970)")
+    func sendMessage(message: String, senderEmail: String, senderUsername: String , receiverEmail: String, receiverUsername: String) {
+        let mess = MessageModel(message: message, senderEmail: senderEmail, timestamp: "\(Date().timeIntervalSince1970)")
         delegate!.db.collection(Constants.FStore.messages)
             .document(self.messagesId).setData(
                 [
-                    Constants.FStore.MessageDocumentComponents.firstUser  : mess.sender!,
-                    Constants.FStore.MessageDocumentComponents.secondUser : receiver,
+                    Constants.FStore.MessageDocumentComponents.firstUserEmail  : mess.senderEmail!,
+                    Constants.FStore.MessageDocumentComponents.secondUserEmail : receiverEmail,
                     Constants.FStore.MessageDocumentComponents.timestamp : mess.timestamp!,
-                    Constants.FStore.MessageDocumentComponents.lastMessage : message
+                    Constants.FStore.MessageDocumentComponents.lastMessage : message,
+                    Constants.FStore.MessageDocumentComponents.firstUserName : senderUsername,
+                    Constants.FStore.MessageDocumentComponents.secondUserName : receiverUsername
             ])
         
         delegate!.db.collection(Constants.FStore.messages)
@@ -77,7 +78,7 @@ extension ChatViewModel {
             .collection(Constants.FStore.messages)
             .addDocument(data:
                 [
-                    Constants.FStore.MessageComponents.sender : mess.sender!,
+                    Constants.FStore.MessageComponents.senderEmail : mess.senderEmail!,
                     Constants.FStore.MessageComponents.message   : mess.message!,
                     Constants.FStore.MessageComponents.timestamp : mess.timestamp!
             ] )

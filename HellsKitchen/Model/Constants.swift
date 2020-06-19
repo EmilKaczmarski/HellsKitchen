@@ -72,13 +72,15 @@ extension Constants {
         
         struct MessageComponents {
             static let message = "message"
-            static let sender = "sender"
+            static let senderEmail = "senderEmail"
             static let timestamp = "timestamp"
         }
         
         struct MessageDocumentComponents {
-            static let firstUser =  "firstUser"
-            static let secondUser = "secondUser"
+            static let firstUserEmail =  "firstUserEmail"
+            static let secondUserEmail = "secondUserEmail"
+            static let firstUserName =  "firstUserName"
+            static let secondUserName = "secondUserName"
             static let timestamp = "timestamp"
             static let lastMessage = "lastMessage"
         }

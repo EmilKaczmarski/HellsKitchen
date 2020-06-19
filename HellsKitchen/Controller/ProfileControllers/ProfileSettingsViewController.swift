@@ -15,7 +15,6 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet weak var profilePictureView: UIView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var saveChangesButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +128,7 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
 
     
     @IBAction func saveChangesButton(_ sender: Any) {
-        AlertManager.shared.askUserToChangeUsername(with: "please provide new username or password", in: self)
+        //AlertManager.shared.askUserToChangeUsername(with: "please provide new username or password", in: self)
+        
     }
 }

@@ -76,7 +76,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" && calories.text! != "" && cooking.text! != "" {
             let timestamp = "\(Int(Date().timeIntervalSince1970))"
-            let post = Post(id: "\(Constants.currentUserName)\(timestamp)", title: header.text!, owner: Constants.currentUserName, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp)
+            let post = Post(id: "\(Constants.currentUserEmail)\(timestamp)", title: header.text!, ownerName: Constants.currentUserName, ownerEmail: Constants.currentUserEmail, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp)
             header.text! = ""
             content.text! = ""
             cooking.text! = ""

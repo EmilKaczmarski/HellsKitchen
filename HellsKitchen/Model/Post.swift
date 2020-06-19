@@ -11,7 +11,8 @@ import Foundation
 struct Post {
     let id: String
     let title: String
-    let owner: String
+    let ownerName: String
+    let ownerEmail: String
     //let photo: UIImage() in further plans
     let content: String
     let cooking: String

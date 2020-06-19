@@ -37,7 +37,7 @@ class PostDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         image.image = postImage
-        owner.text = post?.owner
+        owner.text = post?.ownerName
         if let stamp = post?.createTimestamp {
             let createTimestamp = Double(stamp)
             date.text = TimeDisplayManager.shared.getDateForPostCell(timestamp: createTimestamp!)

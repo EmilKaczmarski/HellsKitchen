@@ -27,20 +27,21 @@ class WallViewModel {
                             let data = i.data()
                             let post = Post(id: data["id"] as! String,
                                             title: data["title"] as! String,
-                                            owner: data["owner"] as! String,
+                                            ownerName: data["ownerName"] as! String,
+                                            ownerEmail: data["ownerEmail"] as! String,
                                             content: data["content"] as! String,
                                             cooking: data["cooking"] as! String,
                                             calories: data["calories"] as! String,
                                             createTimestamp: "\(data["createTimestamp"] ?? "")",
                                 lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
                                 comments: [])
-                            if self.usersImages[post.owner] == nil {
-                                FirebaseManager.shared.getProfilePictureData(for: post.owner) { (data, error) in
+                            if self.usersImages[post.ownerEmail] == nil {
+                                FirebaseManager.shared.getProfilePictureData(for: post.ownerEmail) { (data, error) in
                                     if error != nil {
                                         print(error!.localizedDescription)
                                         return
                                     }
-                                    self.usersImages[post.owner] = UIImage(data: data!)
+                                    self.usersImages[post.ownerEmail] = UIImage(data: data!)
                                     self.delegate!.tableView.reloadData()
                                 }
                             }

@@ -94,7 +94,8 @@ extension Constants {
         struct PostComponents {
             static let id = "id"
             static let title = "title"
-            static let owner = "owner"
+            static let ownerName = "ownerName"
+            static let ownerEmail = "ownerEmail"
             static let content = "content"
             static let cooking = "cooking"
             static let calories = "calories"

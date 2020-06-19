@@ -339,6 +339,24 @@ extension FirebaseManager {
         }
     }
     
+    func getUsernameForGivenEmail(_ email: String, completion: @escaping (String)-> ()) {
+        db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                completion("")
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for i in snapshotDocuments {
+                        let element = i.data()
+                        if element["email"]! as! String == email {
+                            completion(element["username"]! as! String )
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func getDocumentIdForCurrentUser(completion: @escaping (String)-> ()) {
         db.collection(Constants.FStore.allUsers).getDocuments { (querySnapshot, error) in
             if let err = error {
@@ -348,8 +366,7 @@ extension FirebaseManager {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for i in snapshotDocuments {
                         let element = i.data()
-                        print(Constants.currentUserName)
-                        if element["username"]! as! String == Constants.currentUserName {
+                        if element["email"]! as! String == Constants.currentUserEmail {
                             completion(i.documentID)
                         }
                     }
@@ -376,7 +393,80 @@ extension FirebaseManager {
 //MARK: - change password/user
 extension FirebaseManager {
     
+    
     func changeUsername(to username: String, completion: @escaping (Bool)-> ()) {
+        self.changeUsernameInAllUsers(to: username) { (success) in
+            if !success {
+                completion(false)
+                return
+            }
+            self.changeUsernameInAllMessages(to: username) { (success) in
+                if !success {
+                    completion(false)
+                    return
+                }
+                self.changeUsernameInAllPosts(to: username) { (success) in
+                    if !success {
+                        completion(false)
+                        return
+                    }
+                    Constants.currentUserName = username
+                    completion(true)
+                }
+            }
+        }
+    }
+    
+    func changeUsernameInAllMessages(to username: String, completion: @escaping (Bool)-> ()) {
+        self.db.collection(Constants.FStore.messages).getDocuments { (querySnapshot, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                completion(false)
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for i in snapshotDocuments {
+                        var element = i.data()
+                        if element["firstUserEmail"] as! String == Constants.currentUserEmail {
+                            self.db.collection(Constants.FStore.messages).document(i.documentID).setData(["firstUserName": username], merge: true)
+                            element.updateValue(username, forKey: "firstUserName")
+                        }
+                        if element["secondUserEmail"] as! String == Constants.currentUserEmail {
+                            self.db.collection(Constants.FStore.messages).document(i.documentID).setData(["secondUserName": username], merge: true)
+                            element.updateValue(username, forKey: "secondUserName")
+                        }
+                    }
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    
+    func changeUsernameInAllPosts(to username: String, completion: @escaping (Bool)-> ()) {
+        self.db.collection(Constants.FStore.posts).getDocuments { (querySnapshot, error) in
+            if let err = error {
+                print(err.localizedDescription)
+                completion(false)
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for i in snapshotDocuments {
+                        var element = i.data()
+                        if element["ownerEmail"] as! String == Constants.currentUserEmail {
+                            self.db.collection(Constants.FStore.posts).document(i.documentID).setData(["ownerName": username], merge: true)
+                            element.updateValue(username, forKey: "ownerName")
+                        }
+                    }
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    
+    
+    func changeUsernameInAllUsers(to username: String, completion: @escaping (Bool)-> ()) {
         self.getDocumentIdForCurrentUser { (id) in
             if id == "" {
                 completion(false)
@@ -393,7 +483,6 @@ extension FirebaseManager {
                             if element["email"] as! String == Constants.currentUserEmail {
                                 self.db.collection("allUsers").document(i.documentID).setData(["username": username], merge: true)
                                 element.updateValue(username, forKey: "username")
-                                Constants.currentUserName = username
                                 completion(true)
                                 return
                             }

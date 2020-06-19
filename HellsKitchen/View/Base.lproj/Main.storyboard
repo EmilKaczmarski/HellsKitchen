@@ -2159,13 +2159,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1m1-Cg-ogW">
-                                                <rect key="frame" x="124.66666666666666" y="9" width="105" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                 <state key="normal" title="Save changes">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="changeUsernameButtonPressed:" destination="ihW-fb-dR5" eventType="touchUpInside" id="7GM-2H-uTa"/>
                                                     <action selector="saveChangesButton:" destination="ihW-fb-dR5" eventType="touchUpInside" id="2x3-rX-nVR"/>
                                                 </connections>
                                             </button>
@@ -2175,6 +2174,10 @@
                                             <constraint firstAttribute="height" constant="50" id="2P4-vH-S3w"/>
                                             <constraint firstItem="1m1-Cg-ogW" firstAttribute="centerY" secondItem="6Z6-PZ-l3c" secondAttribute="centerY" id="Ch9-7X-fAK"/>
                                             <constraint firstItem="1m1-Cg-ogW" firstAttribute="centerX" secondItem="6Z6-PZ-l3c" secondAttribute="centerX" id="GBu-Jc-r7G"/>
+                                            <constraint firstAttribute="bottom" secondItem="1m1-Cg-ogW" secondAttribute="bottom" id="GxX-tZ-fDd"/>
+                                            <constraint firstItem="1m1-Cg-ogW" firstAttribute="leading" secondItem="6Z6-PZ-l3c" secondAttribute="leading" id="g78-8V-UdJ"/>
+                                            <constraint firstItem="1m1-Cg-ogW" firstAttribute="top" secondItem="6Z6-PZ-l3c" secondAttribute="top" id="jHt-oU-lfb"/>
+                                            <constraint firstAttribute="trailing" secondItem="1m1-Cg-ogW" secondAttribute="trailing" id="vzk-rv-JbF"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twd-j8-bSC">
@@ -2188,6 +2191,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6Z6-PZ-l3c" secondAttribute="trailing" id="1Qu-EC-X7C"/>
+                                    <constraint firstItem="6Z6-PZ-l3c" firstAttribute="leading" secondItem="mZc-cO-Dhz" secondAttribute="leading" id="2xs-zT-iRw"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2200,6 +2207,8 @@
                             <constraint firstItem="mZc-cO-Dhz" firstAttribute="centerX" secondItem="iLl-8w-udr" secondAttribute="centerX" id="Hd7-qf-y1P"/>
                             <constraint firstItem="wjU-2z-ds0" firstAttribute="top" secondItem="AAH-Nd-Rin" secondAttribute="bottom" constant="48" id="Tbn-rK-XXO"/>
                             <constraint firstItem="Qbv-Gy-uw8" firstAttribute="bottom" secondItem="mZc-cO-Dhz" secondAttribute="bottom" constant="40" id="VDe-Lq-VVB"/>
+                            <constraint firstItem="mZc-cO-Dhz" firstAttribute="leading" secondItem="Qbv-Gy-uw8" secondAttribute="leading" constant="30" id="a2h-h1-26m"/>
+                            <constraint firstItem="Qbv-Gy-uw8" firstAttribute="trailing" secondItem="mZc-cO-Dhz" secondAttribute="trailing" constant="30" id="aZo-Ua-EgN"/>
                             <constraint firstItem="AAH-Nd-Rin" firstAttribute="centerX" secondItem="iLl-8w-udr" secondAttribute="centerX" id="g7Y-ra-ITV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qbv-Gy-uw8"/>

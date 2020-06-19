@@ -32,9 +32,8 @@ class WallViewModel {
                                             content: data["content"] as! String,
                                             cooking: data["cooking"] as! String,
                                             calories: data["calories"] as! String,
-                                            createTimestamp: "\(data["createTimestamp"] ?? "")",
-                                lastCommentTimestamp: "\(data["lastCommentTimestamp"] ?? "")",
-                                comments: [])
+                                            createTimestamp: "\(data["createTimestamp"] ?? "")"
+                                    )
                             if self.usersImages[post.ownerEmail] == nil {
                                 FirebaseManager.shared.getProfilePictureData(for: post.ownerEmail) { (data, error) in
                                     if error != nil {
@@ -78,19 +77,20 @@ class WallViewModel {
     
     func insertPost(_ post: Post) {
         if doesPostExist(with: post.id) {
+            //setNewUsernameIfIsIncorrect(for: post) {
+            //    self.delegate?.tableView.reloadData()
             return
+            //}
         }
         
         if posts.count == 0 {
             posts.insert(post, at: 0)
             delegate!.tableView.reloadData()
+            
             return
         }
         var index = 0
         for i in posts {
-            print(i.title)
-            print(i.createTimestamp)
-            print(post.createTimestamp)
             if i.createTimestamp < post.createTimestamp {
                 posts.insert(post, at: index)
                 delegate!.tableView.reloadData()
@@ -107,4 +107,30 @@ class WallViewModel {
             return post.id == id
         }
     }
+    
+    func setNewUsernameIfIsIncorrect(for post: Post, completion: @escaping ()-> ()) {
+        FirebaseManager.shared.getUsernameForGivenEmail(post.ownerEmail) { (username) in
+            if username == "" {
+                completion()
+                return
+            }
+            
+            if username == post.ownerName {
+                completion()
+                return
+            }
+
+            let newPost = Post(id: post.id, title: post.title, ownerName: username, ownerEmail: post.ownerEmail, content: post.content, cooking: post.cooking, calories: post.calories, createTimestamp: post.createTimestamp)
+            self.removePost(post) {
+                self.insertPost(newPost)
+                completion()
+            }
+        }
+    }
+    func removePost(_ post: Post, completion: @escaping ()-> ()) {
+        posts.removeAll { (post) -> Bool in
+            return post.id == post.id
+        }
+    }
+    
 }

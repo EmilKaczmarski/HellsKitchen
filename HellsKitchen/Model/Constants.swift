@@ -100,8 +100,6 @@ extension Constants {
             static let cooking = "cooking"
             static let calories = "calories"
             static let createTimestamp = "createTimestamp"
-            static let lastCommentTimestamp = "lastCommentTimestamp"
-            static let comments = "comments"
         }
     }
 }

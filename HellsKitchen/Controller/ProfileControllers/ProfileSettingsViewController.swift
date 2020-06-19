@@ -128,7 +128,10 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
 
     
     @IBAction func saveChangesButton(_ sender: Any) {
-        //AlertManager.shared.askUserToChangeUsername(with: "please provide new username or password", in: self)
-        
+        FirebaseManager.shared.changeUsername(to: changeUsernameTextField.text!) { (success) in
+            if success {
+                AlertManager.shared.usernameChangedAlert(in: self)
+            }
+        }
     }
 }

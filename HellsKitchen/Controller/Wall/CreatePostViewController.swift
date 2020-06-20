@@ -91,7 +91,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func postButtonPressed(_ sender: Any) {
         if header.text! != "" && content.text! != "" && calories.text! != "" && cooking.text! != "" {
             let timestamp = "\(Int(Date().timeIntervalSince1970))"
-            let post = Post(id: "\(Constants.currentUserEmail)\(timestamp)", title: header.text!, ownerName: Constants.currentUserName, ownerEmail: Constants.currentUserEmail, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp)
+            let post = Post(id: "\(Constants.currentUserEmail)\(timestamp)", title: header.text!, ownerName: Constants.currentUserName, ownerEmail: Constants.currentUserEmail, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp, ingredients: fields.map { $0.field.text! } )
+            
             header.text! = ""
             content.text! = ""
             cooking.text! = ""
@@ -231,15 +232,15 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             return view.deleteButton.tag == tag
         }
         guard let field = fieldToRemove else { return }
-        guard let index = fullPostAndButtonStackView.arrangedSubviews.firstIndex(of: field) else { return }
-        fullPostAndButtonStackView.removeArrangedSubview(field)
-        fullPostAndButtonStackView.sizeToFit()
+        let firstIndex = fields.firstIndex(of: field)
+        fields.remove(at: firstIndex!)
+        field.removeFromSuperview()
         fullPostAndButtonStackView.layoutIfNeeded()
-        fields.remove(at: index - 2)
+        fullPostAndButtonStackView.sizeToFit()
         for i in fields {
             if i.deleteButton.tag > tag {
-                i.deleteButton.tag -= 2
-                i.field.tag -= 2
+                i.deleteButton.tag -= 1
+                i.field.tag -= 1
             }
         }
     }

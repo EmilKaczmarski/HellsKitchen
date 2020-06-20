@@ -50,7 +50,6 @@ class IngredientInputView: UIView {
         field.placeholder = "new ingredient"
         field.textColor = Constants.Colors.deepGreen
         field.font = UIFont.systemFont(ofSize: 14.0)
-        //field.clearButtonMode = .always
         field.rightView = deleteButton
         field.rightViewMode = .always
         if let delegate = IngredientInputView.delegate {
@@ -61,7 +60,7 @@ class IngredientInputView: UIView {
     
     lazy var bottomLine: UIView = {
         let view = UIView()
-        view.backgroundColor = Constants.Colors.lightGray
+        view.backgroundColor = Constants.Colors.deepGreen
         view.snp.makeConstraints { (maker) in
             maker.height.equalTo(0.5)
         }

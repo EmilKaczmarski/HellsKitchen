@@ -18,6 +18,7 @@ struct Post {
     let cooking: String
     let calories: String
     let createTimestamp: String
+    var ingredients: [String]?
 }
 
 struct Comment {

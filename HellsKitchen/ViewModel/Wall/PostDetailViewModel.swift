@@ -15,7 +15,8 @@ class PostDetailViewModel {
     func savePost(_ post: Post) {
         db
             .collection(Constants.FStore.posts)
-            .addDocument(data: [
+            .document(post.id)
+            .setData([
                 Constants.FStore.PostComponents.id : post.id,
                 Constants.FStore.PostComponents.content : post.content,
                 Constants.FStore.PostComponents.createTimestamp : post.createTimestamp,
@@ -25,6 +26,16 @@ class PostDetailViewModel {
                 Constants.FStore.PostComponents.calories : post.calories,
                 Constants.FStore.PostComponents.cooking : post.cooking
             ])
+        guard let postIngredients = post.ingredients else { return }
+        var ingredients = [String: String]()
+        for i in 0..<postIngredients.count {
+            ingredients["\(i)"] = postIngredients[i]
+        }
+        db
+        .collection(Constants.FStore.posts)
+        .document(post.id)
+        .collection(Constants.FStore.PostComponents.ingredients)
+        .addDocument(data: ingredients)
     }
 }
 

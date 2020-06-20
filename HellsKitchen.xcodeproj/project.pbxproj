@@ -20,6 +20,7 @@
 		185440AA24797731005B9711 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 185440A924797731005B9711 /* FacebookShare */; };
 		185440AC24797731005B9711 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 185440AB24797731005B9711 /* FacebookCore */; };
 		185440AE24797731005B9711 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 185440AD24797731005B9711 /* FacebookLogin */; };
+		18672EAE249E340E006FBB47 /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18672EAD249E340E006FBB47 /* CreatePostViewModel.swift */; };
 		187121C5246C70060008B307 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C4246C70060008B307 /* RegisterViewModel.swift */; };
 		187121C7246C7A7C0008B307 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C6246C7A7C0008B307 /* LoginViewModel.swift */; };
 		187121C9246C802B0008B307 /* ChatUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187121C8246C802B0008B307 /* ChatUsersViewModel.swift */; };
@@ -86,6 +87,7 @@
 		18364E78246BF2B600F8DEBE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		18364E7A246BF52300F8DEBE /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		183D66C0248C6F1900F3453E /* AddPostNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostNavigationController.swift; sourceTree = "<group>"; };
+		18672EAD249E340E006FBB47 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
 		187121C4246C70060008B307 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		187121C6246C7A7C0008B307 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		187121C8246C802B0008B307 /* ChatUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersViewModel.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			children = (
 				18ED140C246D312E0093398A /* WallViewModel.swift */,
 				18ED1416246D8F9D0093398A /* PostDetailViewModel.swift */,
+				18672EAD249E340E006FBB47 /* CreatePostViewModel.swift */,
 			);
 			path = Wall;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				189C038724740E7800F9B412 /* Extensions.swift in Sources */,
 				18A075572479E97F00517BED /* AlertManager.swift in Sources */,
 				4739B6522476F1EB00B57239 /* RecipeCategoryViewController.swift in Sources */,
+				18672EAE249E340E006FBB47 /* CreatePostViewModel.swift in Sources */,
 				18D1E1BE2488468B00BB0D2D /* TimeDisplayManager.swift in Sources */,
 				18D802C824731C20007F0E03 /* ChatUserCell.swift in Sources */,
 				18FB2A6B247820D200DDCAB0 /* RecipeCategoryViewModel.swift in Sources */,

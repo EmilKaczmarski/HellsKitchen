@@ -27,9 +27,20 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cooking: UITextField!
     @IBOutlet weak var calories: UITextField!
     
-    let viewModel: PostDetailViewModel = PostDetailViewModel()
+    @IBOutlet weak var wholePostStackView: UIStackView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableViewWrapperView: UIView!
+    @IBOutlet weak var fullPostAndButtonStackView: UIStackView!
+    
+    @IBOutlet weak var ingredientsStackView: UIStackView!
+    
+    @IBOutlet weak var addIngredientView: UIView!
+    let viewModel = CreatePostViewModel()
+    let postDetailviewModel: PostDetailViewModel = PostDetailViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        postDetailviewModel.delegate = self
         viewModel.delegate = self
         setupAddRecipeButton()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
@@ -45,6 +56,15 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = Constants.Colors.lightGray.cgColor
         content.delegate = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        addIngredientView.layer.cornerRadius = 20
+        addIngredientView.layer.borderWidth = 1
+        addIngredientView.layer.borderColor = Constants.Colors.deepGreen.cgColor
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +81,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             navigationController?.popToRootViewController(animated: false)
         }
     }
-    
+   
     func setupCancelButtonTitle() {
         let cancelButton = UIBarButtonItem()
         cancelButton.title = ""
@@ -81,7 +101,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             content.text! = ""
             cooking.text! = ""
             calories.text! = ""
-            viewModel.savePost(post)
+            postDetailviewModel.savePost(post)
             FirebaseManager.shared.savePostPictureToFirebase(as: (uploadedImage.image?.jpegData(compressionQuality: 0.4))!, for: post.id)
             self.tabBarController?.selectedIndex = 0
         }
@@ -193,13 +213,36 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         photoPicker()
         hideStackViewOrEditingView()
     }
+    
+    @IBAction func addIngredientButtonPressed(_ sender: UIButton) {
+//        viewModel.ingredients.append(Ingredient(text: "bla", weight: 0))
+//        print(viewModel.ingredients)
+//        tableView.reloadData()
+//        tableViewWrapperView.sizeToFit()
+//        view.sizeToFit()
+        let v = UIView()
+        let s = Bool.random()
+        if s {
+            v.backgroundColor = .red
+        } else {
+            v.backgroundColor = .blue
+        }
+        ingredientsStackView.addArrangedSubview(v)
+        v.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+        }
+        ingredientsStackView.sizeToFit()
+        
+        print(ingredientsStackView.frame.height)
+        ingredientsStackView.layoutIfNeeded()
+    }
 }
 
 //MARK: - extensions
 
 extension CreatePostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        contentView.sizeToFit()
+        contentView.layoutIfNeeded()
         contentPlaceholder.isHidden = !textView.text.isEmpty
         
         if !content.text!.isEmpty {
@@ -228,5 +271,27 @@ extension CreatePostViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }
+    }
+}
+
+
+//MARK: - tableview delegate
+extension CreatePostViewController: UITableViewDelegate {
+
+}
+
+//MARK: - tableview datasource
+extension CreatePostViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.ingredients.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = viewModel.ingredients[indexPath.row].text
+        var frame = tableView.frame
+        frame.size.height = tableView.contentSize.height
+        tableView.frame = frame
+        return cell
     }
 }

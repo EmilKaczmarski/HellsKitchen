@@ -14,30 +14,30 @@ class ProtectedDataNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewWillAppear(false)
-        if Constants.currentUserName == "" {
-            if let name = segueName {
-                self.performSegue(withIdentifier: name, sender: self)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    if !(UIApplication.getTopViewController() is SignInMenuViewController) {
-                        self.performSegue(withIdentifier: name, sender: self)
-                    }
-                }
-            }
-        }
+//        if Constants.currentUserName == "" {
+//            if let name = segueName {
+//                self.performSegue(withIdentifier: name, sender: self)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    if !(UIApplication.getTopViewController() is SignInMenuViewController) {
+//                        self.performSegue(withIdentifier: name, sender: self)
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        if Constants.currentUserName == "" {
-            if let name = segueName {
-                self.performSegue(withIdentifier: name, sender: self)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    if !(UIApplication.getTopViewController() is SignInMenuViewController) {
-                        self.performSegue(withIdentifier: name, sender: self)
-                    }
-                }
-            }
-        }
+//        if Constants.currentUserName == "" {
+//            if let name = segueName {
+//                self.performSegue(withIdentifier: name, sender: self)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    if !(UIApplication.getTopViewController() is SignInMenuViewController) {
+//                        self.performSegue(withIdentifier: name, sender: self)
+//                    }
+//                }
+//            }
+//        }
     }
     
     

@@ -680,28 +680,28 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="S3h-xs-zF3">
                                         <rect key="frame" x="0.0" y="0.0" width="415.33333333333331" height="821.66666666666663"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="DsY-mc-rlh">
-                                                <rect key="frame" x="20" y="0.0" width="375.33333333333331" height="378.33333333333331"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Qha-Oo-DRL">
+                                                <rect key="frame" x="20" y="0.0" width="375.33333333333331" height="87.333333333333329"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Qha-Oo-DRL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375.33333333333331" height="87.333333333333329"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tit-VY-Uft">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375.33333333333331" height="36"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                                <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3g-gY-lRQ">
-                                                                <rect key="frame" x="0.0" y="68" width="375.33333333333331" height="19.333333333333329"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                                <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add your recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tit-VY-Uft">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375.33333333333331" height="36"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                        <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3g-gY-lRQ">
+                                                        <rect key="frame" x="0.0" y="68" width="375.33333333333331" height="19.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="DsY-mc-rlh">
+                                                <rect key="frame" x="20" y="110.33333333333334" width="375.33333333333331" height="268"/>
+                                                <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="YAh-tO-wEy">
-                                                        <rect key="frame" x="0.0" y="110.33333333333334" width="375.33333333333331" height="268"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375.33333333333331" height="268"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O97-SN-4hM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375.33333333333331" height="26"/>
@@ -1000,6 +1000,8 @@
                                             <constraint firstAttribute="trailing" secondItem="ysJ-Vy-zbL" secondAttribute="trailing" id="Kjk-gG-6ez"/>
                                             <constraint firstAttribute="trailing" secondItem="DsY-mc-rlh" secondAttribute="trailing" constant="20" id="QxR-El-pou"/>
                                             <constraint firstAttribute="trailing" secondItem="JGo-g6-kNI" secondAttribute="trailing" constant="20" id="ZFZ-wj-pyv"/>
+                                            <constraint firstItem="Qha-Oo-DRL" firstAttribute="leading" secondItem="S3h-xs-zF3" secondAttribute="leading" constant="20" id="fb5-vo-rai"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qha-Oo-DRL" secondAttribute="trailing" constant="20" id="gBx-g3-P41"/>
                                             <constraint firstItem="ysJ-Vy-zbL" firstAttribute="leading" secondItem="S3h-xs-zF3" secondAttribute="leading" id="hUj-uh-vjT"/>
                                             <constraint firstItem="JGo-g6-kNI" firstAttribute="leading" secondItem="S3h-xs-zF3" secondAttribute="leading" constant="20" id="sfG-lb-vRL"/>
                                             <constraint firstItem="ci1-lA-mpL" firstAttribute="leading" secondItem="S3h-xs-zF3" secondAttribute="leading" constant="20" id="ury-E2-Wx1"/>

@@ -210,19 +210,19 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func addIngredientButtonPressed(_ sender: UIButton) {
-        let v = IngredientInputView()
-        fullPostAndButtonStackView.insertArrangedSubview(v, at: fields.count + 1)
-        v.snp.makeConstraints { (maker) in
+        let ingredientView = IngredientInputView()
+        fullPostAndButtonStackView.insertArrangedSubview(ingredientView, at: fields.count + 2)
+        ingredientView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview().offset(20)
             maker.trailing.equalToSuperview().offset(-20)
             maker.height.equalTo(40)
         }
-        v.field.tag = fields.count + 1
-        v.deleteButton.tag = fields.count + 1
-        v.deleteButton.addTarget(IngredientInputView.delegate!, action: #selector(removeField), for: .touchUpInside)
+        ingredientView.field.tag = fields.count + 2
+        ingredientView.deleteButton.tag = fields.count + 2
+        ingredientView.deleteButton.addTarget(IngredientInputView.delegate!, action: #selector(removeField), for: .touchUpInside)
         fullPostAndButtonStackView.sizeToFit()
         fullPostAndButtonStackView.layoutIfNeeded()
-        fields.append(v)
+        fields.append(ingredientView)
     }
     
     @objc func removeField(_ sender: UIButton) {
@@ -235,11 +235,11 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         fullPostAndButtonStackView.removeArrangedSubview(field)
         fullPostAndButtonStackView.sizeToFit()
         fullPostAndButtonStackView.layoutIfNeeded()
-        fields.remove(at: index - 1)
+        fields.remove(at: index - 2)
         for i in fields {
             if i.deleteButton.tag > tag {
-                i.deleteButton.tag -= 1
-                i.field.tag -= 1
+                i.deleteButton.tag -= 2
+                i.field.tag -= 2
             }
         }
     }

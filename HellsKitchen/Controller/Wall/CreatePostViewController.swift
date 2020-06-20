@@ -221,3 +221,12 @@ extension CreatePostViewController {
         }
     }
 }
+
+//MARK: - scrollview delegate
+extension CreatePostViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
+}

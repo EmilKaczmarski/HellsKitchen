@@ -145,5 +145,17 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
                 }
             }
         }
+        guard let password = changePasswordTextField.text else {
+            return }
+        if password.isEmpty {
+            //error
+        }
+        /*FirebaseManager.shared.changePassword(to: ) {
+            (success) in
+            if success {
+                AlertManager.shared.passwordChangedAlert(in: self)
+            }
+        }
+         */
     }
 }

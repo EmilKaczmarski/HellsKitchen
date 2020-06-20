@@ -255,5 +255,27 @@ extension AlertManager {
         controller.present(alert, animated: false)
     }
     
+    func askUserToChangePassword(with title: String, in controller: UIViewController) {
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "new password"
+        }
+        alert.addAction(UIAlertAction(title: "done", style: .cancel, handler: {
+            action in
+            guard let password = alert.textFields![0].text else { return }
+            if password.isEmpty {
+                AlertManager.shared.askUserToChangePassword(with: "please use at least one character in your new password", in: controller)
+                return
+            }
+            /*FirebaseManager.shared.changePassword() { (success) in
+                if success {
+                    AlertManager.shared.passwordChangedAlert(in: controller)
+                }
+            }
+             */
+        }))
+        controller.present(alert, animated: false)
+    }
+    
 }
 

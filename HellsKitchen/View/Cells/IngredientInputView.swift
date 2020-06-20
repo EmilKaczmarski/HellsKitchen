@@ -21,30 +21,57 @@ class IngredientInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    lazy var stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.addArrangedSubview(field)
+        stack.addArrangedSubview(bottomLine)
+        field.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+        }
+        bottomLine.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+        }
+        return stack
+    }()
+    
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icClose"), for: .normal)
+        button.imageView!.tintColor = Constants.Colors.lightGray
+        button.snp.makeConstraints { (maker) in
+            maker.height.width.equalTo(24)
+        }
+        return button
+    }()
+    
     lazy var field: UITextField = {
        let field = UITextField()
         field.placeholder = "new ingredient"
         field.textColor = Constants.Colors.deepGreen
         field.font = UIFont.systemFont(ofSize: 14.0)
-        field.clearButtonMode = .unlessEditing
+        //field.clearButtonMode = .always
+        field.rightView = deleteButton
+        field.rightViewMode = .always
         if let delegate = IngredientInputView.delegate {
             field.delegate = delegate
         }
         return field
     }()
     
+    lazy var bottomLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = Constants.Colors.lightGray
+        view.snp.makeConstraints { (maker) in
+            maker.height.equalTo(0.5)
+        }
+        return view
+    }()
+    
     func setupView() {
-        addSubview(field)
-        field.snp.makeConstraints { (maker) in
+        addSubview(stack)
+        stack.snp.makeConstraints { (maker) in
             maker.leading.trailing.top.bottom.equalToSuperview()
         }
     }
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        print("aaaaaa")
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-           print("Adsadasjdkanksj")
-       }
 }

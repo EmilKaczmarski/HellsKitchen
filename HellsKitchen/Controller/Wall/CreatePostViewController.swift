@@ -217,25 +217,31 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             maker.trailing.equalToSuperview().offset(-20)
             maker.height.equalTo(40)
         }
+        v.field.tag = fields.count + 1
+        v.deleteButton.tag = fields.count + 1
+        v.deleteButton.addTarget(IngredientInputView.delegate!, action: #selector(removeField), for: .touchUpInside)
         fullPostAndButtonStackView.sizeToFit()
         fullPostAndButtonStackView.layoutIfNeeded()
         fields.append(v)
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    @objc func removeField(_ sender: UIButton) {
+        let tag = sender.tag
         let fieldToRemove = fields.first { (view) -> Bool in
-            return view.field.text == textField.text!
+            return view.deleteButton.tag == tag
         }
-        guard let field = fieldToRemove else { return false }
-        fields.removeAll { (view) -> Bool in
-            return view.field.text == field.field.text
+        guard let field = fieldToRemove else { return }
+        guard let index = fullPostAndButtonStackView.arrangedSubviews.firstIndex(of: field) else { return }
+        fullPostAndButtonStackView.removeArrangedSubview(field)
+        fullPostAndButtonStackView.sizeToFit()
+        fullPostAndButtonStackView.layoutIfNeeded()
+        fields.remove(at: index - 1)
+        for i in fields {
+            if i.deleteButton.tag > tag {
+                i.deleteButton.tag -= 1
+                i.field.tag -= 1
+            }
         }
-        if let field = fieldToRemove {
-            fullPostAndButtonStackView.removeArrangedSubview(field)
-            fullPostAndButtonStackView.sizeToFit()
-            fullPostAndButtonStackView.layoutIfNeeded()
-        }
-        return true
     }
 }
 //MARK: - extensions

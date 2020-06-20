@@ -32,12 +32,12 @@ class AlertManager {
             action in
             guard let username = alert.textFields![0].text else { return }
             if username.contains(" ") || username.count == 0 || username.contains("@") {
-                AlertManager.shared.askNewUserToProvideName(with: "please provide new username which is not empty, without @ and empty spaces", in: controller)
+                AlertManager.shared.askNewUserToProvideName(with: "Please provide new username which is not empty, without @ and empty spaces", in: controller)
                 return
             }
             FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
                 if doesExist {
-                    AlertManager.shared.askNewUserToProvideName(with: "whoops username is not unique, please provide new one", in: controller)
+                    AlertManager.shared.askNewUserToProvideName(with: "Whoops username is not unique, please provide new one", in: controller)
                 } else {
                     let userEmail = FirebaseManager.shared.getCurrentUser()
                     Constants.currentUserEmail = userEmail
@@ -55,7 +55,7 @@ class AlertManager {
     }
     
     func requiedAuthorisationAlert(in controller: WallViewController) {
-        let alert = UIAlertController(title: "Please Log In", message: "to see recipe details authorisation is required", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Please Log In", message: "To see recipe details authorisation is required", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
             controller.performSegue(withIdentifier: Constants.Segues.wallLoginSegue, sender: self)
@@ -90,8 +90,8 @@ class AlertManager {
     }
     
     func errorAlert(in controller: UIViewController) {
-        let alert = UIAlertController(title: nil, message: "whoops something went wrong", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "get back", style: .cancel, handler: { (action) in
+        let alert = UIAlertController(title: nil, message: "Whoops something went wrong", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Get back", style: .cancel, handler: { (action) in
             controller.navigationController?.popToRootViewController(animated: false)
         }))
         controller.present(alert, animated: true)
@@ -131,7 +131,7 @@ class AlertManager {
 extension AlertManager {
     func userHasBeenRegisteredAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Cool!", message: "You have been successfully registered. To use your account and join our community you need to only check your email and finish authentication using link that we sent. May the food be with you!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "got it", style: .cancel) { (action) in
+        let action = UIAlertAction(title: "Got it", style: .cancel) { (action) in
             controller.navigationController?.popViewController(animated: true)
         }
         alert.addAction(action)
@@ -139,23 +139,23 @@ extension AlertManager {
     }
     
     func wrongUsernameAlert(in controller: UIViewController) {
-        let alert = UIAlertController(title: "wrong username", message: "please provide new username which is not empty, without @ and empty spaces", preferredStyle: .alert)
-        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "Wrong username", message: "Please provide new username which is not empty, without @ and empty spaces", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
     
     func notUniqueUsernameAlert(in controller: UIViewController) {
-        let alert = UIAlertController(title: "username is not unique", message: "please provide new username which is not unique", preferredStyle: .alert)
-        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "Username is not unique", message: "Please provide new username which is unique", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
     
     func notUniqueEmailAlertWithSingInOption(in controller: UIViewController) {
-        let alert = UIAlertController(title: "whoops", message: "It seems that account with this email already exists. If this email belongs to you please login, otherwise try with different credentials", preferredStyle: .alert)
-        let tryAgain = UIAlertAction(title: "try again", style: .cancel, handler: nil)
-        let signIn = UIAlertAction(title: "sign in", style: .default) { (action) in
+        let alert = UIAlertController(title: "Whoops", message: "It seems that account with this email already exists. If this email belongs to you please login, otherwise try with different credentials", preferredStyle: .alert)
+        let tryAgain = UIAlertAction(title: "Try again", style: .cancel, handler: nil)
+        let signIn = UIAlertAction(title: "Sign in", style: .default) { (action) in
             controller.navigationController?.popViewController(animated: true)
         }
         alert.addAction(tryAgain)
@@ -165,17 +165,17 @@ extension AlertManager {
     
     func notUniqueEmailAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "whoops", message: "It seems that account with this email already exists. Please find another username", preferredStyle: .alert)
-        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
     
     func verifyEmailAlert(in controller: UIViewController, completion: @escaping ()-> ()) {
-        let alert = UIAlertController(title: "please verify your email", message: "check your email and find authentication link, if you haven't received anything please press help", preferredStyle: .alert)
-        let action = UIAlertAction(title: "okay", style: .cancel) { action in
+        let alert = UIAlertController(title: "Please verify your email", message: "Check your email and find authentication link, if you haven't received anything please press help", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel) { action in
             completion()
         }
-        let helpAction = UIAlertAction(title: "help", style: .default) { action in
+        let helpAction = UIAlertAction(title: "Help", style: .default) { action in
             completion()
         }
         alert.addAction(action)
@@ -188,8 +188,8 @@ extension AlertManager {
 //MARK: - remove account alerts
 extension AlertManager {
     func confirmAccountRemovalAlert(in controller: UIViewController, completion: @escaping (Bool)-> ()) {
-        let alert = UIAlertController(title: "are you sure that you want to remove your account?", message: nil, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "yes", style: .default) { (action) in
+        let alert = UIAlertController(title: "Are you sure that you want to remove your account?", message: nil, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
             completion(true)
         }
         
@@ -202,8 +202,8 @@ extension AlertManager {
     }
     
     func accountRemovedAlert(in controller: UIViewController, completion: @escaping ()-> ()) {
-        let alert = UIAlertController(title: "account has been removed", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "okay", style: .cancel) { (action) in
+        let alert = UIAlertController(title: "Account has been removed", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel) { (action) in
             completion()
         }
         alert.addAction(action)
@@ -215,14 +215,14 @@ extension AlertManager {
 extension AlertManager {
     func passwordChangedAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Great!", message: "Your password has been changed", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
     
     func usernameChangedAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Great!", message: "Your username has been changed", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -233,16 +233,16 @@ extension AlertManager {
         alert.addTextField { (textField) in
             textField.placeholder = "new username"
         }
-        alert.addAction(UIAlertAction(title: "done", style: .cancel, handler: {
+        alert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: {
             action in
             guard let username = alert.textFields![0].text else { return }
             if username.contains(" ") || username.count == 0 || username.contains("@") {
-                AlertManager.shared.askUserToChangeUsername(with: "please provide new username which is not empty, without @ and empty spaces", in: controller)
+                AlertManager.shared.askUserToChangeUsername(with: "Please provide new username which is not empty, without @ and empty spaces", in: controller)
                 return
             }
             FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
                 if doesExist {
-                    AlertManager.shared.askUserToChangeUsername(with: "whoops username is not unique, please provide new one", in: controller)
+                    AlertManager.shared.askUserToChangeUsername(with: "Whoops username is not unique, please provide new one", in: controller)
                 } else {
                     FirebaseManager.shared.changeUsername(to: username) { (success) in
                         if success {
@@ -260,11 +260,11 @@ extension AlertManager {
         alert.addTextField { (textField) in
             textField.placeholder = "new password"
         }
-        alert.addAction(UIAlertAction(title: "done", style: .cancel, handler: {
+        alert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: {
             action in
             guard let password = alert.textFields![0].text else { return }
             if password.isEmpty {
-                AlertManager.shared.askUserToChangePassword(with: "please use at least one character in your new password", in: controller)
+                AlertManager.shared.askUserToChangePassword(with: "Please use at least one character in your new password", in: controller)
                 return
             }
             /*FirebaseManager.shared.changePassword() { (success) in
@@ -277,5 +277,14 @@ extension AlertManager {
         controller.present(alert, animated: false)
     }
     
+}
+
+//MARK: - extensions
+
+extension UIAlertController {
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.view.tintColor = Constants.Colors.deepGreen
+    }
 }
 

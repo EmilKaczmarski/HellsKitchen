@@ -17,7 +17,6 @@ class RecipeCategoryViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var newCategoryName = ""
-    //how to get only one value from struct?
     let viewModel: RecipeCategoryViewModel = RecipeCategoryViewModel()
     
     override func viewDidLoad() {

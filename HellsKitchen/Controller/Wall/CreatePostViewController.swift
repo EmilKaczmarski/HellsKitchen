@@ -28,14 +28,13 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var calories: UITextField!
     
     @IBOutlet weak var wholePostStackView: UIStackView!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tableViewWrapperView: UIView!
     @IBOutlet weak var fullPostAndButtonStackView: UIStackView!
-    
     @IBOutlet weak var ingredientsStackView: UIStackView!
-    
     @IBOutlet weak var addIngredientView: UIView!
+    
+    var fields = [IngredientInputView]()
+    
     let viewModel = CreatePostViewModel()
     let postDetailviewModel: PostDetailViewModel = PostDetailViewModel()
     override func viewDidLoad() {
@@ -57,14 +56,10 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         contentView.layer.borderColor = Constants.Colors.lightGray.cgColor
         content.delegate = self
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
         addIngredientView.layer.cornerRadius = 20
         addIngredientView.layer.borderWidth = 1
         addIngredientView.layer.borderColor = Constants.Colors.deepGreen.cgColor
-        
+        IngredientInputView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,30 +210,39 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func addIngredientButtonPressed(_ sender: UIButton) {
-//        viewModel.ingredients.append(Ingredient(text: "bla", weight: 0))
-//        print(viewModel.ingredients)
-//        tableView.reloadData()
-//        tableViewWrapperView.sizeToFit()
-//        view.sizeToFit()
-        let v = UIView()
-        let s = Bool.random()
-        if s {
-            v.backgroundColor = .red
-        } else {
-            v.backgroundColor = .blue
-        }
-        ingredientsStackView.addArrangedSubview(v)
+        let v = IngredientInputView()
+        fullPostAndButtonStackView.insertArrangedSubview(v, at: fields.count + 1)
         v.snp.makeConstraints { (maker) in
-            maker.leading.trailing.equalToSuperview()
+            maker.leading.equalToSuperview().offset(20)
+            maker.trailing.equalToSuperview().offset(-20)
+            maker.height.equalTo(40)
         }
-        ingredientsStackView.sizeToFit()
-        
-        print(ingredientsStackView.frame.height)
-        ingredientsStackView.layoutIfNeeded()
+        fullPostAndButtonStackView.sizeToFit()
+        fullPostAndButtonStackView.layoutIfNeeded()
+        fields.append(v)
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        let fieldToRemove = fields.first { (view) -> Bool in
+            return view.field.text == textField.text!
+        }
+        guard let field = fieldToRemove else { return false }
+        fields.removeAll { (view) -> Bool in
+            return view.field.text == field.field.text
+        }
+        if let field = fieldToRemove {
+            fullPostAndButtonStackView.removeArrangedSubview(field)
+            fullPostAndButtonStackView.sizeToFit()
+            fullPostAndButtonStackView.layoutIfNeeded()
+        }
+        return true
     }
 }
-
 //MARK: - extensions
+
+extension CreatePostViewController: UITextFieldDelegate {
+    
+}
 
 extension CreatePostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
@@ -271,27 +275,5 @@ extension CreatePostViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }
-    }
-}
-
-
-//MARK: - tableview delegate
-extension CreatePostViewController: UITableViewDelegate {
-
-}
-
-//MARK: - tableview datasource
-extension CreatePostViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.ingredients.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = viewModel.ingredients[indexPath.row].text
-        var frame = tableView.frame
-        frame.size.height = tableView.contentSize.height
-        tableView.frame = frame
-        return cell
     }
 }

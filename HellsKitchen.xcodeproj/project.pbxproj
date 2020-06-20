@@ -31,6 +31,7 @@
 		187A7B702487D5F90097B912 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A7B6F2487D5F80097B912 /* MessageCell.swift */; };
 		187C2EF324816FA5002694C3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */; };
 		18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18867D2924840C5700824345 /* RecipeCategoryCell.swift */; };
+		188CEDC3249E7CB700CCAAA2 /* IngredientInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CEDC2249E7CB700CCAAA2 /* IngredientInputView.swift */; };
 		1890714724852FF9008CB184 /* SignInMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890714624852FF9008CB184 /* SignInMenuViewController.swift */; };
 		18910806246B2BEA00F88489 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910805246B2BEA00F88489 /* RegisterViewController.swift */; };
 		18910808246B325900F88489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910807246B325900F88489 /* LoginViewController.swift */; };
@@ -99,6 +100,7 @@
 		187C2EED24804E41002694C3 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		187C2EF224816FA4002694C3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		18867D2924840C5700824345 /* RecipeCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryCell.swift; sourceTree = "<group>"; };
+		188CEDC2249E7CB700CCAAA2 /* IngredientInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientInputView.swift; sourceTree = "<group>"; };
 		1890714624852FF9008CB184 /* SignInMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMenuViewController.swift; sourceTree = "<group>"; };
 		18910805246B2BEA00F88489 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		18910807246B325900F88489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				187A7B6A2487D2470097B912 /* LeftMessageCell.swift */,
 				187A7B6C2487D2550097B912 /* RightMessageCell.swift */,
 				18D1E1BA2488260E00BB0D2D /* TriLabelView.swift */,
+				188CEDC2249E7CB700CCAAA2 /* IngredientInputView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				187A7B702487D5F90097B912 /* MessageCell.swift in Sources */,
 				18FB2A6D24787B1C00DDCAB0 /* RecipesViewController.swift in Sources */,
 				18364E79246BF2B600F8DEBE /* ChatViewController.swift in Sources */,
+				188CEDC3249E7CB700CCAAA2 /* IngredientInputView.swift in Sources */,
 				4739B64E2476EE9900B57239 /* Recipes.swift in Sources */,
 				18867D2A24840C5700824345 /* RecipeCategoryCell.swift in Sources */,
 				18BE284F246B15D500869B6C /* HellsKitchen.xcdatamodeld in Sources */,

@@ -89,6 +89,12 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
+        
+        if thereAreEmptyFields() {
+            AlertManager.shared.actionSuccessfullyCompleted(with: "Please make sure that there are no recipes with empty fields", in: self)
+            return
+        }
+        
         if header.text! != "" && content.text! != "" && calories.text! != "" && cooking.text! != "" {
             let timestamp = "\(Int(Date().timeIntervalSince1970))"
             let post = Post(id: "\(Constants.currentUserEmail)\(timestamp)", title: header.text!, ownerName: Constants.currentUserName, ownerEmail: Constants.currentUserEmail, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp, ingredients: fields.map { $0.field.text! } )
@@ -99,6 +105,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             calories.text! = ""
             postDetailviewModel.savePost(post)
             FirebaseManager.shared.savePostPictureToFirebase(as: (uploadedImage.image?.jpegData(compressionQuality: 0.4))!, for: post.id)
+            removeAllIngredientsFromView()
             self.tabBarController?.selectedIndex = 0
         }
     }
@@ -134,9 +141,36 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             kcalLabel.isHidden = true
         }
     }
+    
+    func removeAllIngredientsFromView() {
+        for i in fields {
+            i.removeFromSuperview()
+        }
+        for i in 0..<fields.count {
+            fields.remove(at: 0)
+        }
+    }
+    
+    func thereAreEmptyFields()-> Bool {
+        for i in fields {
+            if i.field.text?.count == 0 {
+                return true
+            }
+            let spaceCount = i.field.text?.reduce(0) { $1.isWhitespace && !$1.isNewline ? $0 + 1 : $0 }
+            if spaceCount == i.field.text?.count {
+                return true
+            }
+        }
+        return false
+    }
+    
     func addRecipteButtonSwitch() {
-        if !header.text!.isEmpty && uploadedImage.image != nil && !cooking.text!.isEmpty && !calories.text!.isEmpty {
-            enableAddRecipeButton()
+        if !header.text!.isEmpty && uploadedImage.image != nil {
+            if !cooking.text!.isEmpty && !calories.text!.isEmpty && fields.count > 0{
+              enableAddRecipeButton()
+            } else {
+                disableAddRecipeButton()
+            }
         } else {
             disableAddRecipeButton()
         }
@@ -167,7 +201,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePickerController.sourceType = .camera
-                actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
                 print("Camera not available")
@@ -176,11 +209,9 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         }))
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
-            actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         self.present(actionSheet, animated: true, completion: nil)
         
     }
@@ -226,7 +257,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         fullPostAndButtonStackView.sizeToFit()
         fullPostAndButtonStackView.layoutIfNeeded()
         fields.append(ingredientView)
-        //ingredientView.deleteButton = UIImageView(image: "icClose")
     }
     
     @objc func removeField(_ sender: UIButton) {
@@ -248,8 +278,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
 }
-//MARK: - extensions
 
+//MARK: - extensions
 extension CreatePostViewController: UITextFieldDelegate {
     
 }

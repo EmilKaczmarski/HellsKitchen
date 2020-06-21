@@ -10,8 +10,4 @@ import UIKit
 
 class CreatePostViewModel {
     var delegate: CreatePostViewController?
-    var ingredients = [Ingredient(text: "one", weight: 1),
-                       Ingredient(text: "two", weight: 2),
-                       Ingredient(text: "three", weight: 3)
-                        ]
 }

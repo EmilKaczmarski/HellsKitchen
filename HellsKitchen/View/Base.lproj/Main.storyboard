@@ -780,7 +780,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="145.66666666666666" height="17"/>
                                                                                         <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                        <textInputTraits key="textInputTraits"/>
+                                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                         <connections>
                                                                                             <action selector="cookingTextChanged:" destination="F5M-sh-rs9" eventType="editingChanged" id="7rG-LO-EeR"/>
                                                                                         </connections>
@@ -812,7 +812,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                                         <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                        <textInputTraits key="textInputTraits"/>
+                                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                         <connections>
                                                                                             <action selector="caloriesTextChanged:" destination="F5M-sh-rs9" eventType="editingChanged" id="cMt-Fo-RWo"/>
                                                                                         </connections>

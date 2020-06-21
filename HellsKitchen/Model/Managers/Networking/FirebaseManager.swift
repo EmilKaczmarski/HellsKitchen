@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseStorage
-
+import FacebookCore
 import FBSDKLoginKit
 import GoogleSignIn
 
@@ -90,7 +90,7 @@ extension FirebaseManager {
     func signIn(email: String, password: String, in controller: UIViewController, completion: @escaping (Bool)-> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in
             if let err = error {
-                let alertInfo = "Whoops something went wrong"
+                let alertInfo = "Whoops something went wrong, please check whether email and password are correct"
                 AlertManager.shared.textInputAlert(with: alertInfo, buttonTitle: "Try again", for: controller)
                 print(err.localizedDescription)
                 completion(false)
@@ -138,6 +138,7 @@ extension FirebaseManager {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            LoginManager().logOut()
             Constants.currentUserName = ""
             //AccessToken.current = nil
         } catch let signOutError as NSError {

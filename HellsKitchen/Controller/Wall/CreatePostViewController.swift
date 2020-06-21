@@ -167,6 +167,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePickerController.sourceType = .camera
+                actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
                 print("Camera not available")
@@ -175,10 +176,11 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         }))
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
+            actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+        actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         self.present(actionSheet, animated: true, completion: nil)
         
     }
@@ -224,6 +226,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         fullPostAndButtonStackView.sizeToFit()
         fullPostAndButtonStackView.layoutIfNeeded()
         fields.append(ingredientView)
+        //ingredientView.deleteButton = UIImageView(image: "icClose")
     }
     
     @objc func removeField(_ sender: UIButton) {

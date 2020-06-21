@@ -87,8 +87,8 @@ extension FirebaseManager {
     func signIn(email: String, password: String, in controller: UIViewController, completion: @escaping (Bool)-> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in
             if let err = error {
-                let alertInfo = "whoops something went wrong"
-                AlertManager.shared.textInputAlert(with: alertInfo, buttonTitle: "try again", for: controller)
+                let alertInfo = "Whoops something went wrong"
+                AlertManager.shared.textInputAlert(with: alertInfo, buttonTitle: "Try again", for: controller)
                 print(err.localizedDescription)
                 completion(false)
             } else {
@@ -167,7 +167,7 @@ extension FirebaseManager {
                         completion()
                     }
                 } else {
-                    AlertManager.shared.askNewUserToProvideName(with: "please provide new username", in: controller)
+                    AlertManager.shared.askNewUserToProvideName(with: "Please provide new username", in: controller)
                 }
             }
         }

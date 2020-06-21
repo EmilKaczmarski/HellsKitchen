@@ -28,11 +28,12 @@ class AlertManager {
         alert.addTextField { (textField) in
             textField.placeholder = "new username"
         }
-        alert.addAction(UIAlertAction(title: "done", style: .cancel, handler: {
+        alert.addAction(UIAlertAction(title: "Done", style: .cancel, handler: {
             action in
             guard let username = alert.textFields![0].text else { return }
             if username.contains(" ") || username.count == 0 || username.contains("@") {
                 AlertManager.shared.askNewUserToProvideName(with: "Please provide new username which is not empty, without @ and empty spaces", in: controller)
+                action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
                 return
             }
             FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
@@ -59,6 +60,7 @@ class AlertManager {
         
         alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
             controller.performSegue(withIdentifier: Constants.Segues.wallLoginSegue, sender: self)
+            action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         }))
         
         controller.present(alert, animated: true)
@@ -93,6 +95,7 @@ class AlertManager {
         let alert = UIAlertController(title: nil, message: "Whoops something went wrong", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Get back", style: .cancel, handler: { (action) in
             controller.navigationController?.popToRootViewController(animated: false)
+            action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         }))
         controller.present(alert, animated: true)
     }
@@ -122,6 +125,7 @@ class AlertManager {
     func sendMessageAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Alert", message: "No internet connection", preferredStyle: .alert)
         let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -134,6 +138,7 @@ extension AlertManager {
         let action = UIAlertAction(title: "Got it", style: .cancel) { (action) in
             controller.navigationController?.popViewController(animated: true)
         }
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -141,6 +146,7 @@ extension AlertManager {
     func wrongUsernameAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Wrong username", message: "Please provide new username which is not empty, without @ and empty spaces", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -148,6 +154,7 @@ extension AlertManager {
     func notUniqueUsernameAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Username is not unique", message: "Please provide new username which is unique", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -158,14 +165,17 @@ extension AlertManager {
         let signIn = UIAlertAction(title: "Sign in", style: .default) { (action) in
             controller.navigationController?.popViewController(animated: true)
         }
+        tryAgain.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
+        signIn.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(tryAgain)
         alert.addAction(signIn)
         controller.present(alert, animated: true)
     }
     
     func notUniqueEmailAlert(in controller: UIViewController) {
-        let alert = UIAlertController(title: "whoops", message: "It seems that account with this email already exists. Please find another username", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Whoops", message: "It seems that account with this email already exists. Please find another username", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -178,6 +188,8 @@ extension AlertManager {
         let helpAction = UIAlertAction(title: "Help", style: .default) { action in
             completion()
         }
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
+        helpAction.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         alert.addAction(helpAction)
         controller.present(alert, animated: true)
@@ -196,6 +208,8 @@ extension AlertManager {
         let noAction = UIAlertAction(title: "No", style: .cancel) { action in
             completion(false)
         }
+        yesAction.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
+        noAction.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(noAction)
         alert.addAction(yesAction)
         controller.present(alert, animated: true)
@@ -206,6 +220,7 @@ extension AlertManager {
         let action = UIAlertAction(title: "OK", style: .cancel) { (action) in
             completion()
         }
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -216,6 +231,7 @@ extension AlertManager {
     func passwordChangedAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Great!", message: "Your password has been changed", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -223,6 +239,7 @@ extension AlertManager {
     func usernameChangedAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Great!", message: "Your username has been changed", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
         controller.present(alert, animated: true)
     }
@@ -238,6 +255,7 @@ extension AlertManager {
             guard let username = alert.textFields![0].text else { return }
             if username.contains(" ") || username.count == 0 || username.contains("@") {
                 AlertManager.shared.askUserToChangeUsername(with: "Please provide new username which is not empty, without @ and empty spaces", in: controller)
+                action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
                 return
             }
             FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
@@ -265,6 +283,7 @@ extension AlertManager {
             guard let password = alert.textFields![0].text else { return }
             if password.isEmpty {
                 AlertManager.shared.askUserToChangePassword(with: "Please use at least one character in your new password", in: controller)
+                action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
                 return
             }
             /*FirebaseManager.shared.changePassword() { (success) in

@@ -22,6 +22,36 @@ class AlertManager {
         controller.present(alert, animated: true)
     }
     
+    func loginAlert(in controller: UIViewController) {
+        let alert = UIAlertController(title: "Whoops", message: "Something went wrong", preferredStyle: .alert)
+        let tryAgain = UIAlertAction(title: "Try again", style: .cancel, handler: nil)
+        let forgotPassword = UIAlertAction(title: "Forgot Password?", style: .default) {
+            (action) in
+            self.resetPassword(in: controller)
+        }
+        alert.addAction(tryAgain)
+        alert.addAction(forgotPassword)
+        controller.present(alert, animated: true)
+    }
+    
+    func resetPassword (in controller: UIViewController) {
+        let alert = UIAlertController(title: "", message: "Send an e-mail to reset your password", preferredStyle: .alert)
+                 
+            alert.addTextField { (textField) in
+            textField.placeholder = "e-mail"
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let send = UIAlertAction(title: "Send", style: .default) {
+            (action) in
+            //send an email
+        }
+        alert.addAction(cancel)
+        alert.addAction(send)
+        controller.present(alert, animated: true)
+    }
+    
+    
     func askNewUserToProvideName(with title: String, in controller: UIViewController) {
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         

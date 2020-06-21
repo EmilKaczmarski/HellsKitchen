@@ -90,8 +90,7 @@ extension FirebaseManager {
     func signIn(email: String, password: String, in controller: UIViewController, completion: @escaping (Bool)-> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in
             if let err = error {
-                let alertInfo = "Whoops something went wrong, please check whether email and password are correct"
-                AlertManager.shared.textInputAlert(with: alertInfo, buttonTitle: "Try again", for: controller)
+                AlertManager.shared.loginAlert(in: controller)
                 print(err.localizedDescription)
                 completion(false)
             } else {

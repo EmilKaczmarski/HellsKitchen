@@ -2149,6 +2149,9 @@
                                                         <color key="textColor" red="0.002807940356" green="0.31429547070000002" blue="0.40431630610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="endEditingUsername:" destination="ihW-fb-dR5" eventType="editingDidEnd" id="Q0y-cQ-8Bt"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2280,6 +2283,7 @@
                         <outlet property="buttonView" destination="6Z6-PZ-l3c" id="0Bg-VN-Rwq"/>
                         <outlet property="changePasswordTextField" destination="l8y-tt-VKP" id="Q75-vd-k8S"/>
                         <outlet property="changeUsernameTextField" destination="oNj-5L-6O5" id="21k-wt-l06"/>
+                        <outlet property="passwordStackView" destination="jAS-Dl-4q2" id="5h4-mr-rNC"/>
                         <outlet property="profilePicture" destination="Z3A-qa-0rU" id="Ln4-8O-t9M"/>
                         <outlet property="profilePictureView" destination="AAH-Nd-Rin" id="D4T-VV-eC3"/>
                     </connections>

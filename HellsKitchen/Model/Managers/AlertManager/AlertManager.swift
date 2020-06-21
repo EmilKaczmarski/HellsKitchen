@@ -172,6 +172,15 @@ extension AlertManager {
         controller.present(alert, animated: true)
     }
     
+    func actionSuccessfullyCompleted(with title: String, in controller: UIViewController) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "okay", style: .cancel, handler: nil)
+        action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
+        alert.addAction(action)
+        controller.present(alert, animated: true)
+    }
+    
+    
     func notUniqueEmailAlert(in controller: UIViewController) {
         let alert = UIAlertController(title: "Whoops", message: "It seems that account with this email already exists. Please find another username", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)

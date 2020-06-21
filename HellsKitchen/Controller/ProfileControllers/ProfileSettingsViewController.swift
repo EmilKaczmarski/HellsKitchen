@@ -10,13 +10,15 @@ import UIKit
 
 class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var passwordStackView: UIStackView!
     @IBOutlet weak var changeUsernameTextField: UITextField!
     @IBOutlet weak var changePasswordTextField: UITextField!
     @IBOutlet weak var profilePictureView: UIView!
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var buttonView: UIView!
-    
-    var imageHasChanged = false
+    var usernameHasBeenChanged = false
+    var imageHasBeenChanged = false
+    var passwordHasBeenChanged = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
@@ -28,7 +30,12 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        imageHasChanged = false
+        if FirebaseManager.shared.isUserSingedWithFbOrGoogle() {
+            passwordStackView.isHidden = true
+        } else {
+            passwordStackView.isHidden = false
+        }
+        imageHasBeenChanged = false
         tabBarController?.tabBar.isHidden = false
         changeUsernameTextField.text = Constants.currentUserName
         changePasswordTextField.text = ""
@@ -38,8 +45,7 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popToRootViewController(animated: true)
     }
-    
-    
+
     @IBAction func changeProfilePictureButton(_ sender: Any) {
         profilePicturePicker()
         
@@ -73,7 +79,6 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePickerController.sourceType = .camera
-                actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
                 print("Camera not available")
@@ -81,11 +86,9 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
         }))
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
-            actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        actionSheet.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         self.present(actionSheet, animated: true, completion: nil)
     }
     
@@ -96,7 +99,7 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profilePicture.image = originalImage
         }
-        imageHasChanged = true
+        imageHasBeenChanged = true
         dismiss(animated: true, completion: nil)
     }
     
@@ -117,8 +120,6 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     }
     
     //MARK: - change password/username
-    
-    //
     //      func enableSaveChangesButton() {
     //          saveChangesPasswordButton.isEnabled = true
     //      buttonView.backgroundColor =                Constants.Colors.deepGreen
@@ -129,55 +130,135 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     //          buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
     //      }
     
-    
     @IBAction func saveChangesButton(_ sender: Any) {
-        if imageHasChanged {
-            imageHasChanged = false
+        if imageHasBeenChanged {
             if let imageData = profilePicture.image?.jpegData(compressionQuality: 0.2) {
                 FirebaseManager.shared.saveProfilePictureToFirebase(as: imageData)
             }
             FirebaseManager.shared.imageHasChanged()
         }
-        changeUsername()
-        changePassword()
+
+        changePassword() { success in
+            if success {
+                self.passwordHasBeenChanged = true
+            }
+            
+            self.changeUsername() { success in
+                if success {
+                    self.usernameHasBeenChanged = true
+                }
+                self.presentChangeAlerts()
+                self.setHasChangedToFalse()
+            }
+        }
     }
     
-    func changePassword() {
-          guard let password = changePasswordTextField.text else {
-              return }
-          if password.isEmpty {
-              return
-          }
-          FirebaseManager.shared.changePassword(to: password) {
-              (error) in
-              if (error == nil) {
-                  AlertManager.shared.passwordChangedAlert(in: self)
-                  self.changePasswordTextField.text = ""
-              } else {
+    func presentChangeAlerts() {
+        if !imageHasBeenChanged && !passwordHasBeenChanged && !usernameHasBeenChanged {
+            AlertManager.shared.actionSuccessfullyCompleted(with: "You didn't change anything", in: self)
+        }
+        var ctr = 0
+        var alertMessage = "Great, "
+        if usernameHasBeenChanged {
+            ctr += 1
+            alertMessage += "username"
+        }
+        if imageHasBeenChanged {
+            ctr += 1
+            if usernameHasBeenChanged {
+                alertMessage += ", profile picture"
+            } else {
+                alertMessage += "profile picture"
+            }
+        }
+        if passwordHasBeenChanged {
+            ctr += 1
+            if imageHasBeenChanged || usernameHasBeenChanged{
+                alertMessage += ", password"
+            } else {
+                alertMessage += "password"
+            }
+        }
+        if ctr == 0 {
+            alertMessage += " has been changed!"
+        } else {
+            alertMessage += " have been changed!"
+        }
+        AlertManager.shared.actionSuccessfullyCompleted(with: alertMessage, in: self)
+    }
+    
+    func setHasChangedToFalse() {
+        usernameHasBeenChanged = false
+        imageHasBeenChanged = false
+        passwordHasBeenChanged = false
+    }
+    
+    func changePassword(completion: @escaping (Bool)-> ()) {
+        guard let password = changePasswordTextField.text else {
+            completion(false)
+            return
+        }
+        if password.isEmpty {
+            completion(false)
+            return
+        }
+        FirebaseManager.shared.changePassword(to: password) {
+            (error) in
+            if (error == nil) {
+                //AlertManager.shared.passwordChangedAlert(in: self)
+                self.changePasswordTextField.text = ""
+                completion(true)
+            } else {
                 print(error?.localizedDescription)
-              }
-          }
+                completion(false)
+            }
+        }
     }
     
-    func changeUsername() {
+    @IBAction func endEditingUsername(_ sender: UITextField) {
         guard let username = changeUsernameTextField.text else { return }
         if username == Constants.currentUserName {
+            return
+        }
+            
+        if username.contains(" ") || username.count == 0 || username.contains("@") {
+            AlertManager.shared.wrongUsernameAlert(in: self)
+            changeUsernameTextField.text = Constants.currentUserName
+            return
+        }
+        
+        FirebaseManager.shared.checkWhetherUserExists(with: changeUsernameTextField.text!) { (doesExist) in
+            if doesExist {
+                AlertManager.shared.notUniqueUsernameAlert(in: self)
+                self.changeUsernameTextField.text = Constants.currentUserName
+                return
+            }
+        }
+    }
+    
+    func changeUsername(completion: @escaping (Bool)-> ()) {
+        guard let username = changeUsernameTextField.text else { return }
+        if username == Constants.currentUserName {
+            completion(false)
             return
         }
         
         if username.contains(" ") || username.count == 0 || username.contains("@") {
             AlertManager.shared.wrongUsernameAlert(in: self)
+            completion(false)
             return
         }
         
         FirebaseManager.shared.checkWhetherUserExists(with: username) { (doesExist) in
             if doesExist {
                 AlertManager.shared.notUniqueEmailAlert(in: self)
+                completion(false)
                 return
             }
             FirebaseManager.shared.changeUsername(to: username) { (success) in
                 if success {
-                    AlertManager.shared.usernameChangedAlert(in: self)
+                    completion(true)
+                    self.usernameHasBeenChanged = true
                 }
             }
         }

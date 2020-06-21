@@ -10,6 +10,9 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
+import FBSDKLoginKit
+import GoogleSignIn
+
 class FirebaseManager {
     
     static let shared = FirebaseManager()
@@ -136,7 +139,7 @@ extension FirebaseManager {
         do {
             try firebaseAuth.signOut()
             Constants.currentUserName = ""
-            completion(true)
+            //AccessToken.current = nil
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
             completion(false)
@@ -498,4 +501,15 @@ extension FirebaseManager {
             completion(error)
         })
     }
+    
+    func isUserSingedWithFbOrGoogle()-> Bool {
+        if AccessToken.current != nil {
+            return true
+        }
+        if let email = GIDSignIn.sharedInstance()?.currentUser.profile.email {
+            return email == Constants.currentUserEmail
+        }
+        return false
+    }
+    
 }

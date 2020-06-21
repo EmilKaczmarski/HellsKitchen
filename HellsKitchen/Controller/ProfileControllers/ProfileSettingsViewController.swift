@@ -179,7 +179,7 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
                 alertMessage += "password"
             }
         }
-        if ctr == 0 {
+        if ctr == 1 {
             alertMessage += " has been changed!"
         } else {
             alertMessage += " have been changed!"

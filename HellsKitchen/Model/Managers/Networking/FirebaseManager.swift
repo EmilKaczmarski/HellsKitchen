@@ -506,8 +506,12 @@ extension FirebaseManager {
         if AccessToken.current != nil {
             return true
         }
-        if let email = GIDSignIn.sharedInstance()?.currentUser.profile.email {
-            return email == Constants.currentUserEmail
+        if let instance = GIDSignIn.sharedInstance() {
+            if instance.currentUser != nil {
+                if let email = instance.currentUser.profile.email {
+                    return email == Constants.currentUserEmail
+                }
+            }
         }
         return false
     }

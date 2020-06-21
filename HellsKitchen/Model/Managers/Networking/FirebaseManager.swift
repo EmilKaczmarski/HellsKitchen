@@ -390,7 +390,7 @@ extension FirebaseManager {
     
 }
 
-//MARK: - change password/user
+//MARK: - change username
 extension FirebaseManager {
     
     
@@ -492,18 +492,10 @@ extension FirebaseManager {
             }
         }
     }
-    
-    func changePassword(email: String, currentPassword: String, newPassword: String, completion: @escaping (Error?) -> Void) {
-        let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
-        Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (result, error) in
-            if let error = error {
-                completion(error)
-            }
-            else {
-                Auth.auth().currentUser?.updatePassword(to: newPassword, completion: { (error) in
-                    completion(error)
-                })
-            }
+    //MARK: - change password
+    func changePassword(to password: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().currentUser?.updatePassword(to: password, completion: { (error) in
+            completion(error)
         })
     }
 }

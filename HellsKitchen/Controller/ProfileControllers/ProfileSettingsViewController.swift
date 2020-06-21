@@ -16,6 +16,7 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var buttonView: UIView!
     
+    var imageHasChanged = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
@@ -27,7 +28,10 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        imageHasChanged = false
         tabBarController?.tabBar.isHidden = false
+        changeUsernameTextField.text = Constants.currentUserName
+        changePasswordTextField.text = ""
         loadProfilePicture()
     }
     
@@ -79,7 +83,6 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
             self.present(imagePickerController, animated: true, completion: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         self.present(actionSheet, animated: true, completion: nil)
     }
     
@@ -90,10 +93,7 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profilePicture.image = originalImage
         }
-        if let imageData = profilePicture.image?.jpegData(compressionQuality: 0.2) {
-            FirebaseManager.shared.saveProfilePictureToFirebase(as: imageData)
-        }
-        FirebaseManager.shared.imageHasChanged()
+        imageHasChanged = true
         dismiss(animated: true, completion: nil)
     }
     
@@ -128,7 +128,40 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
     
     
     @IBAction func saveChangesButton(_ sender: Any) {
+        if imageHasChanged {
+            imageHasChanged = false
+            if let imageData = profilePicture.image?.jpegData(compressionQuality: 0.2) {
+                FirebaseManager.shared.saveProfilePictureToFirebase(as: imageData)
+            }
+            FirebaseManager.shared.imageHasChanged()
+        }
+        changeUsername()
+        changePassword()
+    }
+    
+    func changePassword() {
+          guard let password = changePasswordTextField.text else {
+              return }
+          if password.isEmpty {
+              return
+          }
+          FirebaseManager.shared.changePassword(to: password) {
+              (error) in
+              if (error == nil) {
+                  AlertManager.shared.passwordChangedAlert(in: self)
+                  self.changePasswordTextField.text = ""
+              } else {
+                print(error?.localizedDescription)
+              }
+          }
+    }
+    
+    func changeUsername() {
         guard let username = changeUsernameTextField.text else { return }
+        if username == Constants.currentUserName {
+            return
+        }
+        
         if username.contains(" ") || username.count == 0 || username.contains("@") {
             AlertManager.shared.wrongUsernameAlert(in: self)
             return
@@ -145,17 +178,5 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
                 }
             }
         }
-        guard let password = changePasswordTextField.text else {
-            return }
-        if password.isEmpty {
-            //error
-        }
-        /*FirebaseManager.shared.changePassword(to: ) {
-            (success) in
-            if success {
-                AlertManager.shared.passwordChangedAlert(in: self)
-            }
-        }
-         */
     }
 }

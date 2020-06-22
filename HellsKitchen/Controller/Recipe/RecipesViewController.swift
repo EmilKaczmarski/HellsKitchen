@@ -83,6 +83,7 @@ extension RecipesViewController {
             clearButton.setImage(UIImage(named: "icClose"), for: .normal)
             clearButton.snp.makeConstraints { (maker) in
                 maker.height.width.equalTo(24)
+                maker.trailing.equalToSuperview()
             }
         }
     }

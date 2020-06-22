@@ -23,6 +23,8 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var calories: UILabel!
     
     @IBOutlet weak var cooking: UILabel!
+    var recipes = [UILabel]()
+    
     let viewModel: CreatePostViewModel = CreatePostViewModel()
     
     var postId: String?
@@ -40,6 +42,7 @@ class PostDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         image.image = postImage
         owner.text = post?.ownerName
         if let stamp = post?.createTimestamp {
@@ -50,14 +53,31 @@ class PostDetailViewController: UIViewController {
         content.text = post?.content
         cooking.text = post?.cooking
         calories.text = post?.calories
-        allPostStackView.sizeToFit()
-        allPostStackView.layoutIfNeeded()
-        allPostView.sizeToFit()
-        allPostView.layoutIfNeeded()
+        insertNeededRecipes()
+        refreshView()
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
         //viewModel.delegate = self
+    }
+    
+    func insertNeededRecipes() {
+        guard let ingredients = post?.ingredients else { return }
+        for i in ingredients {
+            let label = UILabel()
+            label.text = i
+            label.textColor = Constants.Colors.deepGreen
+            label.font = UIFont.systemFont(ofSize: 14.0)
+            allPostStackView.insertArrangedSubview(label, at: 3)
+            recipes.append(label)
+        }
+    }
+    
+    func refreshView() {
+        allPostStackView.sizeToFit()
+        allPostStackView.layoutIfNeeded()
+        allPostView.sizeToFit()
+        allPostView.layoutIfNeeded()
     }
 }

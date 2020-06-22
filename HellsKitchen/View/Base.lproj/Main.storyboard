@@ -783,6 +783,7 @@
                                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                         <connections>
                                                                                             <action selector="cookingTextChanged:" destination="F5M-sh-rs9" eventType="editingChanged" id="7rG-LO-EeR"/>
+                                                                                            <action selector="cookingTimeFieldHasBeenChanged:" destination="F5M-sh-rs9" eventType="editingDidEnd" id="3rJ-x9-G4g"/>
                                                                                         </connections>
                                                                                     </textField>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O44-HB-o2d">
@@ -814,6 +815,7 @@
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                         <connections>
+                                                                                            <action selector="caloriesFieldHasBeenChanged:" destination="F5M-sh-rs9" eventType="editingDidEnd" id="Vu0-gA-AI0"/>
                                                                                             <action selector="caloriesTextChanged:" destination="F5M-sh-rs9" eventType="editingChanged" id="cMt-Fo-RWo"/>
                                                                                         </connections>
                                                                                     </textField>
@@ -1228,6 +1230,9 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="ID3-Uh-YD2" firstAttribute="top" secondItem="liR-EJ-TR6" secondAttribute="top" id="PIo-wg-lVo"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>

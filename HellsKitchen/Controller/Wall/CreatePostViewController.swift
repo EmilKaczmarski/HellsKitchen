@@ -108,7 +108,6 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             post.createTimestamp = timestamp
             post.ingredients = fields.map { $0.field.text! }
             
-            
             header.text! = ""
             content.text! = ""
             cooking.text! = ""
@@ -267,8 +266,16 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         fullPostAndButtonStackView.sizeToFit()
         fullPostAndButtonStackView.layoutIfNeeded()
         fields.append(ingredientView)
+        addRecipteButtonSwitch()
     }
     
+    @IBAction func caloriesFieldHasBeenChanged(_ sender: UITextField) {
+        addRecipteButtonSwitch()
+    }
+    
+    @IBAction func cookingTimeFieldHasBeenChanged(_ sender: UITextField) {
+        addRecipteButtonSwitch()
+    }
     @objc func removeField(_ sender: UIButton) {
         let tag = sender.tag
         let fieldToRemove = fields.first { (view) -> Bool in
@@ -286,6 +293,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                 i.field.tag -= 1
             }
         }
+        addRecipteButtonSwitch()
     }
 }
 

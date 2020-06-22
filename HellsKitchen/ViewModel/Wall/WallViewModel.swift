@@ -14,6 +14,7 @@ class WallViewModel {
     var posts = [Post]()
     var postsImages: [String: UIImage] = [String: UIImage]()
     var usersImages: [String: UIImage] = [String: UIImage]()
+    var errCount = 0
     func loadPosts() {
         db
             .collection(Constants.FStore.posts)
@@ -85,10 +86,17 @@ class WallViewModel {
     }
     
     func setPostPicture(for post: Post) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
                 if error != nil {
-                    return
+                    if self.errCount > 10 {
+                        self.errCount = 0
+                        return
+                    } else {
+                        self.setPostPicture(for: post)
+                        self.errCount += 1
+                        return
+                    }
                 }
                 self.postsImages[post.id] = UIImage(data: data!)
                 self.insertPost(post)
@@ -99,10 +107,7 @@ class WallViewModel {
     
     func insertPost(_ post: Post) {
         if doesPostExist(with: post.id) {
-            //setNewUsernameIfIsIncorrect(for: post) {
-            //    self.delegate?.tableView.reloadData()
             return
-            //}
         }
         
         if posts.count == 0 {

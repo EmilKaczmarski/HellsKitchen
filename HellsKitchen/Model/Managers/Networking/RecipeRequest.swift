@@ -23,7 +23,7 @@ enum RecipeAPI {
     var parameters: Parameters {
         var params = [
             "app_id": "ebf7a149",
-            "app_key": "65d8fc57094c78565fe3bff5816e90b5",
+            "app_key": "7c16969e65ab79d0850f22e346f5eed7",
             "from": "0",
             "to": "3"
         ]

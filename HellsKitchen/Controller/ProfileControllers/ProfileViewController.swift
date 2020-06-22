@@ -40,6 +40,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func logOutButtonPressed(_ sender: Any) {
     
         FirebaseManager.shared.signOutUser { success in
+            LoginManager().logOut()
             if success {
                 self.navigationController?.popViewController(animated: false)
             }

@@ -95,8 +95,6 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(viewModel.messages[indexPath.row].senderEmail)
-        print(Constants.currentUserEmail)
         if viewModel.messages[indexPath.row].senderEmail == Constants.currentUserEmail {
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightCell") as! RightMessageCell
             cell.message.text = viewModel.messages[indexPath.row].message

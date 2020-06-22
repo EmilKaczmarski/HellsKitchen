@@ -91,7 +91,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                         let field = result! as? [String:Any]
                         let userId = field!["id"]
                         let imageURL = "http://graph.facebook.com/\(userId!)/picture?type=large"
-                        print(imageURL)
                         let url = URL(string: imageURL)
                         if let data = NSData(contentsOf: url!) {
                             let image = UIImage(data: data as Data)
@@ -107,7 +106,11 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                         if hasDefaultImage {
                             Constants.currentUserProfilePicture = Constants.externalRegisterProfilePicture!
                         }
-                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            if Constants.currentUserEmail != "" && !token.isExpired {
+                                FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
+                            }
+                        }
                     }
                 }
             }

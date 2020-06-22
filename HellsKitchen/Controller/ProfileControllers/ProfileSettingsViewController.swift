@@ -205,7 +205,6 @@ class ProfileSettingsViewController: UIViewController, UIImagePickerControllerDe
         FirebaseManager.shared.changePassword(to: password) {
             (error) in
             if (error == nil) {
-                //AlertManager.shared.passwordChangedAlert(in: self)
                 self.changePasswordTextField.text = ""
                 completion(true)
             } else {

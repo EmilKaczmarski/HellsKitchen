@@ -137,7 +137,6 @@ extension FirebaseManager {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            LoginManager().logOut()
             Constants.currentUserName = ""
             //AccessToken.current = nil
         } catch let signOutError as NSError {

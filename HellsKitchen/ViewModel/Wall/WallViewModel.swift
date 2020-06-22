@@ -25,15 +25,17 @@ class WallViewModel {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for i in snapshotDocuments {
                             let data = i.data()
-                            let post = Post(id: data["id"] as! String,
-                                            title: data["title"] as! String,
-                                            ownerName: data["ownerName"] as! String,
-                                            ownerEmail: data["ownerEmail"] as! String,
-                                            content: data["content"] as! String,
-                                            cooking: data["cooking"] as! String,
-                                            calories: data["calories"] as! String,
-                                            createTimestamp: "\(data["createTimestamp"] ?? "")"
-                                    )
+                            let post = Post()
+                            post.id = data["id"] as! String
+                            post.title = data["title"] as! String
+                            post.ownerName = data["ownerName"] as! String
+                            post.ownerEmail = data["ownerEmail"] as! String
+                            post.content = data["content"] as! String
+                            post.cooking = data["cooking"] as! String
+                            post.calories = data["calories"] as! String
+                            post.createTimestamp = "\(data["createTimestamp"] ?? "")"
+                            post.ingredients = []
+                            self.loadIngredients(for: post)
                             if self.usersImages[post.ownerEmail] == nil {
                                 FirebaseManager.shared.getProfilePictureData(for: post.ownerEmail) { (data, error) in
                                     if error != nil {
@@ -62,6 +64,26 @@ class WallViewModel {
                 }
         }
     }
+    
+    func loadIngredients(for post: Post) {
+        db
+        .collection(Constants.FStore.posts)
+        .document(post.id)
+        .collection(Constants.FStore.PostComponents.ingredients)
+            .getDocuments { (querySnapschot, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {
+                    if let snapshotDocuments = querySnapschot?.documents {
+                        guard let allIngredients = snapshotDocuments.first else { return }
+                        for (ingredient) in allIngredients.data() {
+                            post.ingredients!.append(ingredient.value as! String)
+                        }
+                    }
+                }
+        }
+    }
+    
     func setPostPicture(for post: Post) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
@@ -120,7 +142,16 @@ class WallViewModel {
                 return
             }
 
-            let newPost = Post(id: post.id, title: post.title, ownerName: username, ownerEmail: post.ownerEmail, content: post.content, cooking: post.cooking, calories: post.calories, createTimestamp: post.createTimestamp)
+            let newPost = Post()
+            newPost.id = post.id
+            newPost.title = post.title
+            newPost.ownerName = post.ownerName
+            newPost.ownerEmail = post.ownerEmail
+            newPost.content = post.content
+            newPost.cooking = post.cooking
+            newPost.calories = post.calories
+            newPost.createTimestamp = post.createTimestamp
+            
             self.removePost(post) {
                 self.insertPost(newPost)
                 completion()

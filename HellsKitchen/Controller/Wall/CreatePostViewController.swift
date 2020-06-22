@@ -36,7 +36,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     var fields = [IngredientInputView]()
     
     let viewModel = CreatePostViewModel()
-    let postDetailviewModel: PostDetailViewModel = PostDetailViewModel()
+    let postDetailviewModel: CreatePostViewModel = CreatePostViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         postDetailviewModel.delegate = self
@@ -97,7 +97,17 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         
         if header.text! != "" && content.text! != "" && calories.text! != "" && cooking.text! != "" {
             let timestamp = "\(Int(Date().timeIntervalSince1970))"
-            let post = Post(id: "\(Constants.currentUserEmail)\(timestamp)", title: header.text!, ownerName: Constants.currentUserName, ownerEmail: Constants.currentUserEmail, content: content.text!, cooking: cooking.text!, calories: calories.text!, createTimestamp: timestamp, ingredients: fields.map { $0.field.text! } )
+            let post = Post()
+            post.id = "\(Constants.currentUserEmail)\(timestamp)"
+            post.title = header.text!
+            post.ownerName = Constants.currentUserName
+            post.ownerEmail = Constants.currentUserEmail
+            post.content = content.text!
+            post.cooking = cooking.text!
+            post.calories = calories.text!
+            post.createTimestamp = timestamp
+            post.ingredients = fields.map { $0.field.text! }
+            
             
             header.text! = ""
             content.text! = ""

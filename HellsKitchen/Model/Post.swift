@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct Post {
-    let id: String
-    let title: String
-    var ownerName: String?
-    let ownerEmail: String
-    //let photo: UIImage() in further plans
-    let content: String
-    let cooking: String
-    let calories: String
-    let createTimestamp: String
+class Post {
+    var id: String = ""
+    var title: String = ""
+    var ownerName: String = ""
+    var ownerEmail: String = ""
+    //varet photo: UIImage() in further plans = ""
+    var content: String = ""
+    var cooking: String = ""
+    var calories: String = ""
+    var createTimestamp: String = ""
     var ingredients: [String]?
 }
 

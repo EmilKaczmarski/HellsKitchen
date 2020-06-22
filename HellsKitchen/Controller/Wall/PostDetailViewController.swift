@@ -15,22 +15,24 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var radiusView: UIView!
+    
+    
+    @IBOutlet weak var allPostStackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var calories: UILabel!
     
     @IBOutlet weak var cooking: UILabel!
-    let viewModel: PostDetailViewModel = PostDetailViewModel()
+    let viewModel: CreatePostViewModel = CreatePostViewModel()
     
     var postId: String?
     var post: Post?
     var postImage: UIImage?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
-        radiusView.layer.cornerRadius = 26
-        radiusView.layer.masksToBounds = true
-        radiusView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        scrollView.layer.cornerRadius = 26
+        scrollView.layer.masksToBounds = true
+        scrollView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         //viewModel.delegate = self
     }
     
@@ -46,6 +48,8 @@ class PostDetailViewController: UIViewController {
         content.text = post?.content
         cooking.text = post?.cooking
         calories.text = post?.calories
+        allPostStackView.sizeToFit()
+        allPostStackView.layoutIfNeeded()
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {

@@ -16,6 +16,7 @@ struct Constants {
     static var externalRegisterProfilePicture: UIImage?
     static let usernameKey = "username"
     static let signInIndicator = ""
+    static var isAuthorisationAlert = false
     
 }
 

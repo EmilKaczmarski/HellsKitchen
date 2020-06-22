@@ -72,7 +72,7 @@ class AlertManager {
     
     func requiedAuthorisationAlert(in controller: WallViewController) {
         let alert = UIAlertController(title: "Please Log In", message: "To see recipe details authorisation is required", preferredStyle: .alert)
-        
+        Constants.isAuthorisationAlert = true
         alert.addAction(UIAlertAction(title: "Log In", style: .cancel, handler: { (action) in
             controller.performSegue(withIdentifier: Constants.Segues.wallLoginSegue, sender: self)
             action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")

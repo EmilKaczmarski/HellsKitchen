@@ -43,6 +43,7 @@ class ProtectedDataNavigationController: UINavigationController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SignInMenuViewController
+        Constants.isAuthorisationAlert = false
         if let upperTitle = upperLabelForChildController {
             vc.upperTitle = upperTitle
         }

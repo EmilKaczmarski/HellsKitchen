@@ -13,8 +13,8 @@ import GoogleSignIn
 
 class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     
-    var lowerTitle = ""
-    var upperTitle = ""
+    var upperTitle = "Sign in to see your"
+    var lowerTitle = "profile"
     @IBOutlet weak var FBLoginButton: UIButton!
     @IBOutlet weak var lowerLabel: UILabel!
     @IBOutlet weak var upperLabel: UILabel!
@@ -34,10 +34,12 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = true
+        
         setupUpperAndLowerTitle()
         if Constants.currentUserName != "" {
             navigationController?.popToRootViewController(animated: false)
         }
+        view.layoutIfNeeded()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -49,8 +51,13 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     }
     
     func setupUpperAndLowerTitle() {
-        upperLabel.text = upperTitle
-        lowerLabel.text = lowerTitle
+        if Constants.isAuthorisationAlert {
+            upperLabel.text = "Sign in to see"
+            lowerLabel.text = "post detail"
+        } else {
+            upperLabel.text = upperTitle
+            lowerLabel.text = lowerTitle
+        }
     }
     
     func setupLoginButtonsViews() {
@@ -68,7 +75,12 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        tabBarController?.selectedIndex = 0
+        if Constants.isAuthorisationAlert {
+            navigationController?.popToRootViewController(animated: true)
+            Constants.isAuthorisationAlert = false
+        } else {
+            tabBarController?.selectedIndex = 0
+        }
     }
     
     @IBAction func googleLoginPressed(_ sender: UIButton) {

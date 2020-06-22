@@ -91,6 +91,31 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         self.performSegue(withIdentifier: Constants.Segues.registerSegue, sender: self)
     }
     
+    //add "forgot password" action
+    
+    func resetPassword (in controller: UIViewController) {
+        let alert = UIAlertController(title: "", message: "Send an e-mail to reset your password", preferredStyle: .alert)
+                 
+            alert.addTextField { (textField) in
+            textField.placeholder = "e-mail"
+        }
+        let send = UIAlertAction(title: "Send", style: .default) {
+            (action) in
+            guard let email = alert.textFields![0].text else { return }
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error = error {
+                    AlertManager.shared.loginAlert(in: controller)
+                    print(error.localizedDescription)
+                   return
+                } else {
+                    AlertManager.shared.resetEmailSent(in: controller)
+                }
+            }
+        }
+        alert.addAction(send)
+        controller.present(alert, animated: true)
+    }
+    
 //MARK: - facebook extension
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("did logout from facebook")

@@ -17,6 +17,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     
     
+    @IBOutlet weak var allPostView: UIView!
     @IBOutlet weak var allPostStackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var calories: UILabel!
@@ -30,9 +31,10 @@ class PostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle("", andImage: #imageLiteral(resourceName: "logo"))
-        scrollView.layer.cornerRadius = 26
-        scrollView.layer.masksToBounds = true
-        scrollView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        allPostView.layer.cornerRadius = 26
+        allPostView.layer.masksToBounds = true
+        allPostView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
         //viewModel.delegate = self
     }
     
@@ -50,6 +52,8 @@ class PostDetailViewController: UIViewController {
         calories.text = post?.calories
         allPostStackView.sizeToFit()
         allPostStackView.layoutIfNeeded()
+        allPostView.sizeToFit()
+        allPostView.layoutIfNeeded()
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {

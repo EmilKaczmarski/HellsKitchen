@@ -38,14 +38,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
-    
+        LoginManager().logOut()
         FirebaseManager.shared.signOutUser { success in
-            LoginManager().logOut()
             if success {
                 self.navigationController?.popViewController(animated: false)
             }
         }
          Constants.currentUserProfilePicture = UIImage(named: "defaultProfilePicture")
+        Constants.currentPictureIsDefault = true
     }
     
     func loadProfilePicture() {

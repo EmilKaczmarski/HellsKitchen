@@ -13,6 +13,7 @@ struct Constants {
     static var currentUserEmail = ""
     static var hasDefaultImage: Bool?
     static var currentUserProfilePicture = UIImage(named: "defaultProfilePicture")
+    static var currentPictureIsDefault = true
     static var externalRegisterProfilePicture: UIImage?
     static let usernameKey = "username"
     static let signInIndicator = ""

@@ -105,33 +105,11 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                             guard let hasDefaultImage = Constants.hasDefaultImage else { return }
                             if hasDefaultImage {
                                 Constants.currentUserProfilePicture = Constants.externalRegisterProfilePicture!
-                                Constants.currentPictureIsDefault = false
                             FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
                             }
                         }
                     }
                 }
-                
-//                FirebaseManager.shared.signInWithExternalApplication(with: credential, type: .login) {
-//                    self.loginLoader.stopAnimating()
-//                    guard let hasDefaultImage = Constants.hasDefaultImage else { return }
-//                    if hasDefaultImage {
-//                        if user.profile.hasImage
-//                        {
-//                            let pic = user.profile.imageURL(withDimension: 100)
-//                            let url = URL(string: pic!.absoluteString)
-//                            print(pic?.absoluteString)
-//                            if let data = NSData(contentsOf: url!) {
-//                                let image = UIImage(data: data as Data)
-//                                Constants.currentUserProfilePicture = image
-//                                Constants.currentPictureIsDefault = false
-//                            }
-//                        }
-//                        FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)
-//                    }
-//                }
-                
-                
             }
         }
     }
@@ -167,7 +145,6 @@ class SignInMenuViewController: UIViewController, GIDSignInDelegate {
                     if let data = NSData(contentsOf: url!) {
                         let image = UIImage(data: data as Data)
                         Constants.currentUserProfilePicture = image
-                        Constants.currentPictureIsDefault = false
                     }
                 }
                 FirebaseManager.shared.saveProfilePictureToFirebase(as: (Constants.currentUserProfilePicture?.jpegData(compressionQuality: 0.2))!)

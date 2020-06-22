@@ -45,7 +45,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
          Constants.currentUserProfilePicture = UIImage(named: "defaultProfilePicture")
-        Constants.currentPictureIsDefault = true
     }
     
     func loadProfilePicture() {

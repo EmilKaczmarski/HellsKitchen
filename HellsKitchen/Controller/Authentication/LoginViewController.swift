@@ -92,31 +92,30 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     }
     
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
-        
-        func resetPassword (in controller: UIViewController) {
-            let alert = UIAlertController(title: "", message: "Send an e-mail to reset your password", preferredStyle: .alert)
-                     
-                alert.addTextField { (textField) in
-                textField.placeholder = "e-mail"
-            }
-            let send = UIAlertAction(title: "Send", style: .default) {
-                (action) in
-                guard let email = alert.textFields![0].text else { return }
-                Auth.auth().sendPasswordReset(withEmail: email) { error in
-                    if let error = error {
-                        AlertManager.shared.loginAlert(in: controller)
-                        print(error.localizedDescription)
-                       return
-                    } else {
-                        AlertManager.shared.resetEmailSent(in: controller)
-                    }
+        resetPassword(in: self)
+    }
+    func resetPassword (in controller: UIViewController) {
+        let alert = UIAlertController(title: "", message: "Send an e-mail to reset your password", preferredStyle: .alert)
+                 
+            alert.addTextField { (textField) in
+            textField.placeholder = "e-mail"
+        }
+        let send = UIAlertAction(title: "Send", style: .default) {
+            (action) in
+            guard let email = alert.textFields![0].text else { return }
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error = error {
+                    AlertManager.shared.actionSuccessfullyCompleted(with: "Please provide proper email address", in: self)
+                    print(error.localizedDescription)
+                   return
+                } else {
+                    AlertManager.shared.resetEmailSent(in: controller)
                 }
             }
-            alert.addAction(send)
-            controller.present(alert, animated: true)
         }
+        alert.addAction(send)
+        controller.present(alert, animated: true)
     }
-
     
 //MARK: - facebook extension
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {

@@ -25,7 +25,7 @@ enum RecipeAPI {
             "app_id": "ebf7a149",
             "app_key": "7c16969e65ab79d0850f22e346f5eed7",
             "from": "0",
-            "to": "3"
+            "to": "8"
         ]
         switch self {
         case .recipe(let recipe):

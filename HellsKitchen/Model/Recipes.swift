@@ -29,9 +29,7 @@ struct Recipe: Codable {
     let url: String
     let shareAs: String
     let yield: Int
-    let dietLabels: [String]
-    let healthLabels: [HealthLabel]
-    let cautions, ingredientLines: [String]
+    let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
     let calories, totalWeight: Double
     let totalTime: Int
@@ -42,24 +40,12 @@ struct Recipe: Codable {
 // MARK: - Digest
 struct Digest: Codable {
     let label, tag: String
-    let schemaOrgTag: SchemaOrgTag?
+    let schemaOrgTag: String?
     let total: Double
     let hasRDI: Bool
     let daily: Double
     let unit: Unit
     let sub: [Digest]?
-}
-
-enum SchemaOrgTag: String, Codable {
-    case carbohydrateContent = "carbohydrateContent"
-    case cholesterolContent = "cholesterolContent"
-    case fatContent = "fatContent"
-    case fiberContent = "fiberContent"
-    case proteinContent = "proteinContent"
-    case saturatedFatContent = "saturatedFatContent"
-    case sodiumContent = "sodiumContent"
-    case sugarContent = "sugarContent"
-    case transFatContent = "transFatContent"
 }
 
 enum Unit: String, Codable {
@@ -68,15 +54,6 @@ enum Unit: String, Codable {
     case kcal = "kcal"
     case mg = "mg"
     case µg = "µg"
-}
-
-enum HealthLabel: String, Codable {
-    case alcoholFree = "Alcohol-Free"
-    case peanutFree = "Peanut-Free"
-    case sugarConscious = "Sugar-Conscious"
-    case treeNutFree = "Tree-Nut-Free"
-    case vegan = "Vegan"
-    case vegetarian = "Vegetarian"
 }
 
 // MARK: - Ingredient

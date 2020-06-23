@@ -135,6 +135,7 @@ extension FirebaseManager {
 extension FirebaseManager {
     func signOutUser(completion: @escaping(Bool)-> Void) {
         let firebaseAuth = Auth.auth()
+        LoginManager().logOut()
         do {
             try firebaseAuth.signOut()
             Constants.currentUserName = ""

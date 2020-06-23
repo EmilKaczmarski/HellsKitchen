@@ -36,13 +36,15 @@ class PostDetailViewController: UIViewController {
         allPostView.layer.cornerRadius = 26
         allPostView.layer.masksToBounds = true
         allPostView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        //viewModel.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
+        navigationController?.popToRootViewController(animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         image.image = postImage
         owner.text = post?.ownerName
         if let stamp = post?.createTimestamp {
@@ -59,7 +61,6 @@ class PostDetailViewController: UIViewController {
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
-        //viewModel.delegate = self
     }
     
     func insertNeededRecipes() {
@@ -79,5 +80,16 @@ class PostDetailViewController: UIViewController {
         allPostStackView.layoutIfNeeded()
         allPostView.sizeToFit()
         allPostView.layoutIfNeeded()
+    }
+}
+
+
+extension PostDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("a")
+        if scrollView.contentOffset.x != 0 {
+            print("b")
+            scrollView.contentOffset.x = 0
+        }
     }
 }

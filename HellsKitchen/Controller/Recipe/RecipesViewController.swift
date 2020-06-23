@@ -78,13 +78,6 @@ extension RecipesViewController {
         searchBarView.layer.borderWidth = 1
         searchBarView.layer.borderColor = UIColor.lightGray.cgColor
         searchBar.searchTextField.backgroundColor = .white
-        if let searchTextField = searchBar.value(forKey: "searchField") as? UITextField, let clearButton = searchTextField.value(forKey: "clearButton") as? UIButton {
-            clearButton.tintColor = Constants.Colors.deepGreen
-            clearButton.setImage(UIImage(named: "icClose"), for: .normal)
-            clearButton.snp.makeConstraints { (maker) in
-                maker.height.width.equalTo(24)
-            }
-        }
     }
 }
 

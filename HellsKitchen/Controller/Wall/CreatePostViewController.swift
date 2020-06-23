@@ -199,9 +199,17 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         buttonView.backgroundColor = Constants.Colors.deepGreenDisabled
     }
     
+    func resignRespondersForAllTextFieldsAndViews() {
+        cooking.resignFirstResponder()
+        calories.resignFirstResponder()
+        header.resignFirstResponder()
+        content.resignFirstResponder()
+    }
+    
     //MARK: - Adding photo
     
     func photoPicker() {
+        resignRespondersForAllTextFieldsAndViews()
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true

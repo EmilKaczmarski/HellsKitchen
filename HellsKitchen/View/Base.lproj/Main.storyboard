@@ -2255,8 +2255,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-cO-Dhz">
-                                <rect key="frame" x="30" y="605" width="354" height="128"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mZc-cO-Dhz">
+                                <rect key="frame" x="30" y="591.33333333333337" width="354" height="118"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Z6-PZ-l3c">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
@@ -2284,14 +2284,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOr-QL-Ls6">
-                                        <rect key="frame" x="0.0" y="75" width="354" height="1"/>
+                                        <rect key="frame" x="0.0" y="70" width="354" height="1"/>
                                         <color key="backgroundColor" red="0.92511826750000004" green="0.93706882000000002" blue="0.93716531989999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="u07-dk-pW1"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twd-j8-bSC">
-                                        <rect key="frame" x="0.0" y="101" width="354" height="27"/>
+                                        <rect key="frame" x="0.0" y="91" width="354" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <state key="normal" title="Remove account">
                                             <color key="titleColor" red="0.0039215686269999999" green="0.31372549020000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2315,7 +2315,7 @@
                             <constraint firstItem="QGB-UG-K8X" firstAttribute="leading" secondItem="Qbv-Gy-uw8" secondAttribute="leading" constant="20" id="BSZ-WD-3wD"/>
                             <constraint firstItem="AAH-Nd-Rin" firstAttribute="top" secondItem="QGB-UG-K8X" secondAttribute="bottom" constant="77.329999999999998" id="D9E-lH-HBE"/>
                             <constraint firstItem="mZc-cO-Dhz" firstAttribute="centerX" secondItem="iLl-8w-udr" secondAttribute="centerX" id="Hd7-qf-y1P"/>
-                            <constraint firstItem="Qbv-Gy-uw8" firstAttribute="bottom" secondItem="mZc-cO-Dhz" secondAttribute="bottom" constant="80" id="Pka-Za-0Yz"/>
+                            <constraint firstItem="mZc-cO-Dhz" firstAttribute="top" secondItem="wjU-2z-ds0" secondAttribute="bottom" constant="40" id="NNh-yF-wnw"/>
                             <constraint firstItem="wjU-2z-ds0" firstAttribute="top" secondItem="AAH-Nd-Rin" secondAttribute="bottom" constant="48" id="Tbn-rK-XXO"/>
                             <constraint firstItem="mZc-cO-Dhz" firstAttribute="leading" secondItem="Qbv-Gy-uw8" secondAttribute="leading" constant="30" id="a2h-h1-26m"/>
                             <constraint firstItem="Qbv-Gy-uw8" firstAttribute="trailing" secondItem="mZc-cO-Dhz" secondAttribute="trailing" constant="30" id="aZo-Ua-EgN"/>

@@ -37,7 +37,7 @@ class WallViewModel {
                             post.createTimestamp = "\(data["createTimestamp"] ?? "")"
                             post.ingredients = []
                             self.loadIngredients(for: post)
-                            if self.usersImages[post.ownerEmail] == nil {
+                            //if self.usersImages[post.ownerEmail] == nil {
                                 FirebaseManager.shared.getProfilePictureData(for: post.ownerEmail) { (data, error) in
                                     if error != nil {
                                         print(error!.localizedDescription)
@@ -46,7 +46,7 @@ class WallViewModel {
                                     self.usersImages[post.ownerEmail] = UIImage(data: data!)
                                     self.delegate!.tableView.reloadData()
                                 }
-                            }
+                            //}
                             if self.postsImages[post.id] == nil {
                                 FirebaseManager.shared.getPostPictureData(for: post.id) { (data, error) in
                                     if error != nil {

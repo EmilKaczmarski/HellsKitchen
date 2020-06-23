@@ -95,7 +95,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         resetPassword(in: self)
     }
     func resetPassword (in controller: UIViewController) {
-        let alert = UIAlertController(title: "", message: "Send an e-mail to reset your password", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: "Provide an e-mail to reset your password", preferredStyle: .alert)
                  
             alert.addTextField { (textField) in
             textField.placeholder = "e-mail"

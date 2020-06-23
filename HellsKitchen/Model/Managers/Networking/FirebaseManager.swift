@@ -515,5 +515,4 @@ extension FirebaseManager {
         }
         return false
     }
-    
 }

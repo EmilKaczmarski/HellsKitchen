@@ -205,17 +205,12 @@ extension AlertManager {
     }
     
     func verifyEmailAlert(in controller: UIViewController, completion: @escaping ()-> ()) {
-        let alert = UIAlertController(title: "Please verify your email", message: "Check your email and find authentication link, if you haven't received anything please press help", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Please verify your email", message: "Check your email and find authentication link, to finish register process", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel) { action in
             completion()
         }
-        let helpAction = UIAlertAction(title: "Help", style: .default) { action in
-            completion()
-        }
         action.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
-        helpAction.setValue(Constants.Colors.deepGreen, forKey: "titleTextColor")
         alert.addAction(action)
-        alert.addAction(helpAction)
         controller.present(alert, animated: true)
     }
 }
